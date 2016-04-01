@@ -1,7 +1,5 @@
 # CSDN-blog-classify
 CSDN博客智能分类系统
-# CSDN-blog-classify
-CSDN博客智能分类系统
 
 CSDN博客分类系统是基于Python和朴素贝叶斯分类算法进行博客分类推荐的智能识别系统
 
@@ -16,14 +14,14 @@ web页面展示和服务器都是基于 python django框架
 
 2：目录说明
  ——csdn_blog_classify              //工程主目录
-    ——blog_classify                //博客分类
-    ——blog_fenci                   //文章进行分词
-    ——blog_spider                  //爬取文章内容，分类别进行存储
-    ——csdn_blog_classify           //django工程目录
-    ——static                       //静态文件目录
-    ——templates                    //模板目录
-    ——db.sqlite3                   //django自带的轻量级数据库
-    ——manage.py                    //测试启动服务等
+   ——blog_classify                //博客分类
+   ——blog_fenci                   //文章进行分词
+   ——blog_spider                  //爬取文章内容，分类别进行存储
+   ——csdn_blog_classify           //django工程目录
+   ——static                       //静态文件目录
+   ——templates                    //模板目录
+   ——db.sqlite3                   //django自带的轻量级数据库
+   ——manage.py                    //测试启动服务等
 
 django系列教程请参考：
 http://blog.csdn.net/Gamer_gyt/article/category/5996523
