@@ -1,0 +1,20 @@
+@charset "utf-8";
+.wo {list-style-type:none;}
+.tabs {list-style-type:none;margin:0;padding:0;overflow:hidden;}
+ul.tabs>li { display:inline; float:left;}
+ul.tabs>li>a:link,ul.tabs>li>a:visited
+{
+display:block;
+width:88px;
+font-weight:bold;
+color:#000;
+background-color:#CF6;
+text-align:center;
+padding:4px;
+text-decoration:none;
+text-transform:uppercase;
+}
+ul.tabs>li>a:hover,ul.tabs>li>a:active {background-color:#cc0000;}
+.mainh { margin-top:10px;}
+.me { margin-top:20px; margin-left:3px;}
+

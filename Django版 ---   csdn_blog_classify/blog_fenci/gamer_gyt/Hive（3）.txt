@@ -1,0 +1,347 @@
+[置顶]
+        hive1.2伪分布mysql数据库配置详解
+
+hadoop2.6伪分布配置：http://blog.csdn.net/gamer_gyt/article/details/46793731
+hive1.2  derby元数据库配置：http://blog.csdn.net/gamer_gyt/article/details/47150621
+环境说明
+hadoop2.6伪分布          Ubuntu14.04           hive 1.1              MySql 5.5                 MySql连接驱动5.1.11
+一，hive配置
+1.解压hive到相应的目录(我的是/usr/localo/hadoop)
+2.重命名为hive
+3.设置环境变量
+sudo gedit /etc/profile
+添加：export HIVE_HOME=/usr/local/hadoop/hive
+   PATH中添加  $HIVE_HIOME/bin
+4.在目录$HIVE_HOME/conf/下，执行命令mv hive-default.xml.template  hive-site.xml重命名
+   在目录$HIVE_HOME/conf/下，执行命令mv hive-env.sh.template  hive-env.sh重命名
+   在目录$HIVE_HOME/bin下面，修改文件hive-config.sh，增加以下内容：
+     export JAVA_HOME=/usr/local/jdk           #你自己的java路径
+     export HIVE_HOME=/usr/local/hadoop/hive
+     export HADOOP_HOME=/usr/local/hadoop
+
+  修改hive-env.sh 如下图：
+
+
+========================================================================================
+此时hive的就可以正常使用了，不过此时使用的是derby数据库，不能两台机器同时访问
+========================================================================================
+二，MySql安装
+
+
+1. 删除mysql
+
+a. sudo apt-get autoremove --purge mysql-server-5.0
+b. sudo apt-get remove mysql-server
+c. sudo apt-get autoremove mysql-server
+d. sudo apt-get remove mysql-common (非常重要)
+
+
+上面的其实有一些是多余的，建议还是按照顺序执行一遍
+
+2. 清理残留数据
+
+dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
+
+
+3. 安装 mysql
+
+a. sudo apt-get install mysql-server
+b. sudo apt-get install mysql-client
+
+
+
+一旦安装完成，MySQL服务器应该自动启动。您可以在终端提示符后运行以下命令来检查 MySQL 服务器是否正在运行：
+
+4. 检查Mysql是否正在运行
+
+sudo netstat -tap | grep mysql
+
+
+当您运行该命令时，您可以看到类似下面的行：
+
+root@ubuntu:~# sudo netstat -tap | grep mysql
+tcp        0      0 localhost.localdo:mysql *:*                     LISTEN   
+870/mysqld 
+
+
+如果服务器不能正常运行，您可以通过下列命令启动它：
+
+sudo /etc/init.d/mysql restart
+
+三，使用mysql作为hive的metastore配置
+1.把mysql的jdbc驱动放置到hive的lib目录下
+2.修改hive-site.xml文件，修改相应的内容如下：  
+<property>
+<name>javax.jdo.option.ConnectionURL</name>
+<value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true</value>
+</property>
+<property>
+<name>javax.jdo.option.ConnectionDriverName</name>
+<value>com.mysql.jdbc.Driver</value>
+</property>
+<property>
+<name>javax.jdo.option.ConnectionUserName</name>
+<value>root</value>
+</property>
+<property>
+<name>javax.jdo.option.ConnectionPassword</name>
+<value>root</value>
+</property>
+
+注：以上配置出现的两个root即为在安装mysql时候键入的用户名和秘密
+============================================================================================
+至此，mysql作为元数据库的配置已经完毕
+============================================================================================
+四，hive   web界面访问
+1.下载hive-hwi-0.13.1.war 复制到hive目录下的lib文件夹里
+2.复制java安装目录的lib文件夹下的tools.jar到hive目录下的lib文件夹
+访问界面如图：
+
+
+五，wrong
+若安装过程中出现连接不上或者不能访问，可能是权限问题
+进入hadoop安装目录local执行：sudo chown-R
+ hadoop:hadoop./hadoop#
+ 修改文件权限
+若出现com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+建议好好查看配置文件hive-site.xml
+
+hive中的表、外部表、分区和桶的理解
+
+一、概念介绍
+
+
+        Hive 没有专门的数据存储格式，也没有为数据建立索引，用户可以非常自由的组织 Hive 中的表，只需要在创建表的时候告诉 Hive 数据中的列分隔符和行分隔符，Hive 就可以解析数据
+
+        Hive 中的 Table 和数据库中的 Table 在概念上是类似的，每一个 Table 在 Hive 中都有一个相应的目录存储数据。例如，一个表 pvs，它在 HDFS 中的路径为：/wh/pvs，其中，wh 是在 hive-site.xml 中由 ${hive.metastore.warehouse.dir} 指定的数据仓库的目录，所有的 Table 数据（不包括 External Table）都保存在这个目录中。
+        
+        Partition 对应于数据库中的 Partition 列的密集索引，但是 Hive 中 Partition 的组织方式和数据库中的很不相同。在 Hive 中，表中的一个 Partition 对应于表下的一个目录，所有的 Partition 的数据都存储在对应的目录中。例如：pvs 表中包含 ds 和 city 两个 Partition，则对应于 ds = 20090801, ctry = US 的 HDFS 子目录为：/wh/pvs/ds=20090801/ctry=US；对应于 ds =
+ 20090801, ctry = CA 的 HDFS 子目录为；/wh/pvs/ds=20090801/ctry=CA
+        
+        Buckets 对指定列计算 hash，根据 hash 值切分数据，目的是为了并行，每一个 Bucket 对应一个文件。将 user 列分散至 32 个 bucket，首先对 user 列的值计算 hash，对应 hash 值为 0 的 HDFS 目录为：/wh/pvs/ds=20090801/ctry=US/part-00000；hash 值为 20 的 HDFS 目录为：/wh/pvs/ds=20090801/ctry=US/part-00020
+
+        External Table 指向已经在 HDFS 中存在的数据，可以创建 Partition。它和 Table 在元数据的组织上是相同的，而实际数据的存储则有较大的差异。
+Table 的创建过程和数据加载过程（这两个过程可以在同一个语句中完成），在加载数据的过程中，实际数据会被移动到数据仓库目录中；之后对数据对访问将会直接在数据仓库目录中完成。删除表时，表中的数据和元数据将会被同时删除。
+
+
+External Table 只有一个过程，加载数据和创建表同时完成（CREATE EXTERNAL TABLE ……LOCATION），实际数据是存储在 LOCATION 后面指定的 HDFS 路径中，并不会移动到数据仓库目录中。当删除一个 External Table 时，仅删除元数据，表中的数据不会真正被删除。
+
+二、基本操作命令
+
+
+
+简单的创建表
+
+create table table_name (
+  id                int,
+  dtDontQuery       string,
+  name              string
+)
+
+
+ 
+ 
+创建有分区的表
+
+create table table_name (
+  id                int,
+  dtDontQuery       string,
+  name              string
+)
+partitioned by (date string)
+
+一个表可以拥有一个或者多个分区，每个分区以文件夹的形式单独存在表文件夹的目录下。
+分区是以字段的形式在表结构中存在，通过describe table命令可以查看到字段存在，但是该字段不存放实际的数据内容，仅仅是分区的表示。
+在Hive Select查询中一般会扫描整个表内容，会消耗很多时间做没必要的工作。有时候只需要扫描表中关心的一部分数据，因此建表时引入了partition概念。表中的一个 Partition 对应于表下的一个目录,Partition 就是辅助查询，缩小查询范围，加快数据的检索速度和对数据按照一定的规格和条件进行管理。
+ 
+典型的默认创建表
+
+
+CREATE TABLE page_view(
+     viewTime INT, 
+     userid BIGINT,
+     page_url STRING, 
+     referrer_url STRING,
+     ip STRING COMMENT 'IP Address of the User')
+ COMMENT 'This is the page view table'
+ PARTITIONED BY(dt STRING, country STRING)
+ ROW FORMAT DELIMITED
+   FIELDS TERMINATED BY '\001'
+   COLLECTION ITEMS TERMINATED BY '\002'
+   MAP KEYS TERMINATED BY '\003'
+ STORED AS TEXTFILE;
+
+
+ 
+这里创建了表page_view,有表的注释，一个字段ip的注释，分区有两列,分别是dt和country。
+[ROW FORMAT DELIMITED]关键字，是用来设置创建的表在加载数据的时候，支持的列分隔符。不同列之间用一个'\001'分割,集合(例如array,map)的元素之间以'\002'隔开,map中key和value用'\003'分割。
+ 
+[STORED AS file_format]关键字是用来设置加载数据的数据类型,默认是TEXTFILE，如果文件数据是纯文本，就是使用 [STORED AS TEXTFILE]，然后从本地直接拷贝到HDFS上，hive直接可以识别数据。
+ 
+常用的创建表
+
+
+CREATE TABLE login(
+     userid BIGINT,
+     ip STRING, 
+     time BIGINT)
+ PARTITIONED BY(dt STRING)
+ ROW FORMAT DELIMITED
+   FIELDS TERMINATED BY '\t'
+ STORED AS TEXTFILE;
+
+
+ 
+创建外部表
+如果数据已经存在HDFS的'/user/hadoop/warehouse/page_view'上了，如果想创建表，指向这个路径，就需要创建外部表:
+
+
+CREATE EXTERNAL TABLE page_view(
+     viewTime INT, 
+     userid BIGINT,
+     page_url STRING, 
+     referrer_url STRING,
+     ip STRING COMMENT 'IP Address of the User',
+     country STRING COMMENT 'country of origination')
+ COMMENT 'This is the staging page view table'
+ ROW FORMAT DELIMITED FIELDS TERMINATED BY '\054'
+ STORED AS TEXTFILE
+ LOCATION '/user/hadoop/warehouse/page_view';
+
+
+创建表，有指定EXTERNAL就是外部表，没有指定就是内部表，内部表在drop的时候会从HDFS上删除数据，而外部表不会删除。
+外部表和内部表一样，都可以有分区，如果指定了分区，那外部表建了之后，还要修改表添加分区。
+外部表如果有分区，还可以加载数据，覆盖分区数据，但是外部表删除分区，对应分区的数据不会从HDFS上删除，而内部表会删除分区数据。
+ 
+指定数据库创建表
+如果不指定数据库，hive会把表创建在default数据库下，假设有一个hive的数据库mydb,要创建表到mydb,如下:
+
+CREATE TABLE mydb.pokes(foo INT,bar STRING);
+
+或者是
+
+use mydb; --把当前数据库指向mydb
+CREATE TABLE pokes(foo INT,bar STRING);
+
+ 
+复制表结构
+
+CREATE TABLE empty_table_name LIKE table_name;
+
+根据table_name创建一个空表empty_table_name,empty_table_name没有任何数据。
+ 
+create-table-as-selectt (CTAS)
+CTAS创建的表是原子性的，这意味着，该表直到所有的查询结果完成后，其他用户才可以看到完整的查询结果表。
+CTAS唯一的限制是目标表，不能是一个有分区的表，也不能是外部表。
+简单的方式
+
+CREATE TABLE new_key_value_store
+  AS 
+SELECT (key % 1024) new_key, concat(key, value) key_value_pair FROM key_value_store;
+
+复杂的方式
+
+CREATE TABLE new_key_value_store
+   ROW FORMAT SERDE "org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe"
+   STORED AS RCFile AS
+SELECT (key % 1024) new_key, concat(key, value) key_value_pair
+FROM key_value_store
+SORT BY new_key, key_value_pair;
+
+ 
+删除表
+
+DROP TABLE table_name;
+DROP TABLE IF EXISTS table_name;
+
+删除表会移除表的元数据和数据，而HDFS上的数据，如果配置了Trash，会移到.Trash/Current目录下。
+删除外部表时，表中的数据不会被删除。
+ 
+截断表
+
+TRUNCATE TABLE table_name;
+TRUNCATE TABLE table_name PARTITION (dt='20080808');
+
+从表或者表分区删除所有行，不指定分区，将截断表中的所有分区，也可以一次指定多个分区，截断多个分区。
+load data相关知识：http://blog.csdn.net/wacthamu/article/details/40744217
+分区相关知识：http://www.2cto.com/kf/201210/160777.html
+
+四、伪分布下安装hive1.2
+
+声明：本篇blog并没有配置MySQL，元数据库为derby
+如需配置mysql请点击：http://blog.csdn.net/gamer_gyt/article/details/47776369
+
+一、环境
+Ubuntu14.04
+hadoop2.6伪分布（安装教程请参考：点击打开链接）
+hive-1.2.1（下载链接：点击打开链接）
+二、安装
+1、将其下载的安装包解压到相应的目录，在此小编的是/usr/local/hadoop/
+     tar  -zxvf apache-hive-1.2.1-bin.tar.gz -C /usr/local/hadoop
+      重命名操作(为了后续方便)
+     mv  apache-hive-1.2.1-bin hive
+
+2、配置hive的环境变量（在此注意，小编的profile中并未配置），故不细说
+3、修改hive/conf下的几个template模板，并重命名为其他
+   cp hive-env.sh.template hive-env.sh
+   cp hive-default.xml.template hive-site.xml
+4、配置hive-env.sh文件，如图所示：
+
+
+5、修改hive-site.xml文件
+      在修改之前，要相应的创建目录，以便与配置文件中的
+      路径相对应，否则在运行hive时会报错的。
+      mkdir -p /usr/local/hadoop/hive/warehouse
+      mkdir -p /usr/local/hadoop/hive/tmp
+      mkdir -p /usr/local/hadoop/hive/log
+      这个文件中的配置项很多，篇幅也很长，所以要有耐心看。
+      当然也可以使用搜索匹配字符串的方式进行查找(Ctrl+F)：
+      键入‘/hive.metastore.warehouse.dir’(回车)
+      就会锁定到所需要的字符串上。
+     其中有三处需要修改：
+     <property>
+     <name>hive.metastore.warehouse.dir</name>
+     <value>/usr/local/hadoop/hive/warehouse</value>
+     </property>
+     这个是设定数据目录
+     -------------------------------------
+     <property>
+     <name>hive.exec.scratchdir</name>
+     <value>/usr/local/hadoop/hive/tmp</value>
+     </property>
+     这个是设定临时文件目录
+     --------------------------------------
+     <property>
+     <name>hive.querylog.location</name>
+     <value>/usr/local/hadoop/hive/log</value>
+     </property>
+     这个是用于存放hive相关日志的目录
+     其余的不用修改。
+
+6、如果到此结束配置启动hive会报错，如下：
+   
+    解决方法：
+    1.查看hive-site.xml配置，会看到配置值含有"system:java.io.tmpdir"的配置项
+    2.新建文件夹/usr/local/hadoop/hive/log
+    3.将含有"system:java.io.tmpdir"的配置项的值修改为如上地址
+   有时候会遇到修改完还会出现上述错误，此时做如下处理：
+   可把hive/lib/jline-2.12.jar复制到hadoop/share/hadoop/yarn/lib/目录下，将其原来的jlie给删除了
+   cp /usr/local/hadoop/hive/lib/jline-2.12.jar/usr/local/hadoop/share/hadoop/yarn/lib/
+  
+ rm -r /usr/local/hadoop/share/hadoop/yarn/lib/jline-0.98.jar
+  
+ 注意：版本不一样jline的名称会有所不同，具体以自己的为准
+7、复制
+ tools.jar(jdk的lib包下面的jar包) 到 hive/lib下  
+
+      
+    启动hive，成功！
+8、启动命令：
+     进入hive的解压目录，执行bin/hive，回车即可
+    启动hive  web服务:bin/hive --service hwi
+    端口访问如图：
+
+
+
+
+Yes!

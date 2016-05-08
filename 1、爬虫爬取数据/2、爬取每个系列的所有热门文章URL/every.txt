@@ -1,0 +1,10 @@
+http://blog.csdn.net/mobile/hot.html
+http://blog.csdn.net/web/hot.html
+http://blog.csdn.net/enterprise/hot.html
+http://blog.csdn.net/code/hot.html
+http://blog.csdn.net/www/hot.html
+http://blog.csdn.net/database/hot.html
+http://blog.csdn.net/system/hot.html
+http://blog.csdn.net/cloud/hot.html
+http://blog.csdn.net/software/hot.html
+http://blog.csdn.net/other/hot.html

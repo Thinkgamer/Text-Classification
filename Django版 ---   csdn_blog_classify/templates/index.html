@@ -1,0 +1,148 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSDN博客智能分类系统</title>
+<link rel="stylesheet"; type="text/css";  href="/static/css/index.css" />
+</head>
+
+<body>
+    {% autoescape off %}
+    {% if result %}
+    <br/>
+    <div class="hidiv">
+        <div class="hidiv1">
+            <span>你的这篇Blog分类结果为：<br/><br/><p style="font-size: 25px; color: red;">{{ result }}</p></span>
+            <span style="float: left;color: brown">比较结果：{{ iforno }}</span><br/><br/>
+            <span style="float: right"><a href="/show">返回首页</a></span>
+        </div>
+    </div><br/><br/>
+    {% endif %}
+    {% endautoescape %}
+    <div class="header wp">
+        <div class="logo">
+            <a href="http://115.28.17.62:8080" target="_blank">CyanScikit</a>
+        </div>
+    </div>
+
+
+    <form class="abc" action="" method="post">
+    <div class="center">
+        <div class="center_top c">
+            <div class="c_t_img">
+                <img src="/static/images/logo.jpg">
+            </div>
+            <div class="c_t_text">
+                <ul class="c_t_ul">
+                    <li>
+                        <a href="http://blog.csdn.net/gamer_gyt" target="_blank">Thinkgamer的专栏</a>
+                    </li>
+                    <li>
+                        <a href="http://my.csdn.net/?ref=toolbar" target="_blank">个人主页</a>|
+                        <a href="" target="_blank">我的博客</a>
+                        <span><font size="+3" color="#FF0000">CSDN博客智能分类系统</font></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="center_cen c">
+        	<div class="c_c_menu">
+                <ul class="c_c_ul">
+                    <li><a href=""><span>发表文章</span></a></li>
+                    <li><a href=""><span>博客搬家</span></a></li>
+                    <li><a href=""><span>文章管理</span></a></li>
+                    <li><a href=""><span>类别管理</span></a></li>
+                    <li><a href=""><span>评论管理</span></a></li>
+                    <li><a href=""><span>博客配置</span></a></li>
+                    <li><a href=""><span>博客栏目</span></a></li>
+                    <li><a href=""><span>回收站</span></a></li>
+                    <li><a href=""><span>写新文章</span></a></li>
+                    <li><a href=""><span>博客搬家</span></a></li>
+                </ul>
+            </div>
+
+            <p class="c_c_title">文章标题
+       	 		<span style="color: green; margin-center: 18px; display:inline">(尊重原创，请保证您的文章为原创作品)</span>
+       		</p>
+            <table border="0" width="60%">
+                <tr>
+                    <td>
+                        <input type="text" id="txtTitle" name="title" class="title_input" maxlength="100" value="" style="font-size: 18px;height: 30px;"/>
+                    </td>
+                </tr>
+        	</table>
+            <p class="c_c_text">文章内容 <a href="" target="_blank">（切换到MarkDown编辑器）</a></p>
+            <div class="section">
+          		<textarea id="editor" rows="30" name="content" style="width:99.9%;"></textarea>
+        	</div>
+        </div>
+
+        <div class="center_but c">
+        	<fieldset style="margin-top: 10px; padding: 4px 10px 10px 10px;">
+                <div>
+                    <p class="c_b_p">
+                        文章标签（加Tag,结天下！）
+                    </p>
+                </div>
+                <div style="position:relative;">
+                    <div id="d_tag2"></div>
+                        <input type="text" name="tag" id="tag" style="width:60%; height:20px;" maxlength="100" />
+                        （最多5个“,”相隔）
+                </div>
+   			</fieldset>
+    
+    		<fieldset style="margin-top: 10px; padding: 4px 10px 10px 10px;">
+    			<p class="c_b_p">
+                	个人分类 (
+                    <a style="color: #0000FF">个人分类仅与系统分类进行对比，并不作为系统分类参考</a>
+                    )
+                    </p>
+    			<div>
+                    <input type="text" name="selfcate" id="selfcate" style="width:60%; height:20px;" maxlength="100" />
+                    <div>
+                        <div id="tagbox"></div>
+                    </div>
+    			</div>
+    		</fieldset>
+            
+            <table width="100%">
+        	    <tr>
+            	    <td align="center">
+                	    <input type="submit" name="r" value="重新输入" class="STYLE1" onclick="window.location='index.php'">
+                    </td>
+                    <td align="left">
+                	    <input type="submit" name="t" value="提交" class="STYLE1">
+                    </td>
+                </tr>
+            </table>
+        </div> 
+    </div>
+    </form>
+
+    <div class="buttom wp">
+		<div class="b_up">
+	       	<ul class="b_u_1">
+	           	<span>格言</span><br><br><br>
+	           	<li><a>&nbsp;优秀不够</a></li><br>
+	            <li><a>你必须无可替代</a></li>
+	        </ul>
+	        <ul class="b_u_2">
+	          	<span>友情链接</span><br><br><br>
+	           	<li><a href="http://www.thinkgamer.icoc.cc/">&nbsp;Cyan 小站</a></li><br>
+	            <li> <a href="http://115.28.17.62:8080">CyanScikit科技网</a></li><br>
+	        </ul>
+	        <ul class="b_u_3">
+	           	<span>&nbsp;&nbsp;联系我们</span><br><br><br>
+	           	<li><a>&nbsp;&nbsp;QQ:1923361654</a></li><br>
+	            <li><a>E-mail:Thinkgamer@163.com</a></li>
+	        </ul>
+       	</div>
+
+	    <div class="b_down">
+	     	<span >&nbsp;&nbsp;Copyright 2014-2015 &nbsp;|&nbsp;版本1.0&nbsp;|&nbsp;Made By CyanScikit</span>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,5448 @@
+程序员未来发展三大方向
+原文地址：http://www.devstore.cn/essay/essayInfo/1842.html
+程序员工作两三年后，基本上都会考虑自己的未来发展方向。发展的路径不外乎：程序员-系统分析员-架构师-技术经理-CTO，程序员-项目组长-项目经理-项目总监-CTO，程序员-产品设计师-产品经理-CTO。哪一条发展路线更适合你?
+
+
+
+
+
+当然这只是一个大致的路径，不是所有程序员都必需要这么经历的，有些人可能跳过其中的一些步骤，也可能有些人会把中间的很多职位都做了。而最终做到CTO的程序员，也是非常少的一部分，原因很简单，这个世界上不许要那么多的CTO和CXO。
+
+也就是说，许多的程序员最终可能是做技术经理、项目经理或者项目总监之类的，那么到底我们职业生涯要选择哪一种呢?这个问题没有一个统一的答案，因为每个人的性格不一样，际遇也不一样，就像你从小希望当贪官，可是命运却偏偏让你做了一个程序员。所以应该根据你的兴趣、性格与际遇选择一条道路，比如说你正好有机会带一个项目，而你又不是很讨厌项目经理这个位置，那么你就可以选择向项目经理方向发展。
+
+实际上很多时候，国内并没有明确的技术经理、项目经理、产品经理之分，在许多的公司里，他们经常是由一个人承担。在外包公司里，通常会有项目经理和系统分析员(也可能是技术经理)。在一些非IT公司里，可能会有部门经理，而做自己产品的公司可能会分得比较详细一些。我大致说一下这三个职位的区别，让正在徘徊的程序员有一个大致的了解。
+
+
+
+
+项目经理
+
+是项目的直接负责人，这个角色相当于一个中间接口，不管是团队成员还是需求方(客户)，或者是上级领导，有事都直接找他，所以这个职位着重于管理与沟通。一般来说，项目经理的工作重点在同客户沟通需求、项目进度的把控、团队的沟通方面，有些公司也会需要项目经理承担团队建设的工作，不过貌似很多国内公司都忽略了团队建设这个工作了。对于项目经理来说，重点会要求沟通能力、协调能力、危机把控能力、执行力、团队管理能力，着重于沟通、管理与计划。当然也有些公司还要求项目经历要参与招标谈判，这就要求项目经理有一定的商务谈判能力。
+
+技术经理
+
+有时候也可能叫系统分析员，一些小公司可能会整个公司或者部门有一个技术经理。技术经理承担的角色主要是系统分析、架构搭建、系统构建、代码走查等工作，当然不是所有公司都是这样的，有些公司项目经理是不管技术团队的，只做需求、进度和同客户沟通，那么这个时候的项目经理就好像工厂里的跟单人员了，这种情况在外包公司比较多。对于技术经理来说，着重于技术方面，你需要知道某种功能用哪些技术合适，需要知道某项功能需要多长的开发时间等。同时，技术经理也应该承担提高团队整体技术水平的工作。
+
+产品经理
+
+这个职位一般在有自己产品(不管是软件还是网站产品)的公司比较常见，产品经理主要会负责产品的设计、产品的改良等工作。需要注意的是，产品设计与设计师是两个不一样的工作，产品设计主要会从用户体验、业务需要等层面去设计产品，而设计师更多是从用户的视觉上去做。产品经理应该是最懂业务的人，比如说你在设计一个微博的产品，就要求你对微博这个东西非常熟悉，从用户习惯、用户体验、公司的发展战略上去设计这个产品，还要对比同类产品会有什么优势等等。
+
+不管是项目经理还是技术经理与产品经理，都要求要熟悉业务，业务是需求的来源，没有不谈业务的技术，所以不管你从哪个方向发展，都要求对业务熟悉。产品经理要求对业务最熟悉，项目经理次之，技术经理排最后。对于程序员来说，刚开始工作的前几年可以埋头扎到技术里面，一般这个时间在2-3年的时间，然后就应该多关注业务了。这个业务不一定是指某个具体的业务，因为具体的业务的范围太少，而且也需要机遇。
+
+
+
+Atitit 《摩奴法典》overivew 读后感 不是由国王 颁布的，而是 僧侣编制
+Atitit 《摩奴法典》overivew 读后感 不是由国王 颁布的，而是 僧侣编制
+ 
+1. 《摩奴法典》是印度最古老的一部法律文献。该法典不是由国王或立法机关制定颁布的，而是由婆罗门教僧侣根据吠陀经典和历来的习惯编制而成
+1
+2. “摩奴”(Manu)是印度神话中的人类始祖。
+2
+3. 篇章规模，字数
+3
+4. 内容摘要
+3
+5. 目录
+3
+5.1. 摩奴法典》 - 目录 
+3
+5.1.1. 《摩奴法典》评介   第一卷 创造   第二卷 净法 梵志期   第三卷 婚姻 家长的义务   第四卷 生计 戒律   第五卷 斋戒和净法的规定 妇女的义务   第六卷 林栖和苦行的义务   第七卷 国王和武士种姓的行为   第八卷 法官的任务 民法与刑法   第九卷 民法与刑法 商人种姓和奴隶种姓的义务   第十卷 杂种种姓 处困境时   第十一卷 苦行与赎罪   第十二卷 轮回 最后解脱   总附注  [1]
+3
+6. 中心思想与attilax的心得
+4
+7. 摩奴之舟的故事
+4
+ 
+ 
+1. 《摩奴法典》是印度最古老的一部法律文献。该法典不是由国王或立法机关制定颁布的，而是由婆罗门教僧侣根据吠陀经典和历来的习惯编制而成
+。传说由“人类始祖”摩奴所制定，故称《摩奴法典》。法典共12章，2684条，涉及刑法、民法、婚姻诉讼和审判制度等。
+　　《摩奴法典》以婆罗门教教义为指导思想，是该教政治思想体系的重要文献，也是宗教与法律紧密结合的产物。法典中将古代印度的专制君主神圣化，进一步用神权来维护奴隶主阶级的统治。《摩奴法典》首次公开确认四种原始种姓以及派生的各个种姓的等级差别，公开宣扬社会的不平等，将一切居民的地位和权利、义务用法律形式加以确定，形成一套完整的种姓制度。
+
+作者:: 老哇的爪子 Attilax 艾龙，  EMAIL:1466519819@qq.com
+
+转载请注明来源： http://blog.csdn.net/attilax
+ 
+2.  “摩奴”(Manu)是印度神话中的人类始祖。
+
+在语源关系上，Manu一词与印欧语系中的man(人)一词同源，与梵文中的动词词根man(思维)也有语源上的关系。在《梨俱吠陀》中，摩奴是第一位祭献者，也是第一位国王。他作为人类始祖，与希伯莱传统中的诺亚(Noah)几乎具有完全相同的特征。《百道梵书》(Satapatha Brahmana)讲述了摩奴在“大洪水”中拯救人类的故事。
+
+
+
+中文名：摩奴
+
+外文名：Manu
+
+其他名称：Sraddhadeva Manu
+
+登场作品：《梨俱吠陀》《Devon Ke Dev Mahadev》
+
+ 
+3. 篇章规模，字数
+ 
+印度婆罗门教的法律和法规的汇编。又称《摩奴法论》，相传为“人类的始祖”摩奴所编，故名。实际上，是婆罗门教的祭司根据吠陀经与传统习惯而编成的。法典内容驳杂，大约编成于公元前2～公元2世纪（一说为公元后的头几个世纪）。传至今日之《摩奴法典》共12章，2684条。第 1章讲述创世纪的神话；第2章至第6章论述婆罗门教徒的四住期的行为规范；第7章至第9章主要包括民法、刑法、婚姻制度、继承法；第10章是关于种姓的法律；第11章是赎罪法；第12章包括因果报应、轮回转世之说。其中，纯粹法律的篇幅约占全书的 1/4。 
+法典的核心内容是宣扬种姓起源的神话，宣称婆罗门种姓为“一切创造物的主宰”。旨在维护印度种姓制度。法典论列各种姓的不同地位、权利和义务，规定依违种姓制度的奖惩。 
+4. 内容摘要
+5. 目录
+
+5.1. 摩奴法典》 - 目录 
+5.1.1. 《摩奴法典》评介  
+第一卷 创造  
+第二卷 净法 梵志期  
+第三卷 婚姻 家长的义务  
+第四卷 生计 戒律  
+第五卷 斋戒和净法的规定 妇女的义务  
+第六卷 林栖和苦行的义务  
+第七卷 国王和武士种姓的行为  
+第八卷 法官的任务 民法与刑法  
+第九卷 民法与刑法 商人种姓和奴隶种姓的义务  
+第十卷 杂种种姓 处困境时  
+第十一卷 苦行与赎罪  
+第十二卷 轮回 最后解脱  
+总附注  [1]
+ 
+6. 中心思想与attilax的心得
+7. 摩奴之舟的故事
+
+摩奴是日神苏利耶的儿子，他是一位出类拔萃的修行者。摩奴具有无穷的法力，他苦行的法力比他父亲、祖父还高出一等。摩奴在波涛壮阔的枣树河边修行，长达千年之久。
+
+一天摩奴正在河边修炼严峻的苦行，他长发盘头，汗水浸透了破烂的衣衫。突然一条小鱼游到岸边，对他说：“尊者啊，我是一条小鱼，周围都是凶猛的大鱼、他们总是不停地吞噬我们这些柔弱的小鱼，你是信守誓言的人，因此我特地来寻求你的保护，让我离开这恐怖的河吧。如果你救了我，我一定会报答你。”
+
+听了小鱼的话，摩奴的心里充满了同情。摩奴伸出手把小鱼从水中捧了出来，放进自己的水罐里。摩奴好生喂养它，小鱼在水罐中渐渐长大。
+
+过了些时候，这只罐子和罐子中的水已经盛不下小鱼了。小鱼又跟摩奴说：“尊者啊，请你再给我找个住处吧。”摩奴又捧着小鱼来到一个水塘边，把小鱼放进了水塘中。鱼儿在水塘中自由自在地生长。
+
+岁月悠悠而过。水塘对这鱼儿来说也变得太小了，它的身体不能在塘中自由摆动了。鱼儿又向摩奴请求道：“尊者啊，恒河是大海的皇后。请带我到那里去生活吧。”摩奴依言将鱼儿放进了恒河中。在这里，鱼儿长得更大了。
+ 
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+java web开发 高并发处理
+
+
+java web开发 高并发处理
+java
+ 高并发 
+
+
+java处理高并发高负载类网站中数据库的设计方法（java教程,java处理大量数据，java高负载数据） 
+
+一：高并发高负载类网站关注点之数据库 
+
+没错,首先是数据库,这是大多数应用所面临的首个SPOF。尤其是Web2.0的应用，数据库的响应是首先要解决的。
+一般来说MySQL是最常用的，可能最初是一个mysql主机，当数据增加到100万以上，那么，MySQL的效能急剧下降。常用的优化措施是M-S（主-从）方式进行同步复制，将查询和操作和分别在不同的服务器上进行操作。我推荐的是M-M-Slaves方式，2个主Mysql，多个Slaves，需要注意的是，虽然有2个Master，但是同时只有1个是Active，我们可以在一定时候切换。之所以用2个M，是保证M不会又成为系统的SPOF。 
+Slaves可以进一步负载均衡，可以结合LVS,从而将select操作适当的平衡到不同的slaves上。 
+以上架构可以抗衡到一定量的负载，但是随着用户进一步增加，你的用户表数据超过1千万，这时那个M变成了SPOF。你不能任意扩充Slaves，否则复制同步的开销将直线上升，怎么办？我的方法是表分区，从业务层面上进行分区。最简单的，以用户数据为例。根据一定的切分方式，比如id，切分到不同的数据库集群去。 
+
+全局数据库用于meta数据的查询。缺点是每次查询，会增加一次，比如你要查一个用户nightsailer,你首先要到全局数据库群找到nightsailer对应的cluster id，然后再到指定的cluster找到nightsailer的实际数据。 
+每个cluster可以用m-m方式，或者m-m-slaves方式。这是一个可以扩展的结构，随着负载的增加，你可以简单的增加新的mysql cluster进去。 
+
+需要注意的是： 
+1、禁用全部auto_increment的字段 
+2、id需要采用通用的算法集中分配 
+3、要具有比较好的方法来监控mysql主机的负载和服务的运行状态。如果你有30台以上的mysql数据库在跑就明白我的意思了。 
+4、不要使用持久性链接（不要用pconnect）,相反，使用sqlrelay这种第三方的数据库链接池，或者干脆自己做，因为php4中mysql的链接池经常出问题。 
+
+二：高并发高负载网站的系统架构之HTML静态化 
+
+其实大家都知道，效率最高、消耗最小的就是纯静态化 http://www.ablanxue.com/shtml/201207/776.shtml的html页面，所以我们尽可能使我们的网站上的页面采用静态页面来实现，这个最简单的方法其实也是 最有效的方法。但是对于大量内容并且频繁更新的网站，我们无法全部手动去挨个实现，于是出现了我们常见的信息发布系统CMS，像我们常访问的各个门户站点 的新闻频道，甚至他们的其他频道，都是通过信息发布系统来管理和实现的，信息发布系统可以实现最简单的信息录入自动生成静态页面，还能具备频道管理、权限
+ 管理、自动抓取等功能，对于一个大型网站来说，拥有一套高效、可管理的CMS是必不可少的。 
+　　 
+　　除了门户和信息发布类型的网站，对于交互性要求很高的社区类型网站来说，尽可能的静态化也是提高性能的必要手段，将社区内的帖子、文章进行实时的静态化，有更新的时候再重新静态化也是大量使用的策略，像Mop的大杂烩就是使用了这样的策略，网易社区等也是如此。 
+　　 
+　 　同时，html静态化也是某些缓存策略使用的手段，对于系统中频繁使用数据库查询但是内容更新很小的应用，可以考虑使用html静态化来实现，比如论坛 中论坛的公用设置信息，这些信息目前的主流论坛都可以进行后台管理并且存储再数据库中，这些信息其实大量被前台程序调用，但是更新频率很小，可以考虑将这 部分内容进行后台更新的时候进行静态化，这样避免了大量的数据库访问请求高并发。 
+　　 
+
+网站HTML静态化解决方案 
+当一个Servlet资源请求到达WEB服务器之后我们会填充指定的JSP页面来响应请求: 
+
+HTTP请求---Web服务器---Servlet--业务逻辑处理--访问数据--填充JSP--响应请求 
+
+HTML静态化之后: 
+
+HTTP请求---Web服务器---Servlet--HTML--响应请求 
+
+静态访求如下 
+
+Servlet: 
+
+public void doGet(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException { 
+    if(request.getParameter("chapterId") != null){ 
+        String chapterFileName = "bookChapterRead_"+request.getParameter("chapterId")+".html"; 
+        String chapterFilePath = getServletContext().getRealPath("/") + chapterFileName; 
+        File chapterFile = new File(chapterFilePath); 
+        if(chapterFile.exists()){response.sendRedirect(chapterFileName);return;}//如果有这个文件就告诉浏览器转向  
+        INovelChapterBiz novelChapterBiz = new NovelChapterBizImpl(); 
+        NovelChapter novelChapter = novelChapterBiz.searchNovelChapterById(Integer.parseInt(request.getParameter("chapterId")));//章节信息  
+        int lastPageId = novelChapterBiz.searchLastCHapterId(novelChapter.getNovelId().getId(), novelChapter.getId()); 
+        int nextPageId = novelChapterBiz.searchNextChapterId(novelChapter.getNovelId().getId(), novelChapter.getId()); 
+        request.setAttribute("novelChapter", novelChapter); 
+        request.setAttribute("lastPageId", lastPageId); 
+        request.setAttribute("nextPageId", nextPageId); 
+        new CreateStaticHTMLPage().createStaticHTMLPage(request, response, getServletContext(),  
+                chapterFileName, chapterFilePath, "/bookRead.jsp"); 
+    } 
+} 
+生成HTML静态页面的类: 
+
+package com.jb.y2t034.thefifth.web.servlet; 
+import java.io.ByteArrayOutputStream; 
+import java.io.FileOutputStream; 
+import java.io.IOException; 
+import java.io.OutputStreamWriter; 
+import java.io.PrintWriter; 
+import javax.servlet.RequestDispatcher; 
+import javax.servlet.ServletContext; 
+import javax.servlet.ServletException; 
+import javax.servlet.ServletOutputStream; 
+import javax.servlet.http.HttpServletRequest; 
+import javax.servlet.http.HttpServletResponse; 
+import javax.servlet.http.HttpServletResponseWrapper; 
+/** 
+* 创建HTML静态页面 
+* 功能：创建HTML静态页面 
+* 时间：2009年1011日 
+* 地点：home 
+* @author mavk 
+* 
+*/ 
+public class CreateStaticHTMLPage { 
+    /** 
+     * 生成静态HTML页面的方法 
+     * @param request 请求对象 
+     * @param response 响应对象 
+     * @param servletContext Servlet上下文 
+     * @param fileName 文件名称 
+     * @param fileFullPath 文件完整路径 
+     * @param jspPath 需要生成静态文件的JSP路径(相对即可) 
+     * @throws IOException 
+     * @throws ServletException 
+     */ 
+    public void createStaticHTMLPage(HttpServletRequest request, HttpServletResponse response,ServletContext servletContext,String fileName,String fileFullPath,String jspPath) throws ServletException, IOException{ 
+        response.setContentType("text/html;charset=gb2312");//设置HTML结果流编码(即HTML文件编码)  
+        RequestDispatcher rd = servletContext.getRequestDispatcher(jspPath);//得到JSP资源  
+        final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();//用于从ServletOutputStream中接收资源  
+        final ServletOutputStream servletOuputStream = new ServletOutputStream(){//用于从HttpServletResponse中接收资源  
+            public void write(byte[] b, int off,int len){ 
+                byteArrayOutputStream.write(b, off, len); 
+            } 
+            public void write(int b){ 
+                byteArrayOutputStream.write(b); 
+            } 
+        }; 
+        final PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(byteArrayOutputStream));//把转换字节流转换成字符流  
+        HttpServletResponse httpServletResponse = new HttpServletResponseWrapper(response){//用于从response获取结果流资源(重写了两个方法)  
+            public ServletOutputStream getOutputStream(){ 
+                return servletOuputStream; 
+            } 
+            public PrintWriter getWriter(){ 
+                return printWriter; 
+            } 
+        }; 
+        rd.include(request, httpServletResponse);//发送结果流  
+        printWriter.flush();//刷新缓冲区，把缓冲区的数据输出  
+        FileOutputStream fileOutputStream = new FileOutputStream(fileFullPath); 
+        byteArrayOutputStream.writeTo(fileOutputStream);//把byteArrayOuputStream中的资源全部写入到fileOuputStream中  
+        fileOutputStream.close();//关闭输出流，并释放相关资源  
+        response.sendRedirect(fileName);//发送指定文件流到客户端  
+    } 
+} 
+
+
+三：高并发高负载类网站关注点之缓存、负载均衡、存储 
+
+缓存是另一个大问题，我一般用memcached来做缓存集群，一般来说部署10台左右就差不多（10g内存池）。需要注意一点，千万不能用使用 
+swap，最好关闭linux的swap。 
+
+
+负载均衡/加速 
+
+可能上面说缓存的时候，有人第一想的是页面静态化，所谓的静态html，我认为这是常识，不属于要点了。页面的静态化随之带来的是静态服务的 
+负载均衡和加速。我认为Lighttped+Squid是最好的方式了。 
+LVS <------->lighttped====>squid(s) ====lighttpd 
+
+上面是我经常用的。注意，我没有用apache，除非特定的需求，否则我不部署apache，因为我一般用php-fastcgi配合lighttpd, 
+性能比apache+mod_php要强很多。 
+
+squid的使用可以解决文件的同步等等问题，但是需要注意，你要很好的监控缓存的命中率，尽可能的提高的90%以上。 
+squid和lighttped也有很多的话题要讨论，这里不赘述。 
+
+
+存储 
+存储也是一个大问题，一种是小文件的存储，比如图片这类。另一种是大文件的存储，比如搜索引擎的索引，一般单文件都超过2g以上。 
+小文件的存储最简单的方法是结合lighttpd来进行分布。或者干脆使用Redhat的GFS，优点是应用透明，缺点是费用较高。我是指 
+你购买盘阵的问题。我的项目中，存储量是2-10Tb，我采用了分布式存储。这里要解决文件的复制和冗余。 
+这样每个文件有不同的冗余，这方面可以参考google的gfs的论文。 
+大文件的存储，可以参考nutch的方案，现在已经独立为hadoop子项目。(你可以google it) 
+
+其他： 
+此外，passport等也是考虑的，不过都属于比较简单的了。 
+四：高并发高负载网站的系统架构之图片服务器分离 
+大家知道，对于Web 服务器来说，不管是Apache、IIS还是其他容器，图片是最消耗资源的，于是我们有必要将图片与页面进行分离，这是基本上大型网站都会采用的策略，他 们都有独立的图片服务器，甚至很多台图片服务器。这样的架构可以降低提供页面访问请求的服务器系统压力，并且可以保证系统不会因为图片问题而崩溃，在应用 服务器和图片服务器上，可以进行不同的配置优化，比如apache在配置ContentType的时候可以尽量少支持，尽可能少的LoadModule， 保证更高的系统消耗和执行效率。 
+
+
+利用Apache实现图片服务器的分离 
+缘由： 
+起步阶段的应用，都可能部署在一台服务器上（费用上的原因） 
+第一个优先分离的，肯定是数据库和应用服务器。 
+第二个分离的，会是什么呢？各有各的考虑，我所在的项目组重点考虑的节约带宽，服务器性能再好，带宽再高，并发来了，也容易撑不住。因此，我这篇文章的重点在这里。这里重点是介绍实践，不一定符合所有情况，供看者参考吧， 
+环境介绍： 
+WEB应用服务器：4CPU双核2G, 内存4G 
+  部署：Win2003/Apache Http Server 2.1/Tomcat6 
+数据库服务器：4CPU双核2G, 内存4G 
+  部署：Win2003/MSSQL2000 
+步骤： 
+步骤一：增加2台配置为：2CPU双核2G，内存2G普通服务器，做资源服务器 
+  部署：Tomcat6，跑了一个图片上传的简单应用，（记得指定web.xml的<distributable/>），并指定域名为res1.***.com,res2.***.com，采用ajp协议 
+步骤二：修改Apache httpd.conf配置 
+  原来应用的文件上传功能网址为： 
+   1、/fileupload.html 
+   2、/otherupload.html 
+  在httpd.conf中增加如下配置 
+
+<VirtualHost *:80>  
+  ServerAdmin webmaster@***.com  
+  ProxyPass /fileupload.html balancer://rescluster/fileupload lbmethod=byrequests stickysession=JSESSIONID nofailover=Off timeout=5 maxattempts=3     
+  ProxyPass /otherupload.html balancer://rescluster/otherupload.html lbmethod=byrequests stickysession=JSESSIONID nofailover=Off timeout=5 maxattempts=3     
+  #<!--负载均衡-->  
+  <Proxy balancer://rescluster/>  
+    BalancerMember ajp://res1.***.com:8009 smax=5 max=500 ttl=120 retry=300 loadfactor=100 route=tomcat1  
+    BalancerMember ajp://res2.***.com:8009 smax=5 max=500 ttl=120 retry=300 loadfactor=100 route=tomcat2  
+  </Proxy>  
+  
+</VirtualHost> 
+步骤三，修改业务逻辑： 
+  所有上传文件在数据库中均采用全url的方式保存，例如产品图片路径存成：http://res1.***.com/upload/20090101/product120302005.jpg 
+
+现在，你可以高枕无忧了，带宽不够时，增加个几十台图片服务器，只需要稍微修改一下apache的配置文件，即可。 
+
+五：高并发高负载网站的系统架构之数据库集群和库表散列 
+
+大型网站都有复杂的应用，这些应用必须使用数据库，那么在面对大量访问的时候，数据库的瓶颈很快就能显现出来，这时一台数据库将很快无法满足应用，于是我们需要使用数据库集群或者库表散列。 
+　　 
+　　在数据库集群方面，很多数据库都有自己的解决方案，Oracle、Sybase等都有很好的方案，常用的MySQL提供的Master/Slave也是类似的方案，您使用了什么样的DB，就参考相应的解决方案来实施即可。 
+　　 
+　 　上面提到的数据库集群由于在架构、成本、扩张性方面都会受到所采用DB类型的限制，于是我们需要从应用程序的角度来考虑改善系统架构，库表散列是常用并 且最有效的解决方案。我们在应用程序中安装业务和应用或者功能模块将数据库进行分离，不同的模块对应不同的数据库或者表，再按照一定的策略对某个页面或者 功能进行更小的数据库散列，比如用户表，按照用户ID进行表散列，这样就能够低成本的提升系统的性能并且有很好的扩展性。sohu的论坛就是采用了这样的 架构，将论坛的用户、设置、帖子等信息进行数据库分离，然后对帖子、用户按照板块和ID进行散列数据库和表，最终可以在配置文件中进行简单的配置便能让系
+ 统随时增加一台低成本的数据库进来补充系统性能。 
+
+
+集群软件的分类： 
+一般来讲，集群软件根据侧重的方向和试图解决的问题，分为三大类：高性能集群（High performance cluster，HPC）、负载均衡集群（Load balance cluster， LBC），高可用性集群（High availability cluster，HAC）。 
+高性能集群（High performance cluster，HPC），它是利用一个集群中的多台机器共同完成同一件任务，使得完成任务的速度和可靠性都远远高于单机运行的效果。弥补了单机性能上的不足。该集群在天气预报、环境监控等数据量大，计算复杂的环境中应用比较多； 
+负载均衡集群（Load balance cluster， LBC），它是利用一个集群中的多台单机，完成许多并行的小的工作。一般情况下，如果一个应用使用的人多了，那么用户请求的响应时间就会增大，机器的性能也会受到影响，如果使用负载均衡集群，那么集群中任意一台机器都能响应用户的请求，这样集群就会在用户发出服务请求之后，选择当时负载最小，能够提供最好的服务的这台机器来接受请求并相应，这样就可用用集群来增加系统的可用性和稳定性。这类集群在网站中使用较多； 
+高可用性集群（High availability cluster，HAC），它是利用集群中系统 的冗余，当系统中某台机器发生损坏的时候，其他后备的机器可以迅速的接替它来启动服务，等待故障机的维修和返回。最大限度的保证集群中服务的可用性。这类系统一般在银行，电信服务这类对系统可靠性有高的要求的领域有着广泛的应用。 
+2 数据库集群的现状 
+数据库集群是将计算机集群技术引入到数据库中来实现的，尽管各厂商宣称自己的架构如何的完美，但是始终不能改变Oracle当先，大家追逐的事实，在集群的解决方案上Oracle RAC还是领先于包括微软在内的其它数据库厂商，它能满足客户高可用性、高性能、数据库负载均衡和方便扩展的需求。 
+Oracle’s Real Application Cluster (RAC) 
+Microsoft SQL Cluster Server (MSCS) 
+IBM’s DB2 UDB High Availability Cluster(UDB) 
+Sybase ASE High Availability Cluster (ASE) 
+MySQL High Availability Cluster (MySQL CS) 
+基于IO的第三方HA(高可用性)集群 
+当前主要的数据库集群技术有以上六大类，有数据库厂商自己开发的；也有第三方的集群公司开发的；还有数据库厂商与第三方集群公司合作开发的，各类集群实现的功能及架构也不尽相同。 
+RAC（Real Application Cluster，真正应用集群）是Oracle9i数据库中采用的一项新技术，也是Oracle数据库支持网格计算环境的核心技术。它的出现解决了传统数据库应用中面临的一个重要问题：高性能、高可伸缩性与低价格之间的矛盾。在很长一段时间里，甲骨文都以其实时应用集群技术(Real Application Cluster，RAC)统治着集群数据库市场 
+
+六：高并发高负载网站的系统架构之缓存 
+
+缓存一词搞技术的都接触过，很多地方用到缓存。网站架构和网站开发中的缓存也是非常重要。这里先讲述最基本的两种缓存。高级和分布式的缓存在后面讲述。 
+　　架构方面的缓存，对Apache比较熟悉的人都能知道Apache提供了自己的缓存模块，也可以使用外加的Squid模块进行缓存，这两种方式均可以有效的提高Apache的访问响应能力。 
+　 　网站程序开发方面的缓存，Linux上提供的Memory Cache是常用的缓存接口，可以在web开发中使用，比如用Java开发的时候就可以调用MemoryCache对一些数据进行缓存和通讯共享，一些大 型社区使用了这样的架构。另外，在使用web语言开发的时候，各种语言基本都有自己的缓存模块和方法，PHP有Pear的Cache模块，Java就更多 了，.net不是很熟悉，相信也肯定有。 
+
+
+
+Java开源缓存框架 
+JBossCache/TreeCache JBossCache是一个复制的事务处理缓存，它允许你缓存企业级应用数据来更好的改善性能。缓存数据被自动复制，让你轻松进行Jboss服务器之间的集群工作。JBossCache能够通过Jboss应用服务或其他J2EE容器来运行一个Mbean服务，当然，它也能独立运行。 JBossCache包括两个模块：TreeCache和TreeCacheAOP。 TreeCache --是一个树形结构复制的事务处理缓存。 TreeCacheAOP --是一个“面向对象”缓存，它使用AOP来动态管理POJO 
+OSCache OSCache标记库由OpenSymphony设计，它是一种开创性的JSP定制标记应用，提供了在现有JSP页面之内实现快速内存缓冲的功能。OSCache是个一个广泛采用的高性能的J2EE缓存框架，OSCache能用于任何Java应用程序的普通的缓存解决方案。OSCache有以下特点：缓存任何对象，你可以不受限制的缓存部分jsp页面或HTTP请求，任何java对象都可以缓存。 拥有全面的API--OSCache API给你全面的程序来控制所有的OSCache特性。 永久缓存--缓存能随意的写入硬盘，因此允许昂贵的创建（expensive-to-create）数据来保持缓存，甚至能让应用重启。
+ 支持集群--集群缓存数据能被单个的进行参数配置，不需要修改代码。 缓存记录的过期--你可以有最大限度的控制缓存对象的过期，包括可插入式的刷新策略（如果默认性能不需要时）。 
+JCACHE JCACHE是一种即将公布的标准规范（JSR 107），说明了一种对Java对象临时在内存中进行缓存的方法，包括对象的创建、共享访问、假脱机（spooling）、失效、各JVM的一致性等。它可被用于缓存JSP内最经常读取的数据，如产品目录和价格列表。利用JCACHE，多数查询的反应时间会因为有缓存的数据而加快（内部测试表明反应时间大约快15倍）。 
+Ehcache Ehcache出自Hibernate，在Hibernate中使用它作为数据缓存的解决方案。 
+Java Caching System JCS是Jakarta的项目Turbine的子项目。它是一个复合式的缓冲工具。可以将对象缓冲到内存、硬盘。具有缓冲对象时间过期设定。还可以通过JCS构建具有缓冲的分布式构架，以实现高性能的应用。 对于一些需要频繁访问而每访问一次都非常消耗资源的对象，可以临时存放在缓冲区中，这样可以提高服务的性能。而JCS正是一个很好的缓冲工具。缓冲工具对于读操作远远多于写操作的应用性能提高非常显著。 
+SwarmCache SwarmCache是一个简单而功能强大的分布式缓存机制。它使用IP组播来有效地在缓存的实例之间进行通信。它是快速提高集群式Web应用程序的性能的理想选择。 
+ShiftOne ShiftOne Object Cache这个Java库提供了基本的对象缓存能力。实现的策略有先进先出（FIFO），最近使用（LRU），最不常使用（LFU）。所有的策略可以最大化元素的大小，最大化其生存时间。 
+WhirlyCache Whirlycache是一个快速的、可配置的、存在于内存中的对象的缓存。它能够通过缓存对象来加快网站或应用程序的速度，否则就必须通过查询数据库或其他代价较高的处理程序来建立。 
+Jofti Jofti可对在缓存层中(支持EHCache，JBossCache和OSCache)的对象或在支持Map接口的存储结构中的对象进行索引与搜索。这个框架还为对象在索引中的增删改提供透明的功能同样也为搜索提供易于使用的查询功能。 
+cache4j cache4j是一个有简单API与实现快速的Java对象缓存。它的特性包括：在内存中进行缓存，设计用于多线程环境，两种实现：同步与阻塞，多种缓存清除策略：LFU, LRU, FIFO，可使用强引用(strong reference)与软引用(soft reference)存储对象。 
+Open Terracotta 一个JVM级的开源群集框架，提供：HTTP Session复制，分布式缓存，POJO群集，跨越群集的JVM来实现分布式应用程序协调(采用代码注入的方式，所以你不需要修改任何)。 
+sccache SHOP.COM使用的对象缓存系统。sccache是一个in-process cache和二级、共享缓存。它将缓存对象存储到磁盘上。支持关联Key，任意大小的Key和任意大小的数据。能够自动进行垃圾收集。 
+Shoal Shoal是一个基于Java可扩展的动态集群框架，能够为构建容错、可靠和可用的Java应用程序提供了基础架构支持。这个框架还可以集成到不希望绑定到特定通信协议，但需要集群和分布式系统支持的任何Java产品中。Shoal是GlassFish和JonAS应用服务器的集群引擎。 
+Simple-Spring-Memcached Simple-Spring-Memcached，它封装了对MemCached的调用，使MemCached的客户端开发变得超乎寻常的简单。
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+软工视频总结Part Three
+软件需求分析
+
+
+
+任务
+
+
+
+
+解决目标系统“做什么”问题
+深入描述软件的功能和性能
+确定软件涉及到的约束和软件接口
+定义软件的其他有效需求
+
+
+
+
+
+
+
+
+特点
+
+
+一致性、完整性、限时性、有效性、可验证性
+
+
+需求分析的过程
+
+
+
+
+
+问题识别
+
+
+
+
+
+
+建立分析所需要的通信途径
+
+
+
+
+
+
+分析与综合
+
+
+
+
+
+
+从信息流和信息结构出发，逐步细化所有的软件功能，找出联系，接口特性和设计上的约束，分析他们是否满足功能要求，是否合理
+
+
+
+
+
+
+编制需求分析阶段的文档
+
+
+
+
+
+
+软件需求说明书
+
+
+数据要求说明书
+
+
+初步的用户手册
+
+
+修改完善与确定软件开发实施计划
+
+
+
+
+
+
+评审
+
+
+
+
+
+
+系统定义的目标是否与用户的要求一致
+
+
+系统需求分析阶段提供的文档资料是否齐全
+
+
+文档中的所有描述是否完整，清晰，准确反映用户的需求
+
+
+与所有其他系统成分的重要接口是否都已经描述
+
+
+
+
+
+软件需求分析的方法
+
+
+
+
+
+SA：面向数据流的结构化分析方法
+
+
+JSD：面向数据结构的Jackson方法
+
+
+DSSD；结构化数据系统开发方法
+
+
+OOA：面向对象的分析方法
+
+
+
+
+
+软件需求分析的原则
+
+
+
+
+
+分解、化简和抽象
+
+
+
+
+
+
+抽象
+
+
+
+
+
+
+在开始建立分析模型前先理解问题
+
+
+开发模型
+
+
+记录需求的起源和原因
+
+
+使用需求视图
+
+
+给予需求优先级
+
+
+删除排除性
+
+
+
+
+
+
+分解
+
+
+
+
+
+
+纵向分解和横向分解
+
+
+
+
+
+数据流图（DFD）
+
+
+
+
+
+特性
+
+
+
+
+
+
+抽象性，概括性，层次性
+
+
+
+
+
+
+主要图形元素
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+数据流与数据加工的关系
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+检查和修改DFD的原则
+
+
+
+
+
+只能有四种图形元素
+
+
+
+
+每个加工至少有一个输入数据流和一个输出数据流
+
+
+
+
+数据流图的主图必须包括四种基本元素，缺一不可
+
+
+
+
+需要增加编号
+
+
+
+
+子图要与主图对应
+
+
+
+
+每个元素必须有名字，不允许有控制流
+
+
+
+
+
+
+
+数据流图的作用
+
+
+
+
+
+系统分析员可以用它自定向下分析系统信息流程
+
+
+
+
+可在图上画出需要计算机处理的部分
+
+
+
+
+根据数据存储，进一步做数据分析，想数据库设计过度
+
+
+
+
+根据数据流方向，定出存取方式
+
+
+
+
+对应一个处理过程，用相应的语言、判定表等工具表达处理方法
+
+
+
+
+
+DFD的优缺点
+
+
+
+
+总体概念强，每一层强调“干什么，需要什么，给出什么”
+
+
+可以反映数据的流向和处理过程
+
+
+自定向下分析，容易急躁发现系统各部分的逻辑错误，容易改正
+
+
+容易与计算机处理相对照
+
+
+不直观，需要概括、抽象、修正
+
+
+
+
+没有计算机，人工绘制太麻烦，工作量大
+
+
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+重新审视“程序媛”这个角色
+     真正进入到这行，已经差不多四年了。从最初的初级编程语言，到数据库、到软工、到C#，到设计模式，到UML，到三层，到BS的种种，像什么HTML、Javascript、JQuery、ajax到Java，可以说随着工作的推进，接触东西的增多，你会发现这个行业很多未知的“秘密”，随着眼界的拓宽，你也在重新审视着“程序媛”这个角色，重新审视着你的工作以及你所处的这个行业。
+
+
+     不得不说，IT这个行业，对女性还是有限制的。这个没有什么大惊小怪，一来这不是什么秘密，显而易见的。二来，在你高考的那个时候，你就应该明白很多行业都对女性有限制，不单单是IT行业。因为很多职业的工作性质决定男性可能比你更适合一些，就像我当年高考的时候，很渴望报考铁路类的院校，因为爷爷、爸爸、叔叔伯伯甚至姐夫都是铁路的。可是后来我上了几年大学才知道，我所向往的那个学校的确挺好，但是女生就业的前景不是很乐观。也许是命运，我并没有如愿考上铁路类的院校。辽宁的高考政策是先估分、然后报志愿最后出成绩，接下来便很顺理成章了，我报的铁路院校与我擦肩而过，于是也就成就了后来“程序媛”的我。
+
+
+     咱们再回过头来说“女程序媛”的话题。其实仔细上网搜一下，吐槽“女程序媛”的帖子并不少，而且我现在的上司，之前也是很抵触“女程序媛”的。没有什么理由，就是简单而粗暴的甩出几个字：“不招女的！”。以至于后来，我扬起“天真”的下巴，问上司“什么不招女程序媛？”。老大嘿嘿一笑，给我讲起其中的缘由。我细细的一想，其实貌似也是那么回事。
+
+
+     
+一、“女程序媛”的思维！！等等，你说什么？
+     貌似“女程序媛”的思维方式应该算在吐槽的前列了。很多男程序猿受不了阿媛们写的代码，他们会说“根本看不懂你在写什么，还让我怎么维护啊！！！！”，可能他们不敢当着你的面说，但是背地里早吐槽N百遍了。程序员这个职业很光荣，就像当老师一样。当老师能教出优秀的学生，而程序员就“生”出“富有你个人气息”的代码。因为你做的软件、写的代码在无形中都被你赋予代表你性格、特点、思维习惯乃至种种“你的气息”。这种代码具有生命力，因为它带着你的思维习惯，你的思维方式，会变活，跳出电脑；也许也会变成魔鬼，毒害别人的思维，让人头脑发胀，最后“中毒”“身亡”！我想这是每一个维护过别人东西的程序员们的心声，我也维护过，甚至吐槽过为什么你看着这么牛，代码却写得这么烂？
+
+
+     我是女程序媛，我想反驳：这个思维方式的问题，可能女程序媛真的存在，但是并不能因此而给阿媛们打上这样一个标签。很多人会说“女程序媛心细，这样这样，那样那样....”,我也想说，阿媛们，不能被打上一个“心细”的标签就证明你在程序员的行列不被落后。一旦打上这个标签，就好比你差的不行，但是还凑合着能给你找个理由让你不至于被辞退，那就是你“心细”。心细怎么了？男孩子一样可以心细，女孩子一样可以心粗，这个不论性别，甚至部分年龄。
+
+
+     思维方式的问题扒开来说，一是你的编码习惯的问题，这个不论是阿媛们还是阿猿们，都要一视同仁，好好锻炼。一个好的编码习惯可以成就一个人，一个坏的编码习惯可以毁灭一个人。这个就好比你吃饭要知道怎么拿筷子一样，可能大致没有详细规定到哪个手指放到筷子的哪个位置，手指之间要怎么相互配合，协同合作。但是大体拿筷子的方式就是那么个样子，就像编码规范一样，虽然各个公司有少许出入，但是大致都是一样的。
+
+
+      除了编码习惯之外，在一个就是你的编程思想。可能每个人写代码的思维都不一样，都遵循着自己的习惯、方式走。比如一个功能，需求很明确，让两个人来写，最后实现的功能都一样，但是细细看代码却可能完全不一样。这都是可能发生的。对此我给的建议是：第一，写代码要严格按照编码规范来，变量、函数命名等要让人一目了然；第二，要加注释。这一点特别重要，你不要觉得我写的这个函数，声明的这个变量特别简单，不用注释一眼就能看懂，就给不加注释找托词。你这么做的理由只有一个，那就是你太自私。在这个开源的时代，别人都把自己的源码分享出来，你注释一下你的垃圾代码，会死掉么？况且，你翻翻你去年写的代码，现在还会一句不落的全部想起来么？你上个月写的代码现在都不见得会想尽然呢，更何况更久之前的代码。所以，注释很重要，非常重要！第三，多看别人的代码。就好比要多看书一样，对于程序员而言，多看别人的代码就像要多阅读别人的书籍一样重要。人各有所长，多看看别人的代码不是为了copy代码，而是为了copy思想，多跟优秀的人学习，看的多了，自然也会进步很多。
+
+
+     
+二、“女程序媛”的生理问题！Oh no,stop talking that!!
+     这个问题同样不可回避，每次肚子疼不舒服得请假吧，但是这样一个实际的问题摆在我们面前，让很多想用阿媛的boss们望而却步了。程序猿们多好，怎样都不用担心“大姨妈”的问题，偶尔担心一下“大姨夫”，吃得多，干活多，抱怨少。而且阿媛们会被追问“结婚没有啊？”，“打算什么时候要孩子啊？”......我也是够了，我才18，这个问题要搁置一段时间，让我静静.......
+
+
+     给我一个理由，让我录用你的理由！我长得美！！！这个，这个，程序员这个行业现在也讲究靠脸吃饭？咳咳，虽然本人不愿意承认自己不美，但我也坚决不走看脸吃饭的路啊。或许我明明可以靠脸吃饭，但偏偏任性了一回。理由！什么理由？我和你要的程序猿们一样的优秀，虽然我每月来大姨妈，虽然我以后的某个岁月里可能会生宝宝，但是程序猿们分几个模块我也分相同的任务量，解决技术难点时我也同样会提出合理的解决方案，也同样会因为项目上线而加班加点，跟程序猿们一起奋斗。除此之外，我的代码很规范，条理很清晰，解决问题时不含糊；有问题及时沟通；一群大老爷们会因为有女程序媛们的存在，而多了很多欢乐和不同的色彩；聚餐时我们一起喝，我不胜酒力就你们喝，喝的烂醉还知道有个姑娘帮你们叫车、结账；除上述理由之外，女程序媛的存在，还可以给单身猿们一个择偶的机会，嘻嘻嘻.....我要给你什么理由录用我，这些理由够吗？
+
+
+     
+三、还有第三条么？阿媛婚后可能要顾家一点.....
+     等一下，我想问一下，阿媛婚后顾家会耽误工作哈？你是这么认为的？第一，阿媛们要顾家，难道程序猿就可以心安理得的不顾家？第二，顾家就一定会耽误工作的吗？如果近期项目紧，要求加班，这个肯定不可避免，但是熟知程序员工作性质的亲们，你们公司是一个项目接着一个项目，天天加班各个周末不休息，个个项目都急着上线？我读书少，但是你不要骗我。如果真有这样的公司，月薪不给你10w你就别去了。这是拿生命在开玩笑啊，高强度的工作持续一段时间可以，其他时间不耽误顾家照顾老婆孩子。除非你在996的创业公司，是吧，跟着公司一同发展一同成长，也不是不可以的。你选择了那个公司，你也选择了那样一种生活，同样你也选择了成长，这些都是值得的。所以，很多时候，不要拿没时间顾家当理由，两个人一起奋斗，撑起一片天空，除非你有个贤惠的全职太太，那样你可以省心好多；可是如果两人都是职工，还是一同抽出点时间陪彼此陪孩子，比如周末，就是一个不错的选择。就怕的就是工作日朝九晚六，周末在家睡一天或出去玩一天，那样就真成了没时间陪家人陪孩子了。所以这个度自己把握，最后强调一句话，这个问题，不止是程序媛们需要面对，程序猿们同样不可逃避，因为家是共同的。
+
+
+
+     好了，我都有点困了，这篇博客我陆陆续续写了三天，可能因为我是女程序媛，所以很多事情想得比程序猿们多很多。我也在为我的职业、我在IT行业里面的角色争取话语权。我不想在面试的时候很多人第一句话就是跟我说，我们不招女的。我很想跳出来，跟这个行业说，女程序媛并没有你们想象的那么差，我是一个女程序媛，我为自己带盐，呵呵我不是白菜。我不是在鼓吹我和男程序员一样，我会正视身为一个女程序媛所不得不面临的问题，但是很多事情是互补的，如果这个世界男性可以做一切事情，那么估计女性这个物种早就灭绝了，优胜劣汰么，自然界的法则。世界上第一个程序员还是女性呢，你是不是从未想过也从不知道这件事?她是拜伦的女儿，叫阿达.奥古斯塔。在IT行业，之所以会出现女程序媛，就一定会有出现的理由，如果最初IT行业女性不能涉足甚至生存不下去，估计女性在这个行业早就淘汰了。还是那句话，我是女程序媛，我为自己代言，我不是一个只会敲代码的码农，我还能理需求、画原型、设计数据库，我厚厚的简历里一项项的表明我不是一个简简单单的码农。虽然这个行业对女程序媛还存在些许的不公平，但是我从未后悔选择这个职业。做一门爱一门是我的职业信条，我也仍然会坚定的走下去！
+
+
+
+
+
+
+
+      
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+软件工程学习要点
+背景：学习了软件工程，但不知道要具体学习到一个什么样的程度，后来请教了高人，得到了一些基本的掌握内容，写出来与大家交流，更方便自己之后的复习。
+
+
+知识掌握类：
+软件工程三问：软件工程是什么？都有哪些阶段？每阶段的文档是啥么？
+
+      文档谁写的？给谁看的？都有什么图
+      文档中的内容应该写什么？
+ 数据库外部设计是干吗的？约定是干嘛的？结构设计、逻辑设计是干吗的？数据词典是什么？
+      操作手册和用户手册的区别？
+
+文档操作类：
+  软件流程图、结构图各种的图的画法；
+逻辑结构设计不能出现数据库详细设计；如数据表是属于物理设计的；
+详细设计说明书依结构图顺序来写。
+
+
+
+文档外观规范类：
+开头空两格；
+
+    文档中去掉多余的换行符；
+
+       文档中图片要居中。  
+
+
+
+小结：以上的问题答案在我的博客专栏“软件工程”都有回答，学习之后，个人感觉软工中的文档制作还是最重要的。
+
+
+每天进步一点点。。。。
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+SVN：SVN学习的总结
+【背景】
+     提起SVN，自己就忍不住谈谈与她的相逢之路！刚开始体会到她的好处是在参加考试系统维护时，当时自己负责在服务器的IIS发布代码，由于系统在不断的改进中所以代码不断更新，由于是多人合作，所以经常弄过来的代码特别乱；当时自己就在想有没有一个好的软件将他们管理起来，通过问师哥对SVN有了初步的了解。
+
+
+【简单使用】
+
+    ITOO3.1的测试时，需要从SVN上Down东西，自己当时对她是一头雾水！由于当时项目要的紧于是乎就在自己的本本上安装了客户端，上网查自己学会简单的使用它来下载东西。
+    
+
+【熟练使用】
+
+     随着接手廊坊一中考评这个项目，由于项目的需要，自己在自己的本上装上了服务端，对SVN进行了深入的学习，其中包括：权限的控制、版本的冲突的解决，下载、添加、更新、修改密码以及与VS结合使用等。
+
+
+【深入原理】
+
+     随着机房重构的完成，进入了SVN学习阶段；这次利用三天时间结合之前使用的基础根据马士兵老师的视频以及九期学术的视频自己也上网查了些资料，对SVN原理进行了学习。
+
+  
+                                    
+                                            一张图胜过千言万语                                                  
+
+【总结】   
+
+      原理固然重要，如果在项目中体会到不用这个东西麻烦，以及在项目中熟练运用再回过头去学原理；会大大增加学习的动力。原理与实战结合才是硬道理。
+
+  
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+[置顶]
+        Maven安装与Maven HelloWorld入门实例
+林炳文Evankaka原创作品。转载请注明出处http://blog.csdn.net/evankaka摘要：本文主要讲了Maven的安装过程，以及一些基础的概念。并用两个例子讲解了Maven在java项目中的使用。一、Maven安装过程必备：下载maven之后，安装环境变量，跟安装java环境变量一样，所以也就不再赘述了。安装好之后运行一条命令，mvn help:system,运行之后会下载一些需要的库文件，一般是放在user/.m2/repository目录下，也就是默认的本地仓库的位置。安装过程如下：1.在安装maven之前，先确保已经安装JDK1.6及以上版本，并且配置好环境变量。2.下载maven3，下载地址：http://maven.apache.org/download.html      下载apache-maven-3.1.1-bin.zip文件后，并解压到  E:\JavaTool\apache-maven-3.3.13.配置maven3的环境变量：先配置M2_HOME的环境变量，新建一个系统变量：M2_HOME , 路径是：E:\JavaTool\apache-maven-3.3.1，如图所示：4、再配置path环境变量，在path值的末尾添加"%M2_HOME%\bin"，如下图所示；5.点击确定之后，打开cmd窗口：输入 mvn -version,出现如下内容表示安装成功，注意3.1.1是对应于jdk1.7以上的版本，所以自己要看好自己电脑jdk的版本6、配置成功后开始在Eclipse中配置Maven，点击eclipse菜单栏Help->Eclipse Marketplace搜索关键字maven到插件Maven Integration for Eclipse 并点击安装即可，如下图：(可以直接下载J2EE的eclipse编译器。它都帮你集成好了)7、重启后，为了使得Eclipse中安装的Maven插件，同windows中安装的那个相同，需要让eclipse中的maven重新定位一下，点击Window -> Preference -> Maven -> Installation -> Add进行设置8、给maven添加本地仓库maven默认的仓库，是放在C:\Users\lin\.m2\repository,lin可以看成是你的用户名，如果不想放在这里，可以这么改打开本地存放maven目录（或者maven安装目录，我的安装目录是：E:\JavaTool\apache-maven-3.3.1\conf，这里没多大影响，我只是不同的项目有不同的仓库）：比如我的本地存放目录是：E:\JavaTool\apache-maven-3.3.1\conf打开conf文件夹下的settings.xml文件，找到第53行，把注释去掉，修改成：<localRepository>D:/Util/maven/maven-dependcies</localRepository>当然了，前提是在某个路径下，手动建立了一个名为 maven-dependcies的文件夹，然后把本地仓库指向该路径。二、初步了解maven      Maven是一个采用纯Java编写的开 源项目管理工具。Maven采用了一种被称之为project object model (POM)概念来管理项目，所有的项目配置信息都被定义在一个叫做POM.xml的文件中，通过该文件，Maven可以管理项目的整个声明周期，包括编 译，构建，测试，发布，报告等等。目前Apache下绝大多数项目都已经采用Maven进行管理。而Maven本身还支持多种插件，可以方便更灵活的控制 项目1.了解maven的目录结构，在maven的构建过程中，构建的程序必须有特定的目录结构,基本的目录如下所示：2.对于这个目录的建立，熟练的建立这个目录是必备的，但是这样无助于开发的进度，所以maven自带了一个archetype工具帮助我们自动生成项目的骨架。在cmd中切换到工程的目录，执行命令mvn archetype:generate,就是自动生成需要的目录，在生成的过程中会需要输入一些字段，在下面说明的pom.xml的时候再讲。3.pom.xml<Project Object Model,项目对象模型>文件，这个文件可以理解为整个项目的控制文件，对于这个文件有一下几个属性需要说明。    <modelVersion>  :默认是4.0.0，指定了当前POM模型的版本。    <groupId>:定义了项目属于哪一个组，这个组通常与项目所在的组织或者公司关联，如com.microsoft.myapp, com.google.myapp等等。    <artifactId>:定义了当前maven项目在组中的唯一ID，可以定义为项目的名称如：HelloWorld    <version>:指定当前的版本，如1.0-SNAPSHOT,snapshot是快照的意思，说明该项目还在开发中，是不稳定的版本。而一般通过archetype工具生成的包名就是groupId+artifactId。三、新建一个简单的maven项目:maven-hellolworld1、新建一个Maven项目2、这里选了quickstart,3、输入工程名，引用包名名4、自动生成的如下，我们不需要这pom.xml文件 如下<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.lin.learning</groupId>
+  <artifactId>maven-hellowrold</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>maven-hellowrold</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+5、修改内容将App.java改成如下package com.lin.learning.maven_hellowrold;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    
+    public void sayHello(){
+    	
+    	 System.out.println( "Hello World!林炳文Evankaka" );
+    }
+}
+再把AppTest.java内容改成如下package com.lin.learning.maven_hellowrold;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest 
+    extends TestCase
+{
+    /**
+     * Create the test case
+     *
+     * @param testName name of the test case
+     */
+    public AppTest( String testName )
+    {
+        super( testName );
+    }
+
+    /**
+     * @return the suite of tests being tested
+     */
+    public static Test suite()
+    {
+        return new TestSuite( AppTest.class );
+    }
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testApp()
+    {
+       App app = new App();
+       app.sayHello();
+    }
+}
+6、测试运行选 中testApp().然后以Junit的调试方式运行运行结果：绿色表明案例通过，运行成功7、打包输出现在好了，可以把这个文件 打包成jar提供给其它项目使用了，项目右键-》属性输入以下内容，开始生成 jar最终输出结果：表明已构建成功，去仓库看看打包成jar没jar已打包，其它java项目都可以使用，不管是不是maven项目四、使用maven项目这里我要再来新建 一个maven-test项目，并且来添加上一个maven-helloworld的包，从而每次maven-helloworld更新jar包时，maven-test都不用手动去替换jar包，直接update project即可。同样的过程，还是新建一个maven-test的项目把app.java改成AppHello，避免和上一个重名同时将AppHello.java内容改成如下package com.lin.learning.maven_test;
+
+import com.lin.learning.maven_hellowrold.App;
+
+/**
+ * Hello world!
+ *
+ */
+public class AppHello 
+{
+    public static void main( String[] args )
+    {
+        App app = new App();
+        app.sayHello();
+    }
+}
+pom.xml文件 添加maven-helloworld的jar包依赖<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.lin.learning</groupId>
+  <artifactId>maven-test</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>maven-test</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+    <groupId>com.lin.learning</groupId>
+    <artifactId>maven-hellowrold</artifactId>
+     <version>0.0.1-SNAPSHOT</version>
+    </dependency>    
+  </dependencies>
+</project>
+接着，更新下整个maven 工程选中强制更新更新好了，直接选中AppHello的main,然后右键运行，输出了结果如果，这时maven-helloworld更改了内容，比如它的App.java更改成如下。添加一个方法package com.lin.learning.maven_hellowrold;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    
+    public void sayHello(){
+    	
+    	 System.out.println( "Hello World!林炳文Evankaka" );
+    }
+    
+    public void sayAll(){
+    	 System.out.println( "我是林炳文Evankaka、林炳文Evankaka、林炳文Evankaka、林炳文Evankaka、林炳文Evankaka " );
+    }
+}这里，maven-test也要用到这个sayall方法。同理，直接maven->update project就会自动引入新的jar包然后调用方法如下：package com.lin.learning.maven_test;
+
+import com.lin.learning.maven_hellowrold.App;
+
+/**
+ * Hello world!
+ *
+ */
+public class AppHello 
+{
+    public static void main( String[] args )
+    {
+        App app = new App();
+        app.sayHello();
+        app.sayAll();
+    }
+}
+输出结果
+
+版权声明：本文为博主林炳文Evankaka原创文章，转载请注明出处http://blog.csdn.net/evankaka
+
+Myeclipse 安装 gradle 插件以及基本使用
+1、在线安装地址
+http://dist.springsource.com/release/TOOLS/update/e4.4
+这是spring提供的，天朝不一定能访问，可能需要翻墙，
+2、选择Core / Eclipse Integration for Gradle -> Gradle IDE
+这个是gradle 的核心了
+
+
+下面直接点击下一步，即可完成安装。
+ 
+3、使用myeclipse 创建一个gradle项目
+File -> New -> Project -> Gradle -> Gradle Project -> Next
+
+ 
+输入项目的名称，选择Sample project Java Quickstart,点击完成即可
+
+4、添加一个jar包依赖
+编辑文件build.gradle,找到dependencies,在里面添加一条jar的信息,例如：
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    //添加一个spring 依赖
+    compile 'org.springframework:spring-core:4.1.2.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+5、刷新项目，使得myeclipse自动下载jar包.
+右击项目->Gradle->Refresh Dependencies
+
+6、打包项目
+右击项目->Run As -> Gradle Build... -> 在命令行里面输入build,点击运行即可
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+机房收费系统—项目开发总结报告
+项目开发总结报告
+1引言
+1.1编写目的
+    机房收费系统的开发工作已经基本完成。写此项目开发总结报告，以方便我们在以后的项目开发中来更好的实施项目的制定开发，让我们在今后的项目开发中有更多的资料来规范我们的开发过程和提高我们的开发效率，从而创造更多公司效益。
+预期读者为相关软件的开发人员。
+1.2背景
+A、待开发软件名称：机房收费系统
+B、项目提出者：米新江教授
+  开发者：周家林
+  用户：廊坊师范学院全体师生
+  实现该软件的计算中心或计算机网络：廊坊师范学院校园局域网
+C、该软件系统同其他机构的基本的相互来往关系：由廊坊师范学院信息技术提高班做技术支持。
+1.3定义
+1.4参考资料
+《软件工程思想》林锐
+《SQL入门经典》敖富江译
+《VB程序设计课本》
+《数据库红皮书实例》
+《陈伟VB6.0视频》
+2实际开发结果 
+2.1产品
+1.产品名称：机房收费系统
+2.主要程序模块：学生上下机模块、一般用户模块、操作员模块、管理员模块
+2.2主要功能和性能
+主要功能：实现了用户的基本需求。一般用户可以完成学生上下机、学生余额查询、学生上机状态查询、密码的修改；操作员可以实现学生的注册、充值、退卡、查看学生充值退卡记录等；管理员完成添加删除用户、系统基本信息设定、查看工作人员记录、结账、查看账单等操作，达到了开发目标。
+性能：在性能方面，也实现了对数据输入精度和反应时间以及系统灵活性的要求，达到了性能要求的标准，实现了系统与数据库完美对接。
+2.3基本流程
+
+
+2.4进度
+   按照预期时间，基本在计划时间内完成了项目。这主要归功于团队的合作，和用户的沟通，最主要的是前期文档规划的细致缜密。
+2.5费用
+1.工时：完文档设计12天，开发测试时间7天。
+2.计算机使用时间：项目各个阶段的完成都离不开计算机的使用，除了计算机外，其他设备还有刷卡器等设备，主要集中在测试阶段，大概有7天左右的时间。
+3.物料消耗：购置刷卡机和学生用卡消耗1200元。
+项目开发费用在计划的误差范围内。
+3开发工作评价
+3.1对生产效率的评价
+给出实际生产效率，包括：
+a.程序的平均生产效率，即每人月生产的行数；
+b.文件的平均生产效率，即每人月生产的千字数；
+并列出原订计划数作为对比。
+3.2对产品质量的评价
+   产品质量较好，已达标。测试中检查出来的程序编制中的错误发生率为2%左右，即每干条指令（或语句）中的错误指令数（或语句数） 20条左右，在计划允许范围内。
+3.3对技术方法的评价
+    机房收费系统主要涉及到VB6.0开发语言和SQL的运用，编程方法结合了软件程序开发的要求。
+3.4出错原因的分析
+1.程序员设计师不够科学，对于设计师语言的掌握不够深入。
+2.程序员数据库语句CURD掌握不熟练。
+3.技术人员全局观不强，给开发过程带来了困难。
+4经验与教训
+    开发前要写好文档，文档合格后才可进行编程开发。如果文档需求不符合用户需求则不能进行开发，文档审核力度应再度将强。开发前根据文档，建立全局观理清思路画好导图。然后按部就班的进行开发。开发过程，要多抽象，相同的代码要尽量少些。提升代码质量，提高系统运行速度。
+ 
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+如何把你的产品融入到客户的心智
+
+      现在是一个产品竞争的环境，你的产品只是数万种产品中的一种，以前所说的“酒香不怕巷子深”在现在这个环境几乎失效，没有人有耐心跑到巷子的深处去寻找你的酒，如何把你的产品融入到客户的心智，如何才能在客户的内心深处占据以块属于你的产品的一些空间，这些问题值得大家深思。
+
+      一个方面是目前处于的环境，信息充斥着每一个角落，每天发出来的新的信息几乎无法用数据衡量，这些信息有哪些可以被人们所关注，都是疑问。现在社会中的我们每天都被这些信息所困扰，恨不得忽略所有信息，这也导致我们没有耐心再去获取内容更多、信息量更大的东西，你可以回忆一下，你有多久没有看过超过5000字的文章，你有多久没有写过超过5000字的评论，我们从写文章到写博客再到写微博最后写说说，是不是我们没有耐心的体现？
+
+
+      另一个方面就是我们大脑生来就是有限的，人们总是用有限的大脑空间去记忆有限的信息，一部分新的信息进入大脑必然有一部分信息被挤出去。每个人对于一类实物所能吸收、记忆的内容都是有限的，做个测试：在你的印象中有哪几款运动品牌？有哪几种汽车品牌？有哪几种饮料品牌？你会选择购买哪个品牌？正常情况下你所能记住的也就是在你心目中排名靠前的几个。
+
+
+
+
+
+图1：世界部分汽车品牌
+
+
+
+
+
+
+图2：世界部分饮料品牌
+
+
+
+
+
+
+图3：世界部分运动服装品牌
+
+
+
+      这么多的品牌，然而人的大脑空间又如此的有限，如何把你的产品融入到客户的心智，如何才能在客户的内心深处占据以块属于你的产品的一些空间呢？
+
+      首先，要简化你的信息，能用较少的信息绝不用较多的信息，例如产品特征，能用两个字的就不要用三个字。
+
+      这样当人们谈到你的品牌，就不会被过多的无用的信息所干扰。例如汽车品牌中奔驰：稳重；宝马：年轻；丰田：节约；沃尔沃：安全。这样人们在谈到某一类汽车特征的时候首先进入人大脑的必然是这几个品牌。
+
+ 
+       进入人的心智另一个捷径就是做到第一，这一点大家都清楚，第一个登上月球的是谁？第二个呢？世界第一高峰是哪座？第二呢？第一个占据人大脑的实物是很难被取代的。
+
+      在不同领域也是一样的现象，计算机IBM，凉茶王老吉，POS机拉卡拉，这是生物的一种本能，所以争第一是一个非常好的捷径。当然如果你的产品非常烂，那么这个第一的印象也是很难消除的。
+
+
+      如何在有限的空间里挤出一块属于自己品牌的空间呢，毕竟人的大脑空间是有限的，就像海绵一样，你想继续加入水就必然要挤出一部分原有的水。还以汽车为例，奔驰汽车给自己定位为高端稳重，那么宝马怎么办？好，你不是高端稳重吗，我就年轻运动。稳重、年轻都被占了，其他汽车就没有机会了吗？沃尔沃干脆就把自己定为安全，我就是比你们安全。日本车丰田怎么办？我节省啊，我省油。怎么样？这样就很容易在客户的大脑中找到一块自己的空间。其实他们真的有那么明显的特征吗？不见得吧。
+
+
+      在POS领域，有很多品牌：盒子支付、拉卡拉、乐刷等等，拿盒子支付和拉卡拉来说，拉卡拉定位为老牌支付品牌，在传统的支付领域有着难以取代的优势，在支付领域有着很大的影响力。
+
+
+
+       那么盒子支付怎么办？就没有办法了吗？找出一个空档，然后填补上去。拉卡拉老牌、传统，盒子支付就主打速度、科技行不行，我交易速度、刷卡速度就是比你快，科技含量就是比你高，至于实际是不是比拉卡拉快一个数量级、高级含量是不是比拉卡拉高一个数量级，暂且不管，哪怕我就比你快一点点、科技含量高一点点，这也是一个不错的定位。在客户的大脑中就会形成速度快的是盒子支付、科技含量高的是盒子支付这样一个形象。
+
+      要想在客户的大脑中争夺一块属于自己的空间，一定不要和强大的、稳固的巨头正面交锋，找准自己的位置，低着头从侧面绕过去，遵守一定的游戏规则往上爬。
+
+
+
+
+编者：朱克锋 盒子支付程序员
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+编译器？ 求解两数运算？
+      这个问题也不算新鲜了，换一种方式提问就是"如何不用 + - * / 运算符，来求解两元素之和"的问题；大家很自然的回想起利用位运算。在数字电路中，我们都遇到过设计“加法器”的问题，利用位与、或、非、异或可以很轻松的解决此问题；这里，不用此方式，而是借助编译器的地址偏移，来解决问题。基本思路如下：(1)将其中int型数据转为地址(或者说是一个数组的首地址)(2)然后利用数组下角标索引，进行地址偏移，获取偏移后的address(3)将(2)中得到的地址转换为int类型下面贴出code，几行的事儿，但可以深深的吸引着我们的脑洞：// ptrtest.cpp : Defines the entry point for the console application.
+//
+#include "stdafx.h"
+#include<iostream>
+using namespace std;
+
+int add(int a,int b){
+	char * c;
+	c = reinterpret_cast<char*>(a);
+	char * d=&c[b];
+	int sum=reinterpret_cast<int>(d);
+	return sum;
+}
+int _tmain(int argc, _TCHAR* argv[])
+{
+	cout <<"sum =" <<add(4,5) << endl;
+	return 0;
+}
+让我们欣赏一下watch窗口，顿时脑洞打开吧！愉快的享受一下，编译器给我们带来的盛宴吧！
+【Git分布式版本控制系统】Git安装与配置
+作者：郭孝星 
+微博：郭孝星的新浪微博 
+邮箱：allenwells@163.com 
+博客：http://blog.csdn.net/allenwells 
+Github：https://github.com/AllenWells
+一 Git安装
+1.1 Linux平台下安装Git
+方法一：直接安装
+执行命令：
+sudo apt-get install git
+方法二：从源码安装
+
+下载Git源代码
+编译并安装，如下所示：
+
+$ tar -zxf git-1.7.2.2.tar.gz
+$ cd git-1.7.2.2
+$ make prefix=/usr/local all
+$ sudo make prefix=/usr/local install
+1.2  Windows平台下安装Git
+Windows平台Git安装包下载
+
+二 Git配置
+Git提供了git config的工具来做Git工作环境的配置，对应的命令时git-config，这些环境变量决定了Git在各个环节的具体工作方式和行为。
+Git的环境变量存放在以下三个地方：
+
+/etc/gitconfig文件：系统中对所有用户都普遍适用的配置。若使用git config时用–system选项，读写的就是这个文件。
+~/.gitconfig文件：用户目录下的配置文件只适用于该用户。若使用git config时用–global选项，读写的就是这个文件。
+.git/config文件：当前项目的git目录中的配置文件，这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以.git/config里的配置会覆盖/etc/gitconfig中的同名变量。
+
+2.1 用户信息
+用户信息配置的是用户名称和电子邮件地址，每次Git提交时都会引用这两条信息，说明是谁提交了更新，这些更新会被永久纳入历史记录。
+配置用户信息的命令如下所示：
+$ git config --global user.name "AllenWells"
+$ git config --global user.email allenwells@163.com
+如果用了–global选项，那么更改的配置文件就是位于你用户主目录下的那个，以后所有的项目都会默认使用这里配置的用户信息。如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 –global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。
+2.2 文本编辑器
+Git在需要我们输入一些额外信息的时候，会自动调用一个外部的文本编辑器，一般默认会是Vi或Vim，我们也可以设置其他的编辑器，如下所示：
+$ git config --global core.editor gedit
+2.3 差异化分析工具
+差异化分析工具是用来解决合并冲突的差异分析工具，如下所示：
+$ git config --global merge.tool vimdiff
+2.4 颜色配置
+Git会适当地让命令输出显示不同的颜色。
+git config --global color.ui true
+2.5 文件忽略
+有些时候我们需要把文件放到Git工作目录中，但是我们又不想提交它们，比如编译产生的中间文件等。这个时候只需要我们在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
+通常忽略文件的原则是：
+
+忽略操作系统自动生成的文件，比如缩略图等；
+忽略编译生成的中间文件、可执行文件等，也就是如果一个文件是通过另一个文件自动生成的，那自动生成的文件就没必要放进版本库，比如Java编译产生的.class文件；
+忽略你自己的带有敏感信息的配置文件，比如存放口令的配置文件。
+
+举例
+忽略tar、jar和exe这些文件
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+我们也不用花精力慢慢一一配置，Github已经提供了Github官方.gitignore文件，可以作为参考。
+2.6 配置别名
+有些Git命令比较长或者比较难记，我们可以为它配置一个别名来提升工作效率。
+配置方式如下所示：
+git config --global alias.st status
+配置完成后，我们就可以用
+git st
+代替
+git status
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+版权声明：当我们认真的去做一件事的时候，就能发现其中的无穷乐趣，丰富多彩的技术宛如路上的风景，边走边欣赏。
+
+软件测试工程的思路、方法、原则、
+测试态度：我们的测试时要发现软件是【不可用的】还是发现软件是【可以工作的】，这是我们的态度。 
+ 
+我们的态度会变化，变化主要取决于下面的关系： 
+
+测试的局限性：测试发现一个缺陷就少一个缺陷，测试不是万能的。只能提高质量，不能保证质量。
+测试的基本原则： 
+1 显示缺陷的存在 
+2 穷尽测试时不可能的：提高有效性 
+3 测试要尽早介入：了解业务，发现业务缺陷 
+4 缺陷集群性：重点投入高发模块 
+5 杀虫剂悖论：交叉测试 
+6 测试活动依赖于测试内容：小型OA你还搞压力测试? 
+7 测试人员要有自己长期目标：适当坚持自己的原则
+测试阶段：单元测试、集成测试、系统测试、验收测试
+测试出入口准则：对待测物要有一定的要求，满足当前测试阶段的要求才能进入测试阶段
+测试过程定义流程： 
+1 明确公司质量方针 
+2 了解公司项目管理流程 
+3 了解业务模型 
+4 了解项目规模 
+5 了解项目类型
+测试过程定义法则： 
+1 简单有效 
+2 易于使用 
+3 结合实际 
+4 必要培训 
+5 持续修订
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+【Git分布式版本控制系统】开篇
+作者：郭孝星 
+微博：郭孝星的新浪微博 
+邮箱：allenwells@163.com 
+博客：http://blog.csdn.net/allenwells 
+Github：https://github.com/AllenWells
+【Git分布式版本控制系统】章节列表
+【Git分布式版本控制系统】开篇 
+【Git分布式版本控制系统】Git安装与配置 
+【Git分布式版本控制系统】本地版本库管理 
+【Git分布式版本控制系统】远程仓库管理 
+【Git分布式版本控制系统】远程仓库Github
+
+集中式版本控制系统有一个单一的集中管理的服务器，保存所有文件的修订版本，而协同工作的人们都通过客户端连到这台服务器，取出最新的文件或者提交更新。
+
+
+这样做的缺点是显而易见的，如果中央服务器发生宕机，那么在段时间内，谁都无法提交更新，也就无法协同工作。如果中央服务器的磁盘发生故障，碰巧没做备份，或者备份不够及时，就会有丢失数据的风险。最坏的情况是彻底丢失整个项目的所有历史更改记录。
+
+分布式版本控制系统的客户端并不只提取最新版本的文件快照，而是把代码仓库完整地镜像下来。这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。因为每一次的提取操作，实际上都是一次对代码仓库的完整备份。
+
+
+分布式版本控制系统不仅解决了数据丢失风险的问题，还为多人协作提供了极大的便利，我们可以指定和若干不同的远端代码仓库进行交互，这样我们就可以在同一个项目中，分别和不同工作小组的人相互协作。我们还可以根据需要设定不同的协作流程，比如层次模型式的工作流，而这在以前的集中式系统中是无法实现的。
+开篇文章就说到这里，后面的文章会介绍时下最流行的Git分布式版本控制系统以及它对应的远程仓库Github。
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+版权声明：当我们认真的去做一件事的时候，就能发现其中的无穷乐趣，丰富多彩的技术宛如路上的风景，边走边欣赏。
+
+创业团队新产品开发模式----寻找一个可持续升级、重复、盈利的模式
+
+      初创的产品仅仅是创始人或者创始人团队的一个未经任何认证的假设，如何才能更好地寻找一个可持续升级、重复、盈利的模式是创始人及创世团队必须要考虑与思考的一个问题。即使你是一个内部创新的团队也不例外。
+
+      相信下面的这张图对于大家来说并不陌生，因为它每时每刻都发生在我们身边，只要大家开始开发一款新的产品，绝大多数人都会按照这个模式进行产品开发。
+
+
+
+      这种开发模式非常详细的说明了如何把新的产品逐步的交付给客户。首先，新产品开发到客户测试，内测（或者公测）；其次，研发工程师根据客户反馈修复产生问题；最后，发布新产品。
+
+      这种产品导入模式对于成熟的企业来说无可厚非，因为成熟的企业有既定的客户群体、既定的市场，市场、营销可以根据已经明确的客户群体、产品特征、市场范围、竞争对手来策划营销和销售手段。然而，对于初创团队来说，很少有初创团队能够清楚地知道自己的客户在哪里，谁是自己的目标客户，但是，仍然有很多初创团队坚持按照这个模式进行产品开发和管理产品，他们按照这个方式去需找自己的客户、设定营销和销售计划、定下产品发布时间和计划，直到产品死亡也不知道原因所在。
+
+      新产品开发也可以说新产品的提出常常会出现很多误区。
+
+
+      第一点就是：我已经很清楚的知道客户想要什么。提出开发新产品的人（产品所有者、创始人或者创始团队、发起人）认为他们已经很清楚产品的目标群里是哪些、知道他们要什么、如何向他们买自己的产品，但是在大多数情况下这些都是发起人的假设，是发起人的假设支撑着这个产品。要想清楚知道客户需要什么，发起人必须要走出去咨询自己假设的客户群，向他们确认这些假设是否真的成立，及时调整这些假设。
+
+
+      第二，发起人认为他们知道要开发哪些功能。发起人这个时候会认为自己了解客户需要哪些产品功能，然后他们指定、设计、开发出非常牛逼的产品，功能齐全、体验完美（自己认为）。然而，由于缺乏和客户之间的沟通，发起人并不真正了解客户需要什么，当产品开发完成，交付给客户使用的时候发现并不是自己设想的那样顺利，这个时候更改是不可避免的，除了浪费人力、物力外，时间成本是无法挽回的，严重的结果就是导致产品流产。
+
+
+      第三，过度的关注产品交付时间。这是典型的成熟企业干的事情，他们按照产品交付时间来制定开发计划、营销和销售计划。这样做会导致一个现象：开火-准备-瞄准，完全忽视了客户群体的探索。在不了解客户需求的情况下把产品推向市场，结果可想而知。
+
+
+      第四，过度的强调执行而忽视学习。初创团队文化常常会强调一点：以最快的速度完成目标。成熟的企业可以在已经存在的客户群体、产品特征等条件下执行，但是初创的团队必须要探索不断的去验证自己的假设、调整自己的假设，寻找可重复、升级、盈利的模式。盲目的执行无异于犯罪。从错误中学习、总结对产品是否成功至关重要。
+
+      无论是开发一个新的产品还是开发一个新的产品特征，一定要走出去探索、验证自己的假设，不断地根据反馈来调整自己假设的客户群体、产品特征，寻找一个可持续升级、重复、盈利的模式，但是千万不要轻易的更改自己的假设。
+
+
+
+
+编者：朱克锋，盒子支付程序员
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+谈谈对工作的看法
+
+早上在车上听到两个女孩子谈论工作问题，很有感触。顺便整理了一下我对工作的看法。
+
+虽然这两年一直在提倡“全民创业、万众创新”，但创业的毕竟是少数，大部分人还是遵循：毕业、就业、跳槽这个规律。    
+
+我从毕业到现在经过两份工作，一份是系统软件开发，一份是互联网软件开发，都是软件开发领域，一线的技术人员。对于毕业五年内的朋友来说我还是有点经验可以分享的。
+
+我是大学学的是食品科学专业，毕业之前到深圳做的第一份工作却是系统软件开发，也许有人会这跨度也太大了吧，其实工作于专业关系真的不是像我们想象的那么密切，有些人抱怨大学没有用，白白浪费了四年时间，我想说读大学与你学什么专业没有关系，读大学读的是你的思考能力、读的是你看问题的方向、读的是你解决问题的思路，如果你天生都有这方面的能力，可以不读。读了四年如果你没有读到这些，那么你真的是白白浪费了四年了。
+
+毕业的第一份工作一定要找一个适合自己的团队，我不赞成很多人说的先随便找一份工作养活自己再说，因为刚刚毕业出来根本没有形成对职业的认识，第一份工作对以后的职业发展至关重要，第一份工作一定要关注几个方面，团队、领导、同事、行业，我的第一份工作算是比较幸运的，加入了一个好的团队、遇到了一个好的领导和一群好的同事。好的团队能让你知道如何合作，如何沟通甚至是一个好的工作方式与习惯，一个好的领导除了能给你职业方面的培训，还会交给你如何形成自己的职业观、价值观，一群好的同事能让你不断地进步、快速的成长。一个好的行业会给你一个好的起点。
+
+我和朋友们交流，我一直强调前几年一定不要在乎薪水，首先你没有什么明显的价值展现给别人，你有的仅仅是代表过去的毕业证而已，这个时候应该关注的是你获取的这份工作，踏踏实实学几年，能装多少是多少，工作只是学习的附带产出。
+
+
+
+
+
+      好的团队能让你知道如何合作，如何沟通甚至是一个好的工作方式与习惯。我的第一个团队是传说中的Broncho团队，是一个以技术为导向的研发团队，虽然团队不大，但是大牛云集，和我一起进入团队的都是很有个性的，但是大家都有一个特点，就是不停地学习，总害怕落后别人，虽然是九点半上班，但是七八点大家都到了，晚上下班根本没有所谓的下班时间，都是十来点才回家，在这样的氛围中，我两年多的时间看了100多本技术书籍，写了大量的demo代码，那时候根本没有想过去获取更多的薪资待遇，想到的就是尽量的多学东西，这种情况只能发生在一个好的团队中，整个团队的氛围就是这样，你自然而然的就这样了。
+
+好的团队你可以选择，观察一下团队的工作、学习、交流就大概能够判断出来。
+
+好的团队离不开好的领导。一个好的领导不仅仅是在技术上、专业上给你指导，帮助你快速的进入这个行业，更重要的是好的领导对你言传身教的影响，和一个好的领导在一起工作，你可以通过他的言行举止学到别人无法教会你的东西，经过长时间的交往，他可以影响你的职业观、价值观、道德观，给你未来的工作打下良好的基础。
+
+       当时我的团队的领导是一位技术大牛李先静，是一个人品、技术俱佳的领导者，共事的两年多时间，我不但从他的身上学到了计算机理论知识，更重要的是我学会了如何做人、做一个合格的职业人。好的领导是一个团队的凝聚中心，可以无形的把一个团队融合起来，即便是这个团队不在了，团队成员仍会有良好的沟通与交流。
+
+
+
+（李先静的作品，由给我们入职培训教材总结而成，推荐）      
+
+
+       好的领导比较少，也很难遇到，但是如果你有幸遇到了，就好好珍惜。
+
+      还有一个比较重要的东西就是跳槽，对于现在的环境来说跳槽无可厚非，但是我还是建议大家找到一个合适的工作安安稳稳的做上几年，不要因为多了一点薪水就今天跳一下、明天跳一下，短时间来看你的薪水有所提高，但是你失去的更多，你没有形成一个完整的行业认识，也许你会说你都在同一个行业里跳，但是你半年之内连公司都还没有搞明白呢，哪里谈得上行业。况且跳槽直接反应就是你的职业忠诚度，我现在看简历，如果三四年换了三四个工作的连面试机会都没有，这只是普通的工作，你设想一下，一个公司找高层管理员工，你频繁跳槽的经历估计会吓跑一堆公司吧。
+
+      最后，外部的环境是很难改变的，我们能改变的是我们自己，调整好自己的心态，怀着“求知若饥、虚心若愚”的态度，努力提升自己。
+
+
+
+
+编者： 朱克锋 盒子支付程序员
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+[置顶]
+        Maven常用命令大全与pom文件讲解
+林炳文Evankaka原创作品。转载请注明出处http://blog.csdn.net/evankaka摘要：本文主要讲解是Maven使用过程中一些常用的命令，并配上图片说明，最后还讲了pom.xml文件的一些构造。一、Maven常用命令1.1、Maven 参数 -D 传入属性参数 -P 使用pom中指定的配置 -e 显示maven运行出错的信息 -o 离线执行命令,即不去远程仓库更新包 -X 显示maven允许的debug信息 -U 强制去远程参考更新snapshot包 例如 mvn install -Dmaven.test.skip=true -Poracle 其他参数可以通过mvn help 获取1.2、maven常用命令 1、mvn clean 说明: 清理项目生产的临时文件,一般是模块下的target目录 下面来看看目录：2、mvn package 说明: 项目打包工具,会在模块下的target目录生成jar或war等文件，如下运行结果。生成的文件 如下：3、mvn test 说明: 测试命令,或执行src/test/java/下junit的测试用例. 4、mvn install 说明: 模块安装命令 将打包的的jar/war文件复制到你的本地仓库中,供其他模块使用 -Dmaven.test.skip=true 跳过测试(同时会跳过test compile) 第一个红框是它的输入路径，也是本地仓库的路径文件如下 ：5、mvn deploy 说明: 发布命令 将打包的文件发布到远程参考,提供其他人员进行下载依赖 ,一般是发布到公司的私服，这里我没配置私服，所以就不演示了。1.3、maven-eclipse-plugin插件 1、mvn eclipse:eclipse 说明: 生成eclipse配置文件,导入到eclipse开放,如果是使用m2eclipse插件,则可以不用次命令.直接使用插件导入到eclipse进行开放 注:通过次命令生产的项目,需要在eclipse中配置M2_HOME的命令,指向你的本地仓库文件夹. 来看看生成的结果：。classpath就是字节码2、mvn eclipse:m2eclipse 生成eclipse配置文件,该配置文件需依赖eclipse 中有m2eclipse -DdownloadSources=true 下载依赖包的源码文件 -Declipse.addVersionToProjectName=true 添加版本信息到项目名称中 3、mvn eclipse:clean 清除eclipse的项目文件看看文件内容，没有project文件 了1.4、maven-jetty-plugin插件 1、mvn jetty:run 说明: 可以直接用jetty的服务器运行 注:此命令只适用于war的模块,即web模块. 2、mvn archetype:generate 说明: 模块创建命令, 执行命令后，会提示选择创建项目的模版，这里选18(maven-archetype-quickstart) 后面会提示你输入groupId(包存放的路径): eg:com.lin提示输入artifactId(模块名称)： eg:test-core 提示输入version(版本): 1.0.0-SNAPSHOT 提示输入package(指项目中基本的包路径): eg:com.lin提示确认,回车即可1.5、maven-release-plugin插件 说明: 发行版本,可与scm工具集成,来提供版本管理.不等同与版本控制.允许是必须有goal.两个常用的goal如下: 1、mvn release:clean 清理release操作是遗留下来的文件 2、mvn release:branch 说明: 创建分支,会在分支下创建执行的分支路径 -DbranchName=xxxx-100317 分支中的名称 -DupdateBranchVersions=false 是否更新分支的版本信息,默认为false -DupdateWorkingCopyVersions=false 是否更新主干的版本信息,默认为true 3、mvn release:prepare 创建标记,会有交互过程,提示tag中pom的版本及trunk下的新版本号,每个模块都会询问,默认是最小版本号+1 -Dtag = 4.4.0 将在tags创建该名称文件夹 -DdryRun=true 检查各项设置是否正确,可做测试用,会产生一些修改的配置文件信息. 命令: mvn release:perform 次命令会自动帮我们签出刚才打的tag，然后打包，分发到远程Maven仓库中 1.6、Maven站点报表 1、mvn project-info-reports:dependencies 生成项目依赖的报表 2、mvn dependency:resolve 查看依赖查看项目依赖情况 3、mvn dependency:tree 打印出项目的整个依赖树 4、mvn dependency:analyze帮助你分析依赖关系, 用来取出无用, 重复依赖的好帮手 5、mvn install -X 追踪依赖的完整轨迹 6、生命周期 resource->compile->process-classes->process-test-resources->test-compile->test->prepare-package->package resources:resources 绑定在resource处理阶段, 用来将src/main/resources下或者任何指定其他目录下的文件copy到输出目录中 resources:testResources 将test下的resources目录或者任何指定其他目录copy到test输出目录下 compiler:testCompile 将测试类编译(包括copy资源文件) surefire:test 运行测试用例 jar:jar 打jar包二、各种范围compile（编译范围）compile是默认的范围；如果没有提供一个范围，那该依赖的范围就是编译范围。编译范围依赖在所有的classpath中可用，同时它们也会被打包。provided（已提供范围）provided依赖只有在当JDK或者一个容器已提供该依赖之后才使用。例如，如果你开发了一个web应用，你可能在编译classpath中需要可用的Servlet API来编译一个servlet，但是你不会想要在打包好的WAR中包含这个Servlet API；这个Servlet API JAR由你的应用服务器或者servlet容器提供。已提供范围的依赖在编译classpath（不是运行时）可用。它们不是传递性的，也不会被打包。runtime（运行时范围）runtime依赖在运行和测试系统的时候需要，但在编译的时候不需要。比如，你可能在编译的时候只需要JDBC API JAR，而只有在运行的时候才需要JDBC驱动实现。test（测试范围）test范围依赖 在一般的 编译和运行时都不需要，它们只有在测试编译和测试运行阶段可用。system（系统范围）system范围依赖与provided类似，但是你必须显式的提供一个对于本地系统中JAR文件的路径。这么做是为了允许基于本地对象编译，而这些对象是系统类库的一部分。这样的构件应该是一直可用的，Maven也不会在仓库中去寻找它。。如果你将一个依赖范围设置成系统范围，你必须同时提供一个systemPath元素。注意该范围是不推荐使用的（你应该一直尽量去从公共或定制的Maven仓库中引用依赖）。三、POM文件讲解       POM全称是Project Object Model，即项目对象模型。pom.xml是maven的项目描述文件，它类似与antx的project.xml文件。pom.xml文件以xml的 形式描述项目的信息，包括项目名称、版本、项目id、项目的依赖关系、编译环境、持续集成、项目团队、贡献管理、生成报表等等。总之，它包含了所有的项目 信息。3.2.1. pom.xml的基本配置<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.lin.learning</groupId>
+  <artifactId>maven-hellowrold</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>maven-hellowrold</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+</project>modelVersion 描述这个POM文件是遵从哪个版本的项目描述符。groupId 针对一个项目的普遍唯一识别符。通常用一个完全正确的包的名字来与其他项目的类似名字来进行区分（比如：org.apache.maven)。artifactId 在给定groupID 的group里面为artifact 指定的标识符是唯一的 ， artifact 代表的是被制作或者被一个project应用的组件(产出物)。version 当前项目产生的artifact的版本以上4个元素缺一不可，其中groupId, artifactId, version描述依赖的项目唯一标志。1. pom.xml文件结构<project>
+<modelVersion>4.0.0</modelVersion>
+<!- The Basics 项目的基本信息->
+<groupId>...</groupId>
+<artifactId>...</artifactId>
+<version>...</version>
+<packaging>...</packaging>
+<dependencies>...</dependencies>
+<parent>...</parent>
+<dependencyManagement>...</dependencyManagement>
+<modules>...</modules>
+<properties>...</properties>
+<!- Build Settings 项目的编译设置->
+<build>...</build>
+<reporting>...</reporting>
+<!- More Project Information 其它项目信息 ->
+<name>...</name>
+<description>...</description>
+<url>...</url>
+<inceptionYear>...</inceptionYear>
+<licenses>...</licenses>
+<organization>...</organization>
+<developers>...</developers>
+<contributors>...</contributors>
+<!-- Environment Settings ->
+<issueManagement>...</issueManagement>
+<ciManagement>...</ciManagement>
+<mailingLists>...</mailingLists> 
+<scm>...</scm>
+<prerequisites>...</prerequisites>
+<repositories>...</repositories>
+<pluginRepositories>...</pluginRepositories>
+<distributionManagement>...</distributionManagement>
+<profiles>...</profiles>
+</project>project是pom.xml的根节点，至于其它元素请参考POM Reference2.、POM很重要的3个关系POM有3个很重要的关系：依赖、继承、合成。2.1. 依赖关系<dependencies>
+<dependency>
+<groupId>junit</groupId>
+<artifactId>junit</artifactId>
+<version>4.0</version>
+<type>jar</type>
+<scope>test</scope>
+<optional>true</optional>
+</dependency>
+...
+</dependencies>如果想依赖一个maven库中没有的一个jar包，方法很简单，就是先将此jar包使用以下的命令安装到本地maven库中：mvn install:install-file -Dfile=my.jar -DgroupId=mygroup -DartifactId=myartifactId -Dversion=1再把依赖关系加进去即可。2.2. 继承关系另一个强大的变化, maven带来的是项目继承。2.2.1. 定义父项目<project>
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.mygroup </groupId>
+<artifactId>my-parent</artifactId>
+<version>2.0</version>
+<packaging>pom</packaging>
+</project>packaging 类型，定义值为 pom用于定义为parent和合成多个项目。 当然我们创建的maven项目的pom都继承maven的super pom， 如果想看项目(父或子)的完全的pom结构，可以运行：mvn help:effective-pom就可以了。2.2.2. 子项目配置<project>
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.mygroup </groupId>
+<artifactId>my-child-project</artifactId>
+<parent>
+<groupId>com.mygroup </groupId>
+<artifactId>my-parent</artifactId>
+<version>2.0</version>
+<relativePath>../my-parent</relativePath>
+</parent>
+</project>2.3. 合成关系一个项目有多个模块，也叫做多重模块，或者合成项目。 如下的定义：<project>
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.mygroup </groupId>
+<artifactId>my-parent</artifactId>
+<version>2.0</version>
+<modules>
+<module>my-child-project1<module>
+<module>my-child-project2<module>
+</modules>
+</project>其中module 描述的是子项目的相对路径 。2.4. dependencyManagement和Profile        Maven 还我们提供了一个dependencyManagement元素，用来提供了一种方式来统一依赖版本号。dependencyManagement元素一 般用在顶层的父POM。使用pom.xml中的dependencyManagement元素能让你在子项目中引用一个依赖而不用显式的列出版本号。 Maven会沿着父子层次向上走，直到找到一个拥有dependencyManagement元素的项目，然后它就会使用在这个 dependencyManagement元素中指定的版本号，这样就解决了修改依赖版本号不完全的问题。        Maven的Profile元素可以为一个特殊的环境自定义一个特殊的构建，使得不同环境间构建的可移植性成为可能。比如要使用 production profile来运行mvn install，你需要在命令行传入-Pproduction参数，这里production是profile的id。要验证production profile覆盖了默认的Compiler插件配置，可以像这样以开启调试输入(-X) 的方式运行Maven。    
+        
+版权声明：本文为博主林炳文Evankaka原创文章，转载请注明出处http://blog.csdn.net/evankaka
+
+Maven学习笔记（二）——Maven目录结构、pom.xml解析&基础命令（一）
+
+
+
+
+前言
+
+
+
+
+上篇blog学习了Maven的下载与安装，有了家伙就可以放手去干活了，所以本篇blog我们开始学习Maven的一些基本使用方法。
+
+
+
+
+Maven的约定目录结构
+
+
+
+
+使用Maven管理项目的话，那么项目的结构目录务必要按照Maven约定的目录结构来创建项目，我们在官方文档中可以看到Maven提供的目录结构图：
+
+
+简单介绍一下每个目录下应当存放的文件类型，在官网中可以看到标准的Introduction to the Standard Directory Layout，如下图所示：
+
+
+显而易见，每个目录下应当放什么样类型的文件都说的很清楚了，一般情况下常用的是以下4个目录，
+src/main/java  存放项目的java类源文件，即：Xxx.java
+src/main/resources  存放项目的资源文件，如spring、mybatis的配置文件等等
+src/test/java  存放项目的用于测试的java类源文件，即：XxxTest.java
+src/test/resources  存放项目的测试相关的资源文件
+在上面的上面的图中我们还看到了一个pom.xml配置文件，这个文件很重要，它是Maven的核心配置文件，我们的项目版本，jar包依赖等等都以标签的形式保存在了这个配置文件中，在官方文档中也可以具体查看关于这个文件的介绍:
+
+
+我在上图中标记出来的4个元素是必须配置的4个基础元素，至于为什么，我们可以在Introduction to the POM中看一下pom.xml的Minimal POM：
+
+
+显而易见，已经说的很清楚了，the minimum requirement for a POM的配置，缺一不可。如果懒得看那一大段英文的原版解释，那么我下面就简要的解释一下这4个元素的含义。
+modelVersion ——描述这个pom.xml文件是遵从哪个版本的项目描述符，maven3应当设置成4.0.0
+groupId ——指明了创建项目的组织的唯一标识符，一般就是包名了
+artifactId ——指的是项目中的主要的模块名（primary artifact），默认命名方式是“项目名-模块名”
+version ——指的是项目模块的版本，通常使用的是Maven的快照版本
+
+
+Maven的目录结构清楚了之后，我们现在就通过手动创建文件夹的方式去创建一个Maven结构的项目并尝试编译运行。不过在此之前我们需要一个包含文件头的pom.xml的模板文件，在哪找呢？很简单，现在许多开源项目都是通过maven去打包的，比如mybatis，我们找到mybatis的jar包，解压后可以在如下目录中看到pom.xml文件：
+
+
+把pom.xml拷贝出来，删除掉多余的部分，只留一个文件头即可：
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+</project>
+
+好了，现在我们就可以根据上面介绍的Maven目录和pom.xml的必备元素来手动构建一个基于Maven的java项目了。
+
+
+
+
+创建基于Maven的Java项目
+
+
+
+
+首先我们依据Maven约定的目录结构创建文件夹以及pom.xml文件，如下图所示，首先在src/main/java目录下创建我们的java类源文件：
+
+
+代码很简单，返回一个字符串：
+
+package com.wl.maven01.model;
+
+public class HelloWorld{
+	public String sayHello(){
+		return "Hello World!";
+	}
+}
+接下来在src/test/java目录下创建用于测试的测试类java源文件：
+
+i
+
+主要用于测试HelloWorld类的sayHello方法的返回值与断言是否一致，代码如下：
+
+package com.wl.maven01.model;
+
+import org.junit.*;
+import org.junit.Assert.*;
+
+public class HelloWorldTest{
+	@Test
+	public void testHello(){
+		Assert.assertEquals("Hello World!",new HelloWorld().sayHello());
+	}
+	
+}
+
+
+这里引入了junit的jar包，Maven的一大特点就是通过pom.xml去管理jar包以及相关依赖，我们只需要在配置文件中写入依赖的相关配置，那么Maven就会自动从Maven中央仓库中将我们的jar包下载到本地仓库，关于依赖和仓库的概念后面再细说，这里我们只需要知道我们的Maven项目不必再手动将jar包add到项目的classpath中，而是在pom.xml中声明即可，Maven会自动下载到本地。下面看看我们的pom.xml文件：
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.wl.maven01</groupId>
+  <artifactId>maven-test</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+    </dependency>
+  </dependencies>
+</project>
+
+可以看到我们通过<dependency>元素来声明了我们的依赖jar包，当我们编辑pom文件后保存的时候Maven就会自动去下载jar包了，这也是Maven最主要的优点之一。配置文件和java文件都写好之后，我们就可以通过Maven去编译、测试以及打包我们项目了。
+
+
+
+
+编译（compile）、测试（test）和打包（package）
+
+
+
+
+首先是编译项目，我们在命令行下切换到我们Maven项目的根路径下：
+
+
+
+
+通过Maven命令mvn compile编译项目：
+
+
+
+
+在上图中我们可以看到Compiling 1 source file to xxx BUILD SUCCESS字样，即编译了一个源文件到D盘的Maven01/target/classes目录下，下面我们再观察一下之前的Maven项目目录：
+
+
+和Maven的输出信息一致，确实生成了target文件夹，这就是Maven规定的用于存放编后的字节码文件的目标文件夹，同样的在意料之中，我们编译后的字节码文件也在这个target文件夹下，如下图所示我们可以看到编译后的class文件：
+
+
+
+
+熟悉了Maven的第一个命令之后，我们可以再进行测试，即通过mvn test命令来对运行我们Maven项目的单元测试：
+
+
+如上图所示，Running com.wl.maven01.model.HelloWorldTest BUILD SUCCESS字样，显而易见的已经成功运行了我们的测试类。但是在target文件夹下又多出了2个文件夹：
+
+
+surfire-reports目录用于存放生成的测试报告，而test-classes同理肯定是用于存放测试类编译后的字节码文件了。
+
+
+最后我们再看一下打包命令——mvn package：
+
+
+如上图所示，Building jar：xxx.jar BUILD SUCCESS，很明显打包成功，打好的jar包在D:/Maven01/target根目录下，我们可以在指定的目录中看到它：
+
+
+
+
+
+
+总结
+
+
+
+
+本篇blog介绍了Maven的约定目录结构以及Maven的三个基本命令——compile、test和package，下一篇blog将继续介绍Maven的部分命令以及Maven的一些核心概念。
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+搭建分布式持续集成/持续交付平台
+    使用docker有一段时间了，深深被其吸引，我想这也是这两年来docker发展迅速的原因吧。
+效果：根据jenkins平台任务的负载动态启动slave来执行job任务。
+
+
+步骤：
+1.首先需要有一个搭建好的jenkins（安装docker plugin插件）平台，在其上面安装好docker；
+2.设置docker的启动参数
+DOCKER_OPTS="-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"
+
+2.通过buildfile编写一个带ssh,jdk的系统（或直接docker pull evarga/jenkins-slave），并创建N个容器；
+3.在jenkins平台中根据下面的参考链接去配置docker即可。
+
+
+
+
+参考：https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+我的openwrt学习笔记（二十二）：网络时间同步
+在实际的LINUX 开发中，网络设备都有工作时间，一般需要进行网络时间同步。
+一般采用NTP服务器进行同步。
+NTP（Network Time Protocol，网络时间协议）是用来使网络中的各个计算机时间同步的一种协议。它的用途是把计算机的时钟同步到世界协调时UTC，其精度在局域网内可达0.1ms，在互联网上绝大多数的地方其精度可以达到1-50ms。
+它可以使计算机对其服务器或时钟源（如石英钟，GPS等等）进行时间同步，它可以提供高精准度的时间校正，而且可以使用加密确认的方式来防止恶毒的协议攻击。
+对嵌入式设备而言，NTP方式关键在于选择哪个NTP服务器，因为有的NTP服务器有时候会出现些问题，如无法访问！
+ 
+本文介绍一种利用HTTP header信息的方法，需要借助curl,curl是什么后面会进行分析阐述。
+ 需要一定的shell http知识哦！
+
+
+
+
+linux@ubuntu:~/http/testcurl$ curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F': ' '/Date: /  {print $2}'
+Mon, 24 Aug 2015 11:19:25 GMT
+linux@ubuntu:~/http/testcurl$ date -s "curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F': ' '/Date: /  {print $2}'"
+date: invalid date `curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F\': \' \'/Date: /  {print }\''
+linux@ubuntu:~/http/testcurl$ date -s "`curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F': ' '/Date: /  {print $2}'`"
+date: cannot set date: Operation not permitted
+Mon Aug 24 19:20:00 CST 2015
+linux@ubuntu:~/http/testcurl$ sudo date -s "`curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F': ' '/Date: /  {print $2}'`"
+[sudo] password for linux: 
+Sorry, try again.
+[sudo] password for linux: 
+Mon Aug 24 19:20:09 CST 2015
+
+
+
+
+ 
+ 
+换个国内的baidu.com吧，再来测试下。
+
+
+
+
+linux@ubuntu:~/http/testcurl$ sudo date -s "`curl -sI www.baidu.com| awk -F': ' '/Date: /  {print $2}'`"
+[sudo] password for linux: 
+Wed Aug 26 13:48:49 CST 2015
+linux@ubuntu:~/http/testcurl$ curl -sI www.baidu.com
+HTTP/1.1 200 OK
+Date: Wed, 26 Aug 2015 05:49:09 GMT
+Content-Type: text/html; charset=utf-8
+Connection: Keep-Alive
+Vary: Accept-Encoding
+Set-Cookie: BAIDUID=5B78DC1DCE22807CBA79CEBA91B125CB:FG=1; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: BIDUPSID=5B78DC1DCE22807CBA79CEBA91B125CB; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: PSTM=1440568149; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: BDSVRTM=0; path=/
+Set-Cookie: BD_HOME=0; path=/
+Set-Cookie: H_PS_PSSID=16415_1428_14602_12868_16799_16904_17000_17004_12835_15582_12338_13932_16950_16968_16866; path=/; domain=.baidu.com
+P3P: CP=" OTI DSP COR IVA OUR IND COM "
+Cache-Control: private
+Cxy_all: baidu+005986c4967689962c9f01e2f019a0d3
+Expires: Wed, 26 Aug 2015 05:49:02 GMT
+X-Powered-By: HPHP
+Server: BWS/1.1
+X-UA-Compatible: IE=Edge,chrome=1
+BDPAGETYPE: 1
+BDQID: 0xfc0fed0200000131
+BDUSERID: 0
+ 
+linux@ubuntu:~/http/testcurl$ curl -sI www.baidu.com| awk -F': ' '/Date: /  {print $2}
+> ^C
+linux@ubuntu:~/http/testcurl$ curl -sI www.baidu.com| awk -F': ' '/Date: /  {print $2}'
+Wed, 26 Aug 2015 05:49:31 GMT
+
+
+
+
+
+
+
+
+
+
+ 
+       MT 7688 Openwrt 中完全可以使用这种方式进行网络时间的同步！
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+模板维护-子模板解析
+    继上篇文章分析了关于主模板的流程，现在来分析一下关于子模板的分析流程：
+
+
+
+第一步：
+定义一个MainDatatable，然后为它分配四个字段：
+Templetcatecode 站位详细2. Templetname 枚举名称 3. PlACE 编码位置4.EXPRESSION编码表达式
+第二步：
+判断stemplate（模板）sname（名称站位）STRAIN（车型站位）senum（模板说明）
+1.sname（名称站位）不为空
+把相应的数值加到MainDatatable中
+
+
+
+
+
+
+
+然后创建 物资名称表， 添加两个字段 ID和 NAME
+取模板说明中 第一个{}中的数据，进行循环赋值 形式如下图：
+
+
+
+
+
+
+
+然后将 物资名称表 加到MainDatatable中
+ 
+2.STRAIN（车型站位）不为空（原理同上）
+把相应的数值加到MainDatatable中
+
+
+
+
+
+
+然后创建 车型表，添加两个字段 ID和 NAME
+
+取模板说明中的数据，进行循环赋值 形式如下图：
+
+
+
+
+
+
+
+然后将 车型表 加到MainDatatable中
+ 
+3.stemplate（模板）不为空，
+由于子模板的形式比较多，先写出一种形式的解析过程。
+解析子模板：
+1::[直径(mm),S*100,2,4] [全长(mm),S]×[刃长(mm),S]
+第一步：
+如果子模板中有 ：：这样的符号 就将其去除 
+[直径(mm),S*100,2,4] [全长(mm),S]×[刃长(mm),S]
+第二步：
+将其按照 ] 符号转化为数组形式的数据 代码如下：
+string[] Arrstemplates = strstemplate.Split(']');
+第三步：
+实例化stru_tmplcontent，形成数组，在下面的循环解析过程中，为其赋值。
+循环解析数组中的数据（大循环 int i = 0; i < Arrstemplates.Length - 1; i++）。
+比如第一条数据：[直径(mm),S*100,2,4]
+这次是以 ，符号为分隔符 代码如下
+string[] arrItem = Arrstemplates[i].Split(',');
+第四步：
+对上面的数据长度进行判断：
+如果大于1 则将数组中[1]的值赋给stru_tmplcontent[0]的strMS属性。
+否则 stru_tmplcontent[0]的strMS属性直接赋值”F”
+如果大于2 则将数组中[2]的值赋给stru_tmplcontent[0]的strMS属性。
+如果等于3 则将数组中[2]的值赋给stru_tmplcontent[0]的strMS属性。
+如果大于3 则将数组中[3]的值赋给stru_tmplcontent[0]的strMS属性。
+上面依次为strMS赋值结束后 最终结果 stru_tmplcontent[0].strMS =  S*100,2,4
+
+第五步：
+在大循环中定义一个小循环（int j = 0; j < arrItem.Length; j++）。
+第六步：
+循环判断 arrItem[0]  ”[直径(mm),S*100,2,4”  将其拆分 赋值
+stru_tmplcontents[0].strStart = “”
+stru_tmplcontents[0].smbmc =直径(mm)
+stru_tmplcontents[0].smblx = S  （包括S和M）
+stru_tmplcontents[0].smboper=*（包括加减乘除运算符）
+stru_tmplcontents[0].nmbxs=100
+stru_tmplcontents[i].nstart=2
+stru_tmplcontents[i].nend = 4
+ 
+综上所述，这是一次嵌套循环，只是解析下面信息
+[直径(mm),S*100,2,4] [全长(mm),S]×[刃长(mm),S]中的 [直径(mm),S*100,2,4]
+还需要三次循环才能将所有信息全部解析。
+解析完毕 会把所有信息依次赋给stru_tmplcontent数组。
+ 
+然后对stru_tmplcontent数组进行循环判断
+判断 stru_tmplcontents的属性nstart 和nend 是否为空 代码如下
+（stru_tmplcontents[i].nstart + 
+"," + stru_tmplcontents[i].nend != ","）
+
+
+将数组中的信息依次加到MainDatatable中，如下图所示：
+
+
+
+对数组属性 smbmc和smblx 进行判断 是否是枚举类型
+如果是枚举类型  为其创建模板名称命名的Datatable，然后创建两个字段 ID， NAME
+对smbmc属性进行判断，判断属性是否存在英文”(“和中文”（”  然后为名称后面加上 ：
+在模板说明中去除 ”名称：”，将余下部分进行数组转化，为上面新创建的datatable进行循环赋值。
+ 
+最后把Datatable加到MainDatatable中，如图所示（模板名称是粒度）：
+
+
+
+
+
+
+后续有关于模板测试的分析流程，敬请期待。
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+我的openwrt学习笔记（十七）：openwrt uboot.bin导出
+我的openwrt学习笔记（十七）：openwrt uboot.bin导出
+Openwrt 烧写应用程序.BIN 是靠uboot.bin的，为了防止uboot.bin被破坏，无法恢复的问题，可以把uboot.bin从FLASH导出来，方法有很多，但是需要借助编程器等软件硬件！
+ 
+这里提供一个新的方法，导出uboot.bin.
+ 
+
+
+
+
+root@OpenWrt:/tmp# cat /proc/mtd 
+dev:    size   erasesize  name
+mtd0: 00030000 00010000 "u-boot"
+mtd1: 00010000 00010000 "u-boot-env"
+mtd2: 00010000 00010000 "factory"
+mtd3: 007b0000 00010000 "firmware"
+mtd4: 006bfd4b 00010000 "rootfs"
+mtd5: 00300000 00010000 "rootfs_data"
+root@OpenWrt:/tmp# dd if=/dev/mtdblock0 of=/tmp/uboot.bin
+384+0 records in
+384+0 records out
+root@OpenWrt:/tmp# ln -s /tmp /www/tmp
+root@OpenWrt:/tmp# ls -l
+-rw-r--r--    1 root     root             6 Jul 10 11:42 TZ
+-rw-r--r--    1 root     root             0 Jul 10 11:42 dhcp.leases
+drwxr-xr-x    2 root     root            40 Jul 10 11:42 dnsmasq.d
+drwxr-xr-x    2 root     root            60 Jul 10 11:42 etc
+drwxr-xr-x    2 root     root            40 Jan  1  1970 extroot
+drwxr-xr-x    2 root     root            60 Jul 10 11:45 hosts
+drwxr-xr-x    2 root     root            40 Jan  1  1970 lock
+drwxr-xr-x    2 root     root            80 Jul 10 11:42 log
+-rw-------    1 root     root         56427 Jul 10 11:46 luci-indexcache
+drwxr-xr-x    2 root     root           620 Jul 10 11:55 luci-modulecache
+drwx------    2 root     root            80 Jul 10 11:48 luci-sessions
+drwxr-xr-x    2 root     root            40 Jan  1  1970 overlay
+-rw-r--r--    1 root     root            32 Jul 10 11:45 resolv.conf
+-rw-r--r--    1 root     root             0 Jul 10 11:42 resolv.conf.auto
+drwxr-xr-x    3 root     root           240 Jul 10 11:45 run
+drwxr-xr-x    2 root     root            60 Jul 10 11:42 state
+drwxr-xr-x    2 root     root            80 Jan  1  1970 sysinfo
+lrwxrwxrwx    1 root     root             4 Jul 10 11:58 tmp -> /tmp
+-rw-r--r--    1 root     root        196608 Jul 10 11:57 uboot.bin
+root@OpenWrt:/tmp# md5sum uboot.bin 
+db70ae5ae66f6efbb7f334e71b95f1d0  uboot.bin
+
+
+
+
+ 
+
+
+
+
+剩下的就可以利用scp命令上传出该uboot.bin了
+
+
+
+
+ 
+ 
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+git clone permission denied(publickey)
+创建ssh密钥后，从github clone仓库到本地出现permissoin denied(publickey)错误。
+参考官方文档（generating-ssh-keys）的方法来添加ssh密钥到ssh-agent：
+
+连接到ssh-agent：
+
+ssh-agent -s添加私钥：
+
+
+ssh-add ~/.ssh/id_rsa
+
+
+出现Could not open a connection to your authentication agent错误。
+需要在连接到ssh-agent前，执行：
+
+ssh-agent bash这样就能成功的clone了：$ git clone git@github.com:dnawym/Concurrency.git
+Cloning into 'Concurrency'...
+Warning: Permanently added the RSA host key for IP address '192.30.252.131' to the list of known hosts.
+remote: Counting objects: 35, done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 35 (delta 10), reused 34 (delta 9), pack-reused 0
+Receiving objects: 100% (35/35), 3.32 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (10/10), done.
+Checking connectivity... done.
+
+
+
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+操作系统 - 程序不会按照特定的顺序回收子进程
+eg1：
+// waitpid1.c
+// 2015-08-26    Lucifer Zhang
+// Using the waitpid function to reap zombie children in no
+// particular order.
+#include "csapp.h"
+#define N 2
+
+int main() 
+{
+    int status, i;
+    pid_t pid;
+
+    /* Parent creates N children */
+    for (i = 0; i < N; i++)                       //line:ecf:waitpid1:for
+	if ((pid = Fork()) == 0)  /* child */     //line:ecf:waitpid1:fork
+	    exit(100+i);                          //line:ecf:waitpid1:exit
+
+    /* Parent reaps N children in no particular order */
+    while ((pid = waitpid(-1, &status, 0)) > 0) { //line:ecf:waitpid1:waitpid
+	if (WIFEXITED(status))                    //line:ecf:waitpid1:wifexited
+	    printf("child %d terminated normally with exit status=%d\n",
+		   pid, WEXITSTATUS(status));     //line:ecf:waitpid1:wexitstatus
+	else
+	    printf("child %d terminated abnormally\n", pid);
+    }
+
+    /* The only normal termination is if there are no more children */
+    if (errno != ECHILD)                          //line:ecf:waitpid1:errno
+	unix_error("waitpid error");
+
+    exit(0);
+}        第15行，父进程创建N个子进程，在第16行，每个子进程以一个唯一的退出状态退出。在第19行，父进程用waitpid作为while循环的测试条件，等待它所有的子进程终止，因为第一个参数是-1，所以对waitpid的调用会阻塞，知道任意一个子进程终止。在每个子进程终止时，对waitpid的调用会返回，返回值为该子进程的非零PID。第20行检查子进程的退出状态。如果子进程是正常终止的，在此是以调用exit函数终止的，那么父进程就提取出退出状态，把它输出到stdout上。
+        当回收了所有的子进程之后，再调用waitpid就返回-1，并且设置errno为ECHILD。第28行检查waitpid函数是正常终止的，否则就输出一个错误消息。
+        测试：
+
+        注意，程序不会按照特定的顺序回收子进程。子进程回收的顺序是这台特定的计算机的属性。在另一个系统上，甚至在同一个系统上再次执行一次，两个子进程都可能以相反的顺序被回收。上面的测试结果也说明了这一点。这是非确定性的（nondeterministic）行为的一个示例，这种非确定性行为使得对并发进行推理非常困难。
+    下面这个例子做了简单的改变，消除了不确定性，按照父进程创建子进程的相同顺序来回收这些子进程。
+
+
+eg2：
+// waitpid1.c
+// 2015-08-26    Lucifer Zhang
+// Using waitpid to reap zombie children in the order they were created.
+
+#include "csapp.h"
+#define N 2
+
+int main() 
+{
+    int status, i;
+    pid_t pid;
+
+    /* Parent creates N children */
+    for (i = 0; i < N; i++)                       //line:ecf:waitpid1:for
+	if ((pid = Fork()) == 0)  /* child */     //line:ecf:waitpid1:fork
+	    exit(100+i);                          //line:ecf:waitpid1:exit
+
+    /* Parent reaps N children in no particular order */
+    while ((pid = waitpid(-1, &status, 0)) > 0) { //line:ecf:waitpid1:waitpid
+	if (WIFEXITED(status))                    //line:ecf:waitpid1:wifexited
+	    printf("child %d terminated normally with exit status=%d\n",
+		   pid, WEXITSTATUS(status));     //line:ecf:waitpid1:wexitstatus
+	else
+	    printf("child %d terminated abnormally\n", pid);
+    }
+
+    /* The only normal termination is if there are no more children */
+    if (errno != ECHILD)                          //line:ecf:waitpid1:errno
+	unix_error("waitpid error");
+
+    exit(0);
+}
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+java 面向對象的資料統計
+
+多态
+
+　　所谓多态，就是父类型的引用可以指向子类型的对象，或者接口类型的引用可以指向实现该接口的类的实例。
+
+　　关于接口与实现接口的类之间的强制类型转换方式与父类和子类之间的强制类型转换方式完全一样。（见下面的多态文章链接）。
+
+
+
+
+
+
+本博客相关文章
+
+
+　　接口：http://www.cnblogs.com/mengdd/archive/2012/08/22/2650309.html
+
+　　多态：http://www.cnblogs.com/mengdd/archive/2012/12/25/2832288.html
+
+ 
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+外来人员如何发起流程与参与内部流程？CCFlow中Guest流程说明
+
+定义：分组织结构内的人员参与的流程，称为外部用户参与流程也叫客户参与流程。
+应用背景：我们给学校设计一个流程，学校教师是内部用户，是组织结构内的用户，学生就是外部用户。如果我们制作一个学生请假流程，一条流程中有多个节点是学生参与的。这样的节点是学生参与的，我们就称为该流程是客户参与流程，学生参与的节点就是外部用户参与节点。 这种应用场景非常之多，比如我们为税务局设计一个系统税务系统工作人员是内部用户，纳税人就是外部用户。 我们为企业设计一个erp ，企业内部的组织机构人员是内部用户，供应商、客户就是外部用户。 如果一个流程中的一个或者一个以上的节点是由外部用户参与的，我们就称该流程是外部用户参与流程，客户参与的节点就是外部用户执行的节点。
+提供的外部用户执行的api:
+BP.WF.Dev2InterfaceGuest.Port_Login(stuNo, stuName);
+源码中有提供的demo：CCFlow/SDKFlowDemo/GuestFlow/Login.aspx. 
+由此页面登录成功，操作的流程对应为：SDK流程/055.学生请假流程（Guest流程）。
+关于Guest用户:
+如果有具有外部用户参与流程的应用环境中，您需要在Port_Emp的用户信息表中预置一个Guest的用户，该用户具备最低的操作权限，最低的查询权限。 他是一个模拟用户，就是说当一个外部用户登录时(比如学号为201001003，姓名为:张三)的用户登录时, 需要调用BP.WF.Dev2InterfaceGuest.Port_Login() 接口，从而记录外来用户编号，同时也让Guest 这个内部账号登陆了。这样cc就存储了两份信息。该同学在系统中具备两个身份一个是他自己，另外一个是Guest
+ 内部模拟信息。
+
+Guest用户执行节点如果该流程是外部参与流程，就在流程属性里做上标记，如果流程的一个节点是外部用户处理的节点，那就在该节点上做好设置，现在他就会流转到该外部用户身上。
+添加guest信息如下：
+
+
+
+
+INSERT INTO Port_Dept (No,Name,ParentNo) VALUES('7','外来人员部门','1');
+INSERT INTO Port_Station (No,Name,StaGrade) VALUES('12','外来人员岗','3') ;
+INSERT INTO Port_Emp (No,Name,Pass,FK_Dept) VALUES('Guest','外来人员','pub','7') ;
+INSERT INTO Port_EmpDept (FK_Emp,FK_Dept) VALUES('Guest','7') ;
+INSERT INTO Port_EmpStation (FK_Emp,FK_Station) VALUES('Guest','12') ;
+
+
+复制代码
+流程设计器中的设置与demo修改（有的demo可能存在错误）：
+编号055流程为例：
+开始节点，节点属性-节点访问规则，使用默认第一个规则，并且绑定岗位--外来人员岗。（与上面添加的guest岗位名称一致即可。）
+第二个节点，打开节点属性，访问规则设置内容中填写：SysSendEmps  。或者其他的表单字段。
+如果不使用此节点访问规则，需要其他设置，具体的节点访问规则详细说明与配置，请看http://ccbpm.mydoc.io/?v=5404&t=17907 。
+第三个节点，节点属性-节点访问规则，使用08.与开始节点处理人相同。
+
+以上设置好之后，点击流程设计器上方的保存按钮，再点击运行，即可通过Guest发起流程。可通过guest登录，查看相关的待办信息。
+Guest的登录密码默认为123或者pub，具体可以查看数据库 Port_Emp表。
+
+也可以通过demo：CCFlow/SDKFlowDemo/GuestFlow/Login.aspx. 调用BP.WF.Dev2InterfaceGuest.Port_Login(stuNo, stuName)接口实现登录发起流程。
+需要在demo中Login.aspx页面中，在设置跳转url的地方添加一个&符号。新版本中，会将这地方添加，由此造成的困扰，感到抱歉。
+
+可以直接复制。
+string url = "/WF/MyFlow.aspx?FK_Flow=055&FK_Node=05501&GuestNo=" + stuNo + "&GuestName=" + stuName;
+            url += "&SysSendEmps=yangyilei";  
+
+
+
+
+如果您对CCFlow感兴趣，请关注我们微信：
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+【Git分布式版本控制系统】远程仓库Github
+作者：郭孝星 
+微博：郭孝星的新浪微博 
+邮箱：allenwells@163.com 
+博客：http://blog.csdn.net/allenwells 
+Github：https://github.com/AllenWells
+
+Girhub提供代码托管服务，它的特色在于可以非常方便地从另外一个项目进行分支。
+
+一 为何要深入Github
+
+Github，Build software better, together.
+
+我们应该去深入了解Github，不仅仅是因为它方便易用的代码托管服务，更多的是因为在Github上存在非常之多的优质开源框架，这些开源框架使我们学习与工作的得力助手。
+我们可以从哪几个角度使用Github来提升自己？
+
+入门级：从别人的框架Demo入手作代码分析
+实践级：重构别人框架的代码，做代码优化
+提高级：创建自己可用的框架，提升项目开发效率
+高手级：快速构建大型应用，完善敏捷开发
+大师级：构建通用的框架，为常见问题提供解决通用解决方案
+
+那面对茫茫多的框架我们该怎么入手呢，因为笔者主要从事的是Android的开发，这里就从Android的开源框架说起。
+首先推荐一个Github上的帖子，它针对Android的开源项目做了细致的匪类和总结。值得参考。
+Android开源项目汇总
+
+其实到这里我们会发现上面帖子里的项目还是很多，我们精力有限，有没有更精简的总结呢？
+答案是肯定的，我们从一个应用的设计的角度，它无非可以分为一下几个主要的模块：
+
+网络通信
+图片管理
+数据存储
+组件通信
+数据处理
+
+下面我们就针对这几个模块推荐几个最为常用的开源框架。
+网络通信
+Volley（Volley给出的是Google官网地址，没有vpn可能连不上）
+okhttp
+图片管理
+glide
+fresco
+Android-Universal-Image-Loader
+picasso
+数据存储
+ActiveAndroid
+greenDAO
+组件通信
+EventBus
+otto
+数据处理
+fastjson
+对开源框架的研究不求多但求精，做到举一反三，笔者后续的文章也会针对上述提到的框架进行用法分析和源码分析。
+二 开始使用Github
+2.1 注册Github账号
+登录Github官方网站，注册Github账号，如下所示：
+
+2.2 创建GIthub仓库
+
+仓库（repository）即版本库，我们可以把它理解成一个目录，这个目录里面的所有文件都会被Git管理起来，Git会跟踪每个文件的修改、删除等操作，以便任何时刻都可以追踪历史，或者在将来某个时刻可以还原。
+
+当我们在Github上注册了账号之后，我们就可以创建仓库了，Github仓库的创建非常简单如下所示：
+
+创建界面如下所示：
+
+创建完成后的仓库界面如下所示：
+
+2.3 配置Git
+2.3.1 配置公钥
+
+公钥提供了一种身份验证机制，当我们把生产的公钥添加到我们的Github账户中，我们就在操作中无需再输入密码。
+
+1 创建一个公私钥对
+ssh-keygen -t rsa -C "allenwells@163.com"
+
+创建完成后生成了两个文件如下所示：
+
+2 添加ssh_key（私钥）到SSH
+ssh-add ssh_key
+ssh_key内容如下所示：
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEArUA0e1Ho6sAN4YTBELvO6xBgbYg5yJYCblvOnd808h86XWtT
+bB9B6AW4cDOrTxvNM8ByylvMrWOEi30bFjEMkQ38krjOZTIz+TNdMgsvICIiXv/4
+DcOebhnLKBV1flnFMs9ZmbtYMNNv7RDkAOgCkw4AR1hTklWBRu6HnUdJwp87Be9r
+fmuspvkA96CV/YXIBqV1kZMBTXYrmLQwVeHJJ49KQQXP7gI+8swRu6uNkS+cAmZh
+MGr/sKMEflslno6dbiDZOlcg2RGSwdpuaCqe4Jq53blKRAW2z9GXf0QukBeFSB/1
+WrJuwLKy1aW1Vx1lh3qCiKcCcejiwQOCKndQQwIDAQABAoIBAARb9jYYJIUrme3P
+uk/ied1eRx7aa6HJbHw8YSGFyT5CXOSW271/t9fPtQlVs3zFFU+1Cu5eivLd6yrb
+VgAj8c4AjRdgAQl4zuf5S+IDeAcV9MlxJVurTWQ1z+/NQmyQc67ImteMaDaqS0mq
+wCHptI7grk8dQNUQw7T2MYFalteHwYl8aAgFaktMghfQa1w4+urO972y3Phs+Iu9
+D7wf/15kozMBW90Yb3Ozj9AvYn4pGj2ds3L8etqNtiBFylobbVI0mfKgnQgs8Naq
+SYP6oHvsUerWNzIP0yo8Btwshhk1bGWdrF9Wk4NOyUIL6MkWAUzewtRqKa4ykdRs
+dE1Q99kCgYEA1+OZbf1GhJ3MiKg1lNWgUJ+J1QwJ1eV08FP2bMmJ6lA255rJ4W4a
+w4xdqTIR+UQYJ4jAZ7CUKOBBsJFPu0F+LMqga6ZpsUj3/+TJCr/paLBCrQg8xFeL
+uI5Xhu130uPlxHs+V9w87eWbPQIB8sbHx1TmyJaLsBoQgJo0zSEoauUCgYEAzXCW
+pbluEqgFSYgAyhln2dx9z+xerwJ7uYc/UgjkSoVf5oIhZ60IxlzNzfPB1oGgoTrI
+bdOuz4MiqImLjSeJ7koXnQwn3Gw+DeEVtUZtij8faQaF/PQ8U1I2rGeqyGLWX+vD
+p5VJv0hWjrEmMUExE0WpqZ4euOeQWF9F0rlQlAcCgYBSQiN02DtlTmbfbxAzbI5Q
+CenPpm2c9XfwFl3fp48IG5Y/+yeO4JAMEFCjpjNZAcweTCnbmFlrlb8R0txJYjP8
+RxyGx/qflUkBVKARm3wI6pgNLAVTXnQbVwkcnSC51yH2Emt3uK/yiTj0Lu6lHX6D
+geMJbOs+pz/AcIFL46VtzQKBgQCE7xCcBgPi0JQzQ2z3WT8o6xMCAvo1lo7Gu2xO
+wfAvBGTMvHGvK3ldGdoWJV/NVK3DBk2BO5OHNVys3+vMF8SZy5nCBoaYi/YPdxFb
+7kmdRkEl7ZGv375VUAKOxrns1n/PK7i77M7+lmlkBd8nyf5ecRpa5jUNAtIVTPja
+ZQ1t6wKBgQCZu6W7bnEOUHvMIv3GBXCbu32ICi57PhaEqOntXYMqzMezwXplPuag
+nk6Y7CO0PWQamo1t54ooO+3mIdcRD6jgxIdF4H+0LMoXdTtg3q4K3ARHVYzRAfDx
+BC8MtZN2aW0MdmQ3p+Uiid6D34XWyd/fwYKVTMPYO5IYKT8Gg9Dv8A==
+-----END RSA PRIVATE KEY-----
+3 添加ssh_key.pub公钥到Github
+ssh_key.pub内容如下所示：
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtQDR7UejqwA3hhMEQu87rEGBtiDnIlgJuW86d3zTyHzpda1NsH0HoBbhwM6tPG80zwHLKW8ytY4SLfRsWMQyRDfySuM5lMjP5M10yCy8gIiJe//gNw55uGcsoFXV+WcUyz1mZu1gw02/tEOQA6AKTDgBHWFOSVYFG7oedR0nCnzsF72t+a6ym+QD3oJX9hcgGpXWRkwFNdiuYtDBV4cknj0pBBc/uAj7yzBG7q42RL5wCZmEwav+wowR+WyWejp1uINk6VyDZEZLB2m5oKp7gmrnduUpEBbbP0Zd/RC6QF4VIH/Vasm7AsrLVpbVXHWWHeoKIpwJx6OLBA4Iqd1BD allenwells@163.com
+将ssh_key.pub（公钥）的内容添加到Github中，如下所示：
+
+
+4 查看Github验证是否成功
+ssh git@github.com
+出现以下界面则说明验证成功：
+
+因为Git是分布式版本控制系统，所以我们需要提供名字和邮箱来自报家门。
+输入以下命令配置名字和邮箱：
+git config --global user.name "AllenWells"
+git config --global user.email "allenwells@163.com"
+
+注意
+–global参数表示这台机器上所有的Git仓库都会使用这个配置，当然我们也可以对某个仓库指定不同的用户名和Email地址。
+配置完成后，可以用以下命令查看配置信息：
+git config --list
+
+2.4 提交修改
+1 复制我们上面创建的仓库地址
+
+2 克隆GIthub仓库到本地
+git clone https://github.com/AllenWells/MyProject.git
+我们创建的MyProject仓库只有简单的几个文件，如下所示：
+
+3 推送文件到Github
+git add newfile.txt
+git commit -m "first.commit"
+git push origin master
+
+原来的仓库
+
+推送后的仓库
+
+三 GIthub项目协作
+Github最大的特色就在于项目协作的简易性，我们可以去参与别人的开源项目，同样也可以邀请别人来参与自己的开源项目，而这些协作只需要几部就可以完成。
+下面我们就来看看如何在Github上进行项目协作。
+拿图像处理框架glide为例，如果我们想来优化和完善这个框架。
+首先，我们需要先fork这个项目，如下所示：
+
+然后，fork完成后，这个项目就会完整地克隆到我们的账号中，如下所示：
+
+最后，我们就可以对我们账号中的这个项目git clone，修改和提交了，如下所示：
+
+注意：
+一定要fork到我们自己的账号中，原始项目我们是没有修改权限的，如果我们想对原始项目提出改进，我们需要在Github上发起一个pull request，当然这个需要对方审核。
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+版权声明：当我们认真的去做一件事的时候，就能发现其中的无穷乐趣，丰富多彩的技术宛如路上的风景，边走边欣赏。
+
+我的openwrt学习笔记（二十一）：广域网IP地址获取_socket http
+我的openwrt学习笔记（二十一）：广域网IP地址获取_socket http
+
+
+在实际的LINUX 开发中，有时候需要获取当前设备所在网络的IP地址信息，上传到服务器等，获取网络的IP地址有很多种方式。
+     包含Json格式的IP地址等信息，是常用的一种方式，一般需要使用包含http 协议的 curl 工具最为方便了。
+     也可以使用sockethttp格式的通信，进行获取
+
+
+
+
+linux@ubuntu:~/ubuntu1/socket_http$ ls -l
+total 28
+-rwxrwxr-x 1 linux linux 10421  8月 26 13:25 a.out
+-rwxrwxr-x 1 linux linux     0  8月 26 13:27 getip
+-rw-rw-r-- 1 linux linux  1435  8月 26 13:27 getip.c
+-rw-rw-r-- 1 linux linux    61  6月 29 09:45 ip.txt
+-rwxr-xr-x 1 linux linux   460  6月 24 15:37 Lindent
+-rw-rw-r-- 1 linux linux  1817  8月 26 13:27 readipfile.c
+linux@ubuntu:~/ubuntu1/socket_http$ ./getip 
+linux@ubuntu:~/ubuntu1/socket_http$ cat ip.txt 
+当前 IP：115.195.46.57 来自：浙江省杭州市 电信
+linux@ubuntu:~/ubuntu1/socket_http$ ./getip 
+linux@ubuntu:~/ubuntu1/socket_http$ ./a.out 
+当前 IP：115.195.46.57 来自：浙江省杭州市 电信
+substr=IP：115.195.46.57 来自：浙江省杭州市 电信
+current wlan ip:115.195.46.57
+ 
+ipstrbuf=115.195.46.57
+
+
+
+
+ Getip.c源代码
+
+
+
+
+linux@ubuntu:~/ubuntu1/socket_http$ cat getip.c
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+typedef enum {
+         false,
+         true
+} bool;
+int main()
+{
+         bool flag;
+         int sock;
+         char **pptr = NULL;
+         struct sockaddr_in destAddr;
+         struct hostent *ptr = NULL;
+         char destIP[128];
+         char szBuffer[] =
+             {
+      "GET /ip2city.asp HTTP/1.1\r\nHost:www.ip138.com\r\nConnection:Close\r\n\r\n"
+  };
+         char res[1024];
+ 
+         sock = socket(AF_INET, SOCK_STREAM, 0);
+         if (-1 == sock) {
+                   perror("creat socket failed");
+                   exit(0);
+         }
+ 
+         bzero((void *)&destAddr, sizeof(destAddr));
+         destAddr.sin_family = AF_INET;
+         destAddr.sin_port = htons(80);
+ 
+         ptr = gethostbyname("www.ip138.com");
+         if (NULL == ptr) {
+                   perror("gethostbyname error");
+                   exit(0);
+         }
+         for (flag = false, pptr = ptr->h_addr_list; NULL != *pptr; ++pptr) {
+                   inet_ntop(ptr->h_addrtype, *pptr, destIP, sizeof(destIP));
+                   printf("ip138 addr:%s\n", destIP);
+                   destAddr.sin_addr.s_addr = inet_addr(destIP);
+                   if (-1 !=
+                       connect(sock, (struct sockaddr *)&destAddr,
+                                sizeof(struct sockaddr))) {
+                            flag = true;
+                            break;
+                   }
+         }
+ 
+         if (false == flag) {
+                   perror("connect failed");
+         }
+ 
+         if (strlen(szBuffer) != send(sock, szBuffer, strlen(szBuffer), 0)) {
+                   perror("send error");
+                   exit(0);
+         }
+ 
+         if (-1 == recv(sock, res, 1024, 0)) {
+                   perror("recv error");
+                   exit(0);
+         }
+ 
+         printf("wlan ip res:\n%s\n", res);
+         return 0;
+}
+
+
+
+
+ 
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+Git学习与总结三
+## Git详细教学地址
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/
+ 
+##
+ GIT中对文件的一切操作均视为修改
+
+## 工作区和暂存区
+
+ 
+## 撤销修改
+1、如果被修改的文件还在【工作区】
+撤销方式：
+git checkout -- file_name
+
+2、如果被修改的文件已被添加到【暂存区】
+撤销方式：
+git reset head file_name
+然后：
+git checkout -- file_name
+
+3、如果被修改的文件已被提交到master
+撤销方式：
+git
+ reset --hard commit_id
+
+4、如果你要删除一个文件
+git
+ rm file_name
+删除后记得提交：
+git
+ commit -m "rm record"
+ 
+5、如果你误删了一个文件
+git checkout -- file_name
+
+## 生成SSH Key命令
+ssh-keygen -t rsa -Cyouremail@example.com
+ 
+输入后一直回车：
+
+ 
+最后在用户主目录下生成id_rsa和id_ras.pub两个文件，如图：
+
+ 
+## 在本地关联远程仓库（github）SSH链接
+git remote add origin git@github.com:Lauuz/learnGit.git
+注意：
+1、该命令应在你本地仓库目录下执行
+   origin 为远程库的名字，这是git的默认名，可以更改
+   Lauuz 为你自己的github用户名
+  
+ learnGit.git 为你自己的github远程仓库
+2、关联远程仓库可能会有些提示警告，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入yes回车即可。
+3、一旦因网络或其他原因关联远程仓库失败，再次关联时需删除远程库origin，命令如下：
+git
+ remote rm origin
+或确保本地已生成SSH
+ Key
+4、实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。 
+如图：
+
+ 
+
+## 使用git clone命令克隆远程仓库到本地
+亦或者创建好远程仓库之后，使用git clone命令克隆远程仓库到本地，克隆方式如下（SSH）：
+git clone 
+git@github.com:Lauuz/learnGit.git
+
+
+
+注意：
+
+如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。
+
+
+## 创建与合并分支
+
+
+
+## 解决冲突
+在合并项目时，若碰到冲突，就要先解决冲突，再进行提交，即：
+1、解决冲突
+2、git add
+3、git commit
+最后可以用 git log --graph --pretty=oneline --abbrev-commit 查看git日志
+
+## 分支管理策略
+在合并项目时增加 --no-ff 参数会禁用 fast forward 模式，成为普通合并模式，合并后的历史有分支，能看出来曾今做过合并。即：
+
+ 
+
+Tip：
+Git分支十分强大，在团队开发中应该充分应用，如图：
+
+
+
+
+ 
+## BUG分支-及时处理紧急BUG方案
+可能会有很多时候，开发工作进行到一半，突然要有新的bug需要修复，除了提交本地修改之后来修复bug之外，还可以采取以下方式进行处理：
+1、使用 git stash 将工作现场存储起来
+2、切换新的bug分支，如issue-101，并修复此bug
+3、使用 git add，git commit 提交此bug
+4、合并此bug至master主分支
+5、删除bug分支issue-101
+6、切换分支至dev分支
+7、使用
+ git stash list 查看当前分支存储了多少工作现场
+8、使用
+ git stash pop 恢复工作现场，并删除stash内容
+9、因为开发分支dev也有此bug，所以需将修复的bug合并到dev分支上。git
+ rebase master
+
+tip：
+1、若出现冲突，需先决绝冲突，然后：
+git add .
+git rebase --coninue 或
+git rebase --skip 或
+git rebase --abort
+
+2、若并非是修复BUG，而是开发一个新feature，最好新建一个分支。
+若要丢弃一个没有合并过的分支，可以通过 git branch -D branch_name 进行强行删除
+ 
+
+##
+ 多人协作
+1、查看远程库信息，使用 git remote -v
+2、本地新建的分支如果不推送到远程，对其他人就是不可见的。
+3、从本地推送分支，使用 git push origin branch_name，如果推送失败，先用 git pull 抓取远程的新提交。
+4、在本地创建和远程分支对应的分支，使用 git checkout -b branch_name origin，本地和远程分支的名称最好一致。
+5、建立本地分支和远程分支的关联，使用 git branch --set-upstream branch_name origin
+6、从远程抓取分支，使用 git pull，如果有冲突，要先处理冲突。
+
+##
+ 标签管理
+每次发布新的功能时，可以给不同的分支版本作标签，方式如下：
+-- 查看标签列表
+git tag
+-- 打标签，并备注
+git tag -a tag_name -m "version information"
+
+
+-- 使用私钥打标签，并备注
+
+git tag -s tag_name -m "version information"
+
+
+
+-- 给指定commit_id打标签，并备注
+
+git tag -a tag_name -m "version information" commit_id
+
+-- 查看标签详情
+
+git show tag_name
+
+-- 删除标签
+
+git tag -d tag_name
+
+-- 推送本地标签至远程
+
+git push origin tag_name
+
+-- 推送所有本地标签至远程
+
+git push origin --tags
+
+-- 删除远程标签【删除远程标签之前，先删除本地标签】
+
+git push origin :refs/tags/tag_name
+
+
+
+
+ 
+## GitHub说明
+
+## 忽略特殊文件
+
+
+不同开发语言配置的.gitignore内容也不尽相同，参考地址：
+https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
+
+ 
+
+
+
+
+
+##
+ 配置别名
+
+语法：
+
+git config --global alias.custom_alias tag_command
+
+
+
+如：
+git config --global alias.st status
+
+git config --global alias.co checkout
+
+
+git
+ config --global alias.ci commit
+
+
+
+git config --global alias.br branch
+
+git config --global alias.unstage 'reset HEAD'
+git config --global alias.last 'log -1'
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+
+
+tips:
+
+1、配置Git的时候，加上--global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。配置文件放哪了？每个仓库的Git配置文件都放在.git/config文件中。
+
+ 
+
+2、也可以修改当前用户主目录下（C:\Users\Administrator\）的一个隐藏文件.gitconfig中，如图：
+
+ 
+
+##
+ 搭建Git服务器
+搭建Git服务器需要准备一台运行Linux的机器，强烈推荐用Ubuntu或Debian，这样，通过几条简单的apt命令就可以完成安装。 假设你已经有sudo权限的用户账号，下面，正式开始安装。
+第一步、安装git
+第二步、创建一个git用户，用来运行git服务
+第三步、创建证书登陆
+第四步、初始化Git仓库
+第五步、禁用shell登陆
+第六步、克隆远程仓库
+Tips：
+管理公钥，使用 Gitosis，地址 https://github.com/res0nat0r/gitosis
+管理权限，使用 Gitolite，地址 https://github.com/sitaramc/gitolite
+
+##
+ Pro Git 中文版
+http://git.oschina.net/progit/
+
+目录列表：
+1、起步
+2、Git基础
+3、Git分支
+4、服务器上的Git
+5、分布式Git
+6、Git工具
+7、自定义Git
+8、Git与其它系统
+9、Git内部原理
+
+
+鸣谢：
+http://www.liaoxuefeng.com 
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+程序员未来发展三大方向
+原文地址：http://www.devstore.cn/essay/essayInfo/1842.html
+程序员工作两三年后，基本上都会考虑自己的未来发展方向。发展的路径不外乎：程序员-系统分析员-架构师-技术经理-CTO，程序员-项目组长-项目经理-项目总监-CTO，程序员-产品设计师-产品经理-CTO。哪一条发展路线更适合你?
+
+
+
+
+
+当然这只是一个大致的路径，不是所有程序员都必需要这么经历的，有些人可能跳过其中的一些步骤，也可能有些人会把中间的很多职位都做了。而最终做到CTO的程序员，也是非常少的一部分，原因很简单，这个世界上不许要那么多的CTO和CXO。
+
+也就是说，许多的程序员最终可能是做技术经理、项目经理或者项目总监之类的，那么到底我们职业生涯要选择哪一种呢?这个问题没有一个统一的答案，因为每个人的性格不一样，际遇也不一样，就像你从小希望当贪官，可是命运却偏偏让你做了一个程序员。所以应该根据你的兴趣、性格与际遇选择一条道路，比如说你正好有机会带一个项目，而你又不是很讨厌项目经理这个位置，那么你就可以选择向项目经理方向发展。
+
+实际上很多时候，国内并没有明确的技术经理、项目经理、产品经理之分，在许多的公司里，他们经常是由一个人承担。在外包公司里，通常会有项目经理和系统分析员(也可能是技术经理)。在一些非IT公司里，可能会有部门经理，而做自己产品的公司可能会分得比较详细一些。我大致说一下这三个职位的区别，让正在徘徊的程序员有一个大致的了解。
+
+
+
+
+项目经理
+
+是项目的直接负责人，这个角色相当于一个中间接口，不管是团队成员还是需求方(客户)，或者是上级领导，有事都直接找他，所以这个职位着重于管理与沟通。一般来说，项目经理的工作重点在同客户沟通需求、项目进度的把控、团队的沟通方面，有些公司也会需要项目经理承担团队建设的工作，不过貌似很多国内公司都忽略了团队建设这个工作了。对于项目经理来说，重点会要求沟通能力、协调能力、危机把控能力、执行力、团队管理能力，着重于沟通、管理与计划。当然也有些公司还要求项目经历要参与招标谈判，这就要求项目经理有一定的商务谈判能力。
+
+技术经理
+
+有时候也可能叫系统分析员，一些小公司可能会整个公司或者部门有一个技术经理。技术经理承担的角色主要是系统分析、架构搭建、系统构建、代码走查等工作，当然不是所有公司都是这样的，有些公司项目经理是不管技术团队的，只做需求、进度和同客户沟通，那么这个时候的项目经理就好像工厂里的跟单人员了，这种情况在外包公司比较多。对于技术经理来说，着重于技术方面，你需要知道某种功能用哪些技术合适，需要知道某项功能需要多长的开发时间等。同时，技术经理也应该承担提高团队整体技术水平的工作。
+
+产品经理
+
+这个职位一般在有自己产品(不管是软件还是网站产品)的公司比较常见，产品经理主要会负责产品的设计、产品的改良等工作。需要注意的是，产品设计与设计师是两个不一样的工作，产品设计主要会从用户体验、业务需要等层面去设计产品，而设计师更多是从用户的视觉上去做。产品经理应该是最懂业务的人，比如说你在设计一个微博的产品，就要求你对微博这个东西非常熟悉，从用户习惯、用户体验、公司的发展战略上去设计这个产品，还要对比同类产品会有什么优势等等。
+
+不管是项目经理还是技术经理与产品经理，都要求要熟悉业务，业务是需求的来源，没有不谈业务的技术，所以不管你从哪个方向发展，都要求对业务熟悉。产品经理要求对业务最熟悉，项目经理次之，技术经理排最后。对于程序员来说，刚开始工作的前几年可以埋头扎到技术里面，一般这个时间在2-3年的时间，然后就应该多关注业务了。这个业务不一定是指某个具体的业务，因为具体的业务的范围太少，而且也需要机遇。
+
+
+
+Atitit 《摩奴法典》overivew 读后感 不是由国王 颁布的，而是 僧侣编制
+Atitit 《摩奴法典》overivew 读后感 不是由国王 颁布的，而是 僧侣编制
+ 
+1. 《摩奴法典》是印度最古老的一部法律文献。该法典不是由国王或立法机关制定颁布的，而是由婆罗门教僧侣根据吠陀经典和历来的习惯编制而成
+1
+2. “摩奴”(Manu)是印度神话中的人类始祖。
+2
+3. 篇章规模，字数
+3
+4. 内容摘要
+3
+5. 目录
+3
+5.1. 摩奴法典》 - 目录 
+3
+5.1.1. 《摩奴法典》评介   第一卷 创造   第二卷 净法 梵志期   第三卷 婚姻 家长的义务   第四卷 生计 戒律   第五卷 斋戒和净法的规定 妇女的义务   第六卷 林栖和苦行的义务   第七卷 国王和武士种姓的行为   第八卷 法官的任务 民法与刑法   第九卷 民法与刑法 商人种姓和奴隶种姓的义务   第十卷 杂种种姓 处困境时   第十一卷 苦行与赎罪   第十二卷 轮回 最后解脱   总附注  [1]
+3
+6. 中心思想与attilax的心得
+4
+7. 摩奴之舟的故事
+4
+ 
+ 
+1. 《摩奴法典》是印度最古老的一部法律文献。该法典不是由国王或立法机关制定颁布的，而是由婆罗门教僧侣根据吠陀经典和历来的习惯编制而成
+。传说由“人类始祖”摩奴所制定，故称《摩奴法典》。法典共12章，2684条，涉及刑法、民法、婚姻诉讼和审判制度等。
+　　《摩奴法典》以婆罗门教教义为指导思想，是该教政治思想体系的重要文献，也是宗教与法律紧密结合的产物。法典中将古代印度的专制君主神圣化，进一步用神权来维护奴隶主阶级的统治。《摩奴法典》首次公开确认四种原始种姓以及派生的各个种姓的等级差别，公开宣扬社会的不平等，将一切居民的地位和权利、义务用法律形式加以确定，形成一套完整的种姓制度。
+
+作者:: 老哇的爪子 Attilax 艾龙，  EMAIL:1466519819@qq.com
+
+转载请注明来源： http://blog.csdn.net/attilax
+ 
+2.  “摩奴”(Manu)是印度神话中的人类始祖。
+
+在语源关系上，Manu一词与印欧语系中的man(人)一词同源，与梵文中的动词词根man(思维)也有语源上的关系。在《梨俱吠陀》中，摩奴是第一位祭献者，也是第一位国王。他作为人类始祖，与希伯莱传统中的诺亚(Noah)几乎具有完全相同的特征。《百道梵书》(Satapatha Brahmana)讲述了摩奴在“大洪水”中拯救人类的故事。
+
+
+
+中文名：摩奴
+
+外文名：Manu
+
+其他名称：Sraddhadeva Manu
+
+登场作品：《梨俱吠陀》《Devon Ke Dev Mahadev》
+
+ 
+3. 篇章规模，字数
+ 
+印度婆罗门教的法律和法规的汇编。又称《摩奴法论》，相传为“人类的始祖”摩奴所编，故名。实际上，是婆罗门教的祭司根据吠陀经与传统习惯而编成的。法典内容驳杂，大约编成于公元前2～公元2世纪（一说为公元后的头几个世纪）。传至今日之《摩奴法典》共12章，2684条。第 1章讲述创世纪的神话；第2章至第6章论述婆罗门教徒的四住期的行为规范；第7章至第9章主要包括民法、刑法、婚姻制度、继承法；第10章是关于种姓的法律；第11章是赎罪法；第12章包括因果报应、轮回转世之说。其中，纯粹法律的篇幅约占全书的 1/4。 
+法典的核心内容是宣扬种姓起源的神话，宣称婆罗门种姓为“一切创造物的主宰”。旨在维护印度种姓制度。法典论列各种姓的不同地位、权利和义务，规定依违种姓制度的奖惩。 
+4. 内容摘要
+5. 目录
+
+5.1. 摩奴法典》 - 目录 
+5.1.1. 《摩奴法典》评介  
+第一卷 创造  
+第二卷 净法 梵志期  
+第三卷 婚姻 家长的义务  
+第四卷 生计 戒律  
+第五卷 斋戒和净法的规定 妇女的义务  
+第六卷 林栖和苦行的义务  
+第七卷 国王和武士种姓的行为  
+第八卷 法官的任务 民法与刑法  
+第九卷 民法与刑法 商人种姓和奴隶种姓的义务  
+第十卷 杂种种姓 处困境时  
+第十一卷 苦行与赎罪  
+第十二卷 轮回 最后解脱  
+总附注  [1]
+ 
+6. 中心思想与attilax的心得
+7. 摩奴之舟的故事
+
+摩奴是日神苏利耶的儿子，他是一位出类拔萃的修行者。摩奴具有无穷的法力，他苦行的法力比他父亲、祖父还高出一等。摩奴在波涛壮阔的枣树河边修行，长达千年之久。
+
+一天摩奴正在河边修炼严峻的苦行，他长发盘头，汗水浸透了破烂的衣衫。突然一条小鱼游到岸边，对他说：“尊者啊，我是一条小鱼，周围都是凶猛的大鱼、他们总是不停地吞噬我们这些柔弱的小鱼，你是信守誓言的人，因此我特地来寻求你的保护，让我离开这恐怖的河吧。如果你救了我，我一定会报答你。”
+
+听了小鱼的话，摩奴的心里充满了同情。摩奴伸出手把小鱼从水中捧了出来，放进自己的水罐里。摩奴好生喂养它，小鱼在水罐中渐渐长大。
+
+过了些时候，这只罐子和罐子中的水已经盛不下小鱼了。小鱼又跟摩奴说：“尊者啊，请你再给我找个住处吧。”摩奴又捧着小鱼来到一个水塘边，把小鱼放进了水塘中。鱼儿在水塘中自由自在地生长。
+
+岁月悠悠而过。水塘对这鱼儿来说也变得太小了，它的身体不能在塘中自由摆动了。鱼儿又向摩奴请求道：“尊者啊，恒河是大海的皇后。请带我到那里去生活吧。”摩奴依言将鱼儿放进了恒河中。在这里，鱼儿长得更大了。
+ 
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+java web开发 高并发处理
+
+
+java web开发 高并发处理
+java
+ 高并发 
+
+
+java处理高并发高负载类网站中数据库的设计方法（java教程,java处理大量数据，java高负载数据） 
+
+一：高并发高负载类网站关注点之数据库 
+
+没错,首先是数据库,这是大多数应用所面临的首个SPOF。尤其是Web2.0的应用，数据库的响应是首先要解决的。
+一般来说MySQL是最常用的，可能最初是一个mysql主机，当数据增加到100万以上，那么，MySQL的效能急剧下降。常用的优化措施是M-S（主-从）方式进行同步复制，将查询和操作和分别在不同的服务器上进行操作。我推荐的是M-M-Slaves方式，2个主Mysql，多个Slaves，需要注意的是，虽然有2个Master，但是同时只有1个是Active，我们可以在一定时候切换。之所以用2个M，是保证M不会又成为系统的SPOF。 
+Slaves可以进一步负载均衡，可以结合LVS,从而将select操作适当的平衡到不同的slaves上。 
+以上架构可以抗衡到一定量的负载，但是随着用户进一步增加，你的用户表数据超过1千万，这时那个M变成了SPOF。你不能任意扩充Slaves，否则复制同步的开销将直线上升，怎么办？我的方法是表分区，从业务层面上进行分区。最简单的，以用户数据为例。根据一定的切分方式，比如id，切分到不同的数据库集群去。 
+
+全局数据库用于meta数据的查询。缺点是每次查询，会增加一次，比如你要查一个用户nightsailer,你首先要到全局数据库群找到nightsailer对应的cluster id，然后再到指定的cluster找到nightsailer的实际数据。 
+每个cluster可以用m-m方式，或者m-m-slaves方式。这是一个可以扩展的结构，随着负载的增加，你可以简单的增加新的mysql cluster进去。 
+
+需要注意的是： 
+1、禁用全部auto_increment的字段 
+2、id需要采用通用的算法集中分配 
+3、要具有比较好的方法来监控mysql主机的负载和服务的运行状态。如果你有30台以上的mysql数据库在跑就明白我的意思了。 
+4、不要使用持久性链接（不要用pconnect）,相反，使用sqlrelay这种第三方的数据库链接池，或者干脆自己做，因为php4中mysql的链接池经常出问题。 
+
+二：高并发高负载网站的系统架构之HTML静态化 
+
+其实大家都知道，效率最高、消耗最小的就是纯静态化 http://www.ablanxue.com/shtml/201207/776.shtml的html页面，所以我们尽可能使我们的网站上的页面采用静态页面来实现，这个最简单的方法其实也是 最有效的方法。但是对于大量内容并且频繁更新的网站，我们无法全部手动去挨个实现，于是出现了我们常见的信息发布系统CMS，像我们常访问的各个门户站点 的新闻频道，甚至他们的其他频道，都是通过信息发布系统来管理和实现的，信息发布系统可以实现最简单的信息录入自动生成静态页面，还能具备频道管理、权限
+ 管理、自动抓取等功能，对于一个大型网站来说，拥有一套高效、可管理的CMS是必不可少的。 
+　　 
+　　除了门户和信息发布类型的网站，对于交互性要求很高的社区类型网站来说，尽可能的静态化也是提高性能的必要手段，将社区内的帖子、文章进行实时的静态化，有更新的时候再重新静态化也是大量使用的策略，像Mop的大杂烩就是使用了这样的策略，网易社区等也是如此。 
+　　 
+　 　同时，html静态化也是某些缓存策略使用的手段，对于系统中频繁使用数据库查询但是内容更新很小的应用，可以考虑使用html静态化来实现，比如论坛 中论坛的公用设置信息，这些信息目前的主流论坛都可以进行后台管理并且存储再数据库中，这些信息其实大量被前台程序调用，但是更新频率很小，可以考虑将这 部分内容进行后台更新的时候进行静态化，这样避免了大量的数据库访问请求高并发。 
+　　 
+
+网站HTML静态化解决方案 
+当一个Servlet资源请求到达WEB服务器之后我们会填充指定的JSP页面来响应请求: 
+
+HTTP请求---Web服务器---Servlet--业务逻辑处理--访问数据--填充JSP--响应请求 
+
+HTML静态化之后: 
+
+HTTP请求---Web服务器---Servlet--HTML--响应请求 
+
+静态访求如下 
+
+Servlet: 
+
+public void doGet(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException { 
+    if(request.getParameter("chapterId") != null){ 
+        String chapterFileName = "bookChapterRead_"+request.getParameter("chapterId")+".html"; 
+        String chapterFilePath = getServletContext().getRealPath("/") + chapterFileName; 
+        File chapterFile = new File(chapterFilePath); 
+        if(chapterFile.exists()){response.sendRedirect(chapterFileName);return;}//如果有这个文件就告诉浏览器转向  
+        INovelChapterBiz novelChapterBiz = new NovelChapterBizImpl(); 
+        NovelChapter novelChapter = novelChapterBiz.searchNovelChapterById(Integer.parseInt(request.getParameter("chapterId")));//章节信息  
+        int lastPageId = novelChapterBiz.searchLastCHapterId(novelChapter.getNovelId().getId(), novelChapter.getId()); 
+        int nextPageId = novelChapterBiz.searchNextChapterId(novelChapter.getNovelId().getId(), novelChapter.getId()); 
+        request.setAttribute("novelChapter", novelChapter); 
+        request.setAttribute("lastPageId", lastPageId); 
+        request.setAttribute("nextPageId", nextPageId); 
+        new CreateStaticHTMLPage().createStaticHTMLPage(request, response, getServletContext(),  
+                chapterFileName, chapterFilePath, "/bookRead.jsp"); 
+    } 
+} 
+生成HTML静态页面的类: 
+
+package com.jb.y2t034.thefifth.web.servlet; 
+import java.io.ByteArrayOutputStream; 
+import java.io.FileOutputStream; 
+import java.io.IOException; 
+import java.io.OutputStreamWriter; 
+import java.io.PrintWriter; 
+import javax.servlet.RequestDispatcher; 
+import javax.servlet.ServletContext; 
+import javax.servlet.ServletException; 
+import javax.servlet.ServletOutputStream; 
+import javax.servlet.http.HttpServletRequest; 
+import javax.servlet.http.HttpServletResponse; 
+import javax.servlet.http.HttpServletResponseWrapper; 
+/** 
+* 创建HTML静态页面 
+* 功能：创建HTML静态页面 
+* 时间：2009年1011日 
+* 地点：home 
+* @author mavk 
+* 
+*/ 
+public class CreateStaticHTMLPage { 
+    /** 
+     * 生成静态HTML页面的方法 
+     * @param request 请求对象 
+     * @param response 响应对象 
+     * @param servletContext Servlet上下文 
+     * @param fileName 文件名称 
+     * @param fileFullPath 文件完整路径 
+     * @param jspPath 需要生成静态文件的JSP路径(相对即可) 
+     * @throws IOException 
+     * @throws ServletException 
+     */ 
+    public void createStaticHTMLPage(HttpServletRequest request, HttpServletResponse response,ServletContext servletContext,String fileName,String fileFullPath,String jspPath) throws ServletException, IOException{ 
+        response.setContentType("text/html;charset=gb2312");//设置HTML结果流编码(即HTML文件编码)  
+        RequestDispatcher rd = servletContext.getRequestDispatcher(jspPath);//得到JSP资源  
+        final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();//用于从ServletOutputStream中接收资源  
+        final ServletOutputStream servletOuputStream = new ServletOutputStream(){//用于从HttpServletResponse中接收资源  
+            public void write(byte[] b, int off,int len){ 
+                byteArrayOutputStream.write(b, off, len); 
+            } 
+            public void write(int b){ 
+                byteArrayOutputStream.write(b); 
+            } 
+        }; 
+        final PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(byteArrayOutputStream));//把转换字节流转换成字符流  
+        HttpServletResponse httpServletResponse = new HttpServletResponseWrapper(response){//用于从response获取结果流资源(重写了两个方法)  
+            public ServletOutputStream getOutputStream(){ 
+                return servletOuputStream; 
+            } 
+            public PrintWriter getWriter(){ 
+                return printWriter; 
+            } 
+        }; 
+        rd.include(request, httpServletResponse);//发送结果流  
+        printWriter.flush();//刷新缓冲区，把缓冲区的数据输出  
+        FileOutputStream fileOutputStream = new FileOutputStream(fileFullPath); 
+        byteArrayOutputStream.writeTo(fileOutputStream);//把byteArrayOuputStream中的资源全部写入到fileOuputStream中  
+        fileOutputStream.close();//关闭输出流，并释放相关资源  
+        response.sendRedirect(fileName);//发送指定文件流到客户端  
+    } 
+} 
+
+
+三：高并发高负载类网站关注点之缓存、负载均衡、存储 
+
+缓存是另一个大问题，我一般用memcached来做缓存集群，一般来说部署10台左右就差不多（10g内存池）。需要注意一点，千万不能用使用 
+swap，最好关闭linux的swap。 
+
+
+负载均衡/加速 
+
+可能上面说缓存的时候，有人第一想的是页面静态化，所谓的静态html，我认为这是常识，不属于要点了。页面的静态化随之带来的是静态服务的 
+负载均衡和加速。我认为Lighttped+Squid是最好的方式了。 
+LVS <------->lighttped====>squid(s) ====lighttpd 
+
+上面是我经常用的。注意，我没有用apache，除非特定的需求，否则我不部署apache，因为我一般用php-fastcgi配合lighttpd, 
+性能比apache+mod_php要强很多。 
+
+squid的使用可以解决文件的同步等等问题，但是需要注意，你要很好的监控缓存的命中率，尽可能的提高的90%以上。 
+squid和lighttped也有很多的话题要讨论，这里不赘述。 
+
+
+存储 
+存储也是一个大问题，一种是小文件的存储，比如图片这类。另一种是大文件的存储，比如搜索引擎的索引，一般单文件都超过2g以上。 
+小文件的存储最简单的方法是结合lighttpd来进行分布。或者干脆使用Redhat的GFS，优点是应用透明，缺点是费用较高。我是指 
+你购买盘阵的问题。我的项目中，存储量是2-10Tb，我采用了分布式存储。这里要解决文件的复制和冗余。 
+这样每个文件有不同的冗余，这方面可以参考google的gfs的论文。 
+大文件的存储，可以参考nutch的方案，现在已经独立为hadoop子项目。(你可以google it) 
+
+其他： 
+此外，passport等也是考虑的，不过都属于比较简单的了。 
+四：高并发高负载网站的系统架构之图片服务器分离 
+大家知道，对于Web 服务器来说，不管是Apache、IIS还是其他容器，图片是最消耗资源的，于是我们有必要将图片与页面进行分离，这是基本上大型网站都会采用的策略，他 们都有独立的图片服务器，甚至很多台图片服务器。这样的架构可以降低提供页面访问请求的服务器系统压力，并且可以保证系统不会因为图片问题而崩溃，在应用 服务器和图片服务器上，可以进行不同的配置优化，比如apache在配置ContentType的时候可以尽量少支持，尽可能少的LoadModule， 保证更高的系统消耗和执行效率。 
+
+
+利用Apache实现图片服务器的分离 
+缘由： 
+起步阶段的应用，都可能部署在一台服务器上（费用上的原因） 
+第一个优先分离的，肯定是数据库和应用服务器。 
+第二个分离的，会是什么呢？各有各的考虑，我所在的项目组重点考虑的节约带宽，服务器性能再好，带宽再高，并发来了，也容易撑不住。因此，我这篇文章的重点在这里。这里重点是介绍实践，不一定符合所有情况，供看者参考吧， 
+环境介绍： 
+WEB应用服务器：4CPU双核2G, 内存4G 
+  部署：Win2003/Apache Http Server 2.1/Tomcat6 
+数据库服务器：4CPU双核2G, 内存4G 
+  部署：Win2003/MSSQL2000 
+步骤： 
+步骤一：增加2台配置为：2CPU双核2G，内存2G普通服务器，做资源服务器 
+  部署：Tomcat6，跑了一个图片上传的简单应用，（记得指定web.xml的<distributable/>），并指定域名为res1.***.com,res2.***.com，采用ajp协议 
+步骤二：修改Apache httpd.conf配置 
+  原来应用的文件上传功能网址为： 
+   1、/fileupload.html 
+   2、/otherupload.html 
+  在httpd.conf中增加如下配置 
+
+<VirtualHost *:80>  
+  ServerAdmin webmaster@***.com  
+  ProxyPass /fileupload.html balancer://rescluster/fileupload lbmethod=byrequests stickysession=JSESSIONID nofailover=Off timeout=5 maxattempts=3     
+  ProxyPass /otherupload.html balancer://rescluster/otherupload.html lbmethod=byrequests stickysession=JSESSIONID nofailover=Off timeout=5 maxattempts=3     
+  #<!--负载均衡-->  
+  <Proxy balancer://rescluster/>  
+    BalancerMember ajp://res1.***.com:8009 smax=5 max=500 ttl=120 retry=300 loadfactor=100 route=tomcat1  
+    BalancerMember ajp://res2.***.com:8009 smax=5 max=500 ttl=120 retry=300 loadfactor=100 route=tomcat2  
+  </Proxy>  
+  
+</VirtualHost> 
+步骤三，修改业务逻辑： 
+  所有上传文件在数据库中均采用全url的方式保存，例如产品图片路径存成：http://res1.***.com/upload/20090101/product120302005.jpg 
+
+现在，你可以高枕无忧了，带宽不够时，增加个几十台图片服务器，只需要稍微修改一下apache的配置文件，即可。 
+
+五：高并发高负载网站的系统架构之数据库集群和库表散列 
+
+大型网站都有复杂的应用，这些应用必须使用数据库，那么在面对大量访问的时候，数据库的瓶颈很快就能显现出来，这时一台数据库将很快无法满足应用，于是我们需要使用数据库集群或者库表散列。 
+　　 
+　　在数据库集群方面，很多数据库都有自己的解决方案，Oracle、Sybase等都有很好的方案，常用的MySQL提供的Master/Slave也是类似的方案，您使用了什么样的DB，就参考相应的解决方案来实施即可。 
+　　 
+　 　上面提到的数据库集群由于在架构、成本、扩张性方面都会受到所采用DB类型的限制，于是我们需要从应用程序的角度来考虑改善系统架构，库表散列是常用并 且最有效的解决方案。我们在应用程序中安装业务和应用或者功能模块将数据库进行分离，不同的模块对应不同的数据库或者表，再按照一定的策略对某个页面或者 功能进行更小的数据库散列，比如用户表，按照用户ID进行表散列，这样就能够低成本的提升系统的性能并且有很好的扩展性。sohu的论坛就是采用了这样的 架构，将论坛的用户、设置、帖子等信息进行数据库分离，然后对帖子、用户按照板块和ID进行散列数据库和表，最终可以在配置文件中进行简单的配置便能让系
+ 统随时增加一台低成本的数据库进来补充系统性能。 
+
+
+集群软件的分类： 
+一般来讲，集群软件根据侧重的方向和试图解决的问题，分为三大类：高性能集群（High performance cluster，HPC）、负载均衡集群（Load balance cluster， LBC），高可用性集群（High availability cluster，HAC）。 
+高性能集群（High performance cluster，HPC），它是利用一个集群中的多台机器共同完成同一件任务，使得完成任务的速度和可靠性都远远高于单机运行的效果。弥补了单机性能上的不足。该集群在天气预报、环境监控等数据量大，计算复杂的环境中应用比较多； 
+负载均衡集群（Load balance cluster， LBC），它是利用一个集群中的多台单机，完成许多并行的小的工作。一般情况下，如果一个应用使用的人多了，那么用户请求的响应时间就会增大，机器的性能也会受到影响，如果使用负载均衡集群，那么集群中任意一台机器都能响应用户的请求，这样集群就会在用户发出服务请求之后，选择当时负载最小，能够提供最好的服务的这台机器来接受请求并相应，这样就可用用集群来增加系统的可用性和稳定性。这类集群在网站中使用较多； 
+高可用性集群（High availability cluster，HAC），它是利用集群中系统 的冗余，当系统中某台机器发生损坏的时候，其他后备的机器可以迅速的接替它来启动服务，等待故障机的维修和返回。最大限度的保证集群中服务的可用性。这类系统一般在银行，电信服务这类对系统可靠性有高的要求的领域有着广泛的应用。 
+2 数据库集群的现状 
+数据库集群是将计算机集群技术引入到数据库中来实现的，尽管各厂商宣称自己的架构如何的完美，但是始终不能改变Oracle当先，大家追逐的事实，在集群的解决方案上Oracle RAC还是领先于包括微软在内的其它数据库厂商，它能满足客户高可用性、高性能、数据库负载均衡和方便扩展的需求。 
+Oracle’s Real Application Cluster (RAC) 
+Microsoft SQL Cluster Server (MSCS) 
+IBM’s DB2 UDB High Availability Cluster(UDB) 
+Sybase ASE High Availability Cluster (ASE) 
+MySQL High Availability Cluster (MySQL CS) 
+基于IO的第三方HA(高可用性)集群 
+当前主要的数据库集群技术有以上六大类，有数据库厂商自己开发的；也有第三方的集群公司开发的；还有数据库厂商与第三方集群公司合作开发的，各类集群实现的功能及架构也不尽相同。 
+RAC（Real Application Cluster，真正应用集群）是Oracle9i数据库中采用的一项新技术，也是Oracle数据库支持网格计算环境的核心技术。它的出现解决了传统数据库应用中面临的一个重要问题：高性能、高可伸缩性与低价格之间的矛盾。在很长一段时间里，甲骨文都以其实时应用集群技术(Real Application Cluster，RAC)统治着集群数据库市场 
+
+六：高并发高负载网站的系统架构之缓存 
+
+缓存一词搞技术的都接触过，很多地方用到缓存。网站架构和网站开发中的缓存也是非常重要。这里先讲述最基本的两种缓存。高级和分布式的缓存在后面讲述。 
+　　架构方面的缓存，对Apache比较熟悉的人都能知道Apache提供了自己的缓存模块，也可以使用外加的Squid模块进行缓存，这两种方式均可以有效的提高Apache的访问响应能力。 
+　 　网站程序开发方面的缓存，Linux上提供的Memory Cache是常用的缓存接口，可以在web开发中使用，比如用Java开发的时候就可以调用MemoryCache对一些数据进行缓存和通讯共享，一些大 型社区使用了这样的架构。另外，在使用web语言开发的时候，各种语言基本都有自己的缓存模块和方法，PHP有Pear的Cache模块，Java就更多 了，.net不是很熟悉，相信也肯定有。 
+
+
+
+Java开源缓存框架 
+JBossCache/TreeCache JBossCache是一个复制的事务处理缓存，它允许你缓存企业级应用数据来更好的改善性能。缓存数据被自动复制，让你轻松进行Jboss服务器之间的集群工作。JBossCache能够通过Jboss应用服务或其他J2EE容器来运行一个Mbean服务，当然，它也能独立运行。 JBossCache包括两个模块：TreeCache和TreeCacheAOP。 TreeCache --是一个树形结构复制的事务处理缓存。 TreeCacheAOP --是一个“面向对象”缓存，它使用AOP来动态管理POJO 
+OSCache OSCache标记库由OpenSymphony设计，它是一种开创性的JSP定制标记应用，提供了在现有JSP页面之内实现快速内存缓冲的功能。OSCache是个一个广泛采用的高性能的J2EE缓存框架，OSCache能用于任何Java应用程序的普通的缓存解决方案。OSCache有以下特点：缓存任何对象，你可以不受限制的缓存部分jsp页面或HTTP请求，任何java对象都可以缓存。 拥有全面的API--OSCache API给你全面的程序来控制所有的OSCache特性。 永久缓存--缓存能随意的写入硬盘，因此允许昂贵的创建（expensive-to-create）数据来保持缓存，甚至能让应用重启。
+ 支持集群--集群缓存数据能被单个的进行参数配置，不需要修改代码。 缓存记录的过期--你可以有最大限度的控制缓存对象的过期，包括可插入式的刷新策略（如果默认性能不需要时）。 
+JCACHE JCACHE是一种即将公布的标准规范（JSR 107），说明了一种对Java对象临时在内存中进行缓存的方法，包括对象的创建、共享访问、假脱机（spooling）、失效、各JVM的一致性等。它可被用于缓存JSP内最经常读取的数据，如产品目录和价格列表。利用JCACHE，多数查询的反应时间会因为有缓存的数据而加快（内部测试表明反应时间大约快15倍）。 
+Ehcache Ehcache出自Hibernate，在Hibernate中使用它作为数据缓存的解决方案。 
+Java Caching System JCS是Jakarta的项目Turbine的子项目。它是一个复合式的缓冲工具。可以将对象缓冲到内存、硬盘。具有缓冲对象时间过期设定。还可以通过JCS构建具有缓冲的分布式构架，以实现高性能的应用。 对于一些需要频繁访问而每访问一次都非常消耗资源的对象，可以临时存放在缓冲区中，这样可以提高服务的性能。而JCS正是一个很好的缓冲工具。缓冲工具对于读操作远远多于写操作的应用性能提高非常显著。 
+SwarmCache SwarmCache是一个简单而功能强大的分布式缓存机制。它使用IP组播来有效地在缓存的实例之间进行通信。它是快速提高集群式Web应用程序的性能的理想选择。 
+ShiftOne ShiftOne Object Cache这个Java库提供了基本的对象缓存能力。实现的策略有先进先出（FIFO），最近使用（LRU），最不常使用（LFU）。所有的策略可以最大化元素的大小，最大化其生存时间。 
+WhirlyCache Whirlycache是一个快速的、可配置的、存在于内存中的对象的缓存。它能够通过缓存对象来加快网站或应用程序的速度，否则就必须通过查询数据库或其他代价较高的处理程序来建立。 
+Jofti Jofti可对在缓存层中(支持EHCache，JBossCache和OSCache)的对象或在支持Map接口的存储结构中的对象进行索引与搜索。这个框架还为对象在索引中的增删改提供透明的功能同样也为搜索提供易于使用的查询功能。 
+cache4j cache4j是一个有简单API与实现快速的Java对象缓存。它的特性包括：在内存中进行缓存，设计用于多线程环境，两种实现：同步与阻塞，多种缓存清除策略：LFU, LRU, FIFO，可使用强引用(strong reference)与软引用(soft reference)存储对象。 
+Open Terracotta 一个JVM级的开源群集框架，提供：HTTP Session复制，分布式缓存，POJO群集，跨越群集的JVM来实现分布式应用程序协调(采用代码注入的方式，所以你不需要修改任何)。 
+sccache SHOP.COM使用的对象缓存系统。sccache是一个in-process cache和二级、共享缓存。它将缓存对象存储到磁盘上。支持关联Key，任意大小的Key和任意大小的数据。能够自动进行垃圾收集。 
+Shoal Shoal是一个基于Java可扩展的动态集群框架，能够为构建容错、可靠和可用的Java应用程序提供了基础架构支持。这个框架还可以集成到不希望绑定到特定通信协议，但需要集群和分布式系统支持的任何Java产品中。Shoal是GlassFish和JonAS应用服务器的集群引擎。 
+Simple-Spring-Memcached Simple-Spring-Memcached，它封装了对MemCached的调用，使MemCached的客户端开发变得超乎寻常的简单。
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+软工视频总结Part Three
+软件需求分析
+
+
+
+任务
+
+
+
+
+解决目标系统“做什么”问题
+深入描述软件的功能和性能
+确定软件涉及到的约束和软件接口
+定义软件的其他有效需求
+
+
+
+
+
+
+
+
+特点
+
+
+一致性、完整性、限时性、有效性、可验证性
+
+
+需求分析的过程
+
+
+
+
+
+问题识别
+
+
+
+
+
+
+建立分析所需要的通信途径
+
+
+
+
+
+
+分析与综合
+
+
+
+
+
+
+从信息流和信息结构出发，逐步细化所有的软件功能，找出联系，接口特性和设计上的约束，分析他们是否满足功能要求，是否合理
+
+
+
+
+
+
+编制需求分析阶段的文档
+
+
+
+
+
+
+软件需求说明书
+
+
+数据要求说明书
+
+
+初步的用户手册
+
+
+修改完善与确定软件开发实施计划
+
+
+
+
+
+
+评审
+
+
+
+
+
+
+系统定义的目标是否与用户的要求一致
+
+
+系统需求分析阶段提供的文档资料是否齐全
+
+
+文档中的所有描述是否完整，清晰，准确反映用户的需求
+
+
+与所有其他系统成分的重要接口是否都已经描述
+
+
+
+
+
+软件需求分析的方法
+
+
+
+
+
+SA：面向数据流的结构化分析方法
+
+
+JSD：面向数据结构的Jackson方法
+
+
+DSSD；结构化数据系统开发方法
+
+
+OOA：面向对象的分析方法
+
+
+
+
+
+软件需求分析的原则
+
+
+
+
+
+分解、化简和抽象
+
+
+
+
+
+
+抽象
+
+
+
+
+
+
+在开始建立分析模型前先理解问题
+
+
+开发模型
+
+
+记录需求的起源和原因
+
+
+使用需求视图
+
+
+给予需求优先级
+
+
+删除排除性
+
+
+
+
+
+
+分解
+
+
+
+
+
+
+纵向分解和横向分解
+
+
+
+
+
+数据流图（DFD）
+
+
+
+
+
+特性
+
+
+
+
+
+
+抽象性，概括性，层次性
+
+
+
+
+
+
+主要图形元素
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+数据流与数据加工的关系
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+检查和修改DFD的原则
+
+
+
+
+
+只能有四种图形元素
+
+
+
+
+每个加工至少有一个输入数据流和一个输出数据流
+
+
+
+
+数据流图的主图必须包括四种基本元素，缺一不可
+
+
+
+
+需要增加编号
+
+
+
+
+子图要与主图对应
+
+
+
+
+每个元素必须有名字，不允许有控制流
+
+
+
+
+
+
+
+数据流图的作用
+
+
+
+
+
+系统分析员可以用它自定向下分析系统信息流程
+
+
+
+
+可在图上画出需要计算机处理的部分
+
+
+
+
+根据数据存储，进一步做数据分析，想数据库设计过度
+
+
+
+
+根据数据流方向，定出存取方式
+
+
+
+
+对应一个处理过程，用相应的语言、判定表等工具表达处理方法
+
+
+
+
+
+DFD的优缺点
+
+
+
+
+总体概念强，每一层强调“干什么，需要什么，给出什么”
+
+
+可以反映数据的流向和处理过程
+
+
+自定向下分析，容易急躁发现系统各部分的逻辑错误，容易改正
+
+
+容易与计算机处理相对照
+
+
+不直观，需要概括、抽象、修正
+
+
+
+
+没有计算机，人工绘制太麻烦，工作量大
+
+
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+重新审视“程序媛”这个角色
+     真正进入到这行，已经差不多四年了。从最初的初级编程语言，到数据库、到软工、到C#，到设计模式，到UML，到三层，到BS的种种，像什么HTML、Javascript、JQuery、ajax到Java，可以说随着工作的推进，接触东西的增多，你会发现这个行业很多未知的“秘密”，随着眼界的拓宽，你也在重新审视着“程序媛”这个角色，重新审视着你的工作以及你所处的这个行业。
+
+
+     不得不说，IT这个行业，对女性还是有限制的。这个没有什么大惊小怪，一来这不是什么秘密，显而易见的。二来，在你高考的那个时候，你就应该明白很多行业都对女性有限制，不单单是IT行业。因为很多职业的工作性质决定男性可能比你更适合一些，就像我当年高考的时候，很渴望报考铁路类的院校，因为爷爷、爸爸、叔叔伯伯甚至姐夫都是铁路的。可是后来我上了几年大学才知道，我所向往的那个学校的确挺好，但是女生就业的前景不是很乐观。也许是命运，我并没有如愿考上铁路类的院校。辽宁的高考政策是先估分、然后报志愿最后出成绩，接下来便很顺理成章了，我报的铁路院校与我擦肩而过，于是也就成就了后来“程序媛”的我。
+
+
+     咱们再回过头来说“女程序媛”的话题。其实仔细上网搜一下，吐槽“女程序媛”的帖子并不少，而且我现在的上司，之前也是很抵触“女程序媛”的。没有什么理由，就是简单而粗暴的甩出几个字：“不招女的！”。以至于后来，我扬起“天真”的下巴，问上司“什么不招女程序媛？”。老大嘿嘿一笑，给我讲起其中的缘由。我细细的一想，其实貌似也是那么回事。
+
+
+     
+一、“女程序媛”的思维！！等等，你说什么？
+     貌似“女程序媛”的思维方式应该算在吐槽的前列了。很多男程序猿受不了阿媛们写的代码，他们会说“根本看不懂你在写什么，还让我怎么维护啊！！！！”，可能他们不敢当着你的面说，但是背地里早吐槽N百遍了。程序员这个职业很光荣，就像当老师一样。当老师能教出优秀的学生，而程序员就“生”出“富有你个人气息”的代码。因为你做的软件、写的代码在无形中都被你赋予代表你性格、特点、思维习惯乃至种种“你的气息”。这种代码具有生命力，因为它带着你的思维习惯，你的思维方式，会变活，跳出电脑；也许也会变成魔鬼，毒害别人的思维，让人头脑发胀，最后“中毒”“身亡”！我想这是每一个维护过别人东西的程序员们的心声，我也维护过，甚至吐槽过为什么你看着这么牛，代码却写得这么烂？
+
+
+     我是女程序媛，我想反驳：这个思维方式的问题，可能女程序媛真的存在，但是并不能因此而给阿媛们打上这样一个标签。很多人会说“女程序媛心细，这样这样，那样那样....”,我也想说，阿媛们，不能被打上一个“心细”的标签就证明你在程序员的行列不被落后。一旦打上这个标签，就好比你差的不行，但是还凑合着能给你找个理由让你不至于被辞退，那就是你“心细”。心细怎么了？男孩子一样可以心细，女孩子一样可以心粗，这个不论性别，甚至部分年龄。
+
+
+     思维方式的问题扒开来说，一是你的编码习惯的问题，这个不论是阿媛们还是阿猿们，都要一视同仁，好好锻炼。一个好的编码习惯可以成就一个人，一个坏的编码习惯可以毁灭一个人。这个就好比你吃饭要知道怎么拿筷子一样，可能大致没有详细规定到哪个手指放到筷子的哪个位置，手指之间要怎么相互配合，协同合作。但是大体拿筷子的方式就是那么个样子，就像编码规范一样，虽然各个公司有少许出入，但是大致都是一样的。
+
+
+      除了编码习惯之外，在一个就是你的编程思想。可能每个人写代码的思维都不一样，都遵循着自己的习惯、方式走。比如一个功能，需求很明确，让两个人来写，最后实现的功能都一样，但是细细看代码却可能完全不一样。这都是可能发生的。对此我给的建议是：第一，写代码要严格按照编码规范来，变量、函数命名等要让人一目了然；第二，要加注释。这一点特别重要，你不要觉得我写的这个函数，声明的这个变量特别简单，不用注释一眼就能看懂，就给不加注释找托词。你这么做的理由只有一个，那就是你太自私。在这个开源的时代，别人都把自己的源码分享出来，你注释一下你的垃圾代码，会死掉么？况且，你翻翻你去年写的代码，现在还会一句不落的全部想起来么？你上个月写的代码现在都不见得会想尽然呢，更何况更久之前的代码。所以，注释很重要，非常重要！第三，多看别人的代码。就好比要多看书一样，对于程序员而言，多看别人的代码就像要多阅读别人的书籍一样重要。人各有所长，多看看别人的代码不是为了copy代码，而是为了copy思想，多跟优秀的人学习，看的多了，自然也会进步很多。
+
+
+     
+二、“女程序媛”的生理问题！Oh no,stop talking that!!
+     这个问题同样不可回避，每次肚子疼不舒服得请假吧，但是这样一个实际的问题摆在我们面前，让很多想用阿媛的boss们望而却步了。程序猿们多好，怎样都不用担心“大姨妈”的问题，偶尔担心一下“大姨夫”，吃得多，干活多，抱怨少。而且阿媛们会被追问“结婚没有啊？”，“打算什么时候要孩子啊？”......我也是够了，我才18，这个问题要搁置一段时间，让我静静.......
+
+
+     给我一个理由，让我录用你的理由！我长得美！！！这个，这个，程序员这个行业现在也讲究靠脸吃饭？咳咳，虽然本人不愿意承认自己不美，但我也坚决不走看脸吃饭的路啊。或许我明明可以靠脸吃饭，但偏偏任性了一回。理由！什么理由？我和你要的程序猿们一样的优秀，虽然我每月来大姨妈，虽然我以后的某个岁月里可能会生宝宝，但是程序猿们分几个模块我也分相同的任务量，解决技术难点时我也同样会提出合理的解决方案，也同样会因为项目上线而加班加点，跟程序猿们一起奋斗。除此之外，我的代码很规范，条理很清晰，解决问题时不含糊；有问题及时沟通；一群大老爷们会因为有女程序媛们的存在，而多了很多欢乐和不同的色彩；聚餐时我们一起喝，我不胜酒力就你们喝，喝的烂醉还知道有个姑娘帮你们叫车、结账；除上述理由之外，女程序媛的存在，还可以给单身猿们一个择偶的机会，嘻嘻嘻.....我要给你什么理由录用我，这些理由够吗？
+
+
+     
+三、还有第三条么？阿媛婚后可能要顾家一点.....
+     等一下，我想问一下，阿媛婚后顾家会耽误工作哈？你是这么认为的？第一，阿媛们要顾家，难道程序猿就可以心安理得的不顾家？第二，顾家就一定会耽误工作的吗？如果近期项目紧，要求加班，这个肯定不可避免，但是熟知程序员工作性质的亲们，你们公司是一个项目接着一个项目，天天加班各个周末不休息，个个项目都急着上线？我读书少，但是你不要骗我。如果真有这样的公司，月薪不给你10w你就别去了。这是拿生命在开玩笑啊，高强度的工作持续一段时间可以，其他时间不耽误顾家照顾老婆孩子。除非你在996的创业公司，是吧，跟着公司一同发展一同成长，也不是不可以的。你选择了那个公司，你也选择了那样一种生活，同样你也选择了成长，这些都是值得的。所以，很多时候，不要拿没时间顾家当理由，两个人一起奋斗，撑起一片天空，除非你有个贤惠的全职太太，那样你可以省心好多；可是如果两人都是职工，还是一同抽出点时间陪彼此陪孩子，比如周末，就是一个不错的选择。就怕的就是工作日朝九晚六，周末在家睡一天或出去玩一天，那样就真成了没时间陪家人陪孩子了。所以这个度自己把握，最后强调一句话，这个问题，不止是程序媛们需要面对，程序猿们同样不可逃避，因为家是共同的。
+
+
+
+     好了，我都有点困了，这篇博客我陆陆续续写了三天，可能因为我是女程序媛，所以很多事情想得比程序猿们多很多。我也在为我的职业、我在IT行业里面的角色争取话语权。我不想在面试的时候很多人第一句话就是跟我说，我们不招女的。我很想跳出来，跟这个行业说，女程序媛并没有你们想象的那么差，我是一个女程序媛，我为自己带盐，呵呵我不是白菜。我不是在鼓吹我和男程序员一样，我会正视身为一个女程序媛所不得不面临的问题，但是很多事情是互补的，如果这个世界男性可以做一切事情，那么估计女性这个物种早就灭绝了，优胜劣汰么，自然界的法则。世界上第一个程序员还是女性呢，你是不是从未想过也从不知道这件事?她是拜伦的女儿，叫阿达.奥古斯塔。在IT行业，之所以会出现女程序媛，就一定会有出现的理由，如果最初IT行业女性不能涉足甚至生存不下去，估计女性在这个行业早就淘汰了。还是那句话，我是女程序媛，我为自己代言，我不是一个只会敲代码的码农，我还能理需求、画原型、设计数据库，我厚厚的简历里一项项的表明我不是一个简简单单的码农。虽然这个行业对女程序媛还存在些许的不公平，但是我从未后悔选择这个职业。做一门爱一门是我的职业信条，我也仍然会坚定的走下去！
+
+
+
+
+
+
+
+      
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+软件工程学习要点
+背景：学习了软件工程，但不知道要具体学习到一个什么样的程度，后来请教了高人，得到了一些基本的掌握内容，写出来与大家交流，更方便自己之后的复习。
+
+
+知识掌握类：
+软件工程三问：软件工程是什么？都有哪些阶段？每阶段的文档是啥么？
+
+      文档谁写的？给谁看的？都有什么图
+      文档中的内容应该写什么？
+ 数据库外部设计是干吗的？约定是干嘛的？结构设计、逻辑设计是干吗的？数据词典是什么？
+      操作手册和用户手册的区别？
+
+文档操作类：
+  软件流程图、结构图各种的图的画法；
+逻辑结构设计不能出现数据库详细设计；如数据表是属于物理设计的；
+详细设计说明书依结构图顺序来写。
+
+
+
+文档外观规范类：
+开头空两格；
+
+    文档中去掉多余的换行符；
+
+       文档中图片要居中。  
+
+
+
+小结：以上的问题答案在我的博客专栏“软件工程”都有回答，学习之后，个人感觉软工中的文档制作还是最重要的。
+
+
+每天进步一点点。。。。
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+SVN：SVN学习的总结
+【背景】
+     提起SVN，自己就忍不住谈谈与她的相逢之路！刚开始体会到她的好处是在参加考试系统维护时，当时自己负责在服务器的IIS发布代码，由于系统在不断的改进中所以代码不断更新，由于是多人合作，所以经常弄过来的代码特别乱；当时自己就在想有没有一个好的软件将他们管理起来，通过问师哥对SVN有了初步的了解。
+
+
+【简单使用】
+
+    ITOO3.1的测试时，需要从SVN上Down东西，自己当时对她是一头雾水！由于当时项目要的紧于是乎就在自己的本本上安装了客户端，上网查自己学会简单的使用它来下载东西。
+    
+
+【熟练使用】
+
+     随着接手廊坊一中考评这个项目，由于项目的需要，自己在自己的本上装上了服务端，对SVN进行了深入的学习，其中包括：权限的控制、版本的冲突的解决，下载、添加、更新、修改密码以及与VS结合使用等。
+
+
+【深入原理】
+
+     随着机房重构的完成，进入了SVN学习阶段；这次利用三天时间结合之前使用的基础根据马士兵老师的视频以及九期学术的视频自己也上网查了些资料，对SVN原理进行了学习。
+
+  
+                                    
+                                            一张图胜过千言万语                                                  
+
+【总结】   
+
+      原理固然重要，如果在项目中体会到不用这个东西麻烦，以及在项目中熟练运用再回过头去学原理；会大大增加学习的动力。原理与实战结合才是硬道理。
+
+  
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+[置顶]
+        Maven安装与Maven HelloWorld入门实例
+林炳文Evankaka原创作品。转载请注明出处http://blog.csdn.net/evankaka摘要：本文主要讲了Maven的安装过程，以及一些基础的概念。并用两个例子讲解了Maven在java项目中的使用。一、Maven安装过程必备：下载maven之后，安装环境变量，跟安装java环境变量一样，所以也就不再赘述了。安装好之后运行一条命令，mvn help:system,运行之后会下载一些需要的库文件，一般是放在user/.m2/repository目录下，也就是默认的本地仓库的位置。安装过程如下：1.在安装maven之前，先确保已经安装JDK1.6及以上版本，并且配置好环境变量。2.下载maven3，下载地址：http://maven.apache.org/download.html      下载apache-maven-3.1.1-bin.zip文件后，并解压到  E:\JavaTool\apache-maven-3.3.13.配置maven3的环境变量：先配置M2_HOME的环境变量，新建一个系统变量：M2_HOME , 路径是：E:\JavaTool\apache-maven-3.3.1，如图所示：4、再配置path环境变量，在path值的末尾添加"%M2_HOME%\bin"，如下图所示；5.点击确定之后，打开cmd窗口：输入 mvn -version,出现如下内容表示安装成功，注意3.1.1是对应于jdk1.7以上的版本，所以自己要看好自己电脑jdk的版本6、配置成功后开始在Eclipse中配置Maven，点击eclipse菜单栏Help->Eclipse Marketplace搜索关键字maven到插件Maven Integration for Eclipse 并点击安装即可，如下图：(可以直接下载J2EE的eclipse编译器。它都帮你集成好了)7、重启后，为了使得Eclipse中安装的Maven插件，同windows中安装的那个相同，需要让eclipse中的maven重新定位一下，点击Window -> Preference -> Maven -> Installation -> Add进行设置8、给maven添加本地仓库maven默认的仓库，是放在C:\Users\lin\.m2\repository,lin可以看成是你的用户名，如果不想放在这里，可以这么改打开本地存放maven目录（或者maven安装目录，我的安装目录是：E:\JavaTool\apache-maven-3.3.1\conf，这里没多大影响，我只是不同的项目有不同的仓库）：比如我的本地存放目录是：E:\JavaTool\apache-maven-3.3.1\conf打开conf文件夹下的settings.xml文件，找到第53行，把注释去掉，修改成：<localRepository>D:/Util/maven/maven-dependcies</localRepository>当然了，前提是在某个路径下，手动建立了一个名为 maven-dependcies的文件夹，然后把本地仓库指向该路径。二、初步了解maven      Maven是一个采用纯Java编写的开 源项目管理工具。Maven采用了一种被称之为project object model (POM)概念来管理项目，所有的项目配置信息都被定义在一个叫做POM.xml的文件中，通过该文件，Maven可以管理项目的整个声明周期，包括编 译，构建，测试，发布，报告等等。目前Apache下绝大多数项目都已经采用Maven进行管理。而Maven本身还支持多种插件，可以方便更灵活的控制 项目1.了解maven的目录结构，在maven的构建过程中，构建的程序必须有特定的目录结构,基本的目录如下所示：2.对于这个目录的建立，熟练的建立这个目录是必备的，但是这样无助于开发的进度，所以maven自带了一个archetype工具帮助我们自动生成项目的骨架。在cmd中切换到工程的目录，执行命令mvn archetype:generate,就是自动生成需要的目录，在生成的过程中会需要输入一些字段，在下面说明的pom.xml的时候再讲。3.pom.xml<Project Object Model,项目对象模型>文件，这个文件可以理解为整个项目的控制文件，对于这个文件有一下几个属性需要说明。    <modelVersion>  :默认是4.0.0，指定了当前POM模型的版本。    <groupId>:定义了项目属于哪一个组，这个组通常与项目所在的组织或者公司关联，如com.microsoft.myapp, com.google.myapp等等。    <artifactId>:定义了当前maven项目在组中的唯一ID，可以定义为项目的名称如：HelloWorld    <version>:指定当前的版本，如1.0-SNAPSHOT,snapshot是快照的意思，说明该项目还在开发中，是不稳定的版本。而一般通过archetype工具生成的包名就是groupId+artifactId。三、新建一个简单的maven项目:maven-hellolworld1、新建一个Maven项目2、这里选了quickstart,3、输入工程名，引用包名名4、自动生成的如下，我们不需要这pom.xml文件 如下<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.lin.learning</groupId>
+  <artifactId>maven-hellowrold</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>maven-hellowrold</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+5、修改内容将App.java改成如下package com.lin.learning.maven_hellowrold;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    
+    public void sayHello(){
+    	
+    	 System.out.println( "Hello World!林炳文Evankaka" );
+    }
+}
+再把AppTest.java内容改成如下package com.lin.learning.maven_hellowrold;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest 
+    extends TestCase
+{
+    /**
+     * Create the test case
+     *
+     * @param testName name of the test case
+     */
+    public AppTest( String testName )
+    {
+        super( testName );
+    }
+
+    /**
+     * @return the suite of tests being tested
+     */
+    public static Test suite()
+    {
+        return new TestSuite( AppTest.class );
+    }
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testApp()
+    {
+       App app = new App();
+       app.sayHello();
+    }
+}
+6、测试运行选 中testApp().然后以Junit的调试方式运行运行结果：绿色表明案例通过，运行成功7、打包输出现在好了，可以把这个文件 打包成jar提供给其它项目使用了，项目右键-》属性输入以下内容，开始生成 jar最终输出结果：表明已构建成功，去仓库看看打包成jar没jar已打包，其它java项目都可以使用，不管是不是maven项目四、使用maven项目这里我要再来新建 一个maven-test项目，并且来添加上一个maven-helloworld的包，从而每次maven-helloworld更新jar包时，maven-test都不用手动去替换jar包，直接update project即可。同样的过程，还是新建一个maven-test的项目把app.java改成AppHello，避免和上一个重名同时将AppHello.java内容改成如下package com.lin.learning.maven_test;
+
+import com.lin.learning.maven_hellowrold.App;
+
+/**
+ * Hello world!
+ *
+ */
+public class AppHello 
+{
+    public static void main( String[] args )
+    {
+        App app = new App();
+        app.sayHello();
+    }
+}
+pom.xml文件 添加maven-helloworld的jar包依赖<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.lin.learning</groupId>
+  <artifactId>maven-test</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>maven-test</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+    <groupId>com.lin.learning</groupId>
+    <artifactId>maven-hellowrold</artifactId>
+     <version>0.0.1-SNAPSHOT</version>
+    </dependency>    
+  </dependencies>
+</project>
+接着，更新下整个maven 工程选中强制更新更新好了，直接选中AppHello的main,然后右键运行，输出了结果如果，这时maven-helloworld更改了内容，比如它的App.java更改成如下。添加一个方法package com.lin.learning.maven_hellowrold;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    
+    public void sayHello(){
+    	
+    	 System.out.println( "Hello World!林炳文Evankaka" );
+    }
+    
+    public void sayAll(){
+    	 System.out.println( "我是林炳文Evankaka、林炳文Evankaka、林炳文Evankaka、林炳文Evankaka、林炳文Evankaka " );
+    }
+}这里，maven-test也要用到这个sayall方法。同理，直接maven->update project就会自动引入新的jar包然后调用方法如下：package com.lin.learning.maven_test;
+
+import com.lin.learning.maven_hellowrold.App;
+
+/**
+ * Hello world!
+ *
+ */
+public class AppHello 
+{
+    public static void main( String[] args )
+    {
+        App app = new App();
+        app.sayHello();
+        app.sayAll();
+    }
+}
+输出结果
+
+版权声明：本文为博主林炳文Evankaka原创文章，转载请注明出处http://blog.csdn.net/evankaka
+
+Myeclipse 安装 gradle 插件以及基本使用
+1、在线安装地址
+http://dist.springsource.com/release/TOOLS/update/e4.4
+这是spring提供的，天朝不一定能访问，可能需要翻墙，
+2、选择Core / Eclipse Integration for Gradle -> Gradle IDE
+这个是gradle 的核心了
+
+
+下面直接点击下一步，即可完成安装。
+ 
+3、使用myeclipse 创建一个gradle项目
+File -> New -> Project -> Gradle -> Gradle Project -> Next
+
+ 
+输入项目的名称，选择Sample project Java Quickstart,点击完成即可
+
+4、添加一个jar包依赖
+编辑文件build.gradle,找到dependencies,在里面添加一条jar的信息,例如：
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    //添加一个spring 依赖
+    compile 'org.springframework:spring-core:4.1.2.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+5、刷新项目，使得myeclipse自动下载jar包.
+右击项目->Gradle->Refresh Dependencies
+
+6、打包项目
+右击项目->Run As -> Gradle Build... -> 在命令行里面输入build,点击运行即可
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+机房收费系统—项目开发总结报告
+项目开发总结报告
+1引言
+1.1编写目的
+    机房收费系统的开发工作已经基本完成。写此项目开发总结报告，以方便我们在以后的项目开发中来更好的实施项目的制定开发，让我们在今后的项目开发中有更多的资料来规范我们的开发过程和提高我们的开发效率，从而创造更多公司效益。
+预期读者为相关软件的开发人员。
+1.2背景
+A、待开发软件名称：机房收费系统
+B、项目提出者：米新江教授
+  开发者：周家林
+  用户：廊坊师范学院全体师生
+  实现该软件的计算中心或计算机网络：廊坊师范学院校园局域网
+C、该软件系统同其他机构的基本的相互来往关系：由廊坊师范学院信息技术提高班做技术支持。
+1.3定义
+1.4参考资料
+《软件工程思想》林锐
+《SQL入门经典》敖富江译
+《VB程序设计课本》
+《数据库红皮书实例》
+《陈伟VB6.0视频》
+2实际开发结果 
+2.1产品
+1.产品名称：机房收费系统
+2.主要程序模块：学生上下机模块、一般用户模块、操作员模块、管理员模块
+2.2主要功能和性能
+主要功能：实现了用户的基本需求。一般用户可以完成学生上下机、学生余额查询、学生上机状态查询、密码的修改；操作员可以实现学生的注册、充值、退卡、查看学生充值退卡记录等；管理员完成添加删除用户、系统基本信息设定、查看工作人员记录、结账、查看账单等操作，达到了开发目标。
+性能：在性能方面，也实现了对数据输入精度和反应时间以及系统灵活性的要求，达到了性能要求的标准，实现了系统与数据库完美对接。
+2.3基本流程
+
+
+2.4进度
+   按照预期时间，基本在计划时间内完成了项目。这主要归功于团队的合作，和用户的沟通，最主要的是前期文档规划的细致缜密。
+2.5费用
+1.工时：完文档设计12天，开发测试时间7天。
+2.计算机使用时间：项目各个阶段的完成都离不开计算机的使用，除了计算机外，其他设备还有刷卡器等设备，主要集中在测试阶段，大概有7天左右的时间。
+3.物料消耗：购置刷卡机和学生用卡消耗1200元。
+项目开发费用在计划的误差范围内。
+3开发工作评价
+3.1对生产效率的评价
+给出实际生产效率，包括：
+a.程序的平均生产效率，即每人月生产的行数；
+b.文件的平均生产效率，即每人月生产的千字数；
+并列出原订计划数作为对比。
+3.2对产品质量的评价
+   产品质量较好，已达标。测试中检查出来的程序编制中的错误发生率为2%左右，即每干条指令（或语句）中的错误指令数（或语句数） 20条左右，在计划允许范围内。
+3.3对技术方法的评价
+    机房收费系统主要涉及到VB6.0开发语言和SQL的运用，编程方法结合了软件程序开发的要求。
+3.4出错原因的分析
+1.程序员设计师不够科学，对于设计师语言的掌握不够深入。
+2.程序员数据库语句CURD掌握不熟练。
+3.技术人员全局观不强，给开发过程带来了困难。
+4经验与教训
+    开发前要写好文档，文档合格后才可进行编程开发。如果文档需求不符合用户需求则不能进行开发，文档审核力度应再度将强。开发前根据文档，建立全局观理清思路画好导图。然后按部就班的进行开发。开发过程，要多抽象，相同的代码要尽量少些。提升代码质量，提高系统运行速度。
+ 
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+如何把你的产品融入到客户的心智
+
+      现在是一个产品竞争的环境，你的产品只是数万种产品中的一种，以前所说的“酒香不怕巷子深”在现在这个环境几乎失效，没有人有耐心跑到巷子的深处去寻找你的酒，如何把你的产品融入到客户的心智，如何才能在客户的内心深处占据以块属于你的产品的一些空间，这些问题值得大家深思。
+
+      一个方面是目前处于的环境，信息充斥着每一个角落，每天发出来的新的信息几乎无法用数据衡量，这些信息有哪些可以被人们所关注，都是疑问。现在社会中的我们每天都被这些信息所困扰，恨不得忽略所有信息，这也导致我们没有耐心再去获取内容更多、信息量更大的东西，你可以回忆一下，你有多久没有看过超过5000字的文章，你有多久没有写过超过5000字的评论，我们从写文章到写博客再到写微博最后写说说，是不是我们没有耐心的体现？
+
+
+      另一个方面就是我们大脑生来就是有限的，人们总是用有限的大脑空间去记忆有限的信息，一部分新的信息进入大脑必然有一部分信息被挤出去。每个人对于一类实物所能吸收、记忆的内容都是有限的，做个测试：在你的印象中有哪几款运动品牌？有哪几种汽车品牌？有哪几种饮料品牌？你会选择购买哪个品牌？正常情况下你所能记住的也就是在你心目中排名靠前的几个。
+
+
+
+
+
+图1：世界部分汽车品牌
+
+
+
+
+
+
+图2：世界部分饮料品牌
+
+
+
+
+
+
+图3：世界部分运动服装品牌
+
+
+
+      这么多的品牌，然而人的大脑空间又如此的有限，如何把你的产品融入到客户的心智，如何才能在客户的内心深处占据以块属于你的产品的一些空间呢？
+
+      首先，要简化你的信息，能用较少的信息绝不用较多的信息，例如产品特征，能用两个字的就不要用三个字。
+
+      这样当人们谈到你的品牌，就不会被过多的无用的信息所干扰。例如汽车品牌中奔驰：稳重；宝马：年轻；丰田：节约；沃尔沃：安全。这样人们在谈到某一类汽车特征的时候首先进入人大脑的必然是这几个品牌。
+
+ 
+       进入人的心智另一个捷径就是做到第一，这一点大家都清楚，第一个登上月球的是谁？第二个呢？世界第一高峰是哪座？第二呢？第一个占据人大脑的实物是很难被取代的。
+
+      在不同领域也是一样的现象，计算机IBM，凉茶王老吉，POS机拉卡拉，这是生物的一种本能，所以争第一是一个非常好的捷径。当然如果你的产品非常烂，那么这个第一的印象也是很难消除的。
+
+
+      如何在有限的空间里挤出一块属于自己品牌的空间呢，毕竟人的大脑空间是有限的，就像海绵一样，你想继续加入水就必然要挤出一部分原有的水。还以汽车为例，奔驰汽车给自己定位为高端稳重，那么宝马怎么办？好，你不是高端稳重吗，我就年轻运动。稳重、年轻都被占了，其他汽车就没有机会了吗？沃尔沃干脆就把自己定为安全，我就是比你们安全。日本车丰田怎么办？我节省啊，我省油。怎么样？这样就很容易在客户的大脑中找到一块自己的空间。其实他们真的有那么明显的特征吗？不见得吧。
+
+
+      在POS领域，有很多品牌：盒子支付、拉卡拉、乐刷等等，拿盒子支付和拉卡拉来说，拉卡拉定位为老牌支付品牌，在传统的支付领域有着难以取代的优势，在支付领域有着很大的影响力。
+
+
+
+       那么盒子支付怎么办？就没有办法了吗？找出一个空档，然后填补上去。拉卡拉老牌、传统，盒子支付就主打速度、科技行不行，我交易速度、刷卡速度就是比你快，科技含量就是比你高，至于实际是不是比拉卡拉快一个数量级、高级含量是不是比拉卡拉高一个数量级，暂且不管，哪怕我就比你快一点点、科技含量高一点点，这也是一个不错的定位。在客户的大脑中就会形成速度快的是盒子支付、科技含量高的是盒子支付这样一个形象。
+
+      要想在客户的大脑中争夺一块属于自己的空间，一定不要和强大的、稳固的巨头正面交锋，找准自己的位置，低着头从侧面绕过去，遵守一定的游戏规则往上爬。
+
+
+
+
+编者：朱克锋 盒子支付程序员
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+编译器？ 求解两数运算？
+      这个问题也不算新鲜了，换一种方式提问就是"如何不用 + - * / 运算符，来求解两元素之和"的问题；大家很自然的回想起利用位运算。在数字电路中，我们都遇到过设计“加法器”的问题，利用位与、或、非、异或可以很轻松的解决此问题；这里，不用此方式，而是借助编译器的地址偏移，来解决问题。基本思路如下：(1)将其中int型数据转为地址(或者说是一个数组的首地址)(2)然后利用数组下角标索引，进行地址偏移，获取偏移后的address(3)将(2)中得到的地址转换为int类型下面贴出code，几行的事儿，但可以深深的吸引着我们的脑洞：// ptrtest.cpp : Defines the entry point for the console application.
+//
+#include "stdafx.h"
+#include<iostream>
+using namespace std;
+
+int add(int a,int b){
+	char * c;
+	c = reinterpret_cast<char*>(a);
+	char * d=&c[b];
+	int sum=reinterpret_cast<int>(d);
+	return sum;
+}
+int _tmain(int argc, _TCHAR* argv[])
+{
+	cout <<"sum =" <<add(4,5) << endl;
+	return 0;
+}
+让我们欣赏一下watch窗口，顿时脑洞打开吧！愉快的享受一下，编译器给我们带来的盛宴吧！
+【Git分布式版本控制系统】Git安装与配置
+作者：郭孝星 
+微博：郭孝星的新浪微博 
+邮箱：allenwells@163.com 
+博客：http://blog.csdn.net/allenwells 
+Github：https://github.com/AllenWells
+一 Git安装
+1.1 Linux平台下安装Git
+方法一：直接安装
+执行命令：
+sudo apt-get install git
+方法二：从源码安装
+
+下载Git源代码
+编译并安装，如下所示：
+
+$ tar -zxf git-1.7.2.2.tar.gz
+$ cd git-1.7.2.2
+$ make prefix=/usr/local all
+$ sudo make prefix=/usr/local install
+1.2  Windows平台下安装Git
+Windows平台Git安装包下载
+
+二 Git配置
+Git提供了git config的工具来做Git工作环境的配置，对应的命令时git-config，这些环境变量决定了Git在各个环节的具体工作方式和行为。
+Git的环境变量存放在以下三个地方：
+
+/etc/gitconfig文件：系统中对所有用户都普遍适用的配置。若使用git config时用–system选项，读写的就是这个文件。
+~/.gitconfig文件：用户目录下的配置文件只适用于该用户。若使用git config时用–global选项，读写的就是这个文件。
+.git/config文件：当前项目的git目录中的配置文件，这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以.git/config里的配置会覆盖/etc/gitconfig中的同名变量。
+
+2.1 用户信息
+用户信息配置的是用户名称和电子邮件地址，每次Git提交时都会引用这两条信息，说明是谁提交了更新，这些更新会被永久纳入历史记录。
+配置用户信息的命令如下所示：
+$ git config --global user.name "AllenWells"
+$ git config --global user.email allenwells@163.com
+如果用了–global选项，那么更改的配置文件就是位于你用户主目录下的那个，以后所有的项目都会默认使用这里配置的用户信息。如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 –global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。
+2.2 文本编辑器
+Git在需要我们输入一些额外信息的时候，会自动调用一个外部的文本编辑器，一般默认会是Vi或Vim，我们也可以设置其他的编辑器，如下所示：
+$ git config --global core.editor gedit
+2.3 差异化分析工具
+差异化分析工具是用来解决合并冲突的差异分析工具，如下所示：
+$ git config --global merge.tool vimdiff
+2.4 颜色配置
+Git会适当地让命令输出显示不同的颜色。
+git config --global color.ui true
+2.5 文件忽略
+有些时候我们需要把文件放到Git工作目录中，但是我们又不想提交它们，比如编译产生的中间文件等。这个时候只需要我们在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
+通常忽略文件的原则是：
+
+忽略操作系统自动生成的文件，比如缩略图等；
+忽略编译生成的中间文件、可执行文件等，也就是如果一个文件是通过另一个文件自动生成的，那自动生成的文件就没必要放进版本库，比如Java编译产生的.class文件；
+忽略你自己的带有敏感信息的配置文件，比如存放口令的配置文件。
+
+举例
+忽略tar、jar和exe这些文件
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+我们也不用花精力慢慢一一配置，Github已经提供了Github官方.gitignore文件，可以作为参考。
+2.6 配置别名
+有些Git命令比较长或者比较难记，我们可以为它配置一个别名来提升工作效率。
+配置方式如下所示：
+git config --global alias.st status
+配置完成后，我们就可以用
+git st
+代替
+git status
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+版权声明：当我们认真的去做一件事的时候，就能发现其中的无穷乐趣，丰富多彩的技术宛如路上的风景，边走边欣赏。
+
+软件测试工程的思路、方法、原则、
+测试态度：我们的测试时要发现软件是【不可用的】还是发现软件是【可以工作的】，这是我们的态度。 
+ 
+我们的态度会变化，变化主要取决于下面的关系： 
+
+测试的局限性：测试发现一个缺陷就少一个缺陷，测试不是万能的。只能提高质量，不能保证质量。
+测试的基本原则： 
+1 显示缺陷的存在 
+2 穷尽测试时不可能的：提高有效性 
+3 测试要尽早介入：了解业务，发现业务缺陷 
+4 缺陷集群性：重点投入高发模块 
+5 杀虫剂悖论：交叉测试 
+6 测试活动依赖于测试内容：小型OA你还搞压力测试? 
+7 测试人员要有自己长期目标：适当坚持自己的原则
+测试阶段：单元测试、集成测试、系统测试、验收测试
+测试出入口准则：对待测物要有一定的要求，满足当前测试阶段的要求才能进入测试阶段
+测试过程定义流程： 
+1 明确公司质量方针 
+2 了解公司项目管理流程 
+3 了解业务模型 
+4 了解项目规模 
+5 了解项目类型
+测试过程定义法则： 
+1 简单有效 
+2 易于使用 
+3 结合实际 
+4 必要培训 
+5 持续修订
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+【Git分布式版本控制系统】开篇
+作者：郭孝星 
+微博：郭孝星的新浪微博 
+邮箱：allenwells@163.com 
+博客：http://blog.csdn.net/allenwells 
+Github：https://github.com/AllenWells
+【Git分布式版本控制系统】章节列表
+【Git分布式版本控制系统】开篇 
+【Git分布式版本控制系统】Git安装与配置 
+【Git分布式版本控制系统】本地版本库管理 
+【Git分布式版本控制系统】远程仓库管理 
+【Git分布式版本控制系统】远程仓库Github
+
+集中式版本控制系统有一个单一的集中管理的服务器，保存所有文件的修订版本，而协同工作的人们都通过客户端连到这台服务器，取出最新的文件或者提交更新。
+
+
+这样做的缺点是显而易见的，如果中央服务器发生宕机，那么在段时间内，谁都无法提交更新，也就无法协同工作。如果中央服务器的磁盘发生故障，碰巧没做备份，或者备份不够及时，就会有丢失数据的风险。最坏的情况是彻底丢失整个项目的所有历史更改记录。
+
+分布式版本控制系统的客户端并不只提取最新版本的文件快照，而是把代码仓库完整地镜像下来。这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。因为每一次的提取操作，实际上都是一次对代码仓库的完整备份。
+
+
+分布式版本控制系统不仅解决了数据丢失风险的问题，还为多人协作提供了极大的便利，我们可以指定和若干不同的远端代码仓库进行交互，这样我们就可以在同一个项目中，分别和不同工作小组的人相互协作。我们还可以根据需要设定不同的协作流程，比如层次模型式的工作流，而这在以前的集中式系统中是无法实现的。
+开篇文章就说到这里，后面的文章会介绍时下最流行的Git分布式版本控制系统以及它对应的远程仓库Github。
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+版权声明：当我们认真的去做一件事的时候，就能发现其中的无穷乐趣，丰富多彩的技术宛如路上的风景，边走边欣赏。
+
+创业团队新产品开发模式----寻找一个可持续升级、重复、盈利的模式
+
+      初创的产品仅仅是创始人或者创始人团队的一个未经任何认证的假设，如何才能更好地寻找一个可持续升级、重复、盈利的模式是创始人及创世团队必须要考虑与思考的一个问题。即使你是一个内部创新的团队也不例外。
+
+      相信下面的这张图对于大家来说并不陌生，因为它每时每刻都发生在我们身边，只要大家开始开发一款新的产品，绝大多数人都会按照这个模式进行产品开发。
+
+
+
+      这种开发模式非常详细的说明了如何把新的产品逐步的交付给客户。首先，新产品开发到客户测试，内测（或者公测）；其次，研发工程师根据客户反馈修复产生问题；最后，发布新产品。
+
+      这种产品导入模式对于成熟的企业来说无可厚非，因为成熟的企业有既定的客户群体、既定的市场，市场、营销可以根据已经明确的客户群体、产品特征、市场范围、竞争对手来策划营销和销售手段。然而，对于初创团队来说，很少有初创团队能够清楚地知道自己的客户在哪里，谁是自己的目标客户，但是，仍然有很多初创团队坚持按照这个模式进行产品开发和管理产品，他们按照这个方式去需找自己的客户、设定营销和销售计划、定下产品发布时间和计划，直到产品死亡也不知道原因所在。
+
+      新产品开发也可以说新产品的提出常常会出现很多误区。
+
+
+      第一点就是：我已经很清楚的知道客户想要什么。提出开发新产品的人（产品所有者、创始人或者创始团队、发起人）认为他们已经很清楚产品的目标群里是哪些、知道他们要什么、如何向他们买自己的产品，但是在大多数情况下这些都是发起人的假设，是发起人的假设支撑着这个产品。要想清楚知道客户需要什么，发起人必须要走出去咨询自己假设的客户群，向他们确认这些假设是否真的成立，及时调整这些假设。
+
+
+      第二，发起人认为他们知道要开发哪些功能。发起人这个时候会认为自己了解客户需要哪些产品功能，然后他们指定、设计、开发出非常牛逼的产品，功能齐全、体验完美（自己认为）。然而，由于缺乏和客户之间的沟通，发起人并不真正了解客户需要什么，当产品开发完成，交付给客户使用的时候发现并不是自己设想的那样顺利，这个时候更改是不可避免的，除了浪费人力、物力外，时间成本是无法挽回的，严重的结果就是导致产品流产。
+
+
+      第三，过度的关注产品交付时间。这是典型的成熟企业干的事情，他们按照产品交付时间来制定开发计划、营销和销售计划。这样做会导致一个现象：开火-准备-瞄准，完全忽视了客户群体的探索。在不了解客户需求的情况下把产品推向市场，结果可想而知。
+
+
+      第四，过度的强调执行而忽视学习。初创团队文化常常会强调一点：以最快的速度完成目标。成熟的企业可以在已经存在的客户群体、产品特征等条件下执行，但是初创的团队必须要探索不断的去验证自己的假设、调整自己的假设，寻找可重复、升级、盈利的模式。盲目的执行无异于犯罪。从错误中学习、总结对产品是否成功至关重要。
+
+      无论是开发一个新的产品还是开发一个新的产品特征，一定要走出去探索、验证自己的假设，不断地根据反馈来调整自己假设的客户群体、产品特征，寻找一个可持续升级、重复、盈利的模式，但是千万不要轻易的更改自己的假设。
+
+
+
+
+编者：朱克锋，盒子支付程序员
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+谈谈对工作的看法
+
+早上在车上听到两个女孩子谈论工作问题，很有感触。顺便整理了一下我对工作的看法。
+
+虽然这两年一直在提倡“全民创业、万众创新”，但创业的毕竟是少数，大部分人还是遵循：毕业、就业、跳槽这个规律。    
+
+我从毕业到现在经过两份工作，一份是系统软件开发，一份是互联网软件开发，都是软件开发领域，一线的技术人员。对于毕业五年内的朋友来说我还是有点经验可以分享的。
+
+我是大学学的是食品科学专业，毕业之前到深圳做的第一份工作却是系统软件开发，也许有人会这跨度也太大了吧，其实工作于专业关系真的不是像我们想象的那么密切，有些人抱怨大学没有用，白白浪费了四年时间，我想说读大学与你学什么专业没有关系，读大学读的是你的思考能力、读的是你看问题的方向、读的是你解决问题的思路，如果你天生都有这方面的能力，可以不读。读了四年如果你没有读到这些，那么你真的是白白浪费了四年了。
+
+毕业的第一份工作一定要找一个适合自己的团队，我不赞成很多人说的先随便找一份工作养活自己再说，因为刚刚毕业出来根本没有形成对职业的认识，第一份工作对以后的职业发展至关重要，第一份工作一定要关注几个方面，团队、领导、同事、行业，我的第一份工作算是比较幸运的，加入了一个好的团队、遇到了一个好的领导和一群好的同事。好的团队能让你知道如何合作，如何沟通甚至是一个好的工作方式与习惯，一个好的领导除了能给你职业方面的培训，还会交给你如何形成自己的职业观、价值观，一群好的同事能让你不断地进步、快速的成长。一个好的行业会给你一个好的起点。
+
+我和朋友们交流，我一直强调前几年一定不要在乎薪水，首先你没有什么明显的价值展现给别人，你有的仅仅是代表过去的毕业证而已，这个时候应该关注的是你获取的这份工作，踏踏实实学几年，能装多少是多少，工作只是学习的附带产出。
+
+
+
+
+
+      好的团队能让你知道如何合作，如何沟通甚至是一个好的工作方式与习惯。我的第一个团队是传说中的Broncho团队，是一个以技术为导向的研发团队，虽然团队不大，但是大牛云集，和我一起进入团队的都是很有个性的，但是大家都有一个特点，就是不停地学习，总害怕落后别人，虽然是九点半上班，但是七八点大家都到了，晚上下班根本没有所谓的下班时间，都是十来点才回家，在这样的氛围中，我两年多的时间看了100多本技术书籍，写了大量的demo代码，那时候根本没有想过去获取更多的薪资待遇，想到的就是尽量的多学东西，这种情况只能发生在一个好的团队中，整个团队的氛围就是这样，你自然而然的就这样了。
+
+好的团队你可以选择，观察一下团队的工作、学习、交流就大概能够判断出来。
+
+好的团队离不开好的领导。一个好的领导不仅仅是在技术上、专业上给你指导，帮助你快速的进入这个行业，更重要的是好的领导对你言传身教的影响，和一个好的领导在一起工作，你可以通过他的言行举止学到别人无法教会你的东西，经过长时间的交往，他可以影响你的职业观、价值观、道德观，给你未来的工作打下良好的基础。
+
+       当时我的团队的领导是一位技术大牛李先静，是一个人品、技术俱佳的领导者，共事的两年多时间，我不但从他的身上学到了计算机理论知识，更重要的是我学会了如何做人、做一个合格的职业人。好的领导是一个团队的凝聚中心，可以无形的把一个团队融合起来，即便是这个团队不在了，团队成员仍会有良好的沟通与交流。
+
+
+
+（李先静的作品，由给我们入职培训教材总结而成，推荐）      
+
+
+       好的领导比较少，也很难遇到，但是如果你有幸遇到了，就好好珍惜。
+
+      还有一个比较重要的东西就是跳槽，对于现在的环境来说跳槽无可厚非，但是我还是建议大家找到一个合适的工作安安稳稳的做上几年，不要因为多了一点薪水就今天跳一下、明天跳一下，短时间来看你的薪水有所提高，但是你失去的更多，你没有形成一个完整的行业认识，也许你会说你都在同一个行业里跳，但是你半年之内连公司都还没有搞明白呢，哪里谈得上行业。况且跳槽直接反应就是你的职业忠诚度，我现在看简历，如果三四年换了三四个工作的连面试机会都没有，这只是普通的工作，你设想一下，一个公司找高层管理员工，你频繁跳槽的经历估计会吓跑一堆公司吧。
+
+      最后，外部的环境是很难改变的，我们能改变的是我们自己，调整好自己的心态，怀着“求知若饥、虚心若愚”的态度，努力提升自己。
+
+
+
+
+编者： 朱克锋 盒子支付程序员
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+[置顶]
+        Maven常用命令大全与pom文件讲解
+林炳文Evankaka原创作品。转载请注明出处http://blog.csdn.net/evankaka摘要：本文主要讲解是Maven使用过程中一些常用的命令，并配上图片说明，最后还讲了pom.xml文件的一些构造。一、Maven常用命令1.1、Maven 参数 -D 传入属性参数 -P 使用pom中指定的配置 -e 显示maven运行出错的信息 -o 离线执行命令,即不去远程仓库更新包 -X 显示maven允许的debug信息 -U 强制去远程参考更新snapshot包 例如 mvn install -Dmaven.test.skip=true -Poracle 其他参数可以通过mvn help 获取1.2、maven常用命令 1、mvn clean 说明: 清理项目生产的临时文件,一般是模块下的target目录 下面来看看目录：2、mvn package 说明: 项目打包工具,会在模块下的target目录生成jar或war等文件，如下运行结果。生成的文件 如下：3、mvn test 说明: 测试命令,或执行src/test/java/下junit的测试用例. 4、mvn install 说明: 模块安装命令 将打包的的jar/war文件复制到你的本地仓库中,供其他模块使用 -Dmaven.test.skip=true 跳过测试(同时会跳过test compile) 第一个红框是它的输入路径，也是本地仓库的路径文件如下 ：5、mvn deploy 说明: 发布命令 将打包的文件发布到远程参考,提供其他人员进行下载依赖 ,一般是发布到公司的私服，这里我没配置私服，所以就不演示了。1.3、maven-eclipse-plugin插件 1、mvn eclipse:eclipse 说明: 生成eclipse配置文件,导入到eclipse开放,如果是使用m2eclipse插件,则可以不用次命令.直接使用插件导入到eclipse进行开放 注:通过次命令生产的项目,需要在eclipse中配置M2_HOME的命令,指向你的本地仓库文件夹. 来看看生成的结果：。classpath就是字节码2、mvn eclipse:m2eclipse 生成eclipse配置文件,该配置文件需依赖eclipse 中有m2eclipse -DdownloadSources=true 下载依赖包的源码文件 -Declipse.addVersionToProjectName=true 添加版本信息到项目名称中 3、mvn eclipse:clean 清除eclipse的项目文件看看文件内容，没有project文件 了1.4、maven-jetty-plugin插件 1、mvn jetty:run 说明: 可以直接用jetty的服务器运行 注:此命令只适用于war的模块,即web模块. 2、mvn archetype:generate 说明: 模块创建命令, 执行命令后，会提示选择创建项目的模版，这里选18(maven-archetype-quickstart) 后面会提示你输入groupId(包存放的路径): eg:com.lin提示输入artifactId(模块名称)： eg:test-core 提示输入version(版本): 1.0.0-SNAPSHOT 提示输入package(指项目中基本的包路径): eg:com.lin提示确认,回车即可1.5、maven-release-plugin插件 说明: 发行版本,可与scm工具集成,来提供版本管理.不等同与版本控制.允许是必须有goal.两个常用的goal如下: 1、mvn release:clean 清理release操作是遗留下来的文件 2、mvn release:branch 说明: 创建分支,会在分支下创建执行的分支路径 -DbranchName=xxxx-100317 分支中的名称 -DupdateBranchVersions=false 是否更新分支的版本信息,默认为false -DupdateWorkingCopyVersions=false 是否更新主干的版本信息,默认为true 3、mvn release:prepare 创建标记,会有交互过程,提示tag中pom的版本及trunk下的新版本号,每个模块都会询问,默认是最小版本号+1 -Dtag = 4.4.0 将在tags创建该名称文件夹 -DdryRun=true 检查各项设置是否正确,可做测试用,会产生一些修改的配置文件信息. 命令: mvn release:perform 次命令会自动帮我们签出刚才打的tag，然后打包，分发到远程Maven仓库中 1.6、Maven站点报表 1、mvn project-info-reports:dependencies 生成项目依赖的报表 2、mvn dependency:resolve 查看依赖查看项目依赖情况 3、mvn dependency:tree 打印出项目的整个依赖树 4、mvn dependency:analyze帮助你分析依赖关系, 用来取出无用, 重复依赖的好帮手 5、mvn install -X 追踪依赖的完整轨迹 6、生命周期 resource->compile->process-classes->process-test-resources->test-compile->test->prepare-package->package resources:resources 绑定在resource处理阶段, 用来将src/main/resources下或者任何指定其他目录下的文件copy到输出目录中 resources:testResources 将test下的resources目录或者任何指定其他目录copy到test输出目录下 compiler:testCompile 将测试类编译(包括copy资源文件) surefire:test 运行测试用例 jar:jar 打jar包二、各种范围compile（编译范围）compile是默认的范围；如果没有提供一个范围，那该依赖的范围就是编译范围。编译范围依赖在所有的classpath中可用，同时它们也会被打包。provided（已提供范围）provided依赖只有在当JDK或者一个容器已提供该依赖之后才使用。例如，如果你开发了一个web应用，你可能在编译classpath中需要可用的Servlet API来编译一个servlet，但是你不会想要在打包好的WAR中包含这个Servlet API；这个Servlet API JAR由你的应用服务器或者servlet容器提供。已提供范围的依赖在编译classpath（不是运行时）可用。它们不是传递性的，也不会被打包。runtime（运行时范围）runtime依赖在运行和测试系统的时候需要，但在编译的时候不需要。比如，你可能在编译的时候只需要JDBC API JAR，而只有在运行的时候才需要JDBC驱动实现。test（测试范围）test范围依赖 在一般的 编译和运行时都不需要，它们只有在测试编译和测试运行阶段可用。system（系统范围）system范围依赖与provided类似，但是你必须显式的提供一个对于本地系统中JAR文件的路径。这么做是为了允许基于本地对象编译，而这些对象是系统类库的一部分。这样的构件应该是一直可用的，Maven也不会在仓库中去寻找它。。如果你将一个依赖范围设置成系统范围，你必须同时提供一个systemPath元素。注意该范围是不推荐使用的（你应该一直尽量去从公共或定制的Maven仓库中引用依赖）。三、POM文件讲解       POM全称是Project Object Model，即项目对象模型。pom.xml是maven的项目描述文件，它类似与antx的project.xml文件。pom.xml文件以xml的 形式描述项目的信息，包括项目名称、版本、项目id、项目的依赖关系、编译环境、持续集成、项目团队、贡献管理、生成报表等等。总之，它包含了所有的项目 信息。3.2.1. pom.xml的基本配置<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.lin.learning</groupId>
+  <artifactId>maven-hellowrold</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>maven-hellowrold</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+</project>modelVersion 描述这个POM文件是遵从哪个版本的项目描述符。groupId 针对一个项目的普遍唯一识别符。通常用一个完全正确的包的名字来与其他项目的类似名字来进行区分（比如：org.apache.maven)。artifactId 在给定groupID 的group里面为artifact 指定的标识符是唯一的 ， artifact 代表的是被制作或者被一个project应用的组件(产出物)。version 当前项目产生的artifact的版本以上4个元素缺一不可，其中groupId, artifactId, version描述依赖的项目唯一标志。1. pom.xml文件结构<project>
+<modelVersion>4.0.0</modelVersion>
+<!- The Basics 项目的基本信息->
+<groupId>...</groupId>
+<artifactId>...</artifactId>
+<version>...</version>
+<packaging>...</packaging>
+<dependencies>...</dependencies>
+<parent>...</parent>
+<dependencyManagement>...</dependencyManagement>
+<modules>...</modules>
+<properties>...</properties>
+<!- Build Settings 项目的编译设置->
+<build>...</build>
+<reporting>...</reporting>
+<!- More Project Information 其它项目信息 ->
+<name>...</name>
+<description>...</description>
+<url>...</url>
+<inceptionYear>...</inceptionYear>
+<licenses>...</licenses>
+<organization>...</organization>
+<developers>...</developers>
+<contributors>...</contributors>
+<!-- Environment Settings ->
+<issueManagement>...</issueManagement>
+<ciManagement>...</ciManagement>
+<mailingLists>...</mailingLists> 
+<scm>...</scm>
+<prerequisites>...</prerequisites>
+<repositories>...</repositories>
+<pluginRepositories>...</pluginRepositories>
+<distributionManagement>...</distributionManagement>
+<profiles>...</profiles>
+</project>project是pom.xml的根节点，至于其它元素请参考POM Reference2.、POM很重要的3个关系POM有3个很重要的关系：依赖、继承、合成。2.1. 依赖关系<dependencies>
+<dependency>
+<groupId>junit</groupId>
+<artifactId>junit</artifactId>
+<version>4.0</version>
+<type>jar</type>
+<scope>test</scope>
+<optional>true</optional>
+</dependency>
+...
+</dependencies>如果想依赖一个maven库中没有的一个jar包，方法很简单，就是先将此jar包使用以下的命令安装到本地maven库中：mvn install:install-file -Dfile=my.jar -DgroupId=mygroup -DartifactId=myartifactId -Dversion=1再把依赖关系加进去即可。2.2. 继承关系另一个强大的变化, maven带来的是项目继承。2.2.1. 定义父项目<project>
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.mygroup </groupId>
+<artifactId>my-parent</artifactId>
+<version>2.0</version>
+<packaging>pom</packaging>
+</project>packaging 类型，定义值为 pom用于定义为parent和合成多个项目。 当然我们创建的maven项目的pom都继承maven的super pom， 如果想看项目(父或子)的完全的pom结构，可以运行：mvn help:effective-pom就可以了。2.2.2. 子项目配置<project>
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.mygroup </groupId>
+<artifactId>my-child-project</artifactId>
+<parent>
+<groupId>com.mygroup </groupId>
+<artifactId>my-parent</artifactId>
+<version>2.0</version>
+<relativePath>../my-parent</relativePath>
+</parent>
+</project>2.3. 合成关系一个项目有多个模块，也叫做多重模块，或者合成项目。 如下的定义：<project>
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.mygroup </groupId>
+<artifactId>my-parent</artifactId>
+<version>2.0</version>
+<modules>
+<module>my-child-project1<module>
+<module>my-child-project2<module>
+</modules>
+</project>其中module 描述的是子项目的相对路径 。2.4. dependencyManagement和Profile        Maven 还我们提供了一个dependencyManagement元素，用来提供了一种方式来统一依赖版本号。dependencyManagement元素一 般用在顶层的父POM。使用pom.xml中的dependencyManagement元素能让你在子项目中引用一个依赖而不用显式的列出版本号。 Maven会沿着父子层次向上走，直到找到一个拥有dependencyManagement元素的项目，然后它就会使用在这个 dependencyManagement元素中指定的版本号，这样就解决了修改依赖版本号不完全的问题。        Maven的Profile元素可以为一个特殊的环境自定义一个特殊的构建，使得不同环境间构建的可移植性成为可能。比如要使用 production profile来运行mvn install，你需要在命令行传入-Pproduction参数，这里production是profile的id。要验证production profile覆盖了默认的Compiler插件配置，可以像这样以开启调试输入(-X) 的方式运行Maven。    
+        
+版权声明：本文为博主林炳文Evankaka原创文章，转载请注明出处http://blog.csdn.net/evankaka
+
+Maven学习笔记（二）——Maven目录结构、pom.xml解析&基础命令（一）
+
+
+
+
+前言
+
+
+
+
+上篇blog学习了Maven的下载与安装，有了家伙就可以放手去干活了，所以本篇blog我们开始学习Maven的一些基本使用方法。
+
+
+
+
+Maven的约定目录结构
+
+
+
+
+使用Maven管理项目的话，那么项目的结构目录务必要按照Maven约定的目录结构来创建项目，我们在官方文档中可以看到Maven提供的目录结构图：
+
+
+简单介绍一下每个目录下应当存放的文件类型，在官网中可以看到标准的Introduction to the Standard Directory Layout，如下图所示：
+
+
+显而易见，每个目录下应当放什么样类型的文件都说的很清楚了，一般情况下常用的是以下4个目录，
+src/main/java  存放项目的java类源文件，即：Xxx.java
+src/main/resources  存放项目的资源文件，如spring、mybatis的配置文件等等
+src/test/java  存放项目的用于测试的java类源文件，即：XxxTest.java
+src/test/resources  存放项目的测试相关的资源文件
+在上面的上面的图中我们还看到了一个pom.xml配置文件，这个文件很重要，它是Maven的核心配置文件，我们的项目版本，jar包依赖等等都以标签的形式保存在了这个配置文件中，在官方文档中也可以具体查看关于这个文件的介绍:
+
+
+我在上图中标记出来的4个元素是必须配置的4个基础元素，至于为什么，我们可以在Introduction to the POM中看一下pom.xml的Minimal POM：
+
+
+显而易见，已经说的很清楚了，the minimum requirement for a POM的配置，缺一不可。如果懒得看那一大段英文的原版解释，那么我下面就简要的解释一下这4个元素的含义。
+modelVersion ——描述这个pom.xml文件是遵从哪个版本的项目描述符，maven3应当设置成4.0.0
+groupId ——指明了创建项目的组织的唯一标识符，一般就是包名了
+artifactId ——指的是项目中的主要的模块名（primary artifact），默认命名方式是“项目名-模块名”
+version ——指的是项目模块的版本，通常使用的是Maven的快照版本
+
+
+Maven的目录结构清楚了之后，我们现在就通过手动创建文件夹的方式去创建一个Maven结构的项目并尝试编译运行。不过在此之前我们需要一个包含文件头的pom.xml的模板文件，在哪找呢？很简单，现在许多开源项目都是通过maven去打包的，比如mybatis，我们找到mybatis的jar包，解压后可以在如下目录中看到pom.xml文件：
+
+
+把pom.xml拷贝出来，删除掉多余的部分，只留一个文件头即可：
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+</project>
+
+好了，现在我们就可以根据上面介绍的Maven目录和pom.xml的必备元素来手动构建一个基于Maven的java项目了。
+
+
+
+
+创建基于Maven的Java项目
+
+
+
+
+首先我们依据Maven约定的目录结构创建文件夹以及pom.xml文件，如下图所示，首先在src/main/java目录下创建我们的java类源文件：
+
+
+代码很简单，返回一个字符串：
+
+package com.wl.maven01.model;
+
+public class HelloWorld{
+	public String sayHello(){
+		return "Hello World!";
+	}
+}
+接下来在src/test/java目录下创建用于测试的测试类java源文件：
+
+i
+
+主要用于测试HelloWorld类的sayHello方法的返回值与断言是否一致，代码如下：
+
+package com.wl.maven01.model;
+
+import org.junit.*;
+import org.junit.Assert.*;
+
+public class HelloWorldTest{
+	@Test
+	public void testHello(){
+		Assert.assertEquals("Hello World!",new HelloWorld().sayHello());
+	}
+	
+}
+
+
+这里引入了junit的jar包，Maven的一大特点就是通过pom.xml去管理jar包以及相关依赖，我们只需要在配置文件中写入依赖的相关配置，那么Maven就会自动从Maven中央仓库中将我们的jar包下载到本地仓库，关于依赖和仓库的概念后面再细说，这里我们只需要知道我们的Maven项目不必再手动将jar包add到项目的classpath中，而是在pom.xml中声明即可，Maven会自动下载到本地。下面看看我们的pom.xml文件：
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.wl.maven01</groupId>
+  <artifactId>maven-test</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+    </dependency>
+  </dependencies>
+</project>
+
+可以看到我们通过<dependency>元素来声明了我们的依赖jar包，当我们编辑pom文件后保存的时候Maven就会自动去下载jar包了，这也是Maven最主要的优点之一。配置文件和java文件都写好之后，我们就可以通过Maven去编译、测试以及打包我们项目了。
+
+
+
+
+编译（compile）、测试（test）和打包（package）
+
+
+
+
+首先是编译项目，我们在命令行下切换到我们Maven项目的根路径下：
+
+
+
+
+通过Maven命令mvn compile编译项目：
+
+
+
+
+在上图中我们可以看到Compiling 1 source file to xxx BUILD SUCCESS字样，即编译了一个源文件到D盘的Maven01/target/classes目录下，下面我们再观察一下之前的Maven项目目录：
+
+
+和Maven的输出信息一致，确实生成了target文件夹，这就是Maven规定的用于存放编后的字节码文件的目标文件夹，同样的在意料之中，我们编译后的字节码文件也在这个target文件夹下，如下图所示我们可以看到编译后的class文件：
+
+
+
+
+熟悉了Maven的第一个命令之后，我们可以再进行测试，即通过mvn test命令来对运行我们Maven项目的单元测试：
+
+
+如上图所示，Running com.wl.maven01.model.HelloWorldTest BUILD SUCCESS字样，显而易见的已经成功运行了我们的测试类。但是在target文件夹下又多出了2个文件夹：
+
+
+surfire-reports目录用于存放生成的测试报告，而test-classes同理肯定是用于存放测试类编译后的字节码文件了。
+
+
+最后我们再看一下打包命令——mvn package：
+
+
+如上图所示，Building jar：xxx.jar BUILD SUCCESS，很明显打包成功，打好的jar包在D:/Maven01/target根目录下，我们可以在指定的目录中看到它：
+
+
+
+
+
+
+总结
+
+
+
+
+本篇blog介绍了Maven的约定目录结构以及Maven的三个基本命令——compile、test和package，下一篇blog将继续介绍Maven的部分命令以及Maven的一些核心概念。
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+搭建分布式持续集成/持续交付平台
+    使用docker有一段时间了，深深被其吸引，我想这也是这两年来docker发展迅速的原因吧。
+效果：根据jenkins平台任务的负载动态启动slave来执行job任务。
+
+
+步骤：
+1.首先需要有一个搭建好的jenkins（安装docker plugin插件）平台，在其上面安装好docker；
+2.设置docker的启动参数
+DOCKER_OPTS="-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"
+
+2.通过buildfile编写一个带ssh,jdk的系统（或直接docker pull evarga/jenkins-slave），并创建N个容器；
+3.在jenkins平台中根据下面的参考链接去配置docker即可。
+
+
+
+
+参考：https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+我的openwrt学习笔记（二十二）：网络时间同步
+在实际的LINUX 开发中，网络设备都有工作时间，一般需要进行网络时间同步。
+一般采用NTP服务器进行同步。
+NTP（Network Time Protocol，网络时间协议）是用来使网络中的各个计算机时间同步的一种协议。它的用途是把计算机的时钟同步到世界协调时UTC，其精度在局域网内可达0.1ms，在互联网上绝大多数的地方其精度可以达到1-50ms。
+它可以使计算机对其服务器或时钟源（如石英钟，GPS等等）进行时间同步，它可以提供高精准度的时间校正，而且可以使用加密确认的方式来防止恶毒的协议攻击。
+对嵌入式设备而言，NTP方式关键在于选择哪个NTP服务器，因为有的NTP服务器有时候会出现些问题，如无法访问！
+ 
+本文介绍一种利用HTTP header信息的方法，需要借助curl,curl是什么后面会进行分析阐述。
+ 需要一定的shell http知识哦！
+
+
+
+
+linux@ubuntu:~/http/testcurl$ curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F': ' '/Date: /  {print $2}'
+Mon, 24 Aug 2015 11:19:25 GMT
+linux@ubuntu:~/http/testcurl$ date -s "curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F': ' '/Date: /  {print $2}'"
+date: invalid date `curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F\': \' \'/Date: /  {print }\''
+linux@ubuntu:~/http/testcurl$ date -s "`curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F': ' '/Date: /  {print $2}'`"
+date: cannot set date: Operation not permitted
+Mon Aug 24 19:20:00 CST 2015
+linux@ubuntu:~/http/testcurl$ sudo date -s "`curl -sI http://nist.time.gov/timezone.cgi?UTC/s/0| awk -F': ' '/Date: /  {print $2}'`"
+[sudo] password for linux: 
+Sorry, try again.
+[sudo] password for linux: 
+Mon Aug 24 19:20:09 CST 2015
+
+
+
+
+ 
+ 
+换个国内的baidu.com吧，再来测试下。
+
+
+
+
+linux@ubuntu:~/http/testcurl$ sudo date -s "`curl -sI www.baidu.com| awk -F': ' '/Date: /  {print $2}'`"
+[sudo] password for linux: 
+Wed Aug 26 13:48:49 CST 2015
+linux@ubuntu:~/http/testcurl$ curl -sI www.baidu.com
+HTTP/1.1 200 OK
+Date: Wed, 26 Aug 2015 05:49:09 GMT
+Content-Type: text/html; charset=utf-8
+Connection: Keep-Alive
+Vary: Accept-Encoding
+Set-Cookie: BAIDUID=5B78DC1DCE22807CBA79CEBA91B125CB:FG=1; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: BIDUPSID=5B78DC1DCE22807CBA79CEBA91B125CB; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: PSTM=1440568149; expires=Thu, 31-Dec-37 23:55:55 GMT; max-age=2147483647; path=/; domain=.baidu.com
+Set-Cookie: BDSVRTM=0; path=/
+Set-Cookie: BD_HOME=0; path=/
+Set-Cookie: H_PS_PSSID=16415_1428_14602_12868_16799_16904_17000_17004_12835_15582_12338_13932_16950_16968_16866; path=/; domain=.baidu.com
+P3P: CP=" OTI DSP COR IVA OUR IND COM "
+Cache-Control: private
+Cxy_all: baidu+005986c4967689962c9f01e2f019a0d3
+Expires: Wed, 26 Aug 2015 05:49:02 GMT
+X-Powered-By: HPHP
+Server: BWS/1.1
+X-UA-Compatible: IE=Edge,chrome=1
+BDPAGETYPE: 1
+BDQID: 0xfc0fed0200000131
+BDUSERID: 0
+ 
+linux@ubuntu:~/http/testcurl$ curl -sI www.baidu.com| awk -F': ' '/Date: /  {print $2}
+> ^C
+linux@ubuntu:~/http/testcurl$ curl -sI www.baidu.com| awk -F': ' '/Date: /  {print $2}'
+Wed, 26 Aug 2015 05:49:31 GMT
+
+
+
+
+
+
+
+
+
+
+ 
+       MT 7688 Openwrt 中完全可以使用这种方式进行网络时间的同步！
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+模板维护-子模板解析
+    继上篇文章分析了关于主模板的流程，现在来分析一下关于子模板的分析流程：
+
+
+
+第一步：
+定义一个MainDatatable，然后为它分配四个字段：
+Templetcatecode 站位详细2. Templetname 枚举名称 3. PlACE 编码位置4.EXPRESSION编码表达式
+第二步：
+判断stemplate（模板）sname（名称站位）STRAIN（车型站位）senum（模板说明）
+1.sname（名称站位）不为空
+把相应的数值加到MainDatatable中
+
+
+
+
+
+
+
+然后创建 物资名称表， 添加两个字段 ID和 NAME
+取模板说明中 第一个{}中的数据，进行循环赋值 形式如下图：
+
+
+
+
+
+
+
+然后将 物资名称表 加到MainDatatable中
+ 
+2.STRAIN（车型站位）不为空（原理同上）
+把相应的数值加到MainDatatable中
+
+
+
+
+
+
+然后创建 车型表，添加两个字段 ID和 NAME
+
+取模板说明中的数据，进行循环赋值 形式如下图：
+
+
+
+
+
+
+
+然后将 车型表 加到MainDatatable中
+ 
+3.stemplate（模板）不为空，
+由于子模板的形式比较多，先写出一种形式的解析过程。
+解析子模板：
+1::[直径(mm),S*100,2,4] [全长(mm),S]×[刃长(mm),S]
+第一步：
+如果子模板中有 ：：这样的符号 就将其去除 
+[直径(mm),S*100,2,4] [全长(mm),S]×[刃长(mm),S]
+第二步：
+将其按照 ] 符号转化为数组形式的数据 代码如下：
+string[] Arrstemplates = strstemplate.Split(']');
+第三步：
+实例化stru_tmplcontent，形成数组，在下面的循环解析过程中，为其赋值。
+循环解析数组中的数据（大循环 int i = 0; i < Arrstemplates.Length - 1; i++）。
+比如第一条数据：[直径(mm),S*100,2,4]
+这次是以 ，符号为分隔符 代码如下
+string[] arrItem = Arrstemplates[i].Split(',');
+第四步：
+对上面的数据长度进行判断：
+如果大于1 则将数组中[1]的值赋给stru_tmplcontent[0]的strMS属性。
+否则 stru_tmplcontent[0]的strMS属性直接赋值”F”
+如果大于2 则将数组中[2]的值赋给stru_tmplcontent[0]的strMS属性。
+如果等于3 则将数组中[2]的值赋给stru_tmplcontent[0]的strMS属性。
+如果大于3 则将数组中[3]的值赋给stru_tmplcontent[0]的strMS属性。
+上面依次为strMS赋值结束后 最终结果 stru_tmplcontent[0].strMS =  S*100,2,4
+
+第五步：
+在大循环中定义一个小循环（int j = 0; j < arrItem.Length; j++）。
+第六步：
+循环判断 arrItem[0]  ”[直径(mm),S*100,2,4”  将其拆分 赋值
+stru_tmplcontents[0].strStart = “”
+stru_tmplcontents[0].smbmc =直径(mm)
+stru_tmplcontents[0].smblx = S  （包括S和M）
+stru_tmplcontents[0].smboper=*（包括加减乘除运算符）
+stru_tmplcontents[0].nmbxs=100
+stru_tmplcontents[i].nstart=2
+stru_tmplcontents[i].nend = 4
+ 
+综上所述，这是一次嵌套循环，只是解析下面信息
+[直径(mm),S*100,2,4] [全长(mm),S]×[刃长(mm),S]中的 [直径(mm),S*100,2,4]
+还需要三次循环才能将所有信息全部解析。
+解析完毕 会把所有信息依次赋给stru_tmplcontent数组。
+ 
+然后对stru_tmplcontent数组进行循环判断
+判断 stru_tmplcontents的属性nstart 和nend 是否为空 代码如下
+（stru_tmplcontents[i].nstart + 
+"," + stru_tmplcontents[i].nend != ","）
+
+
+将数组中的信息依次加到MainDatatable中，如下图所示：
+
+
+
+对数组属性 smbmc和smblx 进行判断 是否是枚举类型
+如果是枚举类型  为其创建模板名称命名的Datatable，然后创建两个字段 ID， NAME
+对smbmc属性进行判断，判断属性是否存在英文”(“和中文”（”  然后为名称后面加上 ：
+在模板说明中去除 ”名称：”，将余下部分进行数组转化，为上面新创建的datatable进行循环赋值。
+ 
+最后把Datatable加到MainDatatable中，如图所示（模板名称是粒度）：
+
+
+
+
+
+
+后续有关于模板测试的分析流程，敬请期待。
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+我的openwrt学习笔记（十七）：openwrt uboot.bin导出
+我的openwrt学习笔记（十七）：openwrt uboot.bin导出
+Openwrt 烧写应用程序.BIN 是靠uboot.bin的，为了防止uboot.bin被破坏，无法恢复的问题，可以把uboot.bin从FLASH导出来，方法有很多，但是需要借助编程器等软件硬件！
+ 
+这里提供一个新的方法，导出uboot.bin.
+ 
+
+
+
+
+root@OpenWrt:/tmp# cat /proc/mtd 
+dev:    size   erasesize  name
+mtd0: 00030000 00010000 "u-boot"
+mtd1: 00010000 00010000 "u-boot-env"
+mtd2: 00010000 00010000 "factory"
+mtd3: 007b0000 00010000 "firmware"
+mtd4: 006bfd4b 00010000 "rootfs"
+mtd5: 00300000 00010000 "rootfs_data"
+root@OpenWrt:/tmp# dd if=/dev/mtdblock0 of=/tmp/uboot.bin
+384+0 records in
+384+0 records out
+root@OpenWrt:/tmp# ln -s /tmp /www/tmp
+root@OpenWrt:/tmp# ls -l
+-rw-r--r--    1 root     root             6 Jul 10 11:42 TZ
+-rw-r--r--    1 root     root             0 Jul 10 11:42 dhcp.leases
+drwxr-xr-x    2 root     root            40 Jul 10 11:42 dnsmasq.d
+drwxr-xr-x    2 root     root            60 Jul 10 11:42 etc
+drwxr-xr-x    2 root     root            40 Jan  1  1970 extroot
+drwxr-xr-x    2 root     root            60 Jul 10 11:45 hosts
+drwxr-xr-x    2 root     root            40 Jan  1  1970 lock
+drwxr-xr-x    2 root     root            80 Jul 10 11:42 log
+-rw-------    1 root     root         56427 Jul 10 11:46 luci-indexcache
+drwxr-xr-x    2 root     root           620 Jul 10 11:55 luci-modulecache
+drwx------    2 root     root            80 Jul 10 11:48 luci-sessions
+drwxr-xr-x    2 root     root            40 Jan  1  1970 overlay
+-rw-r--r--    1 root     root            32 Jul 10 11:45 resolv.conf
+-rw-r--r--    1 root     root             0 Jul 10 11:42 resolv.conf.auto
+drwxr-xr-x    3 root     root           240 Jul 10 11:45 run
+drwxr-xr-x    2 root     root            60 Jul 10 11:42 state
+drwxr-xr-x    2 root     root            80 Jan  1  1970 sysinfo
+lrwxrwxrwx    1 root     root             4 Jul 10 11:58 tmp -> /tmp
+-rw-r--r--    1 root     root        196608 Jul 10 11:57 uboot.bin
+root@OpenWrt:/tmp# md5sum uboot.bin 
+db70ae5ae66f6efbb7f334e71b95f1d0  uboot.bin
+
+
+
+
+ 
+
+
+
+
+剩下的就可以利用scp命令上传出该uboot.bin了
+
+
+
+
+ 
+ 
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+git clone permission denied(publickey)
+创建ssh密钥后，从github clone仓库到本地出现permissoin denied(publickey)错误。
+参考官方文档（generating-ssh-keys）的方法来添加ssh密钥到ssh-agent：
+
+连接到ssh-agent：
+
+ssh-agent -s添加私钥：
+
+
+ssh-add ~/.ssh/id_rsa
+
+
+出现Could not open a connection to your authentication agent错误。
+需要在连接到ssh-agent前，执行：
+
+ssh-agent bash这样就能成功的clone了：$ git clone git@github.com:dnawym/Concurrency.git
+Cloning into 'Concurrency'...
+Warning: Permanently added the RSA host key for IP address '192.30.252.131' to the list of known hosts.
+remote: Counting objects: 35, done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 35 (delta 10), reused 34 (delta 9), pack-reused 0
+Receiving objects: 100% (35/35), 3.32 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (10/10), done.
+Checking connectivity... done.
+
+
+
+
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+操作系统 - 程序不会按照特定的顺序回收子进程
+eg1：
+// waitpid1.c
+// 2015-08-26    Lucifer Zhang
+// Using the waitpid function to reap zombie children in no
+// particular order.
+#include "csapp.h"
+#define N 2
+
+int main() 
+{
+    int status, i;
+    pid_t pid;
+
+    /* Parent creates N children */
+    for (i = 0; i < N; i++)                       //line:ecf:waitpid1:for
+	if ((pid = Fork()) == 0)  /* child */     //line:ecf:waitpid1:fork
+	    exit(100+i);                          //line:ecf:waitpid1:exit
+
+    /* Parent reaps N children in no particular order */
+    while ((pid = waitpid(-1, &status, 0)) > 0) { //line:ecf:waitpid1:waitpid
+	if (WIFEXITED(status))                    //line:ecf:waitpid1:wifexited
+	    printf("child %d terminated normally with exit status=%d\n",
+		   pid, WEXITSTATUS(status));     //line:ecf:waitpid1:wexitstatus
+	else
+	    printf("child %d terminated abnormally\n", pid);
+    }
+
+    /* The only normal termination is if there are no more children */
+    if (errno != ECHILD)                          //line:ecf:waitpid1:errno
+	unix_error("waitpid error");
+
+    exit(0);
+}        第15行，父进程创建N个子进程，在第16行，每个子进程以一个唯一的退出状态退出。在第19行，父进程用waitpid作为while循环的测试条件，等待它所有的子进程终止，因为第一个参数是-1，所以对waitpid的调用会阻塞，知道任意一个子进程终止。在每个子进程终止时，对waitpid的调用会返回，返回值为该子进程的非零PID。第20行检查子进程的退出状态。如果子进程是正常终止的，在此是以调用exit函数终止的，那么父进程就提取出退出状态，把它输出到stdout上。
+        当回收了所有的子进程之后，再调用waitpid就返回-1，并且设置errno为ECHILD。第28行检查waitpid函数是正常终止的，否则就输出一个错误消息。
+        测试：
+
+        注意，程序不会按照特定的顺序回收子进程。子进程回收的顺序是这台特定的计算机的属性。在另一个系统上，甚至在同一个系统上再次执行一次，两个子进程都可能以相反的顺序被回收。上面的测试结果也说明了这一点。这是非确定性的（nondeterministic）行为的一个示例，这种非确定性行为使得对并发进行推理非常困难。
+    下面这个例子做了简单的改变，消除了不确定性，按照父进程创建子进程的相同顺序来回收这些子进程。
+
+
+eg2：
+// waitpid1.c
+// 2015-08-26    Lucifer Zhang
+// Using waitpid to reap zombie children in the order they were created.
+
+#include "csapp.h"
+#define N 2
+
+int main() 
+{
+    int status, i;
+    pid_t pid;
+
+    /* Parent creates N children */
+    for (i = 0; i < N; i++)                       //line:ecf:waitpid1:for
+	if ((pid = Fork()) == 0)  /* child */     //line:ecf:waitpid1:fork
+	    exit(100+i);                          //line:ecf:waitpid1:exit
+
+    /* Parent reaps N children in no particular order */
+    while ((pid = waitpid(-1, &status, 0)) > 0) { //line:ecf:waitpid1:waitpid
+	if (WIFEXITED(status))                    //line:ecf:waitpid1:wifexited
+	    printf("child %d terminated normally with exit status=%d\n",
+		   pid, WEXITSTATUS(status));     //line:ecf:waitpid1:wexitstatus
+	else
+	    printf("child %d terminated abnormally\n", pid);
+    }
+
+    /* The only normal termination is if there are no more children */
+    if (errno != ECHILD)                          //line:ecf:waitpid1:errno
+	unix_error("waitpid error");
+
+    exit(0);
+}
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+java 面向對象的資料統計
+
+多态
+
+　　所谓多态，就是父类型的引用可以指向子类型的对象，或者接口类型的引用可以指向实现该接口的类的实例。
+
+　　关于接口与实现接口的类之间的强制类型转换方式与父类和子类之间的强制类型转换方式完全一样。（见下面的多态文章链接）。
+
+
+
+
+
+
+本博客相关文章
+
+
+　　接口：http://www.cnblogs.com/mengdd/archive/2012/08/22/2650309.html
+
+　　多态：http://www.cnblogs.com/mengdd/archive/2012/12/25/2832288.html
+
+ 
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+外来人员如何发起流程与参与内部流程？CCFlow中Guest流程说明
+
+定义：分组织结构内的人员参与的流程，称为外部用户参与流程也叫客户参与流程。
+应用背景：我们给学校设计一个流程，学校教师是内部用户，是组织结构内的用户，学生就是外部用户。如果我们制作一个学生请假流程，一条流程中有多个节点是学生参与的。这样的节点是学生参与的，我们就称为该流程是客户参与流程，学生参与的节点就是外部用户参与节点。 这种应用场景非常之多，比如我们为税务局设计一个系统税务系统工作人员是内部用户，纳税人就是外部用户。 我们为企业设计一个erp ，企业内部的组织机构人员是内部用户，供应商、客户就是外部用户。 如果一个流程中的一个或者一个以上的节点是由外部用户参与的，我们就称该流程是外部用户参与流程，客户参与的节点就是外部用户执行的节点。
+提供的外部用户执行的api:
+BP.WF.Dev2InterfaceGuest.Port_Login(stuNo, stuName);
+源码中有提供的demo：CCFlow/SDKFlowDemo/GuestFlow/Login.aspx. 
+由此页面登录成功，操作的流程对应为：SDK流程/055.学生请假流程（Guest流程）。
+关于Guest用户:
+如果有具有外部用户参与流程的应用环境中，您需要在Port_Emp的用户信息表中预置一个Guest的用户，该用户具备最低的操作权限，最低的查询权限。 他是一个模拟用户，就是说当一个外部用户登录时(比如学号为201001003，姓名为:张三)的用户登录时, 需要调用BP.WF.Dev2InterfaceGuest.Port_Login() 接口，从而记录外来用户编号，同时也让Guest 这个内部账号登陆了。这样cc就存储了两份信息。该同学在系统中具备两个身份一个是他自己，另外一个是Guest
+ 内部模拟信息。
+
+Guest用户执行节点如果该流程是外部参与流程，就在流程属性里做上标记，如果流程的一个节点是外部用户处理的节点，那就在该节点上做好设置，现在他就会流转到该外部用户身上。
+添加guest信息如下：
+
+
+
+
+INSERT INTO Port_Dept (No,Name,ParentNo) VALUES('7','外来人员部门','1');
+INSERT INTO Port_Station (No,Name,StaGrade) VALUES('12','外来人员岗','3') ;
+INSERT INTO Port_Emp (No,Name,Pass,FK_Dept) VALUES('Guest','外来人员','pub','7') ;
+INSERT INTO Port_EmpDept (FK_Emp,FK_Dept) VALUES('Guest','7') ;
+INSERT INTO Port_EmpStation (FK_Emp,FK_Station) VALUES('Guest','12') ;
+
+
+复制代码
+流程设计器中的设置与demo修改（有的demo可能存在错误）：
+编号055流程为例：
+开始节点，节点属性-节点访问规则，使用默认第一个规则，并且绑定岗位--外来人员岗。（与上面添加的guest岗位名称一致即可。）
+第二个节点，打开节点属性，访问规则设置内容中填写：SysSendEmps  。或者其他的表单字段。
+如果不使用此节点访问规则，需要其他设置，具体的节点访问规则详细说明与配置，请看http://ccbpm.mydoc.io/?v=5404&t=17907 。
+第三个节点，节点属性-节点访问规则，使用08.与开始节点处理人相同。
+
+以上设置好之后，点击流程设计器上方的保存按钮，再点击运行，即可通过Guest发起流程。可通过guest登录，查看相关的待办信息。
+Guest的登录密码默认为123或者pub，具体可以查看数据库 Port_Emp表。
+
+也可以通过demo：CCFlow/SDKFlowDemo/GuestFlow/Login.aspx. 调用BP.WF.Dev2InterfaceGuest.Port_Login(stuNo, stuName)接口实现登录发起流程。
+需要在demo中Login.aspx页面中，在设置跳转url的地方添加一个&符号。新版本中，会将这地方添加，由此造成的困扰，感到抱歉。
+
+可以直接复制。
+string url = "/WF/MyFlow.aspx?FK_Flow=055&FK_Node=05501&GuestNo=" + stuNo + "&GuestName=" + stuName;
+            url += "&SysSendEmps=yangyilei";  
+
+
+
+
+如果您对CCFlow感兴趣，请关注我们微信：
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+【Git分布式版本控制系统】远程仓库Github
+作者：郭孝星 
+微博：郭孝星的新浪微博 
+邮箱：allenwells@163.com 
+博客：http://blog.csdn.net/allenwells 
+Github：https://github.com/AllenWells
+
+Girhub提供代码托管服务，它的特色在于可以非常方便地从另外一个项目进行分支。
+
+一 为何要深入Github
+
+Github，Build software better, together.
+
+我们应该去深入了解Github，不仅仅是因为它方便易用的代码托管服务，更多的是因为在Github上存在非常之多的优质开源框架，这些开源框架使我们学习与工作的得力助手。
+我们可以从哪几个角度使用Github来提升自己？
+
+入门级：从别人的框架Demo入手作代码分析
+实践级：重构别人框架的代码，做代码优化
+提高级：创建自己可用的框架，提升项目开发效率
+高手级：快速构建大型应用，完善敏捷开发
+大师级：构建通用的框架，为常见问题提供解决通用解决方案
+
+那面对茫茫多的框架我们该怎么入手呢，因为笔者主要从事的是Android的开发，这里就从Android的开源框架说起。
+首先推荐一个Github上的帖子，它针对Android的开源项目做了细致的匪类和总结。值得参考。
+Android开源项目汇总
+
+其实到这里我们会发现上面帖子里的项目还是很多，我们精力有限，有没有更精简的总结呢？
+答案是肯定的，我们从一个应用的设计的角度，它无非可以分为一下几个主要的模块：
+
+网络通信
+图片管理
+数据存储
+组件通信
+数据处理
+
+下面我们就针对这几个模块推荐几个最为常用的开源框架。
+网络通信
+Volley（Volley给出的是Google官网地址，没有vpn可能连不上）
+okhttp
+图片管理
+glide
+fresco
+Android-Universal-Image-Loader
+picasso
+数据存储
+ActiveAndroid
+greenDAO
+组件通信
+EventBus
+otto
+数据处理
+fastjson
+对开源框架的研究不求多但求精，做到举一反三，笔者后续的文章也会针对上述提到的框架进行用法分析和源码分析。
+二 开始使用Github
+2.1 注册Github账号
+登录Github官方网站，注册Github账号，如下所示：
+
+2.2 创建GIthub仓库
+
+仓库（repository）即版本库，我们可以把它理解成一个目录，这个目录里面的所有文件都会被Git管理起来，Git会跟踪每个文件的修改、删除等操作，以便任何时刻都可以追踪历史，或者在将来某个时刻可以还原。
+
+当我们在Github上注册了账号之后，我们就可以创建仓库了，Github仓库的创建非常简单如下所示：
+
+创建界面如下所示：
+
+创建完成后的仓库界面如下所示：
+
+2.3 配置Git
+2.3.1 配置公钥
+
+公钥提供了一种身份验证机制，当我们把生产的公钥添加到我们的Github账户中，我们就在操作中无需再输入密码。
+
+1 创建一个公私钥对
+ssh-keygen -t rsa -C "allenwells@163.com"
+
+创建完成后生成了两个文件如下所示：
+
+2 添加ssh_key（私钥）到SSH
+ssh-add ssh_key
+ssh_key内容如下所示：
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEArUA0e1Ho6sAN4YTBELvO6xBgbYg5yJYCblvOnd808h86XWtT
+bB9B6AW4cDOrTxvNM8ByylvMrWOEi30bFjEMkQ38krjOZTIz+TNdMgsvICIiXv/4
+DcOebhnLKBV1flnFMs9ZmbtYMNNv7RDkAOgCkw4AR1hTklWBRu6HnUdJwp87Be9r
+fmuspvkA96CV/YXIBqV1kZMBTXYrmLQwVeHJJ49KQQXP7gI+8swRu6uNkS+cAmZh
+MGr/sKMEflslno6dbiDZOlcg2RGSwdpuaCqe4Jq53blKRAW2z9GXf0QukBeFSB/1
+WrJuwLKy1aW1Vx1lh3qCiKcCcejiwQOCKndQQwIDAQABAoIBAARb9jYYJIUrme3P
+uk/ied1eRx7aa6HJbHw8YSGFyT5CXOSW271/t9fPtQlVs3zFFU+1Cu5eivLd6yrb
+VgAj8c4AjRdgAQl4zuf5S+IDeAcV9MlxJVurTWQ1z+/NQmyQc67ImteMaDaqS0mq
+wCHptI7grk8dQNUQw7T2MYFalteHwYl8aAgFaktMghfQa1w4+urO972y3Phs+Iu9
+D7wf/15kozMBW90Yb3Ozj9AvYn4pGj2ds3L8etqNtiBFylobbVI0mfKgnQgs8Naq
+SYP6oHvsUerWNzIP0yo8Btwshhk1bGWdrF9Wk4NOyUIL6MkWAUzewtRqKa4ykdRs
+dE1Q99kCgYEA1+OZbf1GhJ3MiKg1lNWgUJ+J1QwJ1eV08FP2bMmJ6lA255rJ4W4a
+w4xdqTIR+UQYJ4jAZ7CUKOBBsJFPu0F+LMqga6ZpsUj3/+TJCr/paLBCrQg8xFeL
+uI5Xhu130uPlxHs+V9w87eWbPQIB8sbHx1TmyJaLsBoQgJo0zSEoauUCgYEAzXCW
+pbluEqgFSYgAyhln2dx9z+xerwJ7uYc/UgjkSoVf5oIhZ60IxlzNzfPB1oGgoTrI
+bdOuz4MiqImLjSeJ7koXnQwn3Gw+DeEVtUZtij8faQaF/PQ8U1I2rGeqyGLWX+vD
+p5VJv0hWjrEmMUExE0WpqZ4euOeQWF9F0rlQlAcCgYBSQiN02DtlTmbfbxAzbI5Q
+CenPpm2c9XfwFl3fp48IG5Y/+yeO4JAMEFCjpjNZAcweTCnbmFlrlb8R0txJYjP8
+RxyGx/qflUkBVKARm3wI6pgNLAVTXnQbVwkcnSC51yH2Emt3uK/yiTj0Lu6lHX6D
+geMJbOs+pz/AcIFL46VtzQKBgQCE7xCcBgPi0JQzQ2z3WT8o6xMCAvo1lo7Gu2xO
+wfAvBGTMvHGvK3ldGdoWJV/NVK3DBk2BO5OHNVys3+vMF8SZy5nCBoaYi/YPdxFb
+7kmdRkEl7ZGv375VUAKOxrns1n/PK7i77M7+lmlkBd8nyf5ecRpa5jUNAtIVTPja
+ZQ1t6wKBgQCZu6W7bnEOUHvMIv3GBXCbu32ICi57PhaEqOntXYMqzMezwXplPuag
+nk6Y7CO0PWQamo1t54ooO+3mIdcRD6jgxIdF4H+0LMoXdTtg3q4K3ARHVYzRAfDx
+BC8MtZN2aW0MdmQ3p+Uiid6D34XWyd/fwYKVTMPYO5IYKT8Gg9Dv8A==
+-----END RSA PRIVATE KEY-----
+3 添加ssh_key.pub公钥到Github
+ssh_key.pub内容如下所示：
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtQDR7UejqwA3hhMEQu87rEGBtiDnIlgJuW86d3zTyHzpda1NsH0HoBbhwM6tPG80zwHLKW8ytY4SLfRsWMQyRDfySuM5lMjP5M10yCy8gIiJe//gNw55uGcsoFXV+WcUyz1mZu1gw02/tEOQA6AKTDgBHWFOSVYFG7oedR0nCnzsF72t+a6ym+QD3oJX9hcgGpXWRkwFNdiuYtDBV4cknj0pBBc/uAj7yzBG7q42RL5wCZmEwav+wowR+WyWejp1uINk6VyDZEZLB2m5oKp7gmrnduUpEBbbP0Zd/RC6QF4VIH/Vasm7AsrLVpbVXHWWHeoKIpwJx6OLBA4Iqd1BD allenwells@163.com
+将ssh_key.pub（公钥）的内容添加到Github中，如下所示：
+
+
+4 查看Github验证是否成功
+ssh git@github.com
+出现以下界面则说明验证成功：
+
+因为Git是分布式版本控制系统，所以我们需要提供名字和邮箱来自报家门。
+输入以下命令配置名字和邮箱：
+git config --global user.name "AllenWells"
+git config --global user.email "allenwells@163.com"
+
+注意
+–global参数表示这台机器上所有的Git仓库都会使用这个配置，当然我们也可以对某个仓库指定不同的用户名和Email地址。
+配置完成后，可以用以下命令查看配置信息：
+git config --list
+
+2.4 提交修改
+1 复制我们上面创建的仓库地址
+
+2 克隆GIthub仓库到本地
+git clone https://github.com/AllenWells/MyProject.git
+我们创建的MyProject仓库只有简单的几个文件，如下所示：
+
+3 推送文件到Github
+git add newfile.txt
+git commit -m "first.commit"
+git push origin master
+
+原来的仓库
+
+推送后的仓库
+
+三 GIthub项目协作
+Github最大的特色就在于项目协作的简易性，我们可以去参与别人的开源项目，同样也可以邀请别人来参与自己的开源项目，而这些协作只需要几部就可以完成。
+下面我们就来看看如何在Github上进行项目协作。
+拿图像处理框架glide为例，如果我们想来优化和完善这个框架。
+首先，我们需要先fork这个项目，如下所示：
+
+然后，fork完成后，这个项目就会完整地克隆到我们的账号中，如下所示：
+
+最后，我们就可以对我们账号中的这个项目git clone，修改和提交了，如下所示：
+
+注意：
+一定要fork到我们自己的账号中，原始项目我们是没有修改权限的，如果我们想对原始项目提出改进，我们需要在Github上发起一个pull request，当然这个需要对方审核。
+
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        
+
+版权声明：当我们认真的去做一件事的时候，就能发现其中的无穷乐趣，丰富多彩的技术宛如路上的风景，边走边欣赏。
+
+我的openwrt学习笔记（二十一）：广域网IP地址获取_socket http
+我的openwrt学习笔记（二十一）：广域网IP地址获取_socket http
+
+
+在实际的LINUX 开发中，有时候需要获取当前设备所在网络的IP地址信息，上传到服务器等，获取网络的IP地址有很多种方式。
+     包含Json格式的IP地址等信息，是常用的一种方式，一般需要使用包含http 协议的 curl 工具最为方便了。
+     也可以使用sockethttp格式的通信，进行获取
+
+
+
+
+linux@ubuntu:~/ubuntu1/socket_http$ ls -l
+total 28
+-rwxrwxr-x 1 linux linux 10421  8月 26 13:25 a.out
+-rwxrwxr-x 1 linux linux     0  8月 26 13:27 getip
+-rw-rw-r-- 1 linux linux  1435  8月 26 13:27 getip.c
+-rw-rw-r-- 1 linux linux    61  6月 29 09:45 ip.txt
+-rwxr-xr-x 1 linux linux   460  6月 24 15:37 Lindent
+-rw-rw-r-- 1 linux linux  1817  8月 26 13:27 readipfile.c
+linux@ubuntu:~/ubuntu1/socket_http$ ./getip 
+linux@ubuntu:~/ubuntu1/socket_http$ cat ip.txt 
+当前 IP：115.195.46.57 来自：浙江省杭州市 电信
+linux@ubuntu:~/ubuntu1/socket_http$ ./getip 
+linux@ubuntu:~/ubuntu1/socket_http$ ./a.out 
+当前 IP：115.195.46.57 来自：浙江省杭州市 电信
+substr=IP：115.195.46.57 来自：浙江省杭州市 电信
+current wlan ip:115.195.46.57
+ 
+ipstrbuf=115.195.46.57
+
+
+
+
+ Getip.c源代码
+
+
+
+
+linux@ubuntu:~/ubuntu1/socket_http$ cat getip.c
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+typedef enum {
+         false,
+         true
+} bool;
+int main()
+{
+         bool flag;
+         int sock;
+         char **pptr = NULL;
+         struct sockaddr_in destAddr;
+         struct hostent *ptr = NULL;
+         char destIP[128];
+         char szBuffer[] =
+             {
+      "GET /ip2city.asp HTTP/1.1\r\nHost:www.ip138.com\r\nConnection:Close\r\n\r\n"
+  };
+         char res[1024];
+ 
+         sock = socket(AF_INET, SOCK_STREAM, 0);
+         if (-1 == sock) {
+                   perror("creat socket failed");
+                   exit(0);
+         }
+ 
+         bzero((void *)&destAddr, sizeof(destAddr));
+         destAddr.sin_family = AF_INET;
+         destAddr.sin_port = htons(80);
+ 
+         ptr = gethostbyname("www.ip138.com");
+         if (NULL == ptr) {
+                   perror("gethostbyname error");
+                   exit(0);
+         }
+         for (flag = false, pptr = ptr->h_addr_list; NULL != *pptr; ++pptr) {
+                   inet_ntop(ptr->h_addrtype, *pptr, destIP, sizeof(destIP));
+                   printf("ip138 addr:%s\n", destIP);
+                   destAddr.sin_addr.s_addr = inet_addr(destIP);
+                   if (-1 !=
+                       connect(sock, (struct sockaddr *)&destAddr,
+                                sizeof(struct sockaddr))) {
+                            flag = true;
+                            break;
+                   }
+         }
+ 
+         if (false == flag) {
+                   perror("connect failed");
+         }
+ 
+         if (strlen(szBuffer) != send(sock, szBuffer, strlen(szBuffer), 0)) {
+                   perror("send error");
+                   exit(0);
+         }
+ 
+         if (-1 == recv(sock, res, 1024, 0)) {
+                   perror("recv error");
+                   exit(0);
+         }
+ 
+         printf("wlan ip res:\n%s\n", res);
+         return 0;
+}
+
+
+
+
+ 
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+
+Git学习与总结三
+## Git详细教学地址
+http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/
+ 
+##
+ GIT中对文件的一切操作均视为修改
+
+## 工作区和暂存区
+
+ 
+## 撤销修改
+1、如果被修改的文件还在【工作区】
+撤销方式：
+git checkout -- file_name
+
+2、如果被修改的文件已被添加到【暂存区】
+撤销方式：
+git reset head file_name
+然后：
+git checkout -- file_name
+
+3、如果被修改的文件已被提交到master
+撤销方式：
+git
+ reset --hard commit_id
+
+4、如果你要删除一个文件
+git
+ rm file_name
+删除后记得提交：
+git
+ commit -m "rm record"
+ 
+5、如果你误删了一个文件
+git checkout -- file_name
+
+## 生成SSH Key命令
+ssh-keygen -t rsa -Cyouremail@example.com
+ 
+输入后一直回车：
+
+ 
+最后在用户主目录下生成id_rsa和id_ras.pub两个文件，如图：
+
+ 
+## 在本地关联远程仓库（github）SSH链接
+git remote add origin git@github.com:Lauuz/learnGit.git
+注意：
+1、该命令应在你本地仓库目录下执行
+   origin 为远程库的名字，这是git的默认名，可以更改
+   Lauuz 为你自己的github用户名
+  
+ learnGit.git 为你自己的github远程仓库
+2、关联远程仓库可能会有些提示警告，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入yes回车即可。
+3、一旦因网络或其他原因关联远程仓库失败，再次关联时需删除远程库origin，命令如下：
+git
+ remote rm origin
+或确保本地已生成SSH
+ Key
+4、实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。 
+如图：
+
+ 
+
+## 使用git clone命令克隆远程仓库到本地
+亦或者创建好远程仓库之后，使用git clone命令克隆远程仓库到本地，克隆方式如下（SSH）：
+git clone 
+git@github.com:Lauuz/learnGit.git
+
+
+
+注意：
+
+如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。
+
+
+## 创建与合并分支
+
+
+
+## 解决冲突
+在合并项目时，若碰到冲突，就要先解决冲突，再进行提交，即：
+1、解决冲突
+2、git add
+3、git commit
+最后可以用 git log --graph --pretty=oneline --abbrev-commit 查看git日志
+
+## 分支管理策略
+在合并项目时增加 --no-ff 参数会禁用 fast forward 模式，成为普通合并模式，合并后的历史有分支，能看出来曾今做过合并。即：
+
+ 
+
+Tip：
+Git分支十分强大，在团队开发中应该充分应用，如图：
+
+
+
+
+ 
+## BUG分支-及时处理紧急BUG方案
+可能会有很多时候，开发工作进行到一半，突然要有新的bug需要修复，除了提交本地修改之后来修复bug之外，还可以采取以下方式进行处理：
+1、使用 git stash 将工作现场存储起来
+2、切换新的bug分支，如issue-101，并修复此bug
+3、使用 git add，git commit 提交此bug
+4、合并此bug至master主分支
+5、删除bug分支issue-101
+6、切换分支至dev分支
+7、使用
+ git stash list 查看当前分支存储了多少工作现场
+8、使用
+ git stash pop 恢复工作现场，并删除stash内容
+9、因为开发分支dev也有此bug，所以需将修复的bug合并到dev分支上。git
+ rebase master
+
+tip：
+1、若出现冲突，需先决绝冲突，然后：
+git add .
+git rebase --coninue 或
+git rebase --skip 或
+git rebase --abort
+
+2、若并非是修复BUG，而是开发一个新feature，最好新建一个分支。
+若要丢弃一个没有合并过的分支，可以通过 git branch -D branch_name 进行强行删除
+ 
+
+##
+ 多人协作
+1、查看远程库信息，使用 git remote -v
+2、本地新建的分支如果不推送到远程，对其他人就是不可见的。
+3、从本地推送分支，使用 git push origin branch_name，如果推送失败，先用 git pull 抓取远程的新提交。
+4、在本地创建和远程分支对应的分支，使用 git checkout -b branch_name origin，本地和远程分支的名称最好一致。
+5、建立本地分支和远程分支的关联，使用 git branch --set-upstream branch_name origin
+6、从远程抓取分支，使用 git pull，如果有冲突，要先处理冲突。
+
+##
+ 标签管理
+每次发布新的功能时，可以给不同的分支版本作标签，方式如下：
+-- 查看标签列表
+git tag
+-- 打标签，并备注
+git tag -a tag_name -m "version information"
+
+
+-- 使用私钥打标签，并备注
+
+git tag -s tag_name -m "version information"
+
+
+
+-- 给指定commit_id打标签，并备注
+
+git tag -a tag_name -m "version information" commit_id
+
+-- 查看标签详情
+
+git show tag_name
+
+-- 删除标签
+
+git tag -d tag_name
+
+-- 推送本地标签至远程
+
+git push origin tag_name
+
+-- 推送所有本地标签至远程
+
+git push origin --tags
+
+-- 删除远程标签【删除远程标签之前，先删除本地标签】
+
+git push origin :refs/tags/tag_name
+
+
+
+
+ 
+## GitHub说明
+
+## 忽略特殊文件
+
+
+不同开发语言配置的.gitignore内容也不尽相同，参考地址：
+https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
+
+ 
+
+
+
+
+
+##
+ 配置别名
+
+语法：
+
+git config --global alias.custom_alias tag_command
+
+
+
+如：
+git config --global alias.st status
+
+git config --global alias.co checkout
+
+
+git
+ config --global alias.ci commit
+
+
+
+git config --global alias.br branch
+
+git config --global alias.unstage 'reset HEAD'
+git config --global alias.last 'log -1'
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+
+
+tips:
+
+1、配置Git的时候，加上--global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。配置文件放哪了？每个仓库的Git配置文件都放在.git/config文件中。
+
+ 
+
+2、也可以修改当前用户主目录下（C:\Users\Administrator\）的一个隐藏文件.gitconfig中，如图：
+
+ 
+
+##
+ 搭建Git服务器
+搭建Git服务器需要准备一台运行Linux的机器，强烈推荐用Ubuntu或Debian，这样，通过几条简单的apt命令就可以完成安装。 假设你已经有sudo权限的用户账号，下面，正式开始安装。
+第一步、安装git
+第二步、创建一个git用户，用来运行git服务
+第三步、创建证书登陆
+第四步、初始化Git仓库
+第五步、禁用shell登陆
+第六步、克隆远程仓库
+Tips：
+管理公钥，使用 Gitosis，地址 https://github.com/res0nat0r/gitosis
+管理权限，使用 Gitolite，地址 https://github.com/sitaramc/gitolite
+
+##
+ Pro Git 中文版
+http://git.oschina.net/progit/
+
+目录列表：
+1、起步
+2、Git基础
+3、Git分支
+4、服务器上的Git
+5、分布式Git
+6、Git工具
+7、自定义Git
+8、Git与其它系统
+9、Git内部原理
+
+
+鸣谢：
+http://www.liaoxuefeng.com 
+
+
+
+版权声明：本文为博主原创文章，未经博主允许不得转载。
+

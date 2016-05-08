@@ -1,0 +1,506 @@
+神经网络算法（Neural Network）
+
+1：神经网络 算法基本介绍
+http://note.youdao.com/share/?id=a4236f7d5a8d4b300e8f337b8d69a0a2&type=note
+
+
+2：神经网络算法相关函数说明与举例
+http://note.youdao.com/share/?id=c8efb2629d822010cb2296f95267f272&type=note
+
+
+
+3：算法举例
+3.1：简单非线性关系数据集测试（XOR）
+      3.2：手写数字识别
+http://note.youdao.com/share/?id=50fbc61d62e73cd9b079ed9c888d7ba7&type=note
+
+
+Mahout聚类算法学习之Canopy算法的分析与实现
+
+3.1　Canopy算法
+3.1.1　Canopy算法简介
+     Canopy算法的主要思想是把聚类分为两个阶段：阶段一，通过使用一个简单、快捷的距离计算方法把数据分为可重叠的子集，称为“canopy”；阶段二，通过使用一个精准、严密的距离计算方法来计算出现在阶段一中同一个canopy的所有数据向量的距离。这种方式和之前的聚类方式不同的地方在于使用了两种距离计算方式，同时因为只计算了重叠部分的数据向量，所以达到了减少计算量的目的。
+    具体来说，阶段一，使用一个简单距离计算方法来产生具有一定数量的可重叠的子集。canopy就是一个样本数据集的子集，子集中的样本数据是通过一个粗糙的距离计算方法来计算样本数据向量和canopy的中心向量的距离，设定一个距离阈值，当计算的距离小于这个阈值的时候，就把样本数据向量归为此canopy。这里要说明的是，每个样本数据向量有可能存在于多个canopy里面，但是每个样本数据向量至少要包含于一个canopy中。canopy的创建基于不存在于同一个canopy中的样本数据向量彼此很不相似，不能被分为同一个类的这样的观点考虑的。由于距离计算方式是粗糙的，因此不能够保证性能（计算精确度）。但是通过允许存在可叠加的canopy和设定一个较大的距离阈值，在某些情况下可以保证该算法的性能。
+图3-1是一个canopy的例子，其中包含5个数据中心向量。
+
+     图3-1中数据向量用同样灰度值表示的属于同一个聚类。聚类中心向量A被随机选出，然后以A数据向量创建一个canopy，这个canopy包括所有在其外圈（实线圈）的数据向量，而内圈（虚线）中的数据向量则不再作为中心向量的候选名单。
+那么针对一个具体的canopy应该如何创建呢？下面介绍创建一个普通的canopy算法的步骤。
+1）原始数据集合List按照一定的规则进行排序（这个规则是任意的，但是一旦确定就不再更改），初始距离阈值为T1、T2，且T1 ＞ T2（T1、T2的设定可以根据用户的需要，或者使用交叉验证获得）。
+2）在List中随机挑选一个数据向量A，使用一个粗糙距离计算方式计算A与List中其他样本数据向量之间的距离d。
+3）根据第2步中的距离d，把d小于T1的样本数据向量划到一个canopy中，同时把d小于T2的样本数据向量从候选中心向量名单（这里可以理解为就是List）中移除。
+4）重复第2、3步，直到候选中心向量名单为空，即List为空，算法结束。
+图3-2为创建canopy算法的流程图。
+
+    阶段二，可以在阶段一的基础上应用传统聚类算法，比如贪婪凝聚聚类算法、K均值聚类算法，当然，这些算法使用的距离计算方式是精准的距离计算方式。但是因为只计算了同一个canopy中的数据向量之间的距离，而没有计算不在同一个canopy的数据向量之间的距离，所以假设它们之间的距离为无穷大。例如，若所有的数据都简单归入同一个canopy，那么阶段二的聚类就会退化成传统的具有高计算量的聚类算法了。但是，如果canopy不是那么大，且它们之间的重叠不是很多，那么代价很大的距离计算就会减少，同时用于分类的大量计算也可以省去。进一步来说，如果把Canopy算法加入到传统的聚类算法中，那么算法既可以保证性能，即精确度，又可以增加计算效率，即减少计算时间。
+Canopy算法的优势在于可以通过第一阶段的粗糙距离计算方法把数据划入不同的可重叠的子集中，然后只计算在同一个重叠子集中的样本数据向量来减少对于需要距离计算的样本数量。
+3.1.2　Mahout中Canopy算法实现原理
+在Mahout中，Canopy算法用于文本的分类。实现Canopy算法包含三个MR，即三个Job，可以描述为下面4个步骤。
+1）Job1：将输入数据处理为Canopy算法可以使用的输入格式。
+2）Job2：每个mapper针对自己的输入执行Canopy聚类，输出每个canopy的中心向量。
+3）Job2：每个reducer接收mapper的中心向量，并加以整合以计算最后的canopy的中心向量。
+4）Job3：根据Job2的中心向量来对原始数据进行分类。
+其中，Job1和Job3属于基础操作，这里不再进行详细分析，而主要对Job2的数据流程加以简要分析，即只对Canopy算法的原理进行分析。
+首先来看图3-3，可以根据这个图来理解Job2的map/reduce过程。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+图3-3中的输入数据可以产生两个mapper和一个reducer。每个mapper处理其相应的数据，在这里处理的意思是使用Canopy算法来对所有的数据进行遍历，得到canopy。具体如下：首先随机取出一个样本向量作为一个canopy的中心向量，然后遍历样本数据向量集，若样本数据向量和随机样本向量的距离小于T1，则把该样本数据向量归入此canopy中，若距离小于T2，则把该样本数据从原始样本数据向量集中去除，直到整个样本数据向量集为空为止，输出所有的canopy的中心向量。reducer调用Reduce过程处理Map过程的输出，即整合所有Map过程产生的canopy的中心向量，生成新的canopy的中心向量，即最终的结果。
+3.1.3　Mahout的Canopy算法实战
+1．输入数据
+从http://archive.ics.uci.edu/m1/databases/synthetic_control/synthetic_control.data.html下载数据，这里使用的数据同样是第2章中提到的控制图数据，包含600个样本数据，每个样本数据有60个属性列，这些数据可以分为六类。我们首先上传该文本数据到HDFS，使用如下命令：
+
+
+
+
+
+$HADOOP_HOME/bin/hadoop fs –copyFromLocal /home/mahout/mahout_data/synthetic_control.data input/synthetic_control.data 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+这里只针对Job2的任务进行实战：Job2的输入要求使用的数据是序列化的，同时要求输入数据要按照一定的格式，因此，编写代码清单3-1对原始数据进行处理。
+
+代码清单 3－1　原始数据处理代码
+package mahout.fansy.utils.transform;  
+import java.io.IOException;  
+import org.apache.hadoop.conf.Configuration;  
+import org.apache.hadoop.fs.Path;  
+import org.apache.hadoop.io.LongWritable;  
+import org.apache.hadoop.io.Text;  
+import org.apache.hadoop.mapreduce.Job;  
+import org.apache.hadoop.mapreduce.Mapper;  
+import org.apache.hadoop.mapreduce.Reducer;  
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;  
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;  
+import org.apache.hadoop.util.ToolRunner;  
+import org.apache.mahout.common.AbstractJob;  
+import org.apache.mahout.math.RandomAccessSparseVector;  
+import org.apache.mahout.math.Vector;  
+import org.apache.mahout.math.VectorWritable;  
+/**  
+ ??* transform text data to vectorWritable data  
+ ??* @author fansy  
+ ??*  
+ ??*/  
+public class Text2VectorWritable extends AbstractJob{  
+     public static void main(String[] args) throws Exception{  
+          ToolRunner.run(new Configuration(), new Text2VectorWritable(),args);  
+     }  
+     @Override  
+     public int run(String[] arg0) throws Exception {  
+          addInputOption();  
+          addOutputOption();  
+          if (parseArguments(arg0) == null) {  
+               return -1;  
+          }  
+          Path input=getInputPath();
+  
+          Path output=getOutputPath();
+  
+          Configuration conf=getConf();
+  
+          // set job information  
+        ?Job job=new Job(conf,"text2vectorWritableCopy with input:"+input.getName());
+  
+          job.setOutputFormatClass(SequenceFileOutputFormat.class);  
+          job.setMapperClass(Text2VectorWritableMapper.class);  
+          job.setMapOutputKeyClass(LongWritable.class);  
+          job.setMapOutputValueClass(VectorWritable.class);  
+          job.setReducerClass(Text2VectorWritableReducer.class);  
+          job.setOutputKeyClass(LongWritable.class);  
+          job.setOutputValueClass(VectorWritable.class);  
+          job.setJarByClass(Text2VectorWritable.class);  
+          FileInputFormat.addInputPath(job, input);  
+          SequenceFileOutputFormat.setOutputPath(job, output);  
+          if (!job.waitForCompletion(true)) { // wait for the job is done  
+              throw new InterruptedException("Canopy Job failed processing " + input);  
+              }  
+          return 0;  
+    }  
+    /**  
+     ??* Mapper ：main procedure  
+     ??* @author fansy  
+     ??*  
+     ??*/  
+    public static class Text2VectorWritableMapper extends Mapper<LongWritable,Text,LongWritable,VectorWritable>{
+  
+         public void map(LongWritable key,Text value,Context context)throws  
+IOException,InterruptedException{  
+             ??String[] str=value.toString().split("\\s{1,}");
+  
+             // split data use one or more blanker  
+             ???Vector vector=new RandomAccessSparseVector(str.length);
+  
+             ???for(int i=0;i<str.length;i++){
+  
+             ???     vector.set(i, Double.parseDouble(str[i]));  
+             ???}  
+             ???VectorWritable va=new VectorWritable(vector);
+  
+             ???context.write(key, va);  
+         }  
+    }  
+    /**  
+     ??* Reducer: do nothing but output  
+     ??* @author fansy  
+     ??*  
+     ??*/  
+    public static class Text2VectorWritableReducer extends Reducer<LongWritable,
+  
+VectorWritable,LongWritable,VectorWritable>{
+  
+         public void reduce(LongWritable key,Iterable<VectorWritable> values,Con-text context)throws IOException,InterruptedException{
+  
+             ???for(VectorWritable v:values){  
+             ?     context.write(key, v);  
+             ???}  
+         }  
+    }  
+} 
+
+把上面的代码编译打包成ClusteringUtils.jar并放入/home/mahout/mahout_jar目录下，然后在Hadoop根目录下运行下面的命令：
+ 
+$HADOOP_HOME/bin/hadoop jar /home/mahout/mathout_jar/ClusteringUtils.jar  
+mahou·t.fansy.utils.transform.Text2VectorWritable –i input/synthetic_control.data –o  
+input/transform 
+
+命令运行成功后可以在文件监控系统查看转换后的输入数据，如图3-5所示。
+
+
+
+
+由图3-5方框中的内容可以看出，数据已经被转换为VectorWritable的序列文件了。经过上面的步骤，输入数据的准备工作就完成了。
+
+提示 在Hadoop中运行编译打包好的jar程序，可能会报下面的错误：
+ 
+Exception in thread "main" java.lang.NoClassDefFoundError:  
+org/apache/mahout/common/AbstractJob 
+
+这时需要把Mahout根目录下的相应的jar包复制到Hadoop根目录下的lib文件夹下，同时重启Hadoop即可。
+
+
+
+2．运行
+
+进入Mahout的根目录下，运行下面的命令：
+ 
+$MAHOUT_HOME/bin/mahout canopy --input input/transform/part-r-00000 --output output/canopy --distanceMeasure org.apache.mahout.common.distance.EuclideanDistanceMeasure --t1 80 --t2 55 --t3 80 --t4 55 --clustering 
+
+其中输入文件使用的是转换后的序列文件；距离计算方式使用的是欧式距离；T1和T3设置为80，T2和T4设置为55；--clustering选项表示最后对原始数据进行分类。
+
+可以看到其输出类名为ClusterWritable，编写下面的代码清单 3－2。
+
+代码清单3-2　转换canopy聚类中心向量代码
+ 
+package mahout.fansy.utils;  import java.io.IOException;  import org.apache.hadoop.conf.Configuration;  import org.apache.hadoop.io.Text;  import org.apache.hadoop.mapreduce.Job;  import org.apache.hadoop.mapreduce.Mapper;  import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;  import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;  import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;  import org.apache.hadoop.util.ToolRunner;  import org.apache.mahout.clustering.iterator.ClusterWritable;  import org.apache.mahout.common.AbstractJob;  import org.slf4j.Logger;  import org.slf4j.LoggerFactory;  /**   ??* read cluster centers   ??* @author fansy   ??*/  public class ReadClusterWritable extends AbstractJob {        public static void main(String[] args) throws Exception{             ToolRunner.run(new Configuration(), new ReadClusterWritable(),args);        }        @Override        public int run(String[] args) throws Exception {             addInputOption();             addOutputOption();             if (parseArguments(args) == null) {                  return -1;               ?}             Job job=new Job(getConf(),getInputPath().toString());             job.setInputFormatClass(SequenceFileInputFormat.class);             job.setMapperClass(RM.class);             job.setMapOutputKeyClass(Text.class);             job.setMapOutputValueClass(Text.class);             job.setNumReduceTasks(0);             job.setJarByClass(ReadClusterWritable.class);              FileInputFormat.addInputPath(job, getInputPath());             FileOutputFormat.setOutputPath(job, getOutputPath());             ???if (!job.waitForCompletion(true)) {                throw new InterruptedException("Canopy Job failed processing " + getInputPath());          }        ?return 0;      }      public static class RM extends Mapper<Text,ClusterWritable ,Text,Text>{           private Logger log=LoggerFactory.getLogger(RM.class);         ???public void map(Text key,ClusterWritable value,Context context) throws  IOException,InterruptedException{                String str=value.getValue().getCenter().asFormatString();           //   System.out.println("center****************:"+str);             ?log.info("center*****************************:"+str); // set log information                context.write(key, new Text(str));           }      }  } 
+
+把上面的代码编译打包放入/home/mahout/mahout_jar目录下，运行下面的命令：
+
+$HADOOP_HOME/bin/hadoop jar /home/mahout/mahout_jar/ClusteringUtils.jar mahout.fansy.utils.ReadClusterWritable -i output/canopy/clusters-0-final/part-r-00000 -o output/canopy-output 
+
+
+机器学习——kMeans算法（K均值聚类算法）
+
+        机器学习中有两类的大问题，一个是分类，一个是聚类。分类是根据一些给定的已知类别标号的样本，训练某种学习机器，使它能够对未知类别的样本进行分类。这属于supervised learning（监督学习）。而聚类指事先并不知道任何样本的类别标号，希望通过某种算法来把一组未知类别的样本划分成若干类别，这在机器学习中被称作 unsupervised learning （无监督学习）。在本文中，我们关注其中一个比较简单的聚类算法：k-means算法。 
+        k-means算法是一种很常见的聚类算法，它的基本思想是：通过迭代寻找k个聚类的一种划分方案，使得用这k个聚类的均值来代表相应各类样本时所得的总体误差最小。
+其Python实现的代码如下：
+
+
+  k-means算法比较简单，但也有几个比较大的缺点：
+1）k值的选择是用户指定的，不同的k得到的结果会有挺大的不同，如下图所示，左边是k=3的结果，这个就太稀疏了，蓝色的那个簇其实是可以再划分成两个簇的。而右图是k=5的结果，可以看到红色菱形和蓝色菱形这两个簇应该是可以合并成一个簇的：
+
+2）对k个初始质心的选择比较敏感，容易陷入局部最小值。例如，我们上面的算法运行的时候，有可能会得到不同的结果，如下面这两种情况。K-means也是收敛了，只是收敛到了局部最小值：
+
+3）存在局限性，如下面这种非球状的数据分布就搞不定了
+
+4）数据库比较大的时候，收敛会比较慢.
+
+
+  K均值聚类中簇的值k是用户预先定义的一个参数，那么用户如何才能知道k的选择是否正确？如何才能知道生成的簇比较好？在计算的过程中保留了每个点的误差，即该点到簇质心的距离平方值，下面将讨论利用该误差来评价聚类质量好坏的方法，引入度量聚类效果的指标SSE（sum of squared Error，误差平方和），SSE值越小，越接近于他们的质心，聚类效果也越好，有一种可以肯定减小SSE值得方法是增加k的数目，但这个违背了聚类的目标，聚类的目标是在保持簇数目不变的情况下提高簇的质量。
+接下来要讨论的是利用簇划分技术得到更好的聚类效果——二分K-均值算法
+
+
+
+
+
+机器学习——二分-kMeans算法（二分-K均值聚类算法）
+
+首先二分-K均值是为了解决k-均值的用户自定义输入簇值k所延伸出来的自己判断k数目，其基本思路是：
+为了得到k个簇，将所有点的集合分裂成两个簇，从这些簇中选取一个继续分裂，如此下去，直到产生k个簇。
+
+
+伪代码：
+
+初始化簇表，使之包含由所有的点组成的簇。
+repeat
+   从簇表中取出一个簇。
+   {对选定的簇进行多次二分试验}
+   for i=1 to 试验次数 do
+       使用基本k均值，二分选定的簇。
+   endfor
+   从二分试验中选择具有最小误差的两个簇。
+   将这两个簇添加到簇表中。
+until 簇表中包含k个簇
+比如要分成5个组，第一次分裂产生2个组，然后从这2个组中选一个目标函数产生的误差比较大的，分裂这个组产生2个，这样加上开始那1个就有3个组了，然后再从这3个组里选一个分裂，产生4个组，重复此过程，产生5个组。这算是一中基本求精的思想。二分k均值不太受初始化的困扰，因为它执行了多次二分试验并选取具有最小误差的试验结果，还因为每步只有两个质心。
+优点与缺点
+k均值简单并且可以用于各种数据类型，它相当有效，尽管常常多次运行。然后k均值并不适合所有的数据类型。它不能处理非球形簇，不同尺寸和不同密度的簇。对包含离群点（噪声点）的数据进行聚类时，k均值也有问题。
+其实现的Python代码如下：
+
+
+
+
+
+搜索引擎：文本分类——TF/IDF算法
+
+原理
+TFIDF的主要思想是：如果某个词或短语在一篇文章中出现的频率TF高，并且在其他文章中很少出现，则认为此词或者短语具有很好的类别区分能力，适合用来分类。TFIDF实际上是：TF * IDF，TF词频(Term Frequency)，IDF反文档频率(Inverse Document Frequency)。TF表示词条在文档d中出现的频率。IDF的主要思想是：如果包含词条t的文档越少，也就是n越小，IDF越大，则说明词条t具有很好的类别区分能力。如果某一类文档C中包含词条t的文档数为m，而其它类包含t的文档总数为k，显然所有包含t的文档数n=m+k，当m大的时候，n也大，按照IDF公式得到的IDF的值会小，就说明该词条t类别区分能力不强。但是实际上，如果一个词条在一个类的文档中频繁出现，则说明该词条能够很好代表这个类的文本的特征，这样的词条应该给它们赋予较高的权重，并选来作为该类文本的特征词以区别与其它类文档。这就是IDF的不足之处.
+ 在一份给定的文件里，词频（term frequency，TF）指的是某一个给定的词语在该文件中出现的频率。这个数字是对词数(term count)的归一化，以防止它偏向长的文件。（同一个词语在长文件里可能会比短文件有更高的词数，而不管该词语重要与否。）对于在某一特定文件里的词语  来说，它的重要性可表示为：
+
+
+
+以上式子中  是该词在文件中的出现次数，而分母则是在文件中所有字词的出现次数之和。
+逆向文件频率（inverse document frequency，IDF）是一个词语普遍重要性的度量。某一特定词语的IDF，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取对数得到：
+
+
+
+其中
+
+|D|：语料库中的文件总数：包含词语的文件数目（即的文件数目）如果该词语不在语料库中，就会导致被除数为零，因此一般情况下使用
+然后
+
+
+
+某一特定文件内的高词语频率，以及该词语在整个文件集合中的低文件频率，可以产生出高权重的TF-IDF。因此，TF-IDF倾向于过滤掉常见的词语，保留重要的词语。
+例子：
+
+我们还是看上回的例子，查找关于“原子能的应用”的网页。我们第一步是在索引中找到包含这三个词的网页（详见关于布尔运算的系列）。现在任何一个搜索引擎都包含几十万甚至是上百万个多少有点关系的网页。那么哪个应该排在前面呢？显然我们应该根据网页和查询“原子能的应用”的相关性对这些网页进行排序。因此，这里的关键问题是如何度量网页和查询的相关性。
+
+我们知道，短语“原子能的应用”可以分成三个关键词：原子能、的、应用。根据我们的直觉，我们知道，包含这三个词多的网页应该比包含它们少的网页相关。当然，这个办法有一个明显的漏洞，就是长的网页比短的网页占便宜，因为长的网页总的来讲包含的关键词要多些。因此我们需要根据网页的长度，对关键词的次数进行归一化，也就是用关键词的次数除以网页的总字数。我们把这个商称为“关键词的频率”，或者“单文本词汇频率”（Term Frequency)，比如，在某个一共有一千词的网页中“原子能”、“的”和“应用”分别出现了
+ 2 次、35 次 和 5 次，那么它们的词频就分别是 0.002、0.035 和 0.005。 我们将这三个数相加，其和 0.042 就是相应网页和查询“原子能的应用”
+相关性的一个简单的度量。概括地讲，如果一个查询包含关键词 w1,w2,...,wN, 它们在一篇特定网页中的词频分别是: TF1, TF2, ..., TFN。 （TF: term frequency)。 那么，这个查询和该网页的相关性就是:
+TF1 + TF2 + ... + TFN。
+
+读者可能已经发现了又一个漏洞。在上面的例子中，词“的”站了总词频的 80% 以上，而它对确定网页的主题几乎没有用。我们称这种词叫“应删除词”（Stopwords)，也就是说在度量相关性是不应考虑它们的频率。在汉语中，应删除词还有“是”、“和”、“中”、“地”、“得”等等几十个。忽略这些应删除词后，上述网页的相似度就变成了0.007，其中“原子能”贡献了0.002，“应用”贡献了 0.005。
+
+细心的读者可能还会发现另一个小的漏洞。在汉语中，“应用”是个很通用的词，而“原子能”是个很专业的词，后者在相关性排名中比前者重要。因此我们需要给汉语中的每一个词给一个权重，这个权重的设定必须满足下面两个条件：
+
+1. 一个词预测主题能力越强，权重就越大，反之，权重就越小。我们在网页中看到“原子能”这个词，或多或少地能了解网页的主题。我们看到“应用”一次，对主题基本上还是一无所知。因此，“原子能“的权重就应该比应用大。
+
+2. 应删除词的权重应该是零。
+
+我们很容易发现，如果一个关键词只在很少的网页中出现，我们通过它就容易锁定搜索目标，它的权重也就应该大。反之如果一个词在大量网页中出现，我们看到它仍然不很清楚要找什么内容，因此它应该小。概括地讲，假定一个关键词 ｗ 在 Ｄｗ 个网页中出现过，那么 Ｄｗ 越大，ｗ 的权重越小，反之亦然。在信息检索中，使用最多的权重是“逆文本频率指数” （Inverse document frequency 缩写为ＩＤＦ），它的公式为ｌｏｇ（Ｄ／Ｄｗ）其中Ｄ是全部网页数。比如，我们假定中文网页数是Ｄ＝１０亿，应删除词“的”在所有的网页中都出现，即Ｄｗ＝１０亿，那么它的ＩＤＦ＝log(10亿/10亿）=
+ log (1) = ０。假如专用词“原子能”在两百万个网页中出现，即Ｄｗ＝２００万，则它的权重ＩＤＦ＝log(500) =6.2。又假定通用词“应用”，出现在五亿个网页中，它的权重ＩＤＦ = log(2)
+则只有 0.7。也就只说，在网页中找到一个“原子能”的比配相当于找到九个“应用”的匹配。利用 IDF，上述相关性计算个公式就由词频的简单求和变成了加权求和，即 TF1*IDF1 +　TF2*IDF2 ＋... + TFN*IDFN。在上面的例子中，该网页和“原子能的应用”的相关性为 0.0161，其中“原子能”贡献了 0.0126，而“应用”只贡献了0.0035。这个比例和我们的直觉比较一致了。
+
+ＴＦ／ＩＤＦ（term frequency/inverse document frequency) 的概念被公认为信息检索中最重要的发明。在搜索、文献分类和其他相关领域有广泛的应用。讲起 TF/IDF 的历史蛮有意思。IDF 的概念最早是剑桥大学的斯巴克－琼斯[注：她有两个姓］ (Karen Sparck Jones)提出来的。斯巴克－琼斯 １９７２ 年在一篇题为关键词特殊性的统计解释和她在文献检索中的应用的论文中提出ＩＤＦ。遗憾的是，她既没有从理论上解释为什么权重ＩＤＦ 应该是对数函数
+ ｌｏｇ（Ｄ／Ｄｗ）（而不是其它的函数，比如平方根），也没有在这个题目上作进一步深入研究，以至于在以后的很多文献中人们提到 ＴＦ／ＩＤＦ 时没有引用她的论文，绝大多数人甚至不知道斯巴克－琼斯的贡献。同年罗宾逊写了个两页纸的解释，解释得很不好。倒是后来康乃尔大学的萨尔顿（Salton)多次写文章、写书讨论 TF/IDF 在信息检索中的用途，加上萨尔顿本人的大名（信息检索的世界大奖就是以萨尔顿的名字命名的）。很多人都引用萨尔顿的书，甚至以为这个信息检索中最重要的概念是他提出的。当然，世界并没有忘记斯巴克－琼斯的贡献，2004年，在纪念文献学学报创刊
+ 60 周年之际，该学报重印了斯巴克-琼斯的大作。罗宾逊在同期期刊上写了篇文章，用香农的信息论解释 IDF，这回的解释是对的，但文章写的并不好、非常冗长（足足十八页），把一个简单问题搞复杂了。其实，信息论的学者们已经发现并指出，其实 IDF 的概念就是一个特定条件下、关键词的概率分布的交叉熵（Kullback-Leibler Divergence)（详见上一系列）。这样，信息检索相关性的度量，又回到了信息论。
+
+机器学习—— 基于朴素贝叶斯分类算法构建文本分类器的Python实现
+
+关于朴素贝叶斯分类算法的理解请参考：http://blog.csdn.net/gamer_gyt/article/details/47205371
+
+Python代码实现：
+
+
+
+
+调用方式：
+进入该文件所在目录，输入python，执行
+>>>import bayes
+>>>bayes.testingNB()
+
+
+机器学习—— 决策树(ID3算法)的分析与实现
+
+
+KNN算法请参考：http://blog.csdn.net/gamer_gyt/article/details/47418223
+
+一、简介
+        决策树是一个预测模型；他代表的是对象属性与对象值之间的一种映射关系。树中每个节点表示某个对象，而每个分叉路径则代表的某个可能的属性值，而每个叶结点则对应从根节点到该叶节点所经历的路径所表示的对象的值。决策树仅有单一输出，若欲有复数输出，可以建立独立的决策树以处理不同输出。 数据挖掘中决策树是一种经常要用到的技术，可以用于分析数据，同样也可以用来作预测
+二、基本思想
+
+       1）树以代表训练样本的单个结点开始。
+       2）如果样本都在同一个类．则该结点成为树叶，并用该类标记。
+       3）否则，算法选择最有分类能力的属性作为决策树的当前结点．
+       4）根据当前决策结点属性取值的不同，将训练样本数据集tlI分为若干子集，每个取值形成一个分枝，有几个取值形成几个分枝。匀针对上一步得到的一个子集，重复进行先前  步骤，递4'I形成每个划分样本上的决策树。一旦一个属性出现在一个结点上，就不必在该结点的任何后代考虑它。
+       5）递归划分步骤仅当下列条件之一成立时停止：
+       ①给定结点的所有样本属于同一类。
+       ②没有剩余属性可以用来进一步划分样本．在这种情况下．使用多数表决，将给定的结点转换成树叶，并以样本中元组个数最多的类别作为类别标记，同时也可以存放该结点样本的类别分布，
+       ③如果某一分枝tc，没有满足该分支中已有分类的样本，则以样本的多数类创建一个树叶。
+三、构造方法
+
+       决策树构造的输入是一组带有类别标记的例子，构造的结果是一棵二叉树或多叉树。二叉树的内部节点(非叶子节点)一般表示为一个逻辑判断，如形式为a=aj的逻辑判断，其中a是属性，aj是该属性的所有取值：树的边是逻辑判断的分支结果。多叉树(ID3)的内部结点是属性，边是该属性的所有取值，有几个属性值就有几条边。树的叶子节点都是类别标记。
+由于数据表示不当、有噪声或者由于决策树生成时产生重复的子树等原因，都会造成产生的决策树过大。因此，简化决策树是一个不可缺少的环节。寻找一棵最优决策树，主要应解决以下3个最优化问题：①生成最少数目的叶子节点；②生成的每个叶子节点的深度最小；③生成的决策树叶子节点最少且每个叶子节点的深度最小。
+四、Python代码实现
+调用：命令行进入该代码所在目录执行：import trees       dataSet,labels = trees.createDataSet()    trees.myTree()
+
+
+
+
+机器学习——k最近邻算法(K-Nearest Neighbor,Python实现)
+
+一、什么是看KNN算法？
+二、KNN算法的一般流程
+三、KNN算法的Python代码实现
+
+numpy 模 块 参 考教程：http://old.sebug.net/paper/books/scipydoc/index.html
+决策树(ID3)算法请参考：http://blog.csdn.net/gamer_gyt/article/details/47679017
+
+一：什么是看KNN算法？
+        kNN算法全称是k-最近邻算法（K-Nearest Neighbor）
+        kNN算法的核心思想是如果一个样本在特征空间中的k个最相邻的样本中的大多数属于某一个类别，则该样本也属于这个类别，并具有这个类别上样本的特性。该方法在确定分类决策上只依据最邻近的一个或者几个样本的类别来决定待分样本所属的类别。
+下边举例说明：
+
+即使不知道未知电影属于哪种类型，我们也可以通过某种方法计算出来，如下图
+
+现在我们得到了样本集中与未知电影的距离，按照距离的递增顺序，可以找到k个距离最近的电影，假定k=3，则三个最靠近的电影是和he is not realy into Dudes,Beautiful women, California man kNN算法按照距离最近的三部电影类型决定未知电影类型，这三部都是爱情片，所以未知电影的类型也为爱情片
+二：KNN算法的一般流程
+
+step.1---初始化距离为最大值
+step.2---计算未知样本和每个训练样本的距离dist
+step.3---得到目前K个最临近样本中的最大距离maxdist
+step.4---如果dist小于maxdist，则将该训练样本作为K-最近邻样本
+step.5---重复步骤2、3、4，直到未知样本和所有训练样本的距离都算完
+step.6---统计K-最近邻样本中每个类标号出现的次数
+step.7---选择出现频率最大的类标号作为未知样本的类标号
+
+三、KNN算法的Python代码实现
+
+调用方式：打开CMD，进入kNN.py文件所在的目录，输入Python，依次输入import kNN     group，labels = kNN.createDataSet()    kNN.classify0([0,0],group,lables,3)
+
+
+
+朴素贝叶斯分类算法(Naive Bayesian classification)
+
+
+机器学习（分类算法） and 十大算法：朴素贝叶斯分类
+
+0、写在前面的话
+      我个人一直很喜欢算法一类的东西，在我看来算法是人类智慧的精华，其中蕴含着无与伦比的美感。而每次将学过的算法应用到实际中，并解决了实际问题后，那种快感更是我在其它地方体会不到的。
+      一直想写关于算法的博文，也曾写过零散的两篇，但也许是相比于工程性文章来说太小众，并没有引起大家的兴趣。最近面临毕业找工作，为了能给自己增加筹码，决定再次复习算法方面的知识，我决定趁这个机会，写一系列关于算法的文章。这样做，主要是为了加强自己复习的效果，我想，如果能将复习的东西用自己的理解写成文章，势必比单纯的读书做题掌握的更牢固，也更能触发自己的思考。如果能有感兴趣的朋友从中有所收获，那自然更好。
+      这个系列我将其命名为“算法杂货铺”，其原因就是这些文章一大特征就是“杂”，我不会专门讨论堆栈、链表、二叉树、查找、排序等任何一本数据结构教科书都会讲的基础内容，我会从一个“专题”出发，如概率算法、分类算法、NP问题、遗传算法等，然后做一个引申，可能会涉及到算法与数据结构、离散数学、概率论、统计学、运筹学、数据挖掘、形式语言与自动机等诸多方面，因此其内容结构就像一个杂货铺。当然，我会竭尽所能，尽量使内容“杂而不乱”。
+1.1、摘要
+      贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。本文作为分类算法的第一篇，将首先介绍分类问题，对分类问题进行一个正式的定义。然后，介绍贝叶斯分类算法的基础——贝叶斯定理。最后，通过实例讨论贝叶斯分类中最简单的一种：朴素贝叶斯分类。
+1.2、分类问题综述
+      对于分类问题，其实谁都不会陌生，说我们每个人每天都在执行分类操作一点都不夸张，只是我们没有意识到罢了。例如，当你看到一个陌生人，你的脑子下意识判断TA是男是女；你可能经常会走在路上对身旁的朋友说“这个人一看就很有钱、那边有个非主流”之类的话，其实这就是一种分类操作。
+      从数学角度来说，分类问题可做如下定义：
+      已知集合：和，确定映射规则，使得任意有且仅有一个使得成立。（不考虑模糊数学里的模糊集情况）
+      其中C叫做类别集合，其中每一个元素是一个类别，而I叫做项集合，其中每一个元素是一个待分类项，f叫做分类器。分类算法的任务就是构造分类器f。
+      这里要着重强调，分类问题往往采用经验性方法构造映射规则，即一般情况下的分类问题缺少足够的信息来构造100%正确的映射规则，而是通过对经验数据的学习从而实现一定概率意义上正确的分类，因此所训练出的分类器并不是一定能将每个待分类项准确映射到其分类，分类器的质量与分类器构造方法、待分类数据的特性以及训练样本数量等诸多因素有关。
+      例如，医生对病人进行诊断就是一个典型的分类过程，任何一个医生都无法直接看到病人的病情，只能观察病人表现出的症状和各种化验检测数据来推断病情，这时医生就好比一个分类器，而这个医生诊断的准确率，与他当初受到的教育方式（构造方法）、病人的症状是否突出（待分类数据的特性）以及医生的经验多少（训练样本数量）都有密切关系。
+1.3、贝叶斯分类的基础——贝叶斯定理
+      每次提到贝叶斯定理，我心中的崇敬之情都油然而生，倒不是因为这个定理多高深，而是因为它特别有用。这个定理解决了现实生活里经常遇到的问题：已知某条件概率，如何得到两个事件交换后的概率，也就是在已知P(A|B)的情况下如何求得P(B|A)。这里先解释什么是条件概率：
+      表示事件B已经发生的前提下，事件A发生的概率，叫做事件B发生下事件A的条件概率。其基本求解公式为：。
+      贝叶斯定理之所以有用，是因为我们在生活中经常遇到这种情况：我们可以很容易直接得出P(A|B)，P(B|A)则很难直接得出，但我们更关心P(B|A)，贝叶斯定理就为我们打通从P(A|B)获得P(B|A)的道路。
+      下面不加证明地直接给出贝叶斯定理：
+      
+1.4、朴素贝叶斯分类
+1.4.1、朴素贝叶斯分类的原理与流程
+      朴素贝叶斯分类是一种十分简单的分类算法，叫它朴素贝叶斯分类是因为这种方法的思想真的很朴素，朴素贝叶斯的思想基础是这样的：对于给出的待分类项，求解在此项出现的条件下各个类别出现的概率，哪个最大，就认为此待分类项属于哪个类别。通俗来说，就好比这么个道理，你在街上看到一个黑人，我问你你猜这哥们哪里来的，你十有八九猜非洲。为什么呢？因为黑人中非洲人的比率最高，当然人家也可能是美洲人或亚洲人，但在没有其它可用信息下，我们会选择条件概率最大的类别，这就是朴素贝叶斯的思想基础。
+      朴素贝叶斯分类的正式定义如下：
+      1、设为一个待分类项，而每个a为x的一个特征属性。
+      2、有类别集合。
+      3、计算。
+      4、如果，则。
+      那么现在的关键就是如何计算第3步中的各个条件概率。我们可以这么做：
+      1、找到一个已知分类的待分类项集合，这个集合叫做训练样本集。
+      2、统计得到在各类别下各个特征属性的条件概率估计。即。
+      3、如果各个特征属性是条件独立的，则根据贝叶斯定理有如下推导：
+      
+      因为分母对于所有类别为常数，因为我们只要将分子最大化皆可。又因为各特征属性是条件独立的，所以有：
+      
+      根据上述分析，朴素贝叶斯分类的流程可以由下图表示（暂时不考虑验证）：
+
+
+      可以看到，整个朴素贝叶斯分类分为三个阶段：
+      第一阶段——准备工作阶段，这个阶段的任务是为朴素贝叶斯分类做必要的准备，主要工作是根据具体情况确定特征属性，并对每个特征属性进行适当划分，然后由人工对一部分待分类项进行分类，形成训练样本集合。这一阶段的输入是所有待分类数据，输出是特征属性和训练样本。这一阶段是整个朴素贝叶斯分类中唯一需要人工完成的阶段，其质量对整个过程将有重要影响，分类器的质量很大程度上由特征属性、特征属性划分及训练样本质量决定。
+      第二阶段——分类器训练阶段，这个阶段的任务就是生成分类器，主要工作是计算每个类别在训练样本中的出现频率及每个特征属性划分对每个类别的条件概率估计，并将结果记录。其输入是特征属性和训练样本，输出是分类器。这一阶段是机械性阶段，根据前面讨论的公式可以由程序自动计算完成。
+      第三阶段——应用阶段。这个阶段的任务是使用分类器对待分类项进行分类，其输入是分类器和待分类项，输出是待分类项与类别的映射关系。这一阶段也是机械性阶段，由程序完成。
+1.4.2、估计类别下特征属性划分的条件概率及Laplace校准
+      这一节讨论P(a|y)的估计。
+      由上文看出，计算各个划分的条件概率P(a|y)是朴素贝叶斯分类的关键性步骤，当特征属性为离散值时，只要很方便的统计训练样本中各个划分在每个类别中出现的频率即可用来估计P(a|y)，下面重点讨论特征属性是连续值的情况。
+      当特征属性为连续值时，通常假定其值服从高斯分布（也称正态分布）。即：
+      
+      而
+      因此只要计算出训练样本中各个类别中此特征项划分的各均值和标准差，代入上述公式即可得到需要的估计值。均值与标准差的计算在此不再赘述。
+      另一个需要讨论的问题就是当P(a|y)=0怎么办，当某个类别下某个特征项划分没有出现时，就是产生这种现象，这会令分类器质量大大降低。为了解决这个问题，我们引入Laplace校准，它的思想非常简单，就是对没类别下所有划分的计数加1，这样如果训练样本集数量充分大时，并不会对结果产生影响，并且解决了上述频率为0的尴尬局面。
+1.4.3、朴素贝叶斯分类实例：检测SNS社区中不真实账号
+      下面讨论一个使用朴素贝叶斯分类解决实际问题的例子，为了简单起见，对例子中的数据做了适当的简化。
+      这个问题是这样的，对于SNS社区来说，不真实账号（使用虚假身份或用户的小号）是一个普遍存在的问题，作为SNS社区的运营商，希望可以检测出这些不真实账号，从而在一些运营分析报告中避免这些账号的干扰，亦可以加强对SNS社区的了解与监管。
+      如果通过纯人工检测，需要耗费大量的人力，效率也十分低下，如能引入自动检测机制，必将大大提升工作效率。这个问题说白了，就是要将社区中所有账号在真实账号和不真实账号两个类别上进行分类，下面我们一步一步实现这个过程。
+      首先设C=0表示真实账号，C=1表示不真实账号。
+      1、确定特征属性及划分
+      这一步要找出可以帮助我们区分真实账号与不真实账号的特征属性，在实际应用中，特征属性的数量是很多的，划分也会比较细致，但这里为了简单起见，我们用少量的特征属性以及较粗的划分，并对数据做了修改。
+      我们选择三个特征属性：a1：日志数量/注册天数，a2：好友数量/注册天数，a3：是否使用真实头像。在SNS社区中这三项都是可以直接从数据库里得到或计算出来的。
+      下面给出划分：a1：{a<=0.05, 0.05<a<0.2, a>=0.2}，a1：{a<=0.1, 0.1<a<0.8, a>=0.8}，a3：{a=0（不是）,a=1（是）}。
+      2、获取训练样本
+      这里使用运维人员曾经人工检测过的1万个账号作为训练样本。
+      3、计算训练样本中每个类别的频率
+      用训练样本中真实账号和不真实账号数量分别除以一万，得到：
+      
+      
+      4、计算每个类别条件下各个特征属性划分的频率
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      5、使用分类器进行鉴别
+      下面我们使用上面训练得到的分类器鉴别一个账号，这个账号使用非真实头像，日志数量与注册天数的比率为0.1，好友数与注册天数的比率为0.2。
+      
+      
+      可以看到，虽然这个用户没有使用真实头像，但是通过分类器的鉴别，更倾向于将此账号归入真实账号类别。这个例子也展示了当特征属性充分多时，朴素贝叶斯分类对个别属性的抗干扰性。
+1.5、分类器的评价
+      虽然后续还会提到其它分类算法，不过这里我想先提一下如何评价分类器的质量。
+      首先要定义，分类器的正确率指分类器正确分类的项目占所有被分类项目的比率。
+      通常使用回归测试来评估分类器的准确率，最简单的方法是用构造完成的分类器对训练数据进行分类，然后根据结果给出正确率评估。但这不是一个好方法，因为使用训练数据作为检测数据有可能因为过分拟合而导致结果过于乐观，所以一种更好的方法是在构造初期将训练数据一分为二，用一部分构造分类器，然后用另一部分检测分类器的准确率。
+
+
+原文链接
+
+
+作者：张洋
+
+
+

@@ -1,0 +1,1172 @@
+javac / java
+
+
+
+javac是用来编译.java文件的。命令行下直接输入javac可以看到大量提示信息，提示javac命令的用法，我只知道常用的。
+
+javac -d destdir srcFile
+
+其中：1、-d destdir是用来指定存放编译生成的.class文件的路径。（若此选项省略，那么默认在当前目录下生成.class文件，并且没有生成包文件夹；当前目录可以用“.”来表示，即：javac -d . srcFile ）
+
+注意：添加-d选项除了可以指定编译生成的.class文件的路径外，最大的区别是可以将源文件首行的package关键字下的包名在当前路径下生成文件夹。
+
+2、srcFile是源文件.java文件的路径
+java代码如下：
+import java.io.IOException;
+public class hello{
+public static void main(String[] args)throws IOException{
+
+System.out.println("hello world");
+}
+}
+
+
+
+在命令行里进入该目录执行 javac hello.java
+再次 java hello
+屏幕显示：hello world
+
+
+如果java加一个package包的话情况就不一样了，可把小编折腾了半天才搞明白
+package cyan;
+
+
+import java.io.IOException;
+public class hello{
+public static void main(String[] args)throws IOException{
+
+System.out.println("hello world");
+}
+}
+
+
+
+编译命令：javac -d . hello.java
+运行： java cyan/hello即可
+
+IK Analyzer 和 lucene结合使用
+
+特别注意：版本问题（IK Analyzer的版本中注意各个版本的细微区别，小编就是栽在IK Analyzer2012_U5 和IK Analyzer2012FF上了）
+版本匹配：
+1、IK Analyzer 2012_U5 支持的是 lucene 3.2-3.6版本
+
+2、IK Analyzer2012 FF（你问啥是FF，其实就是For 4.0，在API和功能上保持不变，只是让其支持了Lucene4.0和Solr4.0，让这部分的用户能用起来。）
+下载地址：
+GoogleCode :http://code.google.com/p/ik-analyzer/downloads
+配置说明：
+把 IKAnalyzer中的IKAnalyzer.cfg.xml, ext.dic（如果找不到，可以手动创建一个该文件）, stopword.dic文件放到代码的根目录中。
+使用说明请参见：使用教程
+
+
+新浪明星日志推荐系统——java实现（3）
+
+现在进行推荐的第三步：
+1:利用数据的格式如下：
+
+
+2：编程语言采用的是Java，源代码如下：
+package top10;
+
+import java.util.*;
+import java.io.*;
+
+public class top {
+
+    public static void top(String []one,String []two,String []three){
+        int []one1 = new int[15688];
+        for(int i =0;i<15687;i++)
+            {
+            one1[i]=0;
+            for(int j=i;j<15688;j++)
+                if(one[j]==one[i])
+                {
+                    one1[i]++;
+                }
+            }
+        for(int i =0;i<15688;i++)
+            for(int j=i;j<15688;j++)
+                if(one1[i]>one1[j])
+                {
+                    String temp1;
+                    temp1=one[i];
+                    one[i]=one[j];
+                    one[j]=temp1;
+                    
+                    String temp2;
+                    temp2=two[i];
+                    two[i]=two[j];
+                    two[j]=temp2;
+                    
+                    String temp3;
+                    temp3=three[i];
+                    three[i]=three[j];
+                    three[j]=temp3;
+                }
+        System.out.println("Top前十的结果为：");
+        System.out.println("姓名\t"+"\t推荐博客地址"+"\t\t\t\t\t\t\t\t\t\t\t"+"推荐作者博客首地址");
+        for(int k=1;k<=10;k++)
+        {
+            String str;
+                str = String.format("%s\t\t%s\t\t%s", one[k],two[k],three[k]);
+            System.out.println(str);
+        }
+            
+    }
+    
+    public static void list() throws IOException{
+        FileReader in = new FileReader("title.txt");
+        BufferedReader br = new BufferedReader(in);
+        String s1 = null;
+        String []one = new String[15688];
+        String []two = new String[15688];
+        String []three = new String[15688];
+        int i = 0,k=0,m=0,j = 1;
+        while((s1 = br.readLine()) != null) {
+            if(j%3==2)
+            {
+                two[k] = s1;
+                k++;
+            }
+            else if(j%3==0)
+            {
+                three[m] = s1;
+                m++;
+            }
+            else
+                {
+                one[i] = s1;        
+                i++;
+                }
+            j++;
+            }
+        br.close();
+        in.close();
+//        System.out.println(j);
+        top(one,two,three);
+    }
+    
+    public static void main(String[] args) throws IOException {
+        // TODO Auto-generated method stub
+        
+        System.out.println("+++++++++++++++++|||||||||||||||++++++++++++++++++");
+        System.out.println("**************欢迎使用新浪明星博客推荐系统          ***************");
+        System.out.println("**************    1、使用推荐功能                        ***************");
+        System.out.println("**************    2、退出此系统,谢谢使用       ***************");
+        System.out.println("+++++++++++++++++|||||||||||||||++++++++++++++++++");
+        Scanner in = new Scanner(System.in);
+        while(true)
+        {
+            int i = in.nextInt();
+            {
+                switch(i)
+                {
+                case 1: list();break;
+                case 2:System.out.println("谢谢使用！！！");break;
+                default:System.out.println("请重新输入！！！");
+                }
+            }
+        }
+        
+    }
+}
+
+
+3：运行的结果如图：
+
+
+
+ISBN号码（Java）CCF模拟试题
+
+
+import java.util.Scanner;
+
+
+public class Main {
+   public static void main(String[] args) {
+  
+       Scanner ss = new Scanner(System.in);
+       String str = ss.nextLine();
+       char str1[] = str.toCharArray();
+       int[] str2 = new int[13];
+       int i = 0,j = 0,sum = 0,k=0;
+       for(i = 0;i<13&&j<13;i++)
+        
+{
+        
+if(i != 1&&i != 5&&i != 11)
+        
+{
+        
+str2[j] = (int)str1[i]-48;
+               j++;
+        
+}
+        
+else
+        
+{
+        
+continue;
+        
+}
+        
+}
+       for(i = 0;i<j-1;i++){
+        
+sum += str2[i]*(i+1);
+       }
+       sum = sum%11;
+       if(sum == str2[9])
+        
+System.out.println("Right");
+       else
+        
+{
+        
+for(k = 0;k<9;k++){
+        
+if((k==1)||(k==4)){
+        
+System.out.print("-" + str2[k]);
+        
+}
+        
+else{
+        
+System.out.print(str2[k]);
+        
+}
+        
+}
+        
+System.out.println("-" + sum);
+        
+}
+      }
+}
+   
+
+出现次数最多的数（java），ccf考试模拟题
+
+
+import java.util.Scanner;
+
+
+public class Main {
+   public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       int n = sc.nextInt();
+       int a[] = new int[n];
+       int b[] = new int[n];
+       for(int i = 0;i<n;i++){
+        
+   b[i] = 0;
+           a[i] = sc.nextInt();
+       }
+       sc.close();
+
+       for(int i = 0;i<n;i++)
+        
+for(int j = 0;j<n;j++)
+        
+{
+        
+if(a[j]==a[i])
+        
+b[i]++;
+        
+}
+       int max = 0,c = 0;
+       for(int i = 0;i<n;i++)
+        
+if(b[i]>max)
+        
+{
+        
+max = b[i];
+        
+c = i;
+        
+}
+       int min = a[c];
+       for(int i = 0;i<n;i++)
+        
+if(b[i] == max)
+        
+if(a[i]<a[c])
+        
+min = a[i];
+       System.out.println(min);
+   }
+}
+   
+
+Java文件的写入与读出
+
+由于要将爬虫的结果写到文件里，就自己晚上搜了一点资料，看了别人的博客，补充了一点文件的基础知识，现将其整理如下，供大家参考
+Java文件的写入和读出有很多种方法我所介绍的主要是Read/Writer，OutputStream/InputStream
+
+一：Read/Writer
+由于Java本身可以导入许多包，在这里可以直接调用Java的io，语句是 import java.io；
+本人是将FileWriter和FileRead理解为一个类，分别定义了两个对象，FileWriter gyt = new FileWriter("Thinkgamer.txt");
+FileReader out = new FileReader("Thinkgamer.txt");
+使用gyt.write(str,int,int)将其写入到.txt格式的文件里，再用ch = out.read()将其输出。
+其完整代码如下：
+package Thinkgamer;
+
+import java.io.*;
+
+public class cyan {
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+
+String str = "Thinkgamer QQ is 1923361654";
+try{
+FileWriter gyt = new FileWriter("Thinkgamer.txt");
+gyt.write(str,0,str.length());
+gyt.flush();
+
+FileReader out = new FileReader("Thinkgamer.txt");
+int ch = 0;
+while((ch = out.read())!=-1){
+System.out.print((char)ch);
+}
+}
+catch(Exception as){
+as.printStackTrace();
+}
+}
+}
+二：OutputStream/InputStream
+package Thinkgamer;
+
+import java.io.*;
+
+public class cyan {
+
+   public static void main(String[] args) {
+
+      String str = "Thinkgamer QQ is 1923361654";
+      try{
+//    
+ OutputStream gyt = new FileOutputStream("Thinkgamer.txt");
+//    
+ OutputStreamWriter out = new OutputStreamWriter(gyt);
+     
+     OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("Thinkgamer.txt"));
+     
+     FileInputStream in = new FileInputStream("Thinkgamer.txt");
+     
+     out.write(str,0,str.length());
+     out.flush();
+     
+     for(int i =0;i < str.length();i++)
+     {
+     System.out.print((char)in.read());
+     }
+      }
+      catch(Exception ex){
+     ex.printStackTrace();
+      }
+   }
+}
+
+
+特别注意：
+//在使用文件之后注意将文件关闭
+//关闭的语句是gyt.flush();
+//gyt为Read/Writer或OutputStream/InputStream所创建的一个对象
+
+OutputStream/InputStream的理解和Read/Writer方法差不多，在这里小编只将本人写的代码贴出来
+
+
+java读写文件大全
+
+
+
+
+使用Java操作文本文件的方法详解 
+摘要: 最初java是不支持对文本文件的处理的，为了弥补这个缺憾而引入了Reader和Writer两个类 
+最初java是不支持对文本文件的处理的，为了弥补这个缺憾而引入了Reader和Writer两个类，这两个类都是抽象类，Writer中 write(char[] ch,int off,int
+length)，flush()和close()方法为抽象方法，Reader中read(char[] ch,int off,int length)和close()方法是抽象方法。子类应该分别实现他们。
+　　当我们读写文本文件的时候，采用Reader是非常方便的，比如FileReader，InputStreamReader和BufferedReader。其中最重要的类是InputStreamReader，
+它是字节转换为字符的桥梁。你可以在构造器重指定编码的方式，如果不指定的话将采用底层操作系统的默认编码方式，例如GBK等。当使用FileReader读取文件
+的时候。
+
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+FileReader fr = new FileReader("ming.txt");  
+int ch = 0;  
+while((ch = fr.read())!=-1 )  
+{  
+System.out.print((char)ch);  
+}  
+
+
+其中read()方法返回的是读取得下个字符。当然你也可以使用read(char[] ch,int off,int length)这和处理二进制文件的时候类似，不多说了。如果使用
+InputStreamReader来读取文件的时候
+while((ch = isr.read())!=-1)
+{
+System.out.print((char)ch); 
+}
+这和FileReader并没有什么区别，事实上在FileReader中的方法都是从InputStreamReader中继承过来的。read()方法是比较好费时间的，如果为了提高效率
+我们可以使用BufferedReader对Reader进行包装，这样可以提高读取得速度，我们可以一行一行的读取文本，使用readLine()方法。
+BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("ming.txt")));
+String data = null;
+while((data = br.readLine())!=null)
+{
+System.out.println(data); 
+}
+当你明白了如何用Reader来读取文本文件的时候那么用Writer写文件同样非常简单。有一点需要注意，当你写文件的时候，为了提高效率，写入的数据会先
+放入缓冲区，然后写入文件。因此有时候你需要主动调用flush()方法。与上面对应的写文件的方法为：
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+FileWriter fw = new FileWriter("hello.txt");  
+String s = "hello world";  
+fw.write(s,0,s.length());  
+fw.flush();  
+OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("hello2.txt"));  
+osw.write(s,0,s.length());  
+osw.flush();  
+PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("hello3.txt")),true);  
+pw.println(s);  
+
+
+
+不要忘记用完后关闭流！下面是个小例子，帮助新手理解。其实有的时候java的IO系统是需要我们多记记的，不然哪天就生疏了。
+
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+import java.io.*;  
+public class TestFile2  
+{  
+public static void main(String[] args) throws IOException  
+{  
+FileReader fr = new FileReader("ming.txt");  
+char[] buffer = new char[1024];  
+int ch = 0;  
+while((ch = fr.read())!=-1 )  
+{  
+System.out.print((char)ch);  
+}  
+　　InputStreamReader isr = new InputStreamReader(new FileInputStream("ming.txt"));  
+while((ch = isr.read())!=-1)  
+{  
+System.out.print((char)ch);  
+}  
+　　BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("ming.txt")));  
+String data = null;  
+while((data = br.readLine())!=null)  
+{  
+System.out.println(data);  
+}  
+　　FileWriter fw = new FileWriter("hello.txt");  
+String s = "hello world";  
+fw.write(s,0,s.length());  
+fw.flush();  
+　　OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("hello2.txt"));  
+osw.write(s,0,s.length());  
+osw.flush();  
+　　PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("hello3.txt")),true);  
+pw.println(s);  
+　　fr.close();  
+isr.close();  
+br.close();  
+fw.close();  
+osw.close();  
+pw.close();  
+}  
+}  
+
+
+java中多种方式读文件
+一、多种方式读文件内容。
+1、按字节读取文件内容
+2、按字符读取文件内容
+3、按行读取文件内容
+4、随机读取文件内容
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+import java.io.BufferedReader;  
+import java.io.File;  
+import java.io.FileInputStream;  
+import java.io.FileReader;  
+import java.io.IOException;  
+import java.io.InputStream;  
+import java.io.InputStreamReader;  
+import java.io.RandomAccessFile;  
+import java.io.Reader;  
+public class ReadFromFile {  
+/** 
+* 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。 
+* @param fileName 文件的名 
+*/  
+public static void readFileByBytes(String fileName){  
+File file = new File(fileName);  
+InputStream in = null;  
+try {  
+System.out.println("以字节为单位读取文件内容，一次读一个字节：");  
+// 一次读一个字节  
+in = new FileInputStream(file);  
+int tempbyte;  
+while((tempbyte=in.read()) != -1){  
+System.out.write(tempbyte);  
+}  
+in.close();  
+} catch (IOException e) {  
+e.printStackTrace();  
+return;  
+}  
+try {  
+System.out.println("以字节为单位读取文件内容，一次读多个字节：");  
+//一次读多个字节  
+byte[] tempbytes = new byte[100];  
+int byteread = 0;  
+in = new FileInputStream(fileName);  
+ReadFromFile.showAvailableBytes(in);  
+//读入多个字节到字节数组中，byteread为一次读入的字节数  
+while ((byteread = in.read(tempbytes)) != -1){  
+System.out.write(tempbytes, 0, byteread);  
+}  
+} catch (Exception e1) {  
+e1.printStackTrace();  
+} finally {  
+if (in != null){  
+try {  
+in.close();  
+} catch (IOException e1) {  
+}  
+}  
+}  
+}  
+/** 
+* 以字符为单位读取文件，常用于读文本，数字等类型的文件 
+* @param fileName 文件名 
+*/  
+public static void readFileByChars(String fileName){  
+File file = new File(fileName);  
+Reader reader = null;  
+try {  
+System.out.println("以字符为单位读取文件内容，一次读一个字节：");  
+// 一次读一个字符  
+reader = new InputStreamReader(new FileInputStream(file));  
+int tempchar;  
+while ((tempchar = reader.read()) != -1){  
+//对于windows下，rn这两个字符在一起时，表示一个换行。  
+//但如果这两个字符分开显示时，会换两次行。  
+//因此，屏蔽掉r，或者屏蔽n。否则，将会多出很多空行。  
+if (((char)tempchar) != 'r'){  
+System.out.print((char)tempchar);  
+}  
+}  
+reader.close();  
+} catch (Exception e) {  
+e.printStackTrace();  
+}  
+try {  
+System.out.println("以字符为单位读取文件内容，一次读多个字节：");  
+//一次读多个字符  
+char[] tempchars = new char[30];  
+int charread = 0;  
+reader = new InputStreamReader(new FileInputStream(fileName));  
+//读入多个字符到字符数组中，charread为一次读取字符数  
+while ((charread = reader.read(tempchars))!=-1){  
+//同样屏蔽掉r不显示  
+if ((charread == tempchars.length)&&(tempchars[tempchars.length-1] != 'r')){  
+System.out.print(tempchars);  
+}else{  
+for (int i=0; i<charread; i++){  
+if(tempchars[i] == 'r'){  
+continue;  
+}else{  
+System.out.print(tempchars[i]);  
+}  
+}  
+}  
+}  
+} catch (Exception e1) {  
+e1.printStackTrace();  
+}finally {  
+if (reader != null){  
+try {  
+reader.close();  
+} catch (IOException e1) {  
+}  
+}  
+}  
+}  
+/** 
+* 以行为单位读取文件，常用于读面向行的格式化文件 
+* @param fileName 文件名 
+*/  
+public static void readFileByLines(String fileName){  
+File file = new File(fileName);  
+BufferedReader reader = null;  
+try {  
+System.out.println("以行为单位读取文件内容，一次读一整行：");  
+reader = new BufferedReader(new FileReader(file));  
+String tempString = null;  
+int line = 1;  
+//一次读入一行，直到读入null为文件结束  
+while ((tempString = reader.readLine()) != null){  
+//显示行号  
+System.out.println("line " + line + ": " + tempString);  
+line++;  
+}  
+reader.close();  
+} catch (IOException e) {  
+e.printStackTrace();  
+} finally {  
+if (reader != null){  
+try {  
+reader.close();  
+} catch (IOException e1) {  
+}  
+}  
+}  
+}  
+/** 
+* 随机读取文件内容 
+* @param fileName 文件名 
+*/  
+public static void readFileByRandomAccess(String fileName){  
+RandomAccessFile randomFile = null;  
+try {  
+System.out.println("随机读取一段文件内容：");  
+// 打开一个随机访问文件流，按只读方式  
+randomFile = new RandomAccessFile(fileName, "r");  
+// 文件长度，字节数  
+long fileLength = randomFile.length();  
+// 读文件的起始位置  
+int beginIndex = (fileLength > 4) ? 4 : 0;  
+//将读文件的开始位置移到beginIndex位置。  
+randomFile.seek(beginIndex);  
+byte[] bytes = new byte[10];  
+int byteread = 0;  
+//一次读10个字节，如果文件内容不足10个字节，则读剩下的字节。  
+//将一次读取的字节数赋给byteread  
+while ((byteread = randomFile.read(bytes)) != -1){  
+System.out.write(bytes, 0, byteread);  
+}  
+} catch (IOException e){  
+e.printStackTrace();  
+} finally {  
+if (randomFile != null){  
+try {  
+randomFile.close();  
+} catch (IOException e1) {  
+}  
+}  
+}  
+}  
+/** 
+* 显示输入流中还剩的字节数 
+* @param in 
+*/  
+private static void showAvailableBytes(InputStream in){  
+try {  
+System.out.println("当前字节输入流中的字节数为:" + in.available());  
+} catch (IOException e) {  
+e.printStackTrace();  
+}  
+}  
+public static void main(String[] args) {  
+String fileName = "C:/temp/newTemp.txt";  
+ReadFromFile.readFileByBytes(fileName);  
+ReadFromFile.readFileByChars(fileName);  
+ReadFromFile.readFileByLines(fileName);  
+ReadFromFile.readFileByRandomAccess(fileName);  
+}  
+}  
+二、将内容追加到文件尾部  
+import java.io.FileWriter;  
+import java.io.IOException;  
+import java.io.RandomAccessFile;  
+/** 
+* 将内容追加到文件尾部 
+*/  
+public class AppendToFile {  
+/** 
+* A方法追加文件：使用RandomAccessFile 
+* @param fileName 文件名 
+* @param content 追加的内容 
+*/  
+public static void appendMethodA(String fileName,  
+  
+String content){  
+try {  
+// 打开一个随机访问文件流，按读写方式  
+RandomAccessFile randomFile = new RandomAccessFile(fileName, "rw");  
+// 文件长度，字节数  
+long fileLength = randomFile.length();  
+//将写文件指针移到文件尾。  
+randomFile.seek(fileLength);  
+randomFile.writeBytes(content);  
+randomFile.close();  
+} catch (IOException e){  
+e.printStackTrace();  
+}  
+}  
+/** 
+* B方法追加文件：使用FileWriter 
+* @param fileName 
+* @param content 
+*/  
+public static void appendMethodB(String fileName, String content){  
+try {  
+//打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件  
+FileWriter writer = new FileWriter(fileName, true);  
+writer.write(content);  
+writer.close();  
+} catch (IOException e) {  
+e.printStackTrace();  
+}  
+}  
+public static void main(String[] args) {  
+String fileName = "C:/temp/newTemp.txt";  
+String content = "new append!";  
+//按方法A追加文件  
+AppendToFile.appendMethodA(fileName, content);  
+AppendToFile.appendMethodA(fileName, "append end. n");  
+//显示文件内容  
+ReadFromFile.readFileByLines(fileName);  
+//按方法B追加文件  
+AppendToFile.appendMethodB(fileName, content);  
+AppendToFile.appendMethodB(fileName, "append end. n");  
+//显示文件内容  
+ReadFromFile.readFileByLines(fileName);  
+}  
+}  
+
+
+
+
+
+
+Java中的匿名内部类总结
+
+
+匿名内部类也就是没有名字的内部类
+
+正因为没有名字，所以匿名内部类只能使用一次，它通常用来简化代码编写
+
+但使用匿名内部类还有个前提条件：必须继承一个父类或实现一个接口
+
+ 
+
+实例1:不使用匿名内部类来实现抽象方法
+
+
+
+
+
+
+abstract class Person {  
+    public abstract void eat();  
+}  
+   
+class Childextends Person {  
+    public void eat() {  
+        System.out.println("eat something");  
+    }  
+}  
+   
+public class Demo {  
+    public static void main(String[] args) {  
+        Person p = new Child();  
+        p.eat();  
+    }  
+}  
+
+
+
+
+
+
+
+运行结果：eat something
+
+可以看到，我们用Child继承了Person类，然后实现了Child的一个实例，将其向上转型为Person类的引用
+
+但是，如果此处的Child类只使用一次，那么将其编写为独立的一个类岂不是很麻烦？
+
+这个时候就引入了匿名内部类
+
+ 
+
+实例2：匿名内部类的基本实现
+
+
+
+
+
+
+
+
+
+
+
+abstract class Person {  
+    public abstract void eat();  
+}  
+   
+public class Demo {  
+    public static void main(String[] args) {  
+        Person p = new Person() {  
+            public void eat() {  
+                System.out.println("eat something");  
+            }  
+        };  
+        p.eat();  
+    }  
+}  
+
+
+
+
+
+
+运行结果：eat something
+
+可以看到，我们直接将抽象类Person中的方法在大括号中实现了
+
+这样便可以省略一个类的书写
+
+并且，匿名内部类还能用于接口上
+
+ 
+
+实例3：在接口上使用匿名内部类
+
+
+
+
+
+
+
+interface Person {  
+    public void eat();  
+}  
+   
+public class Demo {  
+    public static void main(String[] args) {  
+        Person p = new Person() {  
+            public void eat() {  
+                System.out.println("eat something");  
+            }  
+        };  
+        p.eat();  
+    }  
+}  
+
+
+
+
+
+运行结果：eat something
+
+
+
+ 
+
+由上面的例子可以看出，只要一个类是抽象的或是一个接口，那么其子类中的方法都可以使用匿名内部类来实现
+
+最常用的情况就是在多线程的实现上，因为要实现多线程必须继承Thread类或是继承Runnable接口
+
+ 
+
+实例4：Thread类的匿名内部类实现
+
+
+
+
+
+
+
+
+
+
+
+public class Demo {  
+    public static void main(String[] args) {  
+        Thread t = new Thread() {  
+            public void run() {  
+                for (int i = 1; i <= 5; i++) {  
+                    System.out.print(i + " ");  
+                }  
+            }  
+        };  
+        t.start();  
+    }  
+}  
+
+
+
+
+运行结果：1 2 3 4 5
+
+ 
+
+实例5：Runnable接口的匿名内部类实现
+
+
+
+
+
+
+
+
+
+
+
+public class Demo {  
+    public static void main(String[] args) {  
+        Runnable r = new Runnable() {  
+            public void run() {  
+                for (int i = 1; i <= 5; i++) {  
+                    System.out.print(i + " ");  
+                }  
+            }  
+        };  
+        Thread t = new Thread(r);  
+        t.start();  
+    }  
+}  
+
+
+
+
+
+
+运行结果：1 2 3 4 5
+
+java方法的重载，重写，super，this，final关键字
+
+
+一.重载
+
+重载(Overloading)：
+
+
+
+
+
+[ruby] view
+ plaincopyprint?
+
+
+
+
+
+
+（1） 方法重载是让类以统一的方式处理不同类型数据的一种手段。多个同名函数同时存在，具有不同的参数个数/类型。  
+  
+重载Overloading是一个类中多态性的一种表现。  
+  
+  
+    （2） Java的方法重载，就是在类中可以创建多个方法，它们具有相同的名字，但具有不同的参数和不同的定义。  
+  
+调用方法时通过传递给它们的不同参数个数和参数类型来决定具体使用哪个方法, 这就是多态性。  
+  
+  
+    （3） 重载的时候，方法名要一样，但是参数类型和个数不一样，返回值类型可以相同也可以不相同。无法以返回型别作为重载函数的区分标准.  
+
+
+
+
+二.重写
+
+重写（Overriding）：
+
+
+
+
+
+[ruby] view
+ plaincopyprint?
+
+
+
+
+
+
+（1） 父类与子类之间的多态性，对父类的函数进行重新定义。如果在子类中定义某方法与其父类有相同的名称和参数，我们说该方法被重写 (Overriding)。在Java中，子类可继承父类中的方法，而不需要重新编写相同的方法。  
+  
+但有时子类并不想原封不动地继承父类的方法，而是想作一定的修改，这就需要采用方法的重写。  
+  
+方法重写又称方法覆盖。  
+  
+  
+    （2）若子类中的方法与父类中的某一方法具有相同的方法名、返回类型和参数表，则新方法将覆盖原有的方法。  
+  
+如需父类中原有的方法，可使用super关键字，该关键字引用了当前类的父类。  
+  
+  
+    （3）子类函数的访问修饰权限不能少于父类的；  
+
+
+
+
+
+
+重写和重载的方法的规则：
+
+
+
+[ruby] view
+ plaincopyprint?
+
+
+
+
+
+
+重写方法的规则：  
+  
+1、参数列表必须完全与被重写的方法相同，否则不能称其为重写而是重载。  
+  
+2、返回的类型必须一直与被重写的方法的返回类型相同，否则不能称其为重写而是重载。  
+  
+3、访问修饰符的限制一定要大于被重写方法的访问修饰符（public>protected>default>private）  
+  
+4、重写方法一定不能抛出新的检查异常或者比被重写方法申明更加宽泛的检查型异常。例如：  
+  
+父类的一个方法申明了一个检查异常IOException，在重写这个方法是就不能抛出Exception,只能抛出IOException的子类异常，可以抛出非检查异常。  
+  
+   
+  
+而重载的规则：  
+  
+1、必须具有不同的参数列表；  
+  
+2、可以有不责骂的返回类型，只要参数列表不同就可以了；  
+  
+3、可以有不同的访问修饰符；  
+  
+4、可以抛出不同的异常；  
+  
+   
+  
+重写与重载的区别在于：  
+  
+重写多态性起作用，对调用被重载过的方法可以大大减少代码的输入量，同一个方法名只要往里面传递不同的参数就可以拥有不同的功能或返回值。  
+  
+用好重写和重载可以设计一个结构清晰而简洁的类，可以说重写和重载在编写代码过程中的作用非同一般.  
+
+
+
+三：final
+
+
+
+
+
+[ruby] view
+ plaincopyprint?
+
+
+
+
+
+
+根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。你可能出于两种理解而需要阻止改变：设计或效率。   
+  
+final类不能被继承，没有子类，final类中的方法默认是final的。  
+  
+final方法不能被子类的方法覆盖，但可以被继承。   
+  
+final成员变量表示常量，只能被赋值一次，赋值后值不再改变。   
+  
+final不能用于修饰构造方法。   
+  
+注意：父类的private成员方法是不能被子类方法覆盖的，因此private类型的方法默认是final类型的。  
+
+
+
+
+四：this
+
+
+说明在什么情况下需要用到this：
+
+
+
+
+
+[ruby] view
+ plaincopyprint?
+
+
+
+
+
+
+第一、通过this调用另一个构造方法，用法是this(参数列表)，这个仅仅在类的构造方法中，别的地方不能这么用。  
+第二、函数参数或者函数中的局部变量和成员变量同名的情况下，成员变量被屏蔽，此时要访问成员变量则需要用“this.成员变量名”的方式来引用成员变量。当然，在没有同名的情况下，可以直接用成员变量的名字，而不用this，用了也不为错，呵呵。  
+第三、在函数中，需要引用该函所属类的当前对象时候，直接用this。  
+
+
+
+
+五：super
+
+
+
+
+
+[ruby] view
+ plaincopyprint?
+
+
+
+
+
+
+<span style="font-size:12px;">super关键和this作用类似，是被屏蔽的成员变量或者成员方法或变为可见，或者说用来引用被屏蔽的成员变量和成员成员方法。  
+  
+不过super是用在子类中，目的是访问直接父类中被屏蔽的成员，注意是直接父类（就是类之上最近的超类）。  
+  
+第一、在子类构造方法中要调用父类的构造方法，用“super(参数列表)”的方式调用，参数不是必须的。同时还要注意的一点是：“super(参数列表)”这条语句只能用在子类构造方法体中的第一行。  
+  
+第二、当子类方法中的局部变量或者子类的成员变量与父类成员变量同名时，也就是子类局部变量覆盖父类成员变量时，用“super.成员变量名”来引用父类成员变量。当然，如果父类的成员变量没有被覆盖，也可以用“super.成员变量名”来引用父类成员变量，不过这是不必要的。  
+  
+第三、当子类的成员方法覆盖（重写）了父类的成员方法时，也就是子类和父类有完全相同的方法定义（但方法体可以不同），此时，用“super.方法名(参数列表)”的方式访问父类的方法。</span>
+
+

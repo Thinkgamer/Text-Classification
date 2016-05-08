@@ -1,0 +1,615 @@
+06.Django中用户的两种扩展方式(Profile和AbstractUser)
+
+1：profile扩展
+正常建立一个项目：
+
+
+python-admin.py startproject myweb
+
+
+建立子项目
+manage.py startapp user
+
+
+子项目配置如下：
+models.py
+
+from django.db import modelsfrom django.contrib.auth.models import User                    #导入admin的Userfrom django.db.models.signals import post_save# Create your models here.class UserProfile(models.Model):    user = models.OneToOneField(User)    description = models.TextField(max_length=51200)    scope = models.IntegerField(default=100)
+admin.py
+
+#coding:utf-8from django.contrib import adminfrom django.contrib.auth.models import Userfrom login.models import UserProfile# Register your models here.class ProfileInline(admin.StackedInline):  #将UserProfile加入到Admin的user表中    model = UserProfile    verbose_name = 'profile'class UserProfileAdmin(admin.ModelAdmin):    inlines = (ProfileInline,)admin.site.unregister(User)  #去掉在admin中的注册admin.site.register(User, UserProfileAdmin)  #用userProfileAdmin注册user
+views.py
+
+from django.shortcuts import renderfrom django.http import HttpResponsefrom django.contrib.auth.models import Userfrom login.models import UserProfile# Create your views here.def userDemo(request):    desc = User.objects.all()[0]return HttpResponse(desc)
+
+
+
+配置URL：
+myweb目录下的url：
+
+from django.conf.urls import include, urlfrom django.contrib import adminurlpatterns = [    url(r'^admin/', include(admin.site.urls)),url(r'^login/', include('login.urls'))]
+
+
+
+
+赋值一份urls.py 到user的目录下，修改urlpatterns 如下：
+
+
+from django.conf.urls import include, urlfrom django.contrib import adminurlpatterns = [    url(r'^login/$', 'login.views.userDemo')]
+
+
+数据库的同步：
+
+makemigrations
+migrate
+syncdb
+
+
+后台登陆查看
+
+
+
+
+二：继承AbstractUser
+
+
+
+
+新建一个项目如Profile所示
+myweb修改添加如下语句：
+
+AUTH_USER_MODEL = 'login.User'
+login中：
+models.py
+
+from django.db import modelsfrom django.contrib.auth.models import AbstractUser# Create your models here.class User(AbstractUser):     #继承AbstractUserdesc = models.TextField()
+admin.py
+
+
+#coding:utf-8from django.contrib import admin# Register your models here.from login.models import Useradmin.site.register(User)
+其余的URL配置  ，views.py配置和settings.py的部分配置同profile的配置方式
+
+
+数据库的同步：
+makemigrations
+migrate
+syncdb
+
+
+后台登陆即可
+
+05.Django表单的使用
+
+一：form中post和get的区别？
+
+1. get是从服务器上获取数据，post是向服务器传送数据。2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。3. 对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。但理论上，IIS4中最大量为80KB，IIS5中为100KB。5. get安全性非常低，post安全性较高。但是执行效率却比Post方法好。 建议：1、get方式的安全性较Post方式要差些，包含机密信息的话，建议用Post数据提交方式；2、在做数据查询时，建议用Get方式；而在做数据添加、修改或删除时，建议用Post方式；
+二：django中post的错误异常和解决办法
+错误异常：CSRF
+ verification failed. Request aborted.
+解决办法：在含有form表单 views.py中 
+
+
+
+
+
+                from django.views.decorators.csrf import csrf_exempt
+
+
+                @csrf_exempt
+                def login():
+                    ......
+
+04.Django实现完整登录系统的两种方法（cookie and session）
+
+
+一：将登录时的用户信息写入cookie
+
+
+
+
+
+###############################################################
+
+#一、存取Cookies
+
+#   1、设置Cookies
+#       response.set_cookie("cookie_key","value")
+#   2、获取Cookies
+#       value = request.COOKIES["cookie_key"]
+#   3、删除Cookies
+#       response.delete_cookie("cookie_key",path="/",domain=name)
+#   4、检测Cookies
+#       if "cookie_name" is request.COOKIES :
+#   5、response.set_cookie() 传递一些可选的参数 描述
+#       参数      缺省值       描述
+#       max_age  None  cookies的持续有效时间（以秒计），如果设置为 None cookies 在浏览器关闭的时候就失效了。
+#       expires  None  cookies的过期时间，格式： "Wdy, DD-Mth-YY HH:MM:SS GMT" 如果设置这个参数，
+#                           它将覆盖 max_age 参数。
+#       path      "/"     cookie生效的路径前缀，浏览器只会把cookie回传给带有该路径的页面，这样你可以避免将
+#                           cookie传给站点中的其他的应用。
+#                           当你的应用不处于站点顶层的时候，这个参数会非常有用。
+#       domain      None    cookie生效的站点。你可用这个参数来构造一个跨站cookie。如， domain=".example.com"
+#                           所构造的cookie对下面这些站点都是可读的： www.example.com 、 www2.example.com 和
+#                           an.other.sub.domain.example.com 。
+#                           如果该参数设置为 None ，cookie只能由设置它的站点读取。
+#       secure      False  如果设置为 True ，浏览器将通过HTTPS来回传cookie。
+#二、Cookies规则
+#    1、Cookies是以字典方式存储，（Key—>Value的键值对方式存储），访问是只要访问Session的键就可以得到键对应的Value
+#       如果：value = response.set_cookie("cookie_key","value")
+#    2、存储到客户端
+#       优点：
+#           数据存在在客户端，减轻服务器端的压力，提高网站的性能。
+#       缺点：
+#           1、安全性不高：在客户端机很容易被查看或破解用户回话信息
+##################################################################
+
+
+def login(request):
+    m = Member.objects.get(username=request.POST['username'])
+    if m.password == request.POST['password']:
+
+        reponse.set_cookie('name',name,3600) #将name写入浏览器cookie,失效时间为3600
+    
+        return HttpResponse("You're logged in.")
+
+
+
+    else:
+
+        return HttpResponse("Your username and password didn't match.")
+
+         
+
+
+
+
+def logout(request):
+
+    #清理cookie
+
+    response.delete_cookie('name')
+
+    return HttpResponse("You're logged out.")
+
+
+
+
+
+二：将登陆时的用户信息写入session表
+
+####################################################################################
+# 一、开始Sessions功能：      --正常情况下，你无需任何设置就可以使用session功能。如果你删除或修改过请检测一下配置
+#      1、编辑settings.py中 MIDDLEWARE_CLASSES 配置， 确保 'django.contrib.sessions.middleware.SessionMiddleware'存在，如果没有则添加。
+#      2、编辑settings.py中INSTALLED_APPS 配置，确保'django.contrib.sessions' (如果你是刚打开这个应用，别忘了运行 manage.py syncdb )
+#
+#二、怎么使用：
+#     1、设置Sessions值
+#           request.session['session_name'] ="admin"
+#     2、获取Sessions值
+#           session_name = request.session["session_name"]
+#     3、删除Sessions值
+#           del request.session["session_name"]
+#     4、检测是否操作session值
+#           if "session_name" is request.session :
+#三、sessions规则：
+#     1、session是以字典方式存储，（Key—>Value的键值对方式存储），访问是只要访问Session的键就可以得到键对应的Value
+#       如果：value = request.session["key_name"]
+#     2、Session字典中以下划线开头的key值是Django内部保留key值。框架只会用很少的几个下划线开头的session变量，
+#       除非你知道他们的具体含义，而且愿意跟上Django的变化，否则，最好不要用这些下划线开头的变量，它们会让D
+#       jango搅乱你的应用。
+#    3、不要用一个新对象来替换掉 request.session ，也不要存取其属性、
+#    4、Session储存在服务器端，
+#      优点：数据存储相对比较安全，数据交换方便。
+#      缺点：如果存储数据多，访问量大时，比较消耗服务器端资源，导致网站整体性能下降。
+####################################################################################
+
+
+# 创建或修改 session：
+request.session[key] = value
+# 获取 session：
+request.session.get(key,default=None)
+# 删除 session
+del request.session[key] # 不存在时报错
+
+
+
+
+
+
+一个简化的登陆认证：
+
+
+
+
+
+
+def login(request):
+    m = Member.objects.get(username=request.POST['username'])
+    if m.password == request.POST['password']:
+        request.session['member_id'] = m.id
+        return HttpResponse("You're logged in.")
+    else:
+        return HttpResponse("Your username and password didn't match.")
+         
+         
+def logout(request):
+    try:
+        del request.session['member_id']
+    except KeyError:
+        pass
+    return HttpResponse("You're logged out.")
+
+
+
+
+
+
+
+
+03.Django的MTV开发模式详解和模型关系构建
+
+ORM：对象关系映射
+
+
+一：MTV开发模式
+把数据存取逻辑、业务逻辑和表现逻辑组合在一起的概念有时被称为软件架构的 Model-View-Controller(MVC)模式。
+ 在这个模式中，Model 代表数据存取层，View
+ 代表的是系统中选择显示什么和怎么显示的部分，Controller
+ 指的是系统中根据用户输入并视需要访问模型，以决定使用哪个视图的那部分。
+
+
+
+
+Django也遵循这种MVC开发模式，只不过更名为MTV，下边是django所对应的MVC
+
+
+
+
+M ，数据存取部分，由django数据库层处理，本章要讲述的内容。
+
+
+V ，选择显示哪些数据要显示以及怎样显示的部分，由视图和模板处理。
+3
+
+
+C ，根据用户输入委派视图的部分，由 Django 框架根据 URLconf 设置，对给定 URL 调用适当的 Python 函数。
+
+
+
+
+由于 C 由框架自行处理，而 Django 里更关注的是模型（Model）、模板(Template)和视图（Views），Django 也被称为 MTV 框架 。在 MTV 开发模式中：
+
+
+
+M 代表模型（Model），即数据存取层。 该层处理与数据相关的所有事务： 如何存取、如何验证有效性、包含哪些行为以及数据之间的关系等。
+
+
+T 代表模板(Template)，即表现层。 该层处理与表现相关的决定： 如何在页面或其他类型文档中进行显示。
+
+
+V 代表视图（View），即业务逻辑层。 该层包含存取模型及调取恰当模板的相关逻辑。 你可以把它看作模型与模板之间的桥梁。
+
+
+
+
+
+二：一对多的模型构建
+
+
+
+
+
+    定义：注意先后顺序
+（一个作者对应多本书）
+
+class User(models.Model):    username = models.CharField(max_length=20)    password = models.CharField(max_length=20)def __unicode__(self):             #定义表内容显示的标题return self.usernameclass Meta:        #自定义数据表名称db_table = "User"class Blog(models.Model):#verbose_name='' : 表示后台中显示的对应名称title = models.CharField(max_length=20, verbose_name='标题')   #文章标题author = models.ForeignKey(User,related_name="blog_author")       #外键    #author = models.CharField(max_length=15,verbose_name='作者')  #作者time = models.TimeField(verbose_name='发表时间')      #时间tag = models.CharField(blank=True,max_length=100,verbose_name='文章标签')  #文章标签  blank=True表示该空格可选填content = models.TextField(verbose_name='内容')      #内容def __unicode__(self):   #后台中显示的标题return self.titleclass Meta:             #自定义数据表名字db_table = "Blog"
+
+
+
+
+
+
+
+
+
+三：多对多的模型构建
+
+    
+
+    注意先后顺序
+
+    （一个作者可以编写多种类别的文章，一个类别的文章可以被多个作者编写）
+
+class Author(models.Model):    name = models.CharField(max_length=15)class Blog(models.Model):#verbose_name='' : 表示后台中显示的对应名称title = models.CharField(max_length=20, verbose_name='标题')   #文章标题authors = models.ManyToManyField(Author,verbose_name="作者")       #外键    #author = models.CharField(max_length=15,verbose_name='作者')  #作者time = models.TimeField(verbose_name='发表时间')      #时间tag = models.CharField(blank=True,max_length=100,verbose_name='文章标签')  #文章标签  blank=True表示该空格可选填content = models.TextField(verbose_name='内容')      #内容def __unicode__(self):   #后台中显示的标题return self.titleclass Meta:             #自定义数据表名字db_table = "Blog"class Category(models.Model):    category = models.CharField(max_length=20,verbose_name='类别')    blog = models.ForeignKey(Blog,related_name="category_blog")  #类别    author = models.ForeignKey(User,related_name="category_author")       #外键def __unicode__(self):return self.categoryclass Meta:         db_table = "Category"
+
+四：添加模块的字符串表现
+
+class Author(models.Model):    name = models.CharField(max_length=15)
+
+
+
+插入和更新数据a = Author(name='aaa')a.save()选择对象Author.objects.all()数据过滤Author.objects.filter(name='Apress',age=12) #以字典形式传值获取单个对象Author.objects.get(name='Apress')这样，就返回了单个对象，而不是列表（更准确的说，QuerySet)。 所以，如果结果是多个对象，会导致抛出异常如果查询没有返回结果也会抛出异常数据排序Author.order_by("name")连锁查询Author.objects.filter(name="sss").order_by("-name")限制返回的数据Author.order_by("name")[0]更新多个对象Author.objects.filter(id=52).update(name='Apress Publishing')删除对象Author.objects.filter(name="sss").delete()
+
+
+
+
+五：模板继承
+
+class Book(models.Model):  title = models.CharField(max_length=100)  genre = models.CharField(max_length=100)  num_pages = models.IntergerField()  authors = models.ManyToManyField(Author)  def __unicode__(self):    return self.title  class Meta:    abstract = Trueclass SmithBook(Book):  authors = models.ManyToManyField(Author, limit_choices_to = {    'name_endswith': 'Smith'  })
+这里代码的关键是 abstract
+ = True 设置， 指明了Book是一个抽象基础类
+
+
+没有了Meta abstract 选项，
+在一个空数据库和这个 models.py 文件上运行 manage.py
+ syncdb 会创建三张表 Author, Book, SmithBook
+而抽象基础类的情况下，只创建了 Author, SmithBook 两张表。
+
+
+
+六：Meta嵌套类
+
+
+Meta类处理的是模型的各种元数据的使用和显示：
+
+比如在一个对象对多个对象是，它的名字应该怎么显示；查询数据表示默认的排序顺序是什么？数据表的名字是什么多变量唯一性 （这种限制没有办法在每个单独的变量声明上定义）
+class Person(models.Model):
+  first = models.CharField(max_length=100)
+  last = models.CharField(max_length=100)
+  middle = models.CharField(max_length=100, blank=True)
+
+  class Meta:
+    ordering = ['last', 'first', 'middle']
+    unique_together = ['first', 'last', 'middle']
+
+    #Django默认的复数形式是加 s，这里不适用
+    verbose_name_plural = "people"
+
+
+
+
+
+02.Django后台和数据库的设计
+
+
+继上一篇中数据库的连接
+
+
+一：Admin的工作方式
+    
+
+当服务启动时，Django从`` url.py`` 引导URLconf，然后执行`` admin.autodiscover()`` 语句。 这个函数遍历INSTALLED_APPS配置，并且寻找相关的 admin.py文件。
+ 如果在指定的app目录下找到admin.py，它就执行其中的代码。
+
+在`` books`` 应用程序目录下的`` admin.py`` 文件中，每次调用`` admin.site.register()`` 都将那个模块注册到管理工具中。 管理工具只为那些明确注册了的模块显示一个编辑/修改的界面。
+
+应用程序`` django.contrib.auth`` 包含自身的`` admin.py`` ，所以Users和Groups能在管理工具中自动显示。 其它的django.contrib应用程序，如django.contrib.redirects，其它从网上下在的第三方Django应用程序一样，都会自行添加到管理工具。
+
+综上所述，管理工具其实就是一个Django应用程序，包含自己的模块、模板、视图和URLpatterns。 你要像添加自己的视图一样，把它添加到URLconf里面。 你可以在Django基本代码中的django/contrib/admin 目录下，检查它的模板、视图和URLpatterns，但你不要尝试直接修改其中的任何代码，因为里面有很多地方可以让你自定义管理工具的工作方式。
+ （如果你确实想浏览Django管理工具的代码，请谨记它在读取关于模块的元数据过程中做了些不简单的工作，因此最好花些时间阅读和理解那些代码。）
+
+
+
+二：构建简单的Admin
+
+
+修改blog中的models.py
+#coding:utf-8from django.db import models# Create your models hereclass Blog(models.Model):    title = models.CharField(max_length=20)   #文章标题author = models.CharField(max_length=15)  #作者time = models.TimeField()      #时间tag = models.CommaSeparatedIntegerField()  #文章标签content = models.TextField()      #内容def __unicode__(self):   #后台中显示的标题return self.titleclass Meta:             #自定义数据表名字db_table = "Blog"
+
+
+
+修改blog目录下的admin.py
+
+from django.contrib import adminfrom blog.models import Blog# Register your models here.admin.site.register(Blog)
+
+
+
+同步数据库（首先要删除原先数据库中的User表，否则会报错）manage.py syncdb
+
+
+创建超级用户：
+    manage.py cteatesuperuser
+
+
+浏览器访问：
+    127.0.0.1:8000/admin
+    输入刚才创建的账号和密码
+
+
+三：模块级别的修改
+
+
+设置字段可选
+    name = models.CharField(max_length = 20, **blank = True**)
+设置日期和数字型字段可选
+
+
+    SQL有指定空值的独特方式，它把空值叫做NULL。NULL可以表示为未知的、非法的、或其它程序指定的    含义。
+
+    在SQL中， NULL的值不同于空字符串，就像Python中None不同于空字符串（""）一样。这意味着某个字符型字段（如VARCHAR）的值不可能同时包含NULL和空字符串。
+
+    为了消除歧义，Django生成CREATE TABLE语句自动为每个字段显式加上NOT NULL
+
+自定义字段标签
+    name = models.CharField(max_length = 20, **blank = True**，verbose_name="AAA")
+
+
+四：自定义ModelAdmin类
+#coding:utf-8from django.contrib import adminfrom blog.models import Blog# Register your models here.class BlogAdmin(admin.ModelAdmin):#自定义列表list_display = ('title','time','tag','author','content')#添加过滤段list_filter = ('time','author')#自定义过滤菜单，排除一些不想被他人编辑的菜单fields = ('title','time','tag','author','content')#快速查询栏search_fields = ('author','time','tag',)#多对多字段使用filter_hierarchy,不能用于 ForeignKey字段filter_hierarchy = ('authors',)# #用BlogAdmin来注册Blogadmin.site.register(Blog, BlogAdmin)
+
+    
+    
+
+
+01.Django学习之安装，建立项目，传参，MySQL数据库，静态文件配置和模板的使用
+
+1：安装
+pip install Django==1.8.6
+
+
+
+2：建立项目
+ 进入某个目录执行 django-admin.py startproject myweb(此为项目目录)
+
+
+ 建立子目录：
+        先进入 myweb目录，然后执行 manage.py startapp blog,ok子目录完毕
+        在SName的views.py中添加如下代码：
+            from django.http import HttpResponse
+            def hello(request):
+                return HttpResponse("Hello World")
+
+
+
+
+   配置url：
+        在myweb的settings.py 中INSTALLED_APP = ('xxxx','xxx','xxx','blog',)加上blog
+        在同级目录的urls.py中 配置url，这里有两种方式
+            (1)直接定位   url(r'^blog/index/$','blog.views.hello'),
+            (2)定位到子目录
+                    在myweb 中的urls.py中加入url(r'^blog/', include('blog.urls'))
+                 再定位到具体文件
+                     在blog中的urls.py中加入url(r'^blog/$', 'blog.views.hello')
+
+
+    启动服务：
+          进入myweb目录，执行manage.py runserver
+
+
+    浏览器访问：
+          127.0.0.1:8000/blog/hello
+
+
+    至此项目建立已基本完成
+    
+3：使用模板
+    在blog目录下建立templates文件夹，将index.html放入
+    blog的views.py修改如下：
+        from django.http import HttpResponse
+        from django.template import loader,Context
+
+        def hello(request):
+                t = loader.get_template('index.html')
+                c = Context({})           #用于传参数    
+                return HttpResponse(t.render(c))
+         浏览器访问：127.0.0.1:8000/blog/hello
+
+
+
+
+
+
+
+4：配置CSS，js，images.....等静态文件目录
+    在FName下建立static目录,将css，images等文件夹拷贝到此目录下
+    在FName的settings.py  STATIC_URL = '/static/' 下加上如下文件
+    STATIC_ROOT = os.path.join(os.path.dirname(__file__),'../static')
+    STATICFILES_DIRS = (
+        ('css',os.path.join(STATIC_ROOT,'css').replace('\\','/') ),  
+        ('js',os.path.join(STATIC_ROOT,'js').replace('\\','/') ),
+        ('images',os.path.join(STATIC_ROOT,'images').replace('\\','/') ),
+        ('upload',os.path.join(STATIC_ROOT,'upload').replace('\\','/') ),
+    )
+
+    在模板网页中使用的时候加上/static/  如：
+    <link href="/static/css/index.css" rel="styleshet" type="text/css" />
+
+  其他的如上
+ 
+5:传递参数：
+ 
+  传递参数类型为：Python的变量，函数，类....
+    ({name}):表示变量
+
+
+6:URL传值(使用正则表达式)
+    myweb项目下的url
+
+    urlpatterns = [        url(r'^admin/', include(admin.site.urls)),        url(r'^blog/',include('blog.urls')),    ]
+    复制myweb下的url到blog目录下，修改如下
+    urlpatterns = [       url(r'^time/$','blog.views.time'),        url(r'^foo/(\d{4})/(\w+)/$','blog.views.foo'),    ]
+
+
+
+
+        方式一：http://127.0.0.1:8000/blog/time/?id=123&name=qwe
+
+    def time(request):        t = loader.get_template("time.html")        id = request.GET.get("id")        name = request.GET.get("name")        c = Context({"title":"thinkgamer","time":datetime.datetime.now(),"id":id,"name":name})       return HttpResponse(t.render(c))
+    <body>       <p>time is {{ time | date:"Y-m-d"}}</p>        <p>id is {{ id }}</p>        <p>name is {{ name }}</p>    </body>
+
+
+
+    方式二：http://127.0.0.1:8000/blog/foo/1234/asdd/
+    def foo(request,p1,p2):        t = loader.get_template("time.html")        c = Context({"title":"thinkgamer","time":datetime.datetime.now(),"id":p1,"name":p2})    return HttpResponse(t.render(c))
+    <body>        <p>time is {{ time | date:"Y-m-d"}}</p>        <p>id is {{ id }}</p>        <p>name is {{ name }}</p>    </body>    url(r'^foo/(\d{4})/(\w+)/$','blog.views.foo'),
+
+
+7：MySQL数据库的简单配置
+    连接：
+    myweb中的settings.py
+     DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'csvt',
+                'USER':'root',
+                'PASSWORD':'123456',
+                'HOST':'',
+                'PORT':'',
+            }
+       }     
+    blog的models.py文件        from django.db import models
+
+        class Employee(models.Model):
+             name=models.CharField(max_length=20)     同步数据库     首先，用下面的命令验证模型的有效性：        python manage.py validate        运行下面的命令来生成 CREATE TABLE 语句     python manage.py sqlall blog        输出的是sql语句，但此时并没有在数据库中创建数据表     同步数据库     python manage.py syncdb     （此时可能会报错，解决办法是：删除blog下的migrations目录，重新执行python manage.py syncdb即可）     反向同步     python manage.py inspectdb(查看语句)      python manage.py > inspectdb      > blog/models.py
+
+
+00.Python manage.py shell和 Python的分析
+
+环境：Python 2.7.6    django1.8.6
+IDE：Pycharm
+编写了一个模板，数据库连接的是MySQl数据库（具体配置参考http://blog.csdn.net/gamer_gyt/article/details/49976119）
+可是pycharm中启动服务的时候报错如下：
+................
+django.core.exceptions.ImproperlyConfigured: Requested setting DEFAULT_INDEX_TABLESPACE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before
+ accessing settings.
+
+
+Process finished with exit code 1
+
+于是乎在网上一顿谷歌呀，基本说的都是加入settings的环境变量于是我在views.py里边做了如下修改，加了以下两行代码
+
+from django.conf import settings
+settings.configure()
+
+然后再次运行，显示如下：
+
+Process finished with exit code 0
+
+可是在浏览器中却并不能访问
+删除这两行代码，在命令行中运行 Python manage.py runserver   OK了
+对于其中的原理不是很明白，于是又一顿谷歌呀
+最终的发现是（以下为原文引用）：
+'  '   '
+
+
+启动python有两种方式：python manage.py shell和python。
+
+这两个命令 都会启动交互解释器，但是manage.py shell命令有一个重要的不同： 在启动解释器之前，它告诉Django使用 哪个设置文件。 Django框架的大部分子系统，包括模板系统，都依赖于配置文件；如果Django不知道使用哪 个配置文件，这些系统将不能工作。
+
+如果你想知道，这里将向你解释它背后是如何工作的。 Django搜索DJANGO_SETTINGS_MODULE环境变 量，它被设置在settings.py中。例如，假设mysite在你的Python搜索路径中，那么 DJANGO_SETTINGS_MODULE应该被设置为：’mysite.settings’。 
+当你运行命令：python manage.py shell，它将自动帮你处理DJANGO_SETTINGS_MODULE。 在当前的这 些示例中，我们鼓励你使用`` python manage.py shell``这个方法，这样可以免去你大费周章地去配置那些你 不熟悉的环境变量。 
+随着你越来越熟悉Django，你可能会偏向于废弃使用`` manage.py shell`` ，而是在你的配置文 件.bash_profile中手动添加 DJANGO_SETTINGS_MODULE这个环境变量。
+
+
+
+所以，另两种解决方案就是：
+
+1.使用 python manage.py shell启动Python
+
+2.在你的配置文 件.bash_profile中手动添加 DJANGO_SETTINGS_MODULE这个环境变量。
+
+ '  '  '
+
+看到这里你是不是明白了些什么......
+ 
+

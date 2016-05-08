@@ -1,0 +1,1003 @@
+Hadoop1.X 与 Hadoop2.X比较
+
+鉴于好久没有更新博客，且最近开始找工作，所以对以往的相关知识进行整理
+一：Haddop版本介绍
+
+
+0.20.x版本最后演化成了现在的1.0.x版本
+
+0.23.x版本最后演化成了现在的2.x版本
+
+hadoop 1.0 指的是1.x(0.20.x),0.21,0.22
+
+hadoop 2.0 指的是2.x,0.23.x
+
+CDH3,CDH4分别对应了hadoop1.0 hadoop2.0
+
+
+
+
+
+
+
+
+
+二、Hadoop1.X与Hadoop2.X区别
+
+
+
+
+
+1、HDFS的改进
+
+1.1 Hadoop1.x时代的HDFS架构
+
+　　在Hadoop1.x中的NameNode只可能有一个，虽然可以通过SecondaryNameNode与NameNode进行数据同步备份，但是总会存在一定的延时，如果NameNode挂掉，但是如果有部份数据还没有同步到SecondaryNameNode上，还是可能会存在着数据丢失的问题。该架构如图1所示：
+
+
+
+
+图1 Hadoop1.x时代的HDFS结构图
+
+　　该架构包含两层：Namespace 和 Block Storage Service；
+
+　　其中，Namespace 层面包含目录、文件以及块的信息，支持对Namespace相关文件系统的操作，如增加、删除、修改以及文件和目录的展示；
+
+　　而Block Storage Service层面又包含两个部分：
+
+　　①Block Management（块管理）维护集群中DataNode的基本关系，它支持数据块相关的操作，如：创建数据块，删除数据块等，同时，它也会管理副本的复制和存放。
+
+　　②Physical Storage（物理存储）存储实际的数据块并提供针对数据块的读写服务。
+
+　　当前HDFS架构只允许整个集群中存在一个Namespace，而该Namespace被仅有的一个NameNode管理。这个架构使得HDFS非常容易实现，但是，它（见上图）在具体实现过程中会出现一些模糊点，进而导致了很多局限性（下面将要详细说明），当然这些局限性只有在拥有大集群的公司，像baidu，腾讯等出现。
+
+
+Hadoop1.x的HDFS架构的局限：
+
+（1）Block Storage和namespace高耦合
+
+当前namenode中的namespace和block management的结合使得这两层架构耦合在一起，难以让其他可能namenode实现方案直接使用block storage。
+
+（2）NameNode扩展性
+
+HDFS的底层存储是可以水平扩展的（解释：底层存储指的是datanode，当集群存储空间不够时，可简单的添加机器已进行水平扩展），但namespace不可以。当前的namespace只能存放在单个namenode上，而namenode在内存中存储了整个分布式文件系统中的元数据信息，这限制了集群中数据块，文件和目录的数目。
+
+（3）NameNode性能
+
+文件操作的性能制约于单个Namenode的吞吐量，单个Namenode当前仅支持约60K的task，而下一代Apache MapReduce将支持多余100K的并发任务，这隐含着要支持多个Namenode。
+
+（4）隔离性
+
+现在大部分公司的集群都是共享的，每天有来自不同group的不同用户提交作业。单个namenode难以提供隔离性，即：某个用户提交的负载很大的job会减慢其他用户的job，单一的namenode难以像HBase按照应用类别将不同作业分派到不同namenode上。
+
+
+1.2 HDFS Federation
+
+　　（1）全新的Feration架构
+
+　　在Hadoop2.x中，HDFS的变化主要体现在增强了NameNode的水平扩展（Horizontal Scalability）及高可用性（HA）->【这不就是针对我们刚刚提到到的Hadoop1.x HDFS架构的局限性而做的改进，么么嗒！】，可以同时部署多个NameNode，这些NameNode之间是相互独立，也就是说他们不需要相互协调，DataNode同时在所有NameNode中注册，作为他们共有的存储节点，并定时向所有的这些NameNode发送心跳块使用情况的报告，并处理所有NameNode向其发送的指令。该架构如图2所示：
+
+
+
+
+图2 Hadoop2.x时代的HDFS结构图
+
+　　该架构引入了两个新的概念：存储块池（Block Pool） 和 集群ID（ClusterID）；
+
+　　①一个Bock Pool 是块的集合，这些块属于一个单一的Namespace。DataNode存储着集群中所有Block Pool中的块。Block Pool的管理相互之间是独立的。这意味着一个Namespace可以独立的生成块ID，不需要与其他Namespace协调。一个NameNode失败不会导致Datanode的失败，这些Datanode还可以服务其他的Namenode。
+
+　　一个Namespace和它的Block Pool一起称作命名空间向量（Namespace Volume）。这是一个自包含单元。当一个NameNode/Namespace删除后，对应的Block Pool也会被删除。当集群升级时，每个Namespace Volume也会升级。
+
+　　②集群ID（ClusterID）的加入，是用于确认集群中所有的节点，也可以在格式化其它Namenode时指定集群ID，并使其加入到某个集群中。
+
+　　（2）HDFS Federation与老HDFS架构的比较
+
+①老HDFS架构只有一个命名空间（Namespace），它使用全部的块。而HDFS Federation 中有多个独立的命名空间（Namespace），并且每一个命名空间使用一个块池（block pool）。
+
+②老HDFS架构中只有一组块。而HDFS Federation 中有多组独立的块。块池（block pool）就是属于同一个命名空间的一组块。
+
+③老HDFS架构由一个Namenode和一组datanode组成。而HDFS Federation 由多个Namenode和一组Datanode，每一个Datanode会为多个块池（block pool）存储块。
+
+1.3 NameNode的HA
+
+　　Hadoop中的NameNode好比是人的心脏，非常重要，绝对不可以停止工作。在Hadoop1.x时代，只有一个NameNode。如果该NameNode数据丢失或者不能工作，那么整个集群就不能恢复了。这是Hadoop1.x中的单点问题，也是Hadoop1.x不可靠的表现，如图1所示。Hadoop2的出现解决了这个问题，也被称为HA。
+
+　　Hadoop2中HDFS的HA主要指的是可以同时启动2个NameNode。其中一个处于工作（Active）状态，另一个处于随时待命（Standby）状态。这样，当一个NameNode所在的服务器宕机时，可以在数据不丢失的情况下，手工或者自动切换到另一个NameNode提供服务。如图3所示，它展示了一个在Hadoop2下实现HA的一种方式结构：
+
+
+
+
+图3 Hadoop2.x时代实现HA的一种架构图
+
+　　下面对上图做一下简单的介绍：
+
+　　（1）这些NameNode之间通过共享存储同步edits信息，保证数据的状态一致。多个NameNode之间共享数据，可以通过Network File System（NFS）或者Quorum Journal Node。前者是通过Linux共享的文件系统，属于操作系统层面的配置；后者是Hadoop自身的东西，属于软件层面的配置。
+
+　　（2）DataNode同时向两个NameNode汇报块信息。这是让Standby NameNode保持集群最新状态的必需步骤。
+
+　　（3）使用Zookeeper来进行心跳监测监控，在Active NameNode失效时自动切换Standby NameNode为Active状态。
+
+2、MapReduce的改进
+
+2.1 Hadoop1.x时代的MapReduce
+
+　　在Hadoop1.x时代，Hadoop中的MapReduce实现是做了很多的事情，而该框架的核心Job Tracker则是既当爹又当妈的意思，如图4所示：
+
+
+
+
+　　图4 Hadoop1.x时代的MapReduce框架架构图
+
+　　（1）首先用户程序 （JobClient） 提交了一个 job，job 的信息会发送到 Job Tracker 中，Job Tracker 是 Map-reduce 框架的中心，他需要与集群中的机器定时通信 (heartbeat), 需要管理哪些程序应该跑在哪些机器上，需要管理所有 job 失败、重启等操作。
+
+　　（2）TaskTracker 是 Map-reduce 集群中每台机器都有的一个部分，他做的事情主要是监视自己所在机器的资源情况。
+
+　　（3）TaskTracker 同时监视当前机器的 tasks 运行状况。TaskTracker 需要把这些信息通过 heartbeat发送给JobTracker，JobTracker 会搜集这些信息以给新提交的 job 分配运行在哪些机器上。
+
+
+Hadoop1.x的MapReduce框架的主要局限：
+
+（1）JobTracker 是 Map-reduce 的集中处理点，存在单点故障；
+
+（2）JobTracker 完成了太多的任务，造成了过多的资源消耗，当 map-reduce job 非常多的时候，会造成很大的内存开销，潜在来说，也增加了 JobTracker 失效的风险，这也是业界普遍总结出老 Hadoop 的 Map-Reduce 只能支持 4000 节点主机的上限；
+
+
+2.2 Hadoop2中新方案：YARN+MapReduce
+
+　　首先的不要被YARN给迷惑住了，它只是负责资源调度管理。而MapReduce才是负责运算的家伙，所以YARN  != MapReduce2. 
+
+
+YARN 并不是下一代MapReduce（MRv2），下一代MapReduce与第一代MapReduce（MRv1）在编程接口、数据处理引擎（MapTask和ReduceTask）是完全一样的， 可认为MRv2重用了MRv1的这些模块，不同的是资源管理和作业管理系统，MRv1中资源管理和作业管理均是由JobTracker实现的，集两个功能于一身，而在MRv2中，将这两部分分开了。 其中，作业管理由ApplicationMaster实现，而资源管理由新增系统YARN完成，由于YARN具有通用性，因此YARN也可以作为其他计算框架的资源管理系统，不仅限于MapReduce，也是其他计算框架（例如Spark）的管理平台。　　
+
+
+
+
+
+图5 Hadoop2时代的新方案架构图
+
+　　从图5中也可以看出，Hadoop1时代中MapReduce可以说是啥事都干，而Hadoop2中的MapReduce的话则是专门处理数据分析，而YARN则做为资源管理器而存在。
+
+　　该架构将JobTracker中的资源管理及任务生命周期管理（包括定时触发及监控），拆分成两个独立的服务，用于管理全部资源的ResourceManager以及管理每个应用的ApplicationMaster，ResourceManager用于管理向应用程序分配计算资源，每个ApplicationMaster用于管理应用程序、调度以及协调。一个应用程序可以是经典的MapReduce架构中的一个单独的Job任务，也可以是这些任务的一个DAG（有向无环图）任务。ResourceManager及每台机上的NodeManager服务，用于管理那台主机的用户进程，形成计算架构。每个应用程序的ApplicationMaster实际上是一个框架具体库，并负责从ResourceManager中协调资源及与NodeManager(s)协作执行并监控任务。如图6所示：
+
+
+
+
+图6 YARN架构图
+
+　　（1）ResourceManager包含两个主要的组件：定时调用器(Scheduler)以及应用管理器(ApplicationManager)。
+
+　　①定时调度器(Scheduler)：
+
+　　定时调度器负责向应用程序分配资源，它不做监控以及应用程序的状态跟踪，并且它不保证会重启由于应用程序本身或硬件出错而执行失败的应用程序。
+
+　　②应用管理器(ApplicationManager)：
+
+　　应用程序管理器负责接收新任务，协调并提供在ApplicationMaster容器失败时的重启功能。
+
+　　（2）ApplicationMaster：每个应用程序的ApplicationMaster负责从Scheduler申请资源，以及跟踪这些资源的使用情况以及任务进度的监控。
+
+　　（3）NodeManager：NodeManager是ResourceManager在每台机器的上代理，负责容器的管理，并监控他们的资源使用情况（cpu，内存，磁盘及网络等），以及向 ResourceManager/Scheduler提供这些资源使用报告。
+
+
+
+    23、具体变化
+2.3.1、配置文件的路径
+
+
+在1.x中，Hadoop的配置文件是放在$HADOOP_HOME/conf目录下的，关键的配置文件在src目录都有对应的存放着默认值的文件，如下：
+
+
+
+
+
+配置文件
+
+
+
+默认值配置文件
+
+
+
+
+
+$HADOOP_HOME/conf/core-site.xml
+
+
+
+$HADOOP_HOME/src/core/core-default.xml
+
+
+
+
+
+$HADOOP_HOME/conf/hdfs-site.xml
+
+
+
+$HADOOP_HOME/src/hdfs/hdfs-default.xml
+
+
+
+
+
+$HADOOP_HOME/conf/mapred-site.xml
+
+
+
+$HADOOP_HOME/src/mapred/mapred-default.xml
+
+
+
+
+
+我们在$HADOOP_HOME/conf下面配置的core-site.xml等的值，就是对默认值的一个覆盖，如果没有在conf下面的配置文件中设置，那么就使用src下面对应文件中的默认值，这个在使用过程中非常方便，也非常有助于我们理解。
+
+Hadoop可以说是云计算的代名词，其也有很多衍生的产品，不少衍生的配置方式都遵从Hadoop的这种配置方式，如HBase的配置文件也是$HBase/conf目录，核心配置的名称就是hbase-site.xml，如果学习了Hadoop再去学习HBase，从配置的理解上来说，就会有一种亲切的感觉。
+
+ 
+
+可是在2.x中，Hadoop的架构发生了变化，而配置文件的路径也发生了变化，放到了$HADOOP_HOME/etc/hadoop目录，这样修改的目的，应该是让其更接近于Linux的目录结构吧，让Linux用户理解起来更容易。Hadoop 2.x中配置文件的几个主要的变化：
+
+l 去除了原来1.x中包括的$HADOOP_HOME/src目录，该目录包括关键配置文件的默认值；
+
+l 默认不存在mapred-site.xml文件，需要将当前mapred-site.xml.template文件copy一份并重命名为mapred-site.xml，并且只是一个具有configuration节点的空文件；
+
+l 默认不存在mapred-queues.xml文件，需要将当前mapred-queues.xml.template文件copy一份并重命名为mapred-queues.xml；
+
+l 删除了master文件，现在master的配置在hdfs-site.xml通过属性dfs.namenode.secondary.http-address来设置，如下：
+
+
+
+
+
+<property>
+
+        <name>dfs.namenode.secondary.http-address</name>
+
+        <value>nginx1:9001</value>
+
+</property>
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+l 增加了yarn-env.sh，用于设置ResourceManager需要的环境变量，主要需要修改JAVA_HOME；
+
+l 增加yarn-site.xml配置文件，用于设置ResourceManager；
+
+ 
+
+ 
+2.3.2、命令文件目录的变化
+
+在1.x中，所有的命令文件，都是放在bin目录下，没有区分客户端和服务端命令，并且最终命令的执行都会调用hadoop去执行；而在2.x中将服务端使用的命令单独放到了sbin目录，其中有几个主要的变化：
+
+l 将./bin/hadoop的功能分离。在2.x中./bin/hadoop命令只保留了这些功能：客户端对文件系统的操作、执行Jar文件、远程拷贝、创建一个Hadoop压缩、为每个守护进程设置优先级及执行类文件，另外增加了一个检查本地hadoop及压缩库是否可用的功能，详情可以通过命令“hadoop -help”查看。
+
+而在1.x中，./bin/hadoop命令还包括：NameNode的管理、DataNode的管理、
+ TaskTracker及JobTracker的管理、服务端对文件系统的管理、文件系统的检查、获取队列 信息等，详情可以通过命令“hadoop -help”查看。
+
+l 增加./bin/hdfs命令。./bin/hadoop命令的功能被剥离了，并不是代表这些命令不需要了，而是将这些命令提到另外一个名为hdfs的命令中，通过hdfs命令可以对NameNode格式化及启动操作、启动datanode、启动集群平衡工具、从配置库中获取配置信息、获取用户所在组、执行DFS的管理客户端等，详细可以通过“hdfs -help”查看。
+
+l 增加./bin/yarn命令。原来1.x中对JobTracker及TaskTracker的管理，放到了新增的yarn命令中，该命令可以启动及管理ResourceManager、在每台slave上面都启一个NodeManager、执行一个JAR或CLASS文件、打印需要的classpath、打印应用程序报告或者杀死应用程序等、打印节点报告等，详情可以通过命令“yarn -help”查看。
+
+l 增加./bin/mapred命令。该命令可以用于执行一个基于管道的任务、计算MapReduce任务、获取队列的信息、独立启动任务历史服务、远程目录的递归拷贝、创建hadooop压缩包，详情可以通过“./mapred -help”。
+
+
+
+
+Hadoop目前的HA(High Availability)机制分析和源代码研究
+
+
+
+
+hadoop2.6伪分布+pig0.15+zookeeper3.4.6安装
+
+一、hadoop2.6伪分布安装请参考：http://blog.csdn.net/gamer_gyt/article/details/46793731
+二、pig0.15安装
+Pig的介绍
+        Pig是一个基于Hadoop的大规模数据分析平台，它提供的SQL-like语言叫Pig Latin，该语言的编译
+器会把类SQL的数据分析请求转换为一系列经过优化处理的MapReduce运算。Pig为复杂的海量数据并行计算
+提供了一个简易的操作和编程接口.
+Pig的运行模式
+
+1.本地模式　　
+Pig运行于本地模式，只涉及到单独的一台计算机。
+2.MapReduce模式　　
+Pig运行于MapReduce模式，需要能访问一个Hadoop集群，并且需要装上HDFS。
+
+Pig的调用方式
+    Grunt shell方式：通过交互的方式，输入命令执行任务；
+    Pig script方式：通过script脚本的方式来运行任务；
+    嵌入式方式：嵌入java源代码中，通过java调用来运行任务。
+Pig的安装
+1）下载Pig前往http://mirror.bit.edu.cn/apache/pig/ 下载合适的版本，比如Pig 0.12.02）解压文件到
+合适的目录tar –xzf pig-0.12.03）设置环境变量export PIG_INSTALL=/opt/pig-0.12.0export PATH=
+$PATH:$PIG_INSTALL/bin4）验证执行以下命令，查看Pig是否可用：
+pig –help
+进入本地模式：pig –x local
+进入MapReduce模式：pig –x mapreduce
+三、zookeeper3.4.6安装
+获取ZooKeeper安装包
+    下载地址：http://apache.dataguru.cn/zookeeper
+    选择一个稳定版本进行下载，我这里下载的是zookeeper-3.4.6版本。
+ZooKeeper伪分布式集群安装
+    伪分布式集群：在一台Server中，启动多个ZooKeeper的实例。
+上传并解压安装包解压到相应的目录,重命名
+tar -zxvf  zookeeper-3.4.6.tar.gz -C /usr/local/hadoop
+mv zookeeper-3.4.6 zookeeper
+创建实例配置文件
+cd zookeeper/conf
+cp zoo_sample.cfg zoo1.cfg
+cp zoo_sample.cfg zoo2.cfg
+cp zoo_sample.cfg zoo3.cfg
+修改配置文件
+实例1的配置：
+vi zoo1.cfg
+
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/usr/local/hadoop/zookeeper/d_1
+clientPort=2181
+dataLogDir=/usr/local/hadoop/zookeeper/logs_1
+server.1=localhost:2887:3887
+server.2=localhost:2888:3888
+server.3=localhost:2889:3889
+实例2的配置：
+vi zoo2.cfg
+ 
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/usr/local/hadoop/zookeeper/d_2
+clientPort=2182
+dataLogDir=/usr/local/hadoop/zookeeper/logs_2
+server.1=localhost:2887:3887
+server.2=localhost:2888:3888
+
+server.3=localhost:2889:3889
+实例3的配置：
+vi zoo3.cfg
+ 
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/usr/local/hadoop/zookeeper/d_3
+clientPort=2183
+dataLogDir=/usr/local/hadoop/zookeeper/logs_3
+server.1=localhost:2887:3887
+server.2=localhost:2888:3888
+server.3=localhost:2889:3889
+准备启动环境
+mkdir/usr/local/hadoop/zookeeper/d_1
+mkdir /usr/local/hadoop/zookeeper/d_2
+mkdir /usr/local/hadoop/zookeeper/d_3
+ 
+mkdir /usr/local/hadoop/zookeeper/logs_1
+mkdir /usr/local/hadoop/zookeeper/logs_2
+mkdir /usr/local/hadoop/zookeeper/logs_3
+ 
+echo "1" > /usr/local/hadoop/zookeeper/d_1/myid
+echo "2" > /usr/local/hadoop/zookeeper/d_2/myid
+echo "3" > /usr/local/hadoop/zookeeper/d_3/myid
+启动集群
+bin/zkServer.sh start zoo1.cfg
+bin/zkServer.sh start zoo2.cfg
+bin/zkServer.sh start zoo3.cfg
+查看是否启动成功
+jps
+#看到类似下面的进程就表示3个实例均启动成功
+13419 QuorumPeerMain
+13460 QuorumPeerMain
+13561 Jps
+13392 QuorumPeerMain
+错误：Error contacting service. It is probably not running
+原因和解决办法：
+1. 没有装nc
+yum install nc 或者apt-get install nc,
+或者下载netcat的包，本文也有连接，
+安装步骤：
+a. tar -zxvf netcat***.tar.gz
+b. ./configure
+c. make
+d. make install
+OK
+2. 打开zkServer.sh，找到
+STAT=`echo stat | nc  localhost $(grep clientPort "$ZOOCFG" | sed -e 's/.*=//') 2> /dev/null|grep Mode`
+这行，加上或去掉-q 1（数字1而非字母l） 即可。
+3. /etc/hosts里面没有配置localhost
+第二个问题一般的机器都没有问题，但是有一种情况没有配置，通过模板导入的虚拟机。
+在/etc/hosts里增加下面一行
+127.0.0.1       localhost SDN-VM1
+运行结果：
+JMX enabled by default
+Using config: /opt/zookeeper-3.3.3/bin/../conf/zoo.cfg
+
+Mode: follower
+4、电脑重启
+Java客户端测试
+需要引入zookeeper-3.4.6.jar和slf4j-api-1.61.jar这两个jar包。
+package com.cjw.demo;
+
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.ZooDefs.Ids;
+ 
+public class ZooKeeperClient {
+    public static void main(String[] args) throws Exception {        
+        Watcher watcher = new Watcher() {
+            @Override
+            public void process(WatchedEvent event) {
+                System.out.println(event.toString());
+            }           
+        };         
+        ZooKeeper zk = new ZooKeeper("192.168.157.22:2181", 3000, watcher);
+        System.out.println("====创建节点");
+        zk.create("/cjw", "znode1".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        System.out.println("====查看节点是否安装成功");
+        System.out.println(new String(zk.getData("/cjw", false, null)));
+        System.out.println("====修改节点的数据");
+        zk.setData("/cjw", "cjw2015".getBytes(), -1);
+        System.out.println("====查看修改的节点是否成功");
+        System.out.println(new String(zk.getData("/cjw", false, null)));
+        System.out.println("====删除节点");
+        zk.delete("/cjw", -1);
+        System.out.println("====查看节点是否被删除");
+        System.out.println("节点状态：" + zk.exists("/cjw", false));         
+        zk.close();
+    }
+}
+运行结果：
+====创建节点
+WatchedEvent state:SyncConnected type:None path:null
+====查看节点是否安装成功
+znode1
+====修改节点的数据
+====查看修改的节点是否成功
+cjw2015
+====删除节点
+====查看节点是否被删除
+
+节点状态：null配置文件说明
+
+
+initLimit: follower连接并同步到leader的初始化连接时间，它是通过tickTime的倍数表示。当初始化连接时间超过设置的时间时，则连接失败。
+
+syncLimit: follower和leader之间发送消息时请求和应答的时间长度，如果follower在设置的时间范围内不能和leader通信，那么该follower将被丢弃，它也是按tickTime的倍数进行配置的。
+
+tickTime: 定义心跳的时间间隔，
+注：zk的client和server之间也有和web开发类似的session的概念，而zk里最小的session过期时间就是tickTime的两倍
+dataDir: 存储在内存中数据库快照功能。
+
+clientPort: 监听客户端连接的端口号
+dataLogDir: zk运行的相关日志写入目录，设定了配置，那么dataLog里日志的目录将无效，专门的日志存放
+
+ 路径，对zk的性能和稳定性有好处。
+
+
+[置顶]
+        二、hadoop伪分布搭建
+
+  环境                                              
+
+虚拟机：VirtualBox
+Ubuntu:14.04
+hadoop:2.6
+  安装
+                                             
+
+1、创建hadoop用户
+
+sudo useradd -m hadoop -s/bin/bash
+【Ubuntu终端复制粘贴快捷键】
+
+【在Ubuntu终端窗口中，复制粘贴的快捷键需要加上shift，即粘贴是 ctrl+shift+v。】
+使用如下命令修改密码，按提示输入两次密码 hadoop :
+
+sudo passwd hadoop
+可为 hadoop 用户增加管理员权限，方便部署，避免一些对新手来说比较棘手的权限问题：
+
+sudo adduser hadoop sudo
+2、切换到hadoop用户下
+su hadoop
+3、安装SSH server、配置SSH无密码登陆
+
+集群、单节点模式都需要用到SSH登陆（类似于远程登陆，你可以登录某台Linux电脑，并且在上面运行命令），Ubuntu 默认已安装了 SSH client，此外还需要安装 SSH server：
+
+sudo apt-get install openssh-server
+安装后，可以使用如下命令登陆本机：
+
+ssh localhost
+
+
+此时会有提示(SSH首次登陆提示)，输入 yes 。然后按提示输入密码hadoop，这样就登陆到本机了。
+但这样登陆是需要每次输入密码的，我们需要配置成SSH无密码登陆比较方便。
+首先退出刚才的 ssh，就回到了我们原先的终端窗口，然后利用 ssh-keygen 生成密钥，并将密钥加入到授权中：
+exit                                   # 退出刚才的 ssh localhostcd ~/.ssh/                             # 若没有该目录，请先执行一次ssh localhostssh-keygen -t rsa                      # 会有提示，都按回车就可以cat id_rsa.pub >> authorized_keys     # 加入授权
+此时再用 ssh localhost 命令，无需输入密码就可以直接登陆
+
+
+4、安装Java环境
+
+
+Java环境可选择 Oracle 的 JDK，或是 OpenJDK，按http://wiki.apache.org/hadoop/HadoopJavaVersions中说的，新版本在 OpenJDK 1.7 下是没问题的。为图方便，这边直接通过命令安装
+ OpenJDK 7。
+
+sudo apt-get install openjdk-7-jre openjdk-7-jdk
+OpenJDK 默认的安装位置为: /usr/lib/jvm/java-7-openjdk-amd64 (32位系统则是 /usr/lib/jvm/java-7-openjdk-i86 ，可通过命令dpkg -L openjdk-7-jdk查看到)。安装完后就可以使用了，可以用java -version 检查一下。
+接着需要配置一下 JAVA_HOME 环境变量，为方便，我们在 ~/.bashrc 中进行设置（扩展阅读:设置Linux环境变量的方法和区别）：
+vi ~/.bashrc
+在文件最前面添加如下单独一行（注意 = 号前后不能有空格），并保存：
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+
+如下图所示（该文件原本可能不存在，内容为空，这不影响）：
+
+
+配置JAVA_HOME变量
+接着还需要让该环境变量生效，执行如下代码：
+
+source 
+~/.bashrc# 使变量设置生效
+
+echo $JAVA_HOME# 检验是否设置正确
+设置正确的话，会输出如下结果：
+
+
+成功配置JAVA_HOME变量
+5、安装hadoop
+进入hadoop所在的目录将其解压到/usr/local/hadoop
+sudo tar -zxvf ./hadoop-2.6.0.tar.gz -C /usr/local # 解压到/usr/local中cd /usr/local/sudo mv ./hadoop-2.6.0/ ./hadoop            # 将文件夹名改为hadoopsudo chown -R hadoop:hadoop ./hadoop        # 修改文件权限
+Hadoop解压后即可使用。输入如下命令来检查 Hadoop 是否可用，成功则会显示命令用法：
+
+cd ./hadoop
+
+./bin/hadoop
+6、hadoop伪分布配置
+
+Hadoop 的配置文件位于 /usr/local/hadoop/etc/hadoop/ 中，伪分布式需要修改2个配置文件core-site.xml 和hdfs-site.xml 。Hadoop的配置文件是 xml 格式，每个配置以声明 property 的 name 和 value 的方式来实现。
+修改配置文件 core-site.xml (vim /usr/local/hadoop/etc/hadoop/core-site.xml)，将当中的
+<configuration>
+</configuration>
+
+修改为下面配置：
+<configuration>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>file:/usr/local/hadoop/tmp</value>
+        <description>Abase for other temporary directories.</description>
+    </property>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+</configuration>
+
+同样的，修改配置文件 hdfs-site.xml：
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/usr/local/hadoop/tmp/dfs/name</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/usr/local/hadoop/tmp/dfs/data</value>
+    </property>
+</configuration>
+
+修改配置文件yarn-site.xml
+<configuration> 
+
+     <property>  
+
+        <name>mapreduce.framework.name</name>  
+
+        <value>yarn</value> 
+
+    </property>  
+    <property> 
+
+        <name>yarn.nodemanager.aux-services</name>  
+
+        <value>mapreduce_shuffle</value>  
+
+   </property> 
+
+</configuration> 
+
+配置完成后，执行 namenode 的格式
+bin/hdfs namenode -format
+成功的话，会看到successfully formatted 的提示，且倒数第5行的提示如下，Exitting with status 0 表示成功，若为Exitting with status 1 则是出错
+接着开启如下进程
+sbin/start-dfs.sh
+sbin/start-yarn.sh
+
+至此，所有的已经安装完事，且所有服务都已经启动
+ 验证                  
+         
+
+http://127.0.0.1:8088
+
+
+http://localhost:50070
+
+
+http://127.0.0.1:19888
+
+
+ 提示
+                           
+
+每次进入虚拟机系统时必须先进入hadoop用户下（su hadoop），才能开启服务，否则会报错
+
+参考文章：www.powerxing.com/install-hadoop/
+
+QQ交流：1923361654
+
+
+一、Hadoop2.6.0 单机模式配置
+
+一、在Ubuntu下创建hadoop组和hadoop用户
+    增加hadoop用户组，同时在该组里增加hadoop用户，后续在涉及到hadoop操作时，我们使用该用户。
+ 
+1、创建hadoop用户组
+ 
+        
+ 
+ 
+ 
+    2、创建hadoop用户
+    
+    sudo adduser -ingroup hadoop hadoop
+    回车后会提示输入新的UNIX密码，这是新建用户hadoop的密码，输入回车即可。
+    如果不输入密码，回车后会重新提示输入密码，即密码不能为空。
+    最后确认信息是否正确，如果没问题，输入 Y，回车即可。
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    3、为hadoop用户添加权限
+ 
+   
+
+     输入：sudo gedit /etc/sudoers
+     回车，打开sudoers文件
+     给hadoop用户赋予和root用户同样的权限
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+二、用新增加的hadoop用户登录Ubuntu系统
+
+ 
+三、安装ssh
+sudo apt-get install openssh-server
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+安装完成后，启动服务
+sudo /etc/init.d/ssh start
+ 
+查看服务是否正确启动：ps -e | grep ssh
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+设置免密码登录，生成私钥和公钥
+ssh-keygen -t rsa -P ""
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+此时会在／home／hadoop/.ssh下生成两个文件：id_rsa和id_rsa.pub，前者为私钥，后者为公钥。
+下面我们将公钥追加到authorized_keys中，它用户保存所有允许以当前用户身份登录到ssh客户端用户的公钥内容。
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
+ 
+ 
+ 
+登录ssh
+ssh localhost
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      
+
+
+
+
+
+
+退出
+exit
+ 
+四、安装Java环境
+sudo apt-get install openjdk-7-jdk
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+查看安装结果，输入命令：java -version，结果如下表示安装成功。
+
+ 
+ 
+ 
+ 
+五、安装hadoop2.4.0
+    1、官网下载http://mirror.bit.edu.cn/apache/hadoop/common/
+ 
+    2、安装
+ 
+        解压
+        sudo tar xzf hadoop-2.4.0.tar.gz        
+        假如我们要把hadoop安装到/usr/local下
+        拷贝到/usr/local/下，文件夹为hadoop
+        sudo mv hadoop-2.4.0 /usr/local/hadoop        
+
+        
+ 
+赋予用户对该文件夹的读写权限
+        sudo chmod 774 /usr/local/hadoop
+
+    
+ 
+3、配置
+      
+        1）配置~/.bashrc
+        
+配置该文件前需要知道Java的安装路径，用来设置JAVA_HOME环境变量，可以使用下面命令行查看安装路径
+        update-alternatives - -config java
+        执行结果如下：
+        
+    
+ 
+ 
+ 
+完整的路径为
+    /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+    我们只取前面的部分 /usr/lib/jvm/java-7-openjdk-amd64
+    配置.bashrc文件
+    sudo gedit ~/.bashrc
+    
+    该命令会打开该文件的编辑窗口，在文件末尾追加下面内容，然后保存，关闭编辑窗口。
+#HADOOP VARIABLES START
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export HADOOP_INSTALL=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_INSTALL/bin
+export PATH=$PATH:$HADOOP_INSTALL/sbin
+export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_HOME=$HADOOP_INSTALL
+export HADOOP_HDFS_HOME=$HADOOP_INSTALL
+export YARN_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
+#HADOOP VARIABLES END
+ 
+ 
+最终结果如下图：
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+执行下面命，使添加的环境变量生效：
+                source ~/.bashrc
+2）编辑/usr/local/hadoop/etc/hadoop/hadoop-env.sh
+ 
+        执行下面命令，打开该文件的编辑窗口
+        sudo gedit /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+找到JAVA_HOME变量，修改此变量如下
+        export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64    
+        修改hadoop-env.sh文件
+
+六、WordCount测试
+
+
+ 
+
+单机模式安装完成，下面通过执行hadoop自带实例WordCount验证是否安装成功：
+
+    在/usr/local/hadoop路径下创建input文件夹：   
+
+mkdir input
+
+  (或 sudo mkdir /usr/local/hadoop/input)
+
+    拷贝README.txt到input：   
+
+cp README.txt input
+
+    执行WordCount：
+
+    bin/hadoop jarshare/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.4.0-sources.jarorg.apache.hadoop.examples.WordCount input output
+
+
+
+执行 cat output/*，查看字符统计结果
+
+至此，单机模式安装成功！
+
+

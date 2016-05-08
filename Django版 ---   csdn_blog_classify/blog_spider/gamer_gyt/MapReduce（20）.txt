@@ -1,0 +1,2008 @@
+MapReduce设计模式学习
+
+一：概要模式
+        1：简介
+
+              概要设计模式更接近简单的MR应用，因为基于键将数据分组是MR范型的核心功能，所有的键将被分组汇入reducer中
+本章涉及的概要模式有数值概要（numerical summarization），倒排索引（inverted index），计数器计数（counting with counter）
+        2：概要设计模式包含
+              2.1：关于Combiner和paritioner
+                      combiner：reducer之前调用reducer函数，对数据进行聚合，极大的减少通过网络传输到reducer端的key/value数量，适用的条件是你可以任意的改变值的顺序，并且可以随意的将计算进行分组，同时需要注意的是一个combiner函数只对一个map函数有作用
+                          partitioner：许多概要模式通过定制partitioner函数实现更优的将键值对分发到n个reducer中，着这样的需求场景会比较少，但如果任务的执行时间要求很高，数据量非常大，且存在数据倾斜的情况，定制partitioner将是非常有效的解决方案
+                      源码分析请点击      
+      编程实例请点击
+            2.2：数值概要模式
+                      2.2.1：数值概要模式：计算数据聚合统计的一般性模式
+                      2.2.2：数值概要应用的场景需要满足以下亮点：
+                                  1：要处理的数据是数值数据或者计数
+                                  2：数据可以按照某些特定的字段分组
+                      2.2.3：适用场景：
+
+                                  1：单词计数 （可以使用combiner）
+                                  2：最大值/最小值/计数  （可以使用combiner）
+                                  3：平均值  （可以使用combiner，但必须做相应的处理，即迂回算法，举例如下）
+                                        给定用户的评论列表，按天计算每小时的评论长度
+                                        Map：context.write(1,tuple(1,1小时的平均长度))
+                                        reducer：
+                                                    处理：sum += tulpe.gethour * tuple.getavrg
+                                                               count += tuple.gethour
+                                       输出：
+                                       key=1
+                                       value=sum/count
+                                 4：中位数/标准差
+                2.3：倒排索引概要
+
+                            适用场景：通常用在需要快速搜索查询响应的场景，可以对一个查询结果进行预处理并存储在一个数据库中
+                           倒排索引实战1         倒排索引实战2
+                2.4：计数器计数 
+                         已知应用
+                         统计记录数：简单的对指定时间段的记录数进行统计是很常见的，统计小数量级的唯一实例计数
+                         汇总：用来执行对数据的某些字段进行汇总
+                
+二：过滤模式
+              1：简介
+                              过滤模式也可以被认为是一种搜索形式，如果你对找出所有具备特定信息的记录感兴趣，就可以过滤掉不匹配搜索条件的其他记录，与大多数基础模式类似，过滤作为一种抽象模式为其他模式服务，过滤简单的对某一条记录进行评估，并基于某个条件作出判断，以确定当前这条记录是保留还是丢弃
+
+               2：适用场景
+                     2.1：过滤， 使用过滤的唯一必要条件是数据可以被解析成记录，并可以通过非常特定的准则来确定它们是否需要保留，不需要reducer函数
+                     近距离观察数据：准备一个特定的子集，子集中的记录有某些共同属性或者具备某些有趣的特性，需要进一步深入的分析。 
+                     跟踪某个事件的线索：从一个较大数据集中抽取一个连续事件作为线索来做案例研究。
+                     分布式grep：通过一个正则表达式匹配每一行，输出满足条件的行
+                     数据清理：数据有时是畸形的，不完整的 或者是格式错误的，过滤可以用于验证每一条数据是否满足记录，将不满足的数据删除
+                     简单随机抽样：可以使用随机返回True or False的评估函数做过滤，可以通过调小true返回的概率实现对结果集合大小的控制
+                     移除低分值数据：将不满足某个特定阀值的记录过滤出去    
+                     2.2：布隆过滤， 对每一条记录，抽取其中一个特征，如果抽取的特性是布隆过滤中所表示的值的集合成员，则保留记录  
+                     移除大多数不受监视的值：最直接的使用案例是清楚不感兴趣的值
+                     对成本很高的集合成员资格检查做数据的预先过滤：
+                     2.3：Top10，不管输入数据的大小是多少，你都可以精确的知道输出的结果的记录数
+                     异类分析：
+                     选取感兴趣的数据：
+                     引人注目的指标面板：
+                     2.4：去重，过滤掉数据集中的相似数据，找出唯一的集合
+                     数据去重： 
+代码举例
+                     抽取重复值：
+                     规避内连接的数据膨胀：
+
+MapReduce InputFormat——DBInputFormat
+
+
+
+一、背景
+
+     为了方便MapReduce直接访问关系型数据库（Mysql,Oracle），Hadoop提供了DBInputFormat和DBOutputFormat两个类。通过
+DBInputFormat类把数据库表数据读入到HDFS，根据DBOutputFormat类把MapReduce产生的结果集导入到数据库表中。
+
+
+二、技术细节
+
+1、DBInputFormat（Mysql为例），先创建表:
+
+CREATE TABLE studentinfo (
+  id INTEGER NOT NULL PRIMARY KEY,
+  name VARCHAR(32) NOT NULL);
+2、由于0.20版本对DBInputFormat和DBOutputFormat支持不是很好，该例用了0.19版本来说明这两个类的用法。
+3、DBInputFormat用法如下：
+
+
+[java] view plaincopypublic class DBInput {     // DROP TABLE IF EXISTS `hadoop`.`studentinfo`;     // CREATE TABLE studentinfo (     // id INTEGER NOT NULL PRIMARY KEY,     // name VARCHAR(32) NOT NULL);       public static class StudentinfoRecord implements Writable, DBWritable {       int id;       String name;       public StudentinfoRecord() {         }       public void readFields(DataInput in) throws IOException {          this.id = in.readInt();          this.name = Text.readString(in);       }       public void write(DataOutput out) throws IOException {          out.writeInt(this.id);          Text.writeString(out, this.name);       }       public void readFields(ResultSet result) throws SQLException {          this.id = result.getInt(1);          this.name = result.getString(2);       }       public void write(PreparedStatement stmt) throws SQLException {          stmt.setInt(1, this.id);          stmt.setString(2, this.name);       }       public String toString() {          return new String(this.id + " " + this.name);       }     }     public class DBInputMapper extends MapReduceBase implements          Mapper<LongWritable, StudentinfoRecord, LongWritable, Text> {       public void map(LongWritable key, StudentinfoRecord value,            OutputCollector<LongWritable, Text> collector, Reporter reporter)            throws IOException {          collector.collect(new LongWritable(value.id), new Text(value               .toString()));       }     }     public static void main(String[] args) throws IOException {       JobConf conf = new JobConf(DBInput.class);       DistributedCache.addFileToClassPath(new Path(            "/lib/mysql-connector-java-5.1.0-bin.jar"), conf);              conf.setMapperClass(DBInputMapper.class);       conf.setReducerClass(IdentityReducer.class);         conf.setMapOutputKeyClass(LongWritable.class);       conf.setMapOutputValueClass(Text.class);       conf.setOutputKeyClass(LongWritable.class);       conf.setOutputValueClass(Text.class);              conf.setInputFormat(DBInputFormat.class);       FileOutputFormat.setOutputPath(conf, new Path("/hua01"));       DBConfiguration.configureDB(conf, "com.mysql.jdbc.Driver",            "jdbc:mysql://192.168.3.244:3306/hadoop", "hua", "hadoop");       String[] fields = { "id", "name" };       DBInputFormat.setInput(conf, StudentinfoRecord.class, "studentinfo",   null, "id", fields);         JobClient.runJob(conf);     }  }  
+
+
+a)StudnetinfoRecord类的变量为表字段，实现Writable和DBWritable两个接口。
+实现Writable的方法：
+
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+public void readFields(DataInput in) throws IOException {  
+       this.id = in.readInt();  
+       this.name = Text.readString(in);  
+    }  
+    public void write(DataOutput out) throws IOException {  
+       out.writeInt(this.id);  
+       Text.writeString(out, this.name);  
+    }  
+
+
+
+
+实现DBWritable的方法：
+
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+public void readFields(ResultSet result) throws SQLException {  
+        this.id = result.getInt(1);  
+        this.name = result.getString(2);  
+     }  
+     public void write(PreparedStatement stmt) throws SQLException {  
+        stmt.setInt(1, this.id);  
+        stmt.setString(2, this.name);  
+     }  
+
+
+
+
+
+b)读入Mapper的value类型是StudnetinfoRecord。
+c)配置如何连入数据库，读出表studentinfo数据。
+
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+DBConfiguration.configureDB(conf, "com.mysql.jdbc.Driver",  
+          "jdbc:mysql://192.168.3.244:3306/hadoop", "hua", "hadoop");  
+     String[] fields = { "id", "name" };  
+     DBInputFormat.setInput(conf, StudentinfoRecord.class, "studentinfo",  null, "id", fields);  
+
+
+
+4、DBOutputFormat用法如下：
+
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+public class DBOutput {  
+  
+   public static class StudentinfoRecord implements Writable,  DBWritable {  
+     int id;  
+     String name;  
+     public StudentinfoRecord() {  
+  
+     }  
+     public void readFields(DataInput in) throws IOException {  
+        this.id = in.readInt();  
+        this.name = Text.readString(in);  
+     }  
+     public void write(DataOutput out) throws IOException {  
+        out.writeInt(this.id);  
+        Text.writeString(out, this.name);  
+     }  
+     public void readFields(ResultSet result) throws SQLException {  
+        this.id = result.getInt(1);  
+        this.name = result.getString(2);  
+     }  
+     public void write(PreparedStatement stmt) throws SQLException {  
+        stmt.setInt(1, this.id);  
+        stmt.setString(2, this.name);  
+     }  
+     public String toString() {  
+        return new String(this.id + " " + this.name);  
+     }  
+   }  
+     
+   public static class MyReducer extends MapReduceBase implements  
+        Reducer<LongWritable, Text, StudentinfoRecord, Text> {  
+     public void reduce(LongWritable key, Iterator<Text> values,  
+          OutputCollector<StudentinfoRecord, Text> output, Reporter  reporter)  
+          throws IOException {  
+        String[] splits = values.next().toString().split("/t");  
+        StudentinfoRecord r = new StudentinfoRecord();  
+        r.id = Integer.parseInt(splits[0]);  
+        r.name = splits[1];  
+        output.collect(r, new Text(r.name));  
+     }  
+   }  
+  
+   public static void main(String[] args) throws IOException {  
+     JobConf conf = new JobConf(DBOutput.class);  
+     conf.setInputFormat(TextInputFormat.class);  
+     conf.setOutputFormat(DBOutputFormat.class);  
+  
+     FileInputFormat.setInputPaths(conf, new Path("/hua/hua.bcp"));  
+     DBConfiguration.configureDB(conf, "com.mysql.jdbc.Driver",  
+          "jdbc:mysql://192.168.3.244:3306/hadoop", "hua", "hadoop");  
+     DBOutputFormat.setOutput(conf, "studentinfo", "id", "name");  
+  
+  conf.setMapperClass(org.apache.hadoop.mapred.lib.IdentityMapper.class);  
+     conf.setReducerClass(MyReducer.class);  
+  
+     JobClient.runJob(conf);  
+   }  
+  
+}  
+
+
+
+a)StudnetinfoRecord类的变量为表字段，实现Writable和DBWritable两个接口，同.DBInputFormat的StudnetinfoRecord类。
+b)输出Reducer的key/value类型是StudnetinfoRecord。
+c)配置如何连入数据库，输出结果到表studentinfo。
+
+
+
+
+[java] view
+ plaincopy
+
+
+
+
+
+
+DBConfiguration.configureDB(conf, "com.mysql.jdbc.Driver",  
+          "jdbc:mysql://192.168.3.244:3306/hadoop", "hua", "hadoop");  
+     DBOutputFormat.setOutput(conf, "studentinfo", "id", "name");  
+
+
+
+三、总结
+
+      运行MapReduce时候报错：java.io.IOException: com.mysql.jdbc.Driver，一般是由于程序找不到mysql驱动包。解决方法是让每个
+tasktracker运行MapReduce程序时都可以找到该驱动包。
+添加包有两种方式：
+1.在每个节点下的${HADOOP_HOME}/lib下添加该包。重启集群，一般是比较原始的方法。
+2.a)把包传到集群上： hadoop fs -put mysql-connector-java-5.1.0- bin.jar /lib
+b)在mr程序提交job前，添加语句：istributedCache.addFileToClassPath(new Path("/lib/mysql- connector-java- 5.1.0-bin.jar"), conf);
+3、虽然API用的是0.19的，但是使用0.20的API一样可用，只是会提示方法已过时而已。
+
+
+MapReduce InputFormat之FileInputFormat
+
+一：简单认识InputFormat类
+InputFormat主要用于描述输入数据的格式，提供了以下两个功能： 
+        1）、数据切分，按照某个策略将输入数据且分成若干个split，以便确定Map Task的个数即Mapper的个数，在MapReduce框架中，一个split就意味着需要一个Map Task; 
+        2)为Mapper提供输入数据，即给定一个split，(使用其中的RecordReader对象)将之解析为一个个的key/value键值对。
+下面我们先来看以下1.0版本中的老的InputFormat接口：
+
+
+Java代码 
+
+
+
+public interface InputFormat<K,V>{  
+     
+   //获取所有的split分片     
+   public InputSplit[] getSplits(JobConf job,int numSplits) throws IOException;   
+    
+   //获取读取split的RecordReader对象，实际上是由RecordReader对象将  
+   //split解析成一个个的key/value对儿  
+   public RecordReader<K,V> getRecordReader(InputSplit split,  
+                               JobConf job,  
+                               Reporter reporter) throws IOException;   
+}  
+
+InputSplit 
+        getSplit(...)方法主要用于切分数据，它会尝试浙江输入数据且分成numSplits个InputSplit的栓皮栎split分片。InputSplit主要有以下特点： 
+        1）、逻辑分片，之前我们已经学习过split和block的对应关系和区别，split只是在逻辑上对数据分片，并不会在磁盘上讲数据切分成split物理分片，实际上数据在HDFS上还是以block为基本单位来存储数据的。InputSplit只记录了Mapper要处理的数据的元数据信息，如起始位置、长度和所在的节点； 
+
+
+
+ 
+ 2）、可序列化，在Hadoop中，序列化主要起两个作用，进程间通信和数据持久化存储。在这里，InputSplit主要用于进程间的通信。 
+         在作业被提交到JobTracker之前，Client会先调用作业InputSplit中的getSplit()方法，并将得到的分片信息序列化到文件中，这样，在作业在JobTracker端初始化时，便可并解析出所有split分片，创建对象应的Map Task。 
+         InputSplit也是一个interface，具体返回什么样的implement，这是由具体的InputFormat来决定的。InputSplit也只有两个接口函数：
+
+
+Java代码 
+
+
+
+public interface InputSplit extends Writable {  
+  
+  /** 
+   * 获取split分片的长度 
+   *  
+   * @return the number of bytes in the input split. 
+   * @throws IOException 
+   */  
+  long getLength() throws IOException;  
+    
+  /** 
+   * 获取存放这个Split的Location信息（也就是这个Split在HDFS上存放的机器。它可能有 
+   * 多个replication，存在于多台机器上 
+   *  
+   * @return list of hostnames where data of the <code>InputSplit</code> is 
+   *         located as an array of <code>String</code>s. 
+   * @throws IOException 
+   */  
+  String[] getLocations() throws IOException;  
+}  
+
+ 在需要读取一个Split的时候，其对应的InputSplit会被传递到InputFormat的第二个接口函数getRecordReader，然后被用于初始化一个RecordReader，以便解析输入数据，描述Split的重要信息都被隐藏了，只有具体的InputFormat自己知道，InputFormat只需要保证getSplits返回的InputSplit和getRecordReader所关心的InputSplit是同样的implement就行了，这给InputFormat的实现提供了巨大的灵活性。 
+         在MapReduce框架中最常用的FileInputFormat为例，其内部使用的就是FileSplit来描述InputSplit。我们来看一下FileSplit的一些定义信息：
+
+
+Java代码  
+
+
+
+/** A section of an input file.  Returned by {@link 
+ * InputFormat#getSplits(JobConf, int)} and passed to 
+ * {@link InputFormat#getRecordReader(InputSplit,JobConf,Reporter)}.  
+ */  
+public class FileSplit extends org.apache.hadoop.mapreduce.InputSplit   
+                       implements InputSplit {  
+  // Split所在的文件  
+  private Path file;  
+  // Split的起始位置  
+  private long start;  
+  // Split的长度  
+  private long length;  
+  // Split所在的机器名称  
+  private String[] hosts;  
+    
+  FileSplit() {}  
+  
+  /** Constructs a split. 
+   * @deprecated 
+   * @param file the file name 
+   * @param start the position of the first byte in the file to process 
+   * @param length the number of bytes in the file to process 
+   */  
+  @Deprecated  
+  public FileSplit(Path file, long start, long length, JobConf conf) {  
+    this(file, start, length, (String[])null);  
+  }  
+  
+  /** Constructs a split with host information 
+   * 
+   * @param file the file name 
+   * @param start the position of the first byte in the file to process 
+   * @param length the number of bytes in the file to process 
+   * @param hosts the list of hosts containing the block, possibly null 
+   */  
+  public FileSplit(Path file, long start, long length, String[] hosts) {  
+    this.file = file;  
+    this.start = start;  
+    this.length = length;  
+    this.hosts = hosts;  
+  }  
+  
+  /** The file containing this split's data. */  
+  public Path getPath() { return file; }  
+    
+  /** The position of the first byte in the file to process. */  
+  public long getStart() { return start; }  
+    
+  /** The number of bytes in the file to process. */  
+  public long getLength() { return length; }  
+  
+  public String toString() { return file + ":" + start + "+" + length; }  
+  
+  ////////////////////////////////////////////  
+  // Writable methods  
+  ////////////////////////////////////////////  
+  
+  public void write(DataOutput out) throws IOException {  
+    UTF8.writeString(out, file.toString());  
+    out.writeLong(start);  
+    out.writeLong(length);  
+  }  
+  public void readFields(DataInput in) throws IOException {  
+    file = new Path(UTF8.readString(in));  
+    start = in.readLong();  
+    length = in.readLong();  
+    hosts = null;  
+  }  
+  
+  public String[] getLocations() throws IOException {  
+    if (this.hosts == null) {  
+      return new String[]{};  
+    } else {  
+      return this.hosts;  
+    }  
+  }  
+    
+}  
+
+
+         从上面的代码中我们可以看到，FileSplit就是InputSplit接口的一个实现。InputFormat使用的RecordReader将从FileSplit中获取信息，解析FileSplit对象从而获得需要的数据的起始位置、长度和节点位置。 
+
+  RecordReader 
+         对于getRecordReader(...)方法，它返回一个RecordReader对象，该对象可以讲输入的split分片解析成一个个的key/value对儿。在Map Task的执行过程中，会不停的调用RecordReader对象的方法，迭代获取key/value并交给map()方法处理：
+
+
+Java代码 
+
+
+
+//调用InputFormat的getRecordReader()获取RecordReader<K,V>对象，  
+//并由RecordReader对象解析其中的input(split)...  
+K1 key = input.createKey();  
+V1 value = input.createValue();  
+while(input.next(key,value)){//从input读取下一个key/value对  
+    //调用用户编写的map()方法  
+}  
+input.close();  
+
+
+         RecordReader主要有两个功能： 
+         ●定位记录的边界：由于FileInputFormat是按照数据量对文件进行切分，因而有可能会将一条完整的记录切成2部分，分别属于两个split分片，为了解决跨InputSplit分片读取数据的问题，RecordReader规定每个分片的第一条不完整的记录划给前一个分片处理。 
+         ●解析key/value：定位一条新的记录，将记录分解成key和value两部分供Mapper处理。 
+
+InputFormat 
+         MapReduce自带了一些InputFormat的实现类： 
+
+
+
+ 下面我们看几个有代表性的InputFormat： 
+         FileInputFormat 
+         FileInputFormat是一个抽象类，它最重要的功能是为各种InputFormat提供统一的getSplits()方法，该方法最核心的是文件切分算法和Host选择算法：
+
+
+Java代码 
+
+
+
+/** Splits files returned by {@link #listStatus(JobConf)} when 
+   * they're too big.*/   
+@SuppressWarnings("deprecation")  
+public InputSplit[] getSplits(JobConf job, int numSplits)  
+    throws IOException {  
+    FileStatus[] files = listStatus(job);  
+      
+    // Save the number of input files in the job-conf  
+    job.setLong(NUM_INPUT_FILES, files.length);  
+    long totalSize = 0;                           // compute total size  
+    for (FileStatus file: files) {                // check we have valid files  
+      if (file.isDir()) {  
+        throw new IOException("Not a file: "+ file.getPath());  
+      }  
+      totalSize += file.getLen();  
+    }  
+      
+    long goalSize = totalSize / (numSplits == 0 ? 1 : numSplits);  
+    long minSize = Math.max(job.getLong("mapred.min.split.size", 1),  
+                            minSplitSize);  
+  
+    // 定义要生成的splits（FileSplit）的集合  
+    ArrayList<FileSplit> splits = new ArrayList<FileSplit>(numSplits);  
+    NetworkTopology clusterMap = new NetworkTopology();  
+    for (FileStatus file: files) {  
+      Path path = file.getPath();  
+      FileSystem fs = path.getFileSystem(job);  
+      long length = file.getLen();  
+      BlockLocation[] blkLocations = fs.getFileBlockLocations(file, 0, length);  
+      if ((length != 0) && isSplitable(fs, path)) {   
+        long blockSize = file.getBlockSize();  
+        //获取最终的split分片的大小，该值很可能和blockSize不相等  
+        long splitSize = computeSplitSize(goalSize, minSize, blockSize);  
+  
+        long bytesRemaining = length;  
+        while (((double) bytesRemaining)/splitSize > SPLIT_SLOP) {  
+          //获取split分片所在的host的节点信息  
+          String[] splitHosts = getSplitHosts(blkLocations,   
+              length-bytesRemaining, splitSize, clusterMap);  
+          //最终生成所有分片  
+          splits.add(new FileSplit(path, length-bytesRemaining, splitSize,   
+              splitHosts));  
+          bytesRemaining -= splitSize;  
+        }  
+          
+        if (bytesRemaining != 0) {  
+          splits.add(new FileSplit(path, length-bytesRemaining, bytesRemaining,   
+                     blkLocations[blkLocations.length-1].getHosts()));  
+        }  
+      } else if (length != 0) {  
+        //获取split分片所在的host的节点信息  
+        String[] splitHosts = getSplitHosts(blkLocations,0,length,clusterMap);  
+        //最终生成所有分片  
+        splits.add(new FileSplit(path, 0, length, splitHosts));  
+      } else {   
+        //Create empty hosts array for zero length files  
+        //最终生成所有分片  
+        splits.add(new FileSplit(path, 0, length, new String[0]));  
+      }  
+    }  
+    LOG.debug("Total # of splits: " + splits.size());  
+    return splits.toArray(new FileSplit[splits.size()]);  
+}  
+
+
+          1）、文件切分算法 
+          文件切分算法主要用于确定InputSplit的个数以及每个InputSplit对应的数据段，FileInputSplit以文件为单位切分生成InputSplit。有三个属性值来确定InputSplit的个数： 
+          ●goalSize：该值由totalSize/numSplits来确定InputSplit的长度，它是根据用户的期望的InputSplit个数计算出来的；numSplits为用户设定的Map Task的个数，默认为1。 
+          ●minSize：由配置参数mapred.min.split.size决定的InputFormat的最小长度，默认为1。 
+          ●blockSize：HDFS中的文件存储块block的大小，默认为64MB。 
+          这三个参数决定一个InputFormat分片的最终的长度，计算方法如下： 
+                      splitSize = max{minSize,min{goalSize,blockSize}} 
+计算出了分片的长度后，也就确定了InputFormat的数目。 
+
+          2）、host选择算法 
+          InputFormat的切分方案确定后，接下来就是要确定每一个InputSplit的元数据信息。InputSplit元数据通常包括四部分，<file,start,length,hosts>其意义为： 
+          ●file标识InputSplit分片所在的文件； 
+          ●InputSplit分片在文件中的的起始位置； 
+          ●InputSplit分片的长度； 
+          ●分片所在的host节点的列表。 
+          InputSplit的host列表的算作策略直接影响到运行作业的本地性。我们知道，由于大文件存储在HDFS上的block可能会遍布整个Hadoop集群，而一个InputSplit分片的划分算法可能会导致一个split分片对应多个不在同一个节点上的blocks，这就会使得在Map
+ Task执行过程中会涉及到读其他节点上的属于该Task的block中的数据，从而不能实现数据本地性，而造成更多的网络传输开销。 
+          一个InputSplit分片对应的blocks可能位于多个数据节点地上，但是基于任务调度的效率，通常情况下，不会把一个分片涉及的所有的节点信息都加到其host列表中，而是选择包含该分片的数据总量的最大的前几个节点，作为任务调度时判断是否具有本地性的主要凭证。 
+         FileInputFormat使用了一个启发式的host选择算法：首先按照rack机架包含的数据量对rack排序，然后再在rack内部按照每个node节点包含的数据量对node排序，最后选取前N个(N为block的副本数)node的host作为InputSplit分片的host列表。当任务地调度Task作业时，只要将Task调度给host列表上的节点，就可以认为该Task满足了本地性。 
+         从上面的信息我们可以知道，当InputSplit分片的大小大于block的大小时，Map Task并不能完全满足数据的本地性，总有一本分的数据要通过网络从远程节点上读数据，故为了提高Map Task的数据本地性，减少网络传输的开销，应尽量是InputFormat的大小和HDFS的block块大小相同。 
+
+          TextInputFormat 
+          默认情况下，MapReduce使用的是TextInputFormat来读分片并将记录数据解析成一个个的key/value对，其中key为该行在整个文件(注意而不是在一个block)中的偏移量，而行的内容即为value。 
+          CombineFileInputFormat 
+          CombineFileInputFormat的作用是把许多文件合并作为一个map的输入，它的主要思路是把输入目录下的大文件分成多个map的输入, 并合并小文件, 做为一个map的输入。适合在处理多个小文件的场景。 
+          SequenceFileInputFormat 
+          SequenceFileInputFormat是一个顺序的二进制的FileInputFormat，内部以key/value的格式保存数据，通常会结合LZO或Snappy压缩算法来读取或保存可分片的数据文件。
+
+
+MapReduce编程实例之自定义排序
+
+任务描述：
+给出一组数据，自定义排序的样式，第一列降序，相同时第二列升序
+example Data：
+2013 1
+2013 5
+2014 5
+2014 8
+2015 9
+2015 4
+
+Code:
+package mrTest;
+
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class zidingyiSort {
+
+	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+		// TODO Auto-generated method stub
+
+		Job job = new Job();
+		job.setJarByClass(zidingyiSort.class);
+		// 1
+		FileInputFormat.setInputPaths(job, new Path(args[0]));
+		// 2
+		job.setMapperClass(Map.class);
+		job.setMapOutputKeyClass(MyK2.class);
+		job.setMapOutputValueClass(LongWritable.class);
+		// 3
+		// 4
+		// 5
+		job.setNumReduceTasks(1);
+		// 6
+		job.setReducerClass(Reduce.class);
+		job.setOutputKeyClass(LongWritable.class);
+		job.setOutputValueClass(LongWritable.class);
+		// 7
+		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		// 8
+		System.exit(job.waitForCompletion(true)? 0 :1 );
+	}
+public static class Map extends Mapper<Object, Text, MyK2, LongWritable>{
+	public void map(Object key, Text value, Context context) throws IOException, InterruptedException{
+		String line = value.toString();
+		String[] split = line.split("\t");
+		MyK2 my = new MyK2(Long.parseLong(split[0]), Long.parseLong(split[1]));
+		context.write(my, new LongWritable(1));
+	}
+} 
+public static class Reduce extends Reducer<MyK2, LongWritable, LongWritable, LongWritable>{
+	public void reduce(MyK2 key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException{
+		context.write(new LongWritable(key.myk2), new LongWritable(key.myv2));
+	}
+} 
+
+public static class MyK2 implements WritableComparable<MyK2>{
+
+	public long myk2;
+	public long myv2;
+	
+	MyK2(){}
+	
+	MyK2(long myk2, long myv2){
+		this.myk2 = myk2;
+		this.myv2 = myv2;
+	}
+	
+	@Override
+	public void readFields(DataInput in) throws IOException {
+		// TODO Auto-generated method stub
+		this.myk2 = in.readLong();
+		this.myv2 = in.readLong();
+	}
+
+	@Override
+	public void write(DataOutput out) throws IOException {
+		// TODO Auto-generated method stub
+		out.writeLong(myk2);
+		out.writeLong(myv2);
+	}
+	
+	@Override
+	public int compareTo(MyK2  myk2) {
+		// TODO Auto-generated method stub
+		//myk2之差>0 返回-1          <0 返回1 代表 myk2列降序
+		//myk2之差<0 返回-1           >0 返回1 代表 myk2列升序
+		long temp = this.myk2 - myk2.myk2;
+		if(temp>0)
+			return -1;
+		else if(temp<0)
+			return 1;
+		//控制myv2升序
+		return (int)(this.myv2 - myk2.myv2);
+	}
+}
+}
+效果展示：
+
+2015 4
+2015 9
+2014 5
+2014 8
+2013 1
+2013 5
+
+
+MapReduce编程实例之自定义分区
+
+任务描述：
+一组数据，按照年份的不同将其分别存放在不同的文件里
+example Data：
+2013 1
+2013 5
+2014 5
+2014 8
+2015 9
+2015 4
+Code：
+package mrTest;
+
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Partitioner;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class zidingyiPartition {
+
+	public static class myPartition extends Partitioner<LongWritable, LongWritable>{
+
+		public int getPartition(LongWritable key, LongWritable value, int numTaskReduces) {
+			// TODO Auto-generated method stub
+			if(key.get()==2013){
+				return 0;
+			}else if(key.get()==2014){
+				return 1;
+			}else{
+				return 2;
+			}
+		}
+		
+	}
+	
+	public static class Map extends Mapper<Object, Text, LongWritable,LongWritable>{
+		public void map(Object key, Text value, Context context) throws IOException, InterruptedException{
+				String[] line = value.toString().split("\t");
+				context.write( new LongWritable(Integer.parseInt(line[0])) ,  new LongWritable(Integer.parseInt(line[1])) );
+		}
+	}
+	
+	public static class Reduce extends Reducer<LongWritable, LongWritable, LongWritable, LongWritable>{
+		public void reduce(LongWritable key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException{
+			for (LongWritable longWritable : values) {
+				context.write(key, longWritable);
+			}
+		}
+	}
+	
+	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+		// TODO Auto-generated method stub
+
+		Job job = new Job();
+		job.setJarByClass(zidingyiPartition.class);
+		//  1
+		FileInputFormat.addInputPath(job, new Path(args[0]));
+		// 2
+		job.setMapperClass(Map.class);
+	    job.setMapOutputKeyClass(LongWritable.class);
+	    job.setMapOutputValueClass(LongWritable.class);
+	    //   3
+	    job.setPartitionerClass(myPartition.class);
+	    //  4
+	    //  5
+	    job.setNumReduceTasks(3);
+	    //  6
+	    job.setReducerClass(Reduce.class);
+	    job.setOutputKeyClass(LongWritable.class);
+	    job.setOutputValueClass(LongWritable.class);
+	    //  7
+	    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+	    //  8
+	    System.exit(job.waitForCompletion(true)? 0 : 1);
+	}
+
+}
+结果展示：
+
+
+
+
+
+
+MapReduce编程实践之自定义数据类型
+
+一：任务描述
+自定义数据类型完成手机流量的分析
+二：example data
+格式为：记录报告时间戳、手机号码、AP mac、AC mac、访问的网址、网址种类、上行数据包数、下行数据包数、上行总流量、下行总流量、HTTP Response的状态。
+
+
+136315798506613726230503 00-FD-07-A4-72-B8:CMCC 120.196.100.82i02.c.aliimg.com 2427 248124681 200
+1363157995052 138265441015C-0E-8B-C7-F1-E0:CMCC 120.197.40.44 0 264 0 200
+1363157991076 1392643565620-10-7A-28-CC-0A:CMCC 120.196.100.992 4 132 1512 200
+1363154400022 139262511065C-0E-8B-8B-B1-50:CMCC 120.197.40.44 0 240 0 200
+1363157993044 1821157596194-71-AC-CD-E6-18:CMCC-EASY 120.196.100.99iface.qiyi.com 视频网站15 12 1527 2106 200
+1363157995074 841384135C-0E-8B-8C-E8-20:7DaysInn 120.197.40.4122.72.52.12 2016 41161432 200
+1363157993055 13560439658C4-17-FE-BA-DE-D9:CMCC 120.196.100.9918 15 1116 954 200
+1363157995033 159201332575C-0E-8B-C7-BA-20:CMCC 120.197.40.4sug.so.360.cn 信息安全20 20 3156 2936 200
+1363157983019 1371919941968-A1-B7-03-07-B1:CMCC-EASY 120.196.100.824 0 240 0 200
+1363157984041 136605779915C-0E-8B-92-5C-20:CMCC-EASY 120.197.40.4s19.cnzz.com 站点统计24 9 6960 690 200
+1363157973098 150136858585C-0E-8B-C7-F7-90:CMCC 120.197.40.4rank.ie.sogou.com 搜索引擎28 27 3659 3538 200
+1363157986029 15989002119E8-99-C4-4E-93-E0:CMCC-EASY 120.196.100.99www.umeng.com 站点统计3 3 1938 180 200
+1363157992093 13560439658C4-17-FE-BA-DE-D9:CMCC 120.196.100.9915 9 918 4938 200
+1363157986041 134802531045C-0E-8B-C7-FC-80:CMCC-EASY 120.197.40.43 3 180 180 200
+1363157984040 136028465655C-0E-8B-8B-B6-00:CMCC 120.197.40.42052.flash2-http.qq.com 综合门户15 12 1938 2910 200
+1363157995093 1392231446600-FD-07-A2-EC-BA:CMCC 120.196.100.82img.qfc.cn 1212 30083720 200
+1363157982040 135024688235C-0A-5B-6A-0B-D4:CMCC-EASY 120.196.100.99y0.ifengimg.com 综合门户57 102 7335 110349 200
+1363157986072 1832017338284-25-DB-4F-10-1A:CMCC-EASY 120.196.100.99input.shouji.sogou.com 搜索引擎21 18 9531 2412 200
+1363157990043 1392505741300-1F-64-E1-E6-9A:CMCC 120.196.100.55t3.baidu.com 搜索引擎69 63 11058 48243 200
+1363157988072 1376077871000-FD-07-A4-7B-08:CMCC 120.196.100.822 2 120 120 200
+1363157985079 1382307000120-7C-8F-70-68-1F:CMCC 120.196.100.996 3 360 180 200
+1363157985069 1360021750200-1F-64-E2-E8-B1:CMCC 120.196.100.5518 138 1080 186852 200
+
+三：Code
+
+package mrTest;
+
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+
+public class zidingyishujuleixing {
+	
+	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+		// TODO Auto-generated method stub
+		
+		Job job = new Job(new Configuration(),"自定义数据类型");
+		job.setJarByClass(zidingyishujuleixing.class);
+		//一：文件输入路径
+		FileInputFormat.addInputPath(job, new Path(args[0]));
+		
+		//二：指定自定义Map类
+		job.setMapperClass(Map.class);
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(WlanString.class);
+		
+		//三：分区，指定reduce个数
+		job.setNumReduceTasks(1);
+		
+		//四：TODO 排序  分组
+		
+		//五：规约处理
+		
+		//六：指定自定义的reduce类
+		job.setReducerClass(Reduce.class);
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(WlanString.class);
+		
+		//七：指定文件输出位置
+		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		
+		//八：提交运行
+		System.exit(job.waitForCompletion(true)? 0 : 1);
+	}
+	
+	public static class Map extends Mapper<Object, Text, Text, WlanString>{
+		public void map(Object key, Text value, Context context) throws IOException, InterruptedException{
+			String[] split = value.toString().split("\t");
+			String keyNum = split[1];
+			WlanString ws = new WlanString(split[6],split[7],split[8],split[9]);
+			System.out.println(split[6] + "| " + split[7] + "|" + split[8] + "|" + split[9]);
+			context.write(new Text(keyNum), ws);
+		}
+	}
+	
+	public static class Reduce extends Reducer<Text, WlanString, Text, WlanString>{
+		public void reduce(Text key, Iterable<WlanString> values, Context context) throws IOException, InterruptedException{
+			long upData = 0;
+			long downData = 0;
+			long upFlow = 0;
+			long downFlow = 0;
+			for (WlanString w : values) {
+				upData += w.upData;
+				downData += w.downData;
+				upFlow += w.upFlow;
+				downFlow += w.downFlow;
+			}
+			WlanString newWs = new WlanString(String.valueOf(upData),String.valueOf(downData),String.valueOf(upFlow),String.valueOf(downFlow)); 
+			context.write(key, newWs);
+		}
+	}
+	
+	public static class WlanString implements Writable{
+
+		long upData;
+		long downData;
+		long upFlow;
+		long downFlow;
+		
+		public WlanString(){	}
+		
+		public WlanString(String  upData1, String downData1, String upFlow1, String downFlow1) {
+			// TODO Auto-generated constructor stub
+			this.upData =  Long.parseLong(upData1);
+			this.upData = Long.parseLong(downData1);
+			this.upFlow =  Long.parseLong(upFlow1);
+			this.downFlow = Long.parseLong(downFlow1);
+		}
+
+		@Override
+		public void readFields(DataInput in) throws IOException {
+			// TODO Auto-generated method stub
+			this.upData = in.readLong();
+			this.downData = in.readLong();
+			this.upFlow = in.readLong();
+			this.downFlow = in.readLong();
+			System.out.println("upData:" + upData + "downData:" + downData + "upFlow:" + upFlow + "downFlow:" + downFlow);
+		}
+
+		@Override
+		public void write(DataOutput out) throws IOException {
+			// TODO Auto-generated method stub
+			out.writeLong(upData);
+			out.writeLong(downData);
+			out.writeLong(upFlow);
+			out.writeLong(upFlow);
+			System.out.println("upData:" + upData + "downData:" + downData + "upFlow:" + upFlow + "downFlow:" + downFlow);
+		}	
+
+		 @Override  
+	     public String toString() {  
+	            return upData + "\t" + downData + "\t" + upFlow +"\t" + downFlow;  
+	     }  
+	}
+}
+
+
+四：结果展示
+
+
+
+
+
+
+Mapeduce编程八大步骤
+
+1.1:指定读取的文件位于哪里
+FileInputFormat.setInputPaths()
+指定如何对输入文件进行格式化，把输入文本每一行解析为键值对
+job.setInputFormatClass()
+
+
+1.2：指定自定义的Map类
+job.setMapperClass()
+//map输出的<k,v>类型，如果<k3,v3>的类型与<k2,v2>类型一致，则可以省略
+//job.setMapOutputKeyClass()
+//job.setMapOutputValueClass()
+
+
+1.3：分区
+job.setPartitionerClass()
+//设置reduce任务个数
+//job.setNumReducetasks(1)
+
+
+1.4：TODO 排序  分组
+
+
+1.5：规约
+job.setCombinerClass()
+
+
+2.1：指定自定义的Reduce类
+job.setReduceClass()
+//指定reduce的输出类型
+//job.setOutputKeyClass()
+//job.setOutputValueClass()
+
+
+2.2：指定写出的文件位置
+FileOutputFormat.setOutputPath()
+指定如何对输出文件格式化类型
+job.setoutputFormatClass()
+
+
+2.3：把job提交给JobTracker运行
+System.exit(status)
+   
+
+MapReduce编程实例之数据去重
+
+任务描述：
+让原始数据中出现次数超过一次的数据在输出文件中只出现一次。
+example data：
+2015-3-1 a
+2015-3-2 b
+2015-3-3 c
+2015-3-4 d
+2015-3-5 e
+2015-3-6 f
+2015-3-7 g
+2015-3-1 a
+2015-3-2 b
+2015-3-3 c
+2015-3-4 d
+2015-3-5 e
+2015-3-6 f
+2015-3-7 g
+2015-3-1 a
+2015-3-2 b
+2015-3-3 c
+2015-3-4 d
+2015-3-5 e
+2015-3-6 f
+2015-3-7 g
+
+code：
+package mrTest;
+
+import java.io.IOException;
+import java.util.Date;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import com.ibm.icu.text.SimpleDateFormat;
+
+public class shujuquchong {
+
+	public static class Map extends Mapper<Object, Text, Text, NullWritable>{
+		
+		public void map(Object key,Text value,Context context) throws IOException, InterruptedException{
+			context.write(value, NullWritable.get());
+			}		
+	}
+	
+	public static class Reduce extends Reducer< Text, NullWritable,  Text, NullWritable>{
+		public void reduce(Text key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException{
+			context.write(key,  NullWritable.get());
+		}
+	}
+	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+		// TODO Auto-generated method stub
+
+		Job job = new Job(new Configuration(), " 数据去重");
+		job.setJarByClass(shujuquchong.class);
+		
+		job.setNumReduceTasks(1);
+		
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(NullWritable.class);
+		
+		job.setMapperClass(Map.class);
+		job.setReducerClass(Reduce.class);
+		
+		FileInputFormat.addInputPath(job, new Path(args[0]));
+		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		//记录时间
+		SimpleDateFormat  sdf = new SimpleDateFormat();
+	    Date start = new Date();        //开始时间
+	    
+		int result = job.waitForCompletion(true)? 0 : 1;    //任务开始
+		
+		Date end = new Date();     //结束时间
+		float time = (float)((end.getTime() - start.getTime()) / 60000.0);  //任务开始到结束经历的时间
+		
+		System.out.println("Job 开始的时间为：" + start);
+		System.out.println("Job 结束的时间为：" + end);
+		System.out.println("Job 经历的时间为：" + time + "分钟");
+		
+		System.out.println("Job 的名字：" + job.getJobName());
+		System.out.println("Job 是否成功：" + job.isSuccessful() );
+		System.out.println("Job 输入的行数：" + job.getCounters().findCounter("org.apache.hadoop.mapred.Task$Counter",  "MAP_INPUT_RECORDS").getValue());
+		System.out.println("Job 输出的行数：" + job.getCounters().findCounter("org.apache.hadoop.mapred.Task$Counter",  "MAP_OUTPUT_RECORDS").getValue());
+		System.out.println("Job 输入的行数：" + job.getCounters().findCounter("org.apache.hadoop.mapred.Task$Counter",  "REDUCE_INPUT_RECORDS").getValue());
+		System.out.println("Job 输出的行数：" + job.getCounters().findCounter("org.apache.hadoop.mapred.Task$Counter",  "REDUCE_OUTPUT_RECORDS").getValue());
+
+		System.exit(result); //判断是否结束
+	}
+
+}
+
+
+结果展示：
+
+
+
+
+
+[置顶]
+        MapReduce编程实践习题集
+
+持续更新中.................
+
+
+一：概念篇
+
+         1：MapReducer中的多次归约处理
+         2：Mapeduce编程八大步骤
+
+
+
+
+二：编程篇
+         1：MapReduce编程实例之wordcount  (Code)
+         2：MapReduce编程实例之倒排索引
+ 1
+         3：MapReduce实战----倒排索引
+        4：MapReduce编程实例之数据去重
+
+       5：MapReduce编程实践之自定义数据类型
+         6：MapReduce编程实例之自定义分区
+         7：MapReduce编程实例之自定义排序
+三：源码篇
+ 
+        1：MapReduce框架Mapper和Reducer类源码分析
+
+
+        2：MapReduce框架Partitioner分区方法
+        3：MapReduce框架排序和分组
+          4：hashCode()、equals()以及compareTo()方法的理解
+四：进阶篇
+          1：MapReduce
+ 二次排序详解
+
+
+MapReduce编程实例之倒排索引 1
+
+任务描述：
+有一批电话清单，记录了用户A拨打给用户B的记录
+做一个倒排索引，记录拨打给用户B所有的用户A、
+
+example data：
+13614004876 110
+18940084808 10086
+13342445911 10001
+13614004876 120
+18940084808 1008611
+13342445911 110
+15847985621 10000
+
+
+code：
+<span style="font-size:14px;">package mrTest;
+
+import java.io.IOException;
+import java.util.Date;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import com.ibm.icu.text.SimpleDateFormat;
+
+public class daopaisuoyin {
+	enum Counter{   
+	     LINESKIP,      //出错的行      
+	 }   
+
+	public static class Map extends Mapper<Object, Text, Text, Text>{
+		
+		public void map(Object key,Text value,Context context){
+			String line = value.toString();
+			try{
+					String[] lineSplit = line.split(" ");
+					String newKey = lineSplit[0];
+					String newValue = lineSplit[1];
+					context.write(new Text(newKey), new Text(newValue));
+			}catch(Exception e){
+				 context.getCounter(Counter.LINESKIP).increment(1);
+				 return;
+			}
+		}
+		
+	}
+	
+	public static class Reduce extends Reducer<Text, Text, Text, Text>{
+		public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException{
+			String result = "";
+			for (Text value : values) {
+				result += value.toString() + " # ";
+			}
+			context.write(key, new Text(result));
+		}
+	}
+	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+		// TODO Auto-generated method stub
+
+		Job job = new Job(new Configuration(), " 倒排索引 ");
+		job.setJarByClass(daopaisuoyin.class);
+		
+		job.setNumReduceTasks(1);
+		
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(Text.class);
+		
+		job.setMapperClass(Map.class);
+		job.setReducerClass(Reduce.class);
+		
+		FileInputFormat.addInputPath(job, new Path(args[0]));
+		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		//记录时间
+		SimpleDateFormat  sdf = new SimpleDateFormat();
+	    Date start = new Date();        //开始时间
+	    
+		int result = job.waitForCompletion(true)? 0 : 1;    //任务开始
+		
+		Date end = new Date();     //结束时间
+		float time = (float)((end.getTime() - start.getTime()) / 60000.0);  //任务开始到结束经历的时间
+		
+		System.out.println("Job 开始的时间为：" + start);
+		System.out.println("Job 结束的时间为：" + end);
+		System.out.println("Job 经历的时间为：" + time + "分钟");
+		
+		System.out.println("Job 的名字：" + job.getJobName());
+		System.out.println("Job 是否成功：" + job.isSuccessful() );
+		System.out.println("Job 输入的行数：" + job.getCounters().findCounter("org.apache.hadoop.mapred.Task$Counter",  "MAP_INPUT_RECORDS").getValue());
+		System.out.println("Job 输出的行数：" + job.getCounters().findCounter("org.apache.hadoop.mapred.Task$Counter",  "MAP_OUTPUT_RECORDS").getValue());
+
+		System.exit(result); //判断是否结束
+	}
+
+}
+</span>
+
+
+结果显示：
+
+
+
+
+
+MapReduce 按照Value值进行排序输出
+
+文件输入：
+A    1
+B    5
+C    4
+E    1
+D    3
+W    9
+P    7
+Q    2
+文件输出：
+W    9
+P    7
+B    5
+C    4
+D    3
+Q    2
+E    1
+A    1
+
+代码如下：
+package comparator;
+
+import java.io.IOException;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.IntWritable.Comparator;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class comparator{
+
+    /**
+     * @param args
+     * @throws IOException 
+     * @throws IllegalArgumentException 
+     * @throws InterruptedException 
+     * @throws ClassNotFoundException 
+     */
+    public static class myComparator extends Comparator {
+        @SuppressWarnings("rawtypes")
+        public int compare( WritableComparable a,WritableComparable b){
+            return -super.compare(a, b);
+        }
+        public int compare(byte[] b1, int s1, int l1, byte[] b2, int s2, int l2) {
+            return -super.compare(b1, s1, l1, b2, s2, l2);
+        }
+    }
+    
+    public static class Map extends Mapper<Object,Text,IntWritable,Text>{
+        public void map(Object key,Text value,Context context) throws NumberFormatException, IOException, InterruptedException{
+            String[] split = value.toString().split("\t");
+            context.write(new IntWritable(Integer.parseInt(split[1])),new Text(split[0]) );
+        }
+    }
+    public static class Reduce extends Reducer<IntWritable,Text,Text,IntWritable>{
+        public void reduce(IntWritable key,Iterable<Text>values,Context context) throws IOException, InterruptedException{
+            for (Text text : values) {
+                context.write( text,key);
+            }
+        }
+    }
+    public static void main(String[] args) throws IllegalArgumentException, IOException, ClassNotFoundException, InterruptedException {
+        // TODO Auto-generated method stub
+
+           Job job = new Job();
+           job.setJarByClass(comparator.class);
+           
+           job.setNumReduceTasks(1);   //设置reduce进程为1个，即output生成一个文件
+           
+           job.setMapperClass(Map.class);      
+           job.setReducerClass(Reduce.class);
+           
+           job.setMapOutputKeyClass(IntWritable.class);
+            job.setMapOutputValueClass(Text.class);
+           
+           job.setOutputKeyClass(Text.class);    //为job的输出数据设置key类
+           job.setOutputValueClass(IntWritable.class);   //为job的输出设置value类
+           
+           job.setSortComparatorClass( myComparator.class);           //自定义排序
+           
+           FileInputFormat.addInputPath(job, new Path(args[0]));   //设置输入文件的目录
+           FileOutputFormat.setOutputPath(job,new Path(args[1])); //设置输出文件的目录
+           
+           System.exit(job.waitForCompletion(true)?0:1);   //提交任务
+    }
+
+}
+
+
+[置顶]
+        eclipse 运行MapReduce程序错误异常汇总(解决Map not fount)
+
+错误一：
+
+Error: java.lang.RuntimeException: java.lang.ClassNotFoundException: Class wordCount.wordCount$Map not found
+at org.apache.hadoop.conf.Configuration.getClass(Configuration.java:2074)
+at org.apache.hadoop.mapreduce.task.JobContextImpl.getMapperClass(JobContextImpl.java:186)
+at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:742)
+at org.apache.hadoop.mapred.MapTask.run(MapTask.java:341)
+at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:163)
+at java.security.AccessController.doPrivileged(Native Method)
+at javax.security.auth.Subject.doAs(Subject.java:415)
+at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1628)
+at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:158)
+Caused by: java.lang.ClassNotFoundException: Class wordCount.wordCount$Map not found
+at org.apache.hadoop.conf.Configuration.getClassByName(Configuration.java:1980)
+at org.apache.hadoop.conf.Configuration.getClass(Configuration.java:2072)
+... 8 more
+
+问题分析：很烦人的一个问题，很久之前就碰见过，后来电脑linux换了一个版本，解决了
+解决办法：eclipse添加hadoop配置文件问题，记住只需要在程序目录下新建一个conf的文件夹，把log4j.properties拷贝到该目录下，重启eclipse即可
+错误二：
+eclipse 运行MR提示无法访问的情况
+问题分析：权限不足
+解决办法：重新给hdfs文件系统赋予权限（可能会经常遇到这种问题，可执行同一种操作即可）bin/hdfs dfs -chmod -R 777 /
+错误三：
+HMaster启动之后立即又关闭
+问题分析：可能是zookeeper不稳定造成的，
+解决办法：停止zookeeper服务（bin/zkServer.sh stop zoo1.cfg     bin/zkServer.sh stop zoo2.cfg    bin/zkServer.sh stop zoo3.cfg ），再重新启动
+错误四：
+
+15/08/23 11:10:07 INFO mapreduce.JobSubmitter: Cleaning up the staging area file:/usr/local/hadoop/tmp/mapred/staging/thinkgamer1735608800/.staging/job_local1735608800_0001
+Exception in thread "main" ExitCodeException exitCode=1: chmod: 无法访问"/usr/local/hadoop/tmp/mapred/staging/thinkgamer1735608800/.staging/job_local1735608800_0001": 没有那个文件或目录
+
+问题分析：eclipse的配置文件缺少
+解决办法：把配置hadoop时所修改的配置文件全部复制到src文件夹下
+
+
+
+错误五：
+Exception in thread "main" org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory hdfs://localhost:9000/thinkgamer/output already exists
+
+问题分析：hdfs文件系统中的output文件夹已经存在
+解决办法：删除即可（同时还可能出现找不到input目录的问题，此时注意检查input路径）
+
+数据挖掘数据集下载资源
+
+在网上看到很好的资源收集，分享给大家：
+1、气候监测数据集 http://cdiac.ornl.gov/ftp/ndp026b
+
+
+2、几个实用的测试数据集下载的网站
+
+http://www.fs.fed.us/fire/fuelman/
+
+http://www.cs.toronto.edu/~roweis/data.html
+http://www.cs.toronto.edu/~roweis/data.html
+http://kdd.ics.uci.edu/summary.task.type.html
+http://www-2.cs.cmu.edu/afs/cs.cmu.edu/project/theo-20/www/data/
+http://www-2.cs.cmu.edu/afs/cs.cmu.edu/project/theo-11/www/wwkb/
+http://www.phys.uni.torun.pl/~duch/software.html
+在下面的网址可以找到reuters数据集：http://www.research.att.com/~lewis/reuters21578.html
+该网址有各种数据集：http://kdd.ics.uci.edu/summary.data.type.html
+进行文本分类，还有一个数据集是可以用的，即rainbow的数据集
+http://www-2.cs.cmu.edu/afs/cs/project/theo-11/www/naive-bayes.html
+
+3、UCI收集的机器学习数据集
+ftp://pami.sjtu.edu.cn/
+http://www.ics.uci.edu/~mlearn//MLRepository.htm
+
+4、statlib
+http://liama.ia.ac.cn/SCILAB/scilabindexgb.htm
+http://lib.stat.cmu.edu/
+
+5、关于基金的数据挖掘的网站
+http://www.gotofund.com/index.asp
+
+http://lans.ece.utexas.edu/~strehl/
+
+6、进行文本分类&WEB
+http://www-2.cs.cmu.edu/afs/cs/project/theo-11/www/naive-bayes.html
+
+http://www.w3.org/TR/WD-logfile-960221.html
+http://www.w3.org/Daemon/User/Config/Logging.html#AccessLog
+http://www.w3.org/1998/11/05/WC-workshop/Papers/bala2.html
+http://www-2.cs.cmu.edu/afs/cs.cmu.edu/project/theo-11/www/wwkb/
+http://www.web-caching.com/traces-logs.html
+http://www-2.cs.cmu.edu/webkb
+http://www.cs.auc.dk/research/DP/tdb/TimeCenter/TimeCenterPublications/TR-75.pdf
+http://www.cs.cornell.edu/projects/kddcup/index.html
+
+7、时间序列数据的网址
+http://www.stat.wisc.edu/~reinsel/bjr-data/
+
+8、apriori算法的测试数据
+http://www.almaden.ibm.com/cs/quest/syndata.html
+
+9、数据生成器的链接
+http://www.cse.cuhk.edu.hk/~kdd/data_collection.html
+http://www.almaden.ibm.com/cs/quest/syndata.html
+10、关联：
+http://flow.dl.sourceforge.net/sourceforge/weka/regression-datasets.jar
+http://www.almaden.ibm.com/software/quest/Resources/datasets/syndata.html#assocSynData
+
+11、WEKA：
+http://flow.dl.sourceforge.net/sourceforge/weka/regression-datasets.jar
+1。A jarfile containing 37 classification problems, originally obtained from the UCI repository
+http://prdownloads.sourceforge.net/weka/datasets-UCI.jar
+2。A jarfile containing 37 regression problems, obtained from various sources
+http://prdownloads.sourceforge.net/weka/datasets-numeric.jar
+3。A jarfile containing 30 regression datasets collected by Luis Torgo
+http://prdownloads.sourceforge.net/weka/regression-datasets.jar
+
+12、癌症基因：
+http://www.broad.mit.edu/cgi-bin/cancer/datasets.cgi
+
+13、金融数据：
+http://lisp.vse.cz/pkdd99/Challenge/chall.htm
+
+14、一个很好的资源网址为：http://kdd.ics.uci.edu/，里面包含的数据资源按应用领域划分的。
+
+MapReduce框架排序和分组
+
+前言：
+        Mapreduce框架就是map->reduce,其中Map中的<key,value>是偏移量和行值，在其之前会使用job.setInputFormatClass定义的InputFormat将输入的数据集分割成小数据块splites，同时InputFormat提供一个RecordReder的实现。本例子中使用的是TextInputFormat，他提供的RecordReder会将文本的一行的行号作为key，这一行的文本作为value。这就是自定义Map的输入是<LongWritable,
+ Text>的原因。
+       之后调用Map类进行split，将其写入环形内存中，待其达到阀值时，对其的80%进行排序排序和分组，这都是在Map和Reduce之间完成，那么下面我们来看看这些函数类
+一、分区
+参考上一篇博客：http://blog.csdn.net/gamer_gyt/article/details/47339755
+
+二、排序
+按照Key进行排序，其实在每一个Map函数里就已经默认调用了job.setSortComparatorClass(Comparator.class)类进行了排序，但此时只不过对每一个Map函数接受的value（行值）的排序，这里所说的是map和reduce之间的排序，实现的是对所有的key进行排序
+三、分组
+
+job.setGroupingComparatorClass(GroupComparator.class);
+
+
+如果用户想自定义排序方式，首先需要实现两个Comparator并将其按照上面的格式进行配置。每一个Comparator需要继承WritableComparator基类。如下所示：
+
+
+public static class GroupComparator extends WritableComparator {
+
+protected GroupComparator() {
+
+super(IntPair.class, true);
+
+}
+
+@Override
+
+public int compare(WritableComparable w1, WritableComparable w2) {
+
+IntPair ip1 = (IntPair) w1;
+
+IntPair ip2 = (IntPair) w2;
+
+return IntPair.compare(ip1.getFirst(), ip2.getFirst());
+
+}
+}
+这一点在二次排序中深有体现：可以参考http://blog.csdn.net/gamer_gyt/article/details/47315405
+
+
+MapReduce框架Partitioner分区方法
+
+前言：对于二次排序相信大家也是似懂非懂，我也是一样，对其中的很多方法都不理解诶，所有只有暂时放在一边，当你接触到其他的函数，你知道的越多时你对二次排序的理解也就更深入了，同时建议大家对wordcount的流程好好分析一下，要真正的知道每一步都是干什么的。
+1.Partitioner分区类的作用是什么？
+2.getPartition()三个参数分别是什么？
+3.numReduceTasks指的是设置的Reducer任务数量，默认值是是多少？
+扩展：
+如果不同类型的数据被分配到了同一个分区，输出的数据是否还是有序的？
+
+在进行MapReduce计算时，有时候需要把最终的输出数据分到不同的文件中，比如按照省份划分的话，需要把同一省份的数据放到一个文件中；按照性别划分的话，需要把同一性别的数据放到一个文件中。我们知道最终的输出数据是来自于Reducer任务。那么，如果要得到多个文件，意味着有同样数量的Reducer任务在运行。Reducer任务的数据来自于Mapper任务，也就说Mapper任务要划分数据，对于不同的数据分配给不同的Reducer任务运行。Mapper任务划分数据的过程就称作Partition。负责实现划分数据的类称作Partitioner。
+Partitoner类的源码如下：
+
+package org.apache.hadoop.mapreduce.lib.partition;
+
+import org.apache.hadoop.mapreduce.Partitioner;
+
+/** Partition keys by their {@link Object#hashCode()}. */
+public class HashPartitioner<K, V> extends Partitioner<K, V> {
+
+  /** Use {@link Object#hashCode()} to partition. */
+  public int getPartition(K key, V value,
+                          int numReduceTasks) {
+    //默认使用key的hash值与上int的最大值，避免出现数据溢出 的情况
+    return (key.hashCode() & Integer.MAX_VALUE) % numReduceTasks;
+  }
+
+}
+HashPartitioner是处理Mapper任务输出的，getPartition()方法有三个形参，源码中key、value分别指的是Mapper任务的输出，numReduceTasks指的是设置的Reducer任务数量，默认值是1。那么任何整数与1相除的余数肯定是0。也就是说getPartition(…)方法的返回值总是0。也就是Mapper任务的输出总是送给一个Reducer任务，最终只能输出到一个文件中。
+据此分析，如果想要最终输出到多个文件中，在Mapper任务中对数据应该划分到多个区中。那么，我们只需要按照一定的规则让getPartition(…)方法的返回值是0,1,2,3…即可。
+大部分情况下，我们都会使用默认的分区函数，但有时我们又有一些，特殊的需求，而需要定制Partition来完成我们的业务，案例如下：
+对如下数据，按字符串的长度分区，长度为1的放在一个，2的一个，3的各一个。 
+
+
+河南省;1
+河南;2
+中国;3
+中国人;4
+大;1
+小;3
+中;11
+这时候，我们使用默认的分区函数，就不行了，所以需要我们定制自己的Partition，首先分析下，我们需要3个分区输出，所以在设置reduce的个数时，一定要设置为3，其次在partition里，进行分区时，要根据长度具体分区，而不是根据字符串的hash码来分区。核心代码如下：
+
+   public static class PPartition extends Partitioner<Text, Text>{ 
+    @Override
+    public int getPartition(Text arg0, Text arg1, int arg2) {
+       /**
+        * 自定义分区，实现长度不同的字符串，分到不同的reduce里面
+        * 
+        * 现在只有3个长度的字符串，所以可以把reduce的个数设置为3
+        * 有几个分区，就设置为几
+        * */
+      
+      String key=arg0.toString();
+      if(key.length()==1){
+        return 1%arg2;
+      }else if(key.length()==2){
+        return 2%arg2;
+      }else if(key.length()==3){
+        return 3%arg2;
+      }
+     return  0;
+    }      
+   }
+
+在运行Mapreduce程序时，只需在主函数里加入如下两行代码即可：
+job.setPartitionerClass(PPartition.class);
+job.setNumReduceTasks(3);//设置为3
+
+
+
+MapReduce框架Mapper和Reducer类源码分析
+
+一：Mapper类
+在Hadoop的mapper类中，有4个主要的函数，分别是：setup，clearup，map，run。代码如下：
+
+
+
+protected void setup(Context context) throws IOException, InterruptedException {
+// NOTHING
+}
+
+protected void map(KEYIN key, VALUEIN value, 
+                     Context context) throws IOException, InterruptedException {
+context.write((KEYOUT) key, (VALUEOUT) value);
+}
+
+protected void cleanup(Context context) throws IOException, InterruptedException {
+// NOTHING
+}
+
+public void run(Context context) throws IOException, InterruptedException {
+    setup(context);
+    while (context.nextKeyValue()) {
+      map(context.getCurrentKey(), context.getCurrentValue(), context);
+    }
+    cleanup(context);
+  }
+}
+
+
+由上面的代码，我们可以了解到，当调用到map时，通常会先执行一个setup函数，最后会执行一个cleanup函数。而默认情况下，这两个函数的内容都是nothing。因此，当map方法不符合应用要求时，可以试着通过增加setup和cleanup的内容来满足应用的需求。
+
+
+
+二：Reducer类
+
+在Hadoop的reducer类中，有3个主要的函数，分别是：setup，clearup，reduce。代码如下：
+
+
+
+
+  /**
+   * Called once at the start of the task.
+   */
+  protected void setup(Context context
+                       ) throws IOException, InterruptedException {
+    // NOTHING
+  }
+
+
+
+
+
+
+
+
+  /**
+   * This method is called once for each key. Most applications will define
+   * their reduce class by overriding this method. The default implementation
+   * is an identity function.
+   */
+  @SuppressWarnings("unchecked")
+  protected void reduce(KEYIN key, Iterable<VALUEIN> values, Context context
+                        ) throws IOException, InterruptedException {
+    for(VALUEIN value: values) {
+      context.write((KEYOUT) key, (VALUEOUT) value);
+    }
+  }
+
+
+
+
+
+
+
+
+
+  /**
+   * Called once at the end of the task.
+   */
+  protected void cleanup(Context context
+                         ) throws IOException, InterruptedException {
+    // NOTHING
+  }
+
+
+
+
+
+在用户的应用程序中调用到reducer时，会直接调用reducer里面的run函数，其代码如下：
+
+
+
+
+/*
+   * control how the reduce task works.
+   */
+  @SuppressWarnings("unchecked")
+  public void run(Context context) throws IOException, InterruptedException {
+    setup(context);
+    while (context.nextKey()) {
+      reduce(context.getCurrentKey(), context.getValues(), context);
+      // If a back up store is used, reset it
+      ((ReduceContext.ValueIterator)
+          (context.getValues().iterator())).resetBackupStore();
+    }
+    cleanup(context);
+  }
+}
+
+
+
+
+
+由上面的代码，我们可以了解到，当调用到reduce时，通常会先执行一个setup函数，最后会执行一个cleanup函数。而默认情况下，这两个函数的内容都是nothing。因此，当reduce不符合应用要求时，可以试着通过增加setup和cleanup的内容来满足应用的需求。
+
+
+
+
+MapReduce  二次排序详解
+
+
+1 首先说一下工作原理： 
+
+在map阶段，使用job.setInputFormatClass定义的InputFormat将输入的数据集分割成小数据块splites，同时InputFormat提供一个RecordReder的实现。本例子中使用的是TextInputFormat，他提供的RecordReder会将文本的一行的行号作为key，这一行的文本作为value。这就是自定义Map的输入是<LongWritable, Text>的原因。然后调用自定义Map的map方法，将一个个<LongWritable, Text>对输入给Map的map方法。注意输出应该符合自定义Map中定义的输出<IntPair,
+ IntWritable>。最终是生成一个List<IntPair, IntWritable>。在map阶段的最后，会先调用job.setPartitionerClass对这个List进行分区，每个分区映射到一个reducer。每个分区内又调用job.setSortComparatorClass设置的key比较函数类排序。可以看到，这本身就是一个二次排序。如果没有通过job.setSortComparatorClass设置key比较函数类，则使用key的实现的compareTo方法。在第一个例子中，使用了IntPair实现的compareTo方法，而在下一个例子中，专门定义了key比较函数类。
+
+在reduce阶段，reducer接收到所有映射到这个reducer的map输出后，也是会调用job.setSortComparatorClass设置的key比较函数类对所有数据对排序。然后开始构造一个key对应的value迭代器。这时就要用到分组，使用jobjob.setGroupingComparatorClass设置的分组函数类。只要这个比较器比较的两个key相同，他们就属于同一个组，它们的value放在一个value迭代器，而这个迭代器的key使用属于同一个组的所有key的第一个key。最后就是进入Reducer的reduce方法，reduce方法的输入是所有的（key和它的value迭代器）。同样注意输入与输出的类型必须与自定义的Reducer中声明的一致。
+
+2  二次排序 就是首先按照第一字段排序，然后再对第一字段相同的行按照第二字段排序，注意不能破坏第一次排序 的结果 。例如 
+
+输入文件 
+
+20 21 
+50 51 
+50 52 
+50 53 
+50 54 
+60 51 
+60 53 
+60 52 
+60 56 
+60 57 
+70 58 
+60 61 
+70 54 
+70 55 
+70 56 
+70 57 
+70 58 
+1 2 
+3 4 
+5 6 
+7 82 
+203 21 
+50 512 
+50 522 
+50 53 
+530 54 
+40 511 
+20 53 
+20 522 
+60 56 
+60 57 
+740 58 
+63 61 
+730 54 
+71 55 
+71 56 
+73 57 
+74 58 
+12 211 
+31 42 
+50 62 
+7 8 
+
+输出：（注意需要分割线） 
+
+
+------------------------------------------------ 
+1       2 
+------------------------------------------------ 
+3       4 
+------------------------------------------------ 
+5       6 
+------------------------------------------------ 
+7       8 
+7       82 
+------------------------------------------------ 
+12      211 
+------------------------------------------------ 
+20      21 
+20      53 
+20      522 
+------------------------------------------------ 
+31      42 
+------------------------------------------------ 
+40      511 
+------------------------------------------------ 
+50      51 
+50      52 
+50      53 
+50      53 
+50      54 
+50      62 
+50      512 
+50      522 
+------------------------------------------------ 
+60      51 
+60      52 
+60      53 
+60      56 
+60      56 
+60      57 
+60      57 
+60      61 
+------------------------------------------------ 
+63      61 
+------------------------------------------------ 
+70      54 
+70      55 
+70      56 
+70      57 
+70      58 
+70      58 
+------------------------------------------------ 
+71      55 
+71      56 
+------------------------------------------------ 
+73      57 
+------------------------------------------------ 
+74      58 
+------------------------------------------------ 
+203     21 
+------------------------------------------------ 
+530     54 
+------------------------------------------------ 
+730     54 
+------------------------------------------------ 
+740     58 
+
+3  具体步骤： 
+
+
+1 自定义key。 
+
+在mr中，所有的key是需要被比较和排序的，并且是二次，先根据partitione，再根据大小。而本例中也是要比较两次。先按照第一字段排序，然后再对第一字段相同的按照第二字段排序。根据这一点，我们可以构造一个复合类IntPair，他有两个字段，先利用分区对第一字段排序，再利用分区内的比较对第二字段排序。
+所有自定义的key应该实现接口WritableComparable，因为是可序列的并且可比较的。并重载方法 
+//反序列化，从流中的二进制转换成IntPair 
+public void readFields(DataInput in) throws IOException 
+        
+//序列化，将IntPair转化成使用流传送的二进制 
+public void write(DataOutput out) 
+
+//key的比较 
+public int compareTo(IntPair o) 
+        
+另外新定义的类应该重写的两个方法 
+//The hashCode() method is used by the HashPartitioner (the default partitioner in MapReduce)
+public int hashCode() 
+public boolean equals(Object right) 
+
+2 由于key是自定义的，所以还需要自定义一下类： 
+
+2.1 分区函数类。这是key的第一次比较。 
+public static class FirstPartitioner extends Partitioner<IntPair,IntWritable> 
+
+在job中设置使用setPartitionerClasss 
+
+2.2 key比较函数类。这是key的第二次比较。这是一个比较器，需要继承WritableComparator。 
+public static class KeyComparator extends WritableComparator 
+必须有一个构造函数，并且重载 public int compare(WritableComparable w1, WritableComparable w2) 
+另一种方法是 实现接口RawComparator。 
+在job中设置使用setSortComparatorClass。 
+
+2.3 分组函数类。在reduce阶段，构造一个key对应的value迭代器的时候，只要first相同就属于同一个组，放在一个value迭代器。这是一个比较器，需要继承WritableComparator。
+public static class GroupingComparator extends WritableComparator 
+同key比较函数类，必须有一个构造函数，并且重载 public int compare(WritableComparable w1, WritableComparable w2)
+同key比较函数类，分组函数类另一种方法是实现接口RawComparator。 
+在job中设置使用setGroupingComparatorClass。 
+
+另外注意的是，如果reduce的输入与输出不是同一种类型，则不要定义Combiner也使用reduce，因为Combiner的输出是reduce的输入。除非重新定义一个Combiner。
+
+4 代码。这个例子中没有使用key比较函数类，而是使用key的实现的compareTo方法
+
+
+
+
+
+Ubuntu系统下eclipse配置mapreduce插件常见错误和解决办法汇总
+
+在上篇文章中eclipse已经能访问HDFS目录(
+ blog.csdn.net/gamer_gyt/article/details/47209623)，但并不能进行Mapreduce编程，在这里小编将常见错误和处理办法进行总结，希望对大家有所帮助
+
+错误1：ERROR [main] util.Shell (Shell.java:getWinUtilsPath(303)) - Failed to locate the winutils binary in the hadoop binary path  
+java.io.IOException: Could not locate executable null\bin\winutils.exe in the Hadoop binaries.
+解决办法：
+
+eg:我解压的目录是D:\hadoop-2.6.0
+在系统的环境变量界面添加HADOOP_HOME，并在系统变量PATH中添加如图：
+
+
+然后eclipse中选择Windows->Prefenences设置如图：
+
+错误2：Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+错误3：Exception in thread "main" java.lang.UnsatisfiedLinkError: org.apache.hadoop.io.nativeio.NativeIO$Windows.access0(Ljava/lang/String;I)Z
+上面两个问题是缺少组件，解决办法：
+下载hadoop-common-2.2.0-bin-master
+将里边bin 目录替换 本地hadoop里边的bin目录
+
+
+错误:4：
+
+15/08/03 10:15:43 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+15/08/03 10:15:43 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+15/08/03 10:15:55 INFO ipc.Client: Retrying connect to server: 0.0.0.0/0.0.0.0:8032. Already tried 0 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+15/08/03 10:15:57 INFO ipc.Client: Retrying connect to server: 0.0.0.0/0.0.0.0:8032. Already tried 1 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+15/08/03 10:15:59 INFO ipc.Client: Retrying connect to server: 0.0.0.0/0.0.0.0:8032. Already tried 2 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+
+解决办法：
+将集群配置文件中core-site.xml  localhost改为你主节点IP
+
+然后加入在yarn-site.xml中加入
+<property>
+<name>yarn.resourcemanager.address</name>
+<value>127.0.0.1:8032</value>
+</property>
+<property>
+<name>yarn.resourcemanager.scheduler.address</name>
+<value>127.0.0.1:8030</value>
+</property>
+<property>
+<name>yarn.resourcemanager.resource-tracker.address</name>
+<value>127.0.0.1:8031</value>
+</property>
+<property>
+<name>yarn.resourcemanager.hostname</name>
+<value>127.0.0.1</value>
+</property>
+注意127.0.0.1改为你的ip
+
+特别注意的是，修改后，集群要重新启动，且把里边的修改的文件重新copy一份到程序的src目录下，在eclipse中刷新
+错误5：
+Exit code: 1
+Exception message: /bin/bash: 第 0 行: fg: 无任务控制
+
+Stack trace: ExitCodeException exitCode=1: /bin/bash: 第 0 行: fg: 无任务控制
+
+解决办法参考网上给的教程：http://www.aboutyun.com/thread-8498-1-1.html 并未解决
+真正的办法是：
+
+
+在客户端配置文件中添加如下属性：
+
+    <property>
+        <name>mapreduce.app-submission.cross-platform</name>
+        <value>true</value>
+    </property>
+
+注意：必须添加到Hadoop程序读取的客户端本地配置文件中，添加到客户端Hadoop安装路径中的“core-site.xml”，“mapred-site.xml”等文件中不起作用
+错误6：
+正确放置完jar插件之后，eclipse中不能显示mapreduce
+解决办法：检查jar插件的位置注意如果是从ubuntu自带的软件中心安装elcipse的话，则安装目录为：/usr/share/eclipse/dropins/sdk/plugins/不是在/usr/share/eclipse/plugin，进入eclipse目录，执行sudo chmod 777 * -R，重启eclipse          
+ 这一步特别重要网上好多资料都不是这样写的，所以配置一直不成功。
+
+
+
+推荐一篇不错的博客：http://www.aboutyun.com/thread-8311-1-1.html
+
+
+windows下使用Eclipse编译运行MapReduce程序 Hadoop2.6.0/Ubuntu
+
+一、环境介绍
+宿主机：windows8
+虚拟机：Ubuntu14.04
+
+hadoop2.6伪分布：搭建教程http://blog.csdn.net/gamer_gyt/article/details/46793731
+Eclipse：eclipse-jee-luna-SR2-win32-x86_64
+二、准备阶段
+网上下载hadoop-eclipse-plugin-2.6.0.jar (点击下载)
+也可以自行编译（网上教程挺多的，可以自己百度 or Google）
+三、begin
+
+
+复制编译好的jar到eclipse插件目录(如果是从ubuntu自带的软件中心安装elcipse的话，则安装目录为：/usr/share/eclipse/dropins/sdk/plugins/不是在/usr/share/eclipse/plugin)，进入eclipse目录，执行sudo chmod 777 * -R，重启eclipse           这一步特别重要网上好多资料都不是这样写的，所以配置一直不成功。
+
+
+配置 hadoop 安装目录
+
+window ->preference -> hadoop Map/Reduce -> Hadoop installation directory
+
+
+配置Map/Reduce 视图
+
+window ->Open Perspective -> other->Map/Reduce -> 点击“OK”
+
+windows → show view → other->Map/Reduce Locations-> 点击“OK”
+
+
+控制台会多出一个“Map/Reduce Locations”的Tab页
+
+在“Map/Reduce Locations” Tab页 点击图标<大象+>或者在空白的地方右键，选择“New Hadoop location…”，弹出对话框“New hadoop location…”，配置如下内容：将ha1改为自己的hadoop用户
+
+接着再切换到 Advanced parameters 选项面板，这边有详细的配置，切记需要与 Hadoop 的配置(/usr/local/hadoop/etc/hadoop中的配置文件)一致，如我配置了 hadoop.tmp.dir ，就要进行修改。
+
+网上几乎所有的教程都是如此，的确按这个教程配置完成后会在eclipse左上角出现DFS Locations，如下图
+
+
+但其实还会碰见各种各样的问题，小编只将本人遇到的和解决办法呈现
+(1)注意：将虚拟机的hadoop下修改的配置文件（core-site.xml   hdfs-site.xml log4j.properties复制到程序的src目录下）
+(2)DFS下一些文件加载不出来，提示 permission denied错误
+解决办法：给HDFS目录文件添加权限，hdfs dfs -chmod -R 777 /
+附：推荐一篇不错的文章http://www.aboutyun.com/thread-8780-1-1.html
+参考：www.tuicool.com/articles/BRBzquj
+            www.cnblogs.com/aijianiula/p/4546021.html
+常见错误和解决办法参考：http://blog.csdn.net/gamer_gyt/article/details/47252671
+
+
+Exception from container-launch: org.apache.hadoop.util.Shell$ExitCodeException
+
+使用MapReduce编写的中文分词程序出现了 Exception from container-launch: org.apache.hadoop.util.Shell$ExitCodeException: 这样的问题如图：
+
+
+上网查了好多资料，才明白这是hadoop本身的问题，具体参考：
+https://issues.apache.org/jira/browse/YARN-1298
+https://issues.apache.org/jira/browse/MAPREDUCE-5655
+解决办法是重新编译hadoop具体参考：
+http://zy19982004.iteye.com/blog/2031172
+
+
+
+
+MapReducer中的多次归约处理
+
+我们知道，MapReduce是分为Mapper任务和Reducer任务，Mapper任务的输出，通过网络传输到Reducer任务端，作为输入。
+在Reducer任务中，通常做的事情是对数据进行归约处理。既然数据来源是Mapper任务的输出，那么是否可以在Mapper端对数据进行归约处理，业务逻辑与Reducer端做的完全相同。处理后的数据再传送到Reducer端，再做一次归约。这样的好处是减少了网络传输的数量。
+可能有人疑惑几个问题：
+为什么需要在Mapper端进行归约处理？
+为什么可以在Mapper端进行归约处理？
+既然在Mapper端可以进行归约处理，为什么在Reducer端还要处理？
+回答第一个问题：因为在Mapper进行归约后，数据量变小了，这样再通过网络传输时，传输时间就变短了，减少了整个作业的运行时间。
+回答第二个问题：因为Reducer端接收的数据就是来自于Mapper端。我们在Mapper进行归约处理，无非就是把归约操作提前到Mapper端做而已。
+回答第三个问题：因为Mapper端的数据仅仅是本节点处理的数据，而Reducer端处理的数据是来自于多个Mapper任务的输出。因此在Mapper不能归约的数据，在Reducer端有可能归约处理。
+在Mapper进行归约的类称为Combiner。那么，怎么写Combiner哪？非常简单，就是我们自定义的Reducer类。那么，怎么用哪？更简单，见如下代码
+
+job.setCombineClass(Mapper.class)
+要注意的是，Combiner只在Mapper任务所在的节点运行，不会跨Mapper任务运行。Reduce端接收所有Mapper端的输出来作为输入。虽然两边的归约类是同一个，但是执行的位置完全不一样。
+并不是所有的归约工作都可以使用Combiner来做。比如求平均值就不能使用Combiner。因为对于平均数的归约算法不能多次调用。
+
