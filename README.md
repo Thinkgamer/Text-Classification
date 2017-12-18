@@ -1,3 +1,6 @@
+# 说明
+此项目为很早以前的练手demo，多年后再去看这个代码，简直被我曾经的设计丑哭了，于是想重新做一个东西，原项目不再更新，并更改分支为csdn-blog-classification
+
 # CSDN-blog-classify
 CSDN博客智能分类系统
 
@@ -5,7 +8,7 @@ CSDN博客分类系统是基于Python和朴素贝叶斯分类算法进行博客�
 
 web页面展示和服务器都是基于 python django框架。
 
-1：本机环境          
+## 1：本机环境          
 
  python 2.7                                                                                                                 
  django 1.8  //Web框架                                                                                                      
@@ -14,8 +17,10 @@ web页面展示和服务器都是基于 python django框架。
  jieba         // 分词模块                                                                                                  
 
  本项目是建立一个django工程，然后在它的模块中进行爬取，分词和分类
-                                                                                                                           2：目录说明                                                                                                                
-                                                                                                                   ——csdn_blog_classify              //工程主目录
+                                                                                                                           
+## 2：目录说明                                                                                                                
+```
+    ——csdn_blog_classify              //工程主目录
                                                                                                                    
     ——blog_classify                //博客分类
     
@@ -32,9 +37,10 @@ web页面展示和服务器都是基于 python django框架。
     ——db.sqlite3                   //django自带的轻量级数据库
     
     ——manage.py                    //测试启动服务等
+```
 
     django系列教程请参考：
-    http://blog.csdn.net/Gamer_gyt/article/category/5996523
+    http://blog.csdn.net/column/details/12861.html
 
     python爬虫相关教程请查看：
     http://blog.csdn.net/Gamer_gyt/article/category/2949495
@@ -43,7 +49,7 @@ web页面展示和服务器都是基于 python django框架。
     http://blog.csdn.net/Gamer_gyt/article/category/2816997
 
 
-3:具体效果图在此不能展示了，不过有兴趣的可以联系小编，大家一起交流进步
+## 3:具体效果图在此不能展示了，不过有兴趣的可以联系小编，大家一起交流进步
 
 Thinkgamer，CyanScikit科技创始人，热爱大数据家族，机器学习算法，和无所不能的python
 
